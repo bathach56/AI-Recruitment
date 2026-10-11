@@ -1,0 +1,24 @@
+﻿HỌ VÀ TÊN: Pháº¡m Quá»‘c Báº£o
+VỊ TRÍ ỨNG TUYỂN: Senior Java Developer
+SỐ NĂM KINH NGHIỆM: 5.0 năm
+
+TÓM TẮT HỒ SƠ:
+Ká»¹ sÆ° pháº§n má»m Java 5 nÄƒm kinh nghiá»‡m chuyÃªn xÃ¢y dá»±ng há»‡ thá»‘ng thanh toÃ¡n Ä‘iá»‡n tá»­ báº±ng Spring Boot, Spring Cloud vÃ  tÃ­ch há»£p message broker Apache Kafka.
+
+KỸ NĂNG CHUYÊN MÔN:
+Java, Spring Boot, Hibernate, PostgreSQL, Kafka, Microservices, Docker, RESTful API, Unit Testing
+
+KINH NGHIỆM LÀM VIỆC CHI TIẾT:
+- Công ty Cổ phần Công nghệ & Giải pháp Số (2021 - Hiện tại)
+  Vị trí: Senior Java Developer
+  Trách nhiệm: Tham gia phát triển các tính năng cốt lõi cho hệ thống ứng dụng công nghệ thông tin. 
+  Sử dụng các công nghệ: Java, Spring Boot, Hibernate, PostgreSQL, Kafka, Microservices, Docker, RESTful API, Unit Testing.
+  Đảm bảo chất lượng mã nguồn, tối ưu hóa hiệu suất và viết unit test đầy đủ.
+
+HỌC VẤN:
+- Cử nhân Công nghệ Thông tin / Khoa học Máy tính
+  Tốt nghiệp loại Giỏi - Đại học Bách Khoa / ĐH Quốc Gia (GPA: 3.4/4.0)
+
+CHỨNG CHỈ & NGOẠI NGỮ:
+- Tiếng Anh: TOEIC 750 / IELTS 6.5
+- Chứng chỉ chuyên môn theo ngành

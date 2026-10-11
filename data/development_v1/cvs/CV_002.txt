@@ -1,0 +1,13 @@
+Trần Thị Bích
+Mẫu CV kiểm thử nội bộ - Backend .NET Developer
+Thông tin ứng viên
+Họ và tên: Trần Thị Bích
+Vị trí định hướng: Backend .NET Developer
+Số năm kinh nghiệm: 3.0 năm
+Tóm tắt hồ sơ
+3 năm kinh nghiệm phát triển phần mềm doanh nghiệp trên nền tảng .NET Core và SQL Server. Có tinh thần trách nhiệm cao, nắm vững OOP và quy trình phát triển Agile/Scrum.
+Kỹ năng
+C#, ASP.NET Core, SQL Server, Entity Framework Core, LINQ, RESTful API, Git
+Kinh nghiệm
+Kinh nghiệm liên quan: 3.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

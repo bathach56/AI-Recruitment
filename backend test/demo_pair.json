@@ -1,0 +1,11 @@
+{
+  "purpose": "development walkthrough only; no ground-truth label assigned",
+  "paths_relative_to": "project root",
+  "cv_id": "CV_001",
+  "cv_file": "data/sample_cvs/CV_NguyenVanAn_Senior_DotNet.docx",
+  "cv_manifest": "data/sample_cvs/sample_cvs_manifest.json",
+  "job_id": "JOB_001",
+  "job_file": "data/sample_jds/sample_jds.json",
+  "ground_truth_label": null,
+  "note": "Use DOCX as source. TXT counterpart has encoding damage; review before using as parser reference."
+}

@@ -1,0 +1,13 @@
+Bùi Đức Hạnh
+Mẫu CV kiểm thử nội bộ - Fullstack Developer
+Thông tin ứng viên
+Họ và tên: Bùi Đức Hạnh
+Vị trí định hướng: Fullstack Developer
+Số năm kinh nghiệm: 3.5 năm
+Tóm tắt hồ sơ
+Kỹ sư phần mềm Fullstack với 3.5 năm kinh nghiệm làm việc trên stack MEVN (MongoDB, Express, Vue.js, Node.js). Có kinh nghiệm đóng gói ứng dụng với Docker.
+Kỹ năng
+JavaScript, TypeScript, Node.js, Vue.js, Express, MongoDB, MySQL, RESTful API, Docker
+Kinh nghiệm
+Kinh nghiệm liên quan: 3.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

@@ -1,0 +1,9 @@
+QA / Automation Test Engineer
+Thiết kế kịch bản và xây dựng framework tự động hóa kiểm thử cho các sản phẩm web và API của công ty.
+Viết test case và kịch bản kiểm thử tự động (Automation Test Script) cho Web và REST API.
+Xây dựng framework kiểm thử tự động với Selenium, Playwright hoặc Cypress.
+Tích hợp kịch bản kiểm thử vào quy trình CI/CD để tự động chạy regression test.
+Kiểm thử hiệu năng (Performance / Load Testing) sử dụng JMeter.
+Required skills: Unit Testing, Automation Testing, Selenium, Java, Python, RESTful API
+Nice-to-have skills: Playwright, Cypress, CI/CD, JMeter, Postman
+Required experience: 3.0 years

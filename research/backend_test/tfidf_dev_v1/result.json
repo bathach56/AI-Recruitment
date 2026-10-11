@@ -1,0 +1,3439 @@
+{
+  "purpose": "development walkthrough; queried documents ARE in fit corpus",
+  "dataset_version": "development_v1",
+  "fit_paths": [
+    "cvs/CV_001.txt",
+    "cvs/CV_002.txt",
+    "cvs/CV_003.txt",
+    "cvs/CV_004.txt",
+    "cvs/CV_005.txt",
+    "cvs/CV_006.txt",
+    "cvs/CV_007.txt",
+    "cvs/CV_008.txt",
+    "cvs/CV_009.txt",
+    "cvs/CV_010.txt",
+    "cvs/CV_011.txt",
+    "cvs/CV_012.txt",
+    "cvs/CV_013.txt",
+    "cvs/CV_014.txt",
+    "cvs/CV_015.txt",
+    "cvs/CV_016.txt",
+    "cvs/CV_017.txt",
+    "cvs/CV_018.txt",
+    "cvs/CV_019.txt",
+    "cvs/CV_020.txt",
+    "jds/JOB_001.txt",
+    "jds/JOB_002.txt",
+    "jds/JOB_003.txt",
+    "jds/JOB_004.txt",
+    "jds/JOB_005.txt",
+    "jds/JOB_006.txt",
+    "jds/JOB_007.txt",
+    "jds/JOB_008.txt",
+    "jds/JOB_009.txt",
+    "jds/JOB_010.txt"
+  ],
+  "cv_id": "CV_001",
+  "job_id": "JOB_001",
+  "metadata": {
+    "model": "TF-IDF",
+    "sklearn_version": "1.9.1",
+    "preprocessing_version": "text-features-v1",
+    "fit_document_count": 30,
+    "fit_document_sha256": [
+      "d624e505af86dde35655d4f5617d42553cfdf87c5433a0bffcba08aa39fdf129",
+      "c4fdbe71a12b1b83cb6d4b19189bbfc8c06c5204fbae7d548fb59a31aea5be42",
+      "485b22cae18bb6beab2de3a83f6a542137f9e42502854dd6208e687f4b4c4f83",
+      "7fa2877ade1472d6d13ef07a58e3262af104934cc03b025063efc4c67bff2fd5",
+      "3008a496d00e9f5cd014488b8aff42b4e3c7488f957449bf259f719e2041fbb5",
+      "2d326bc5df362a764ccd5aaffffcc05d8c6dc47cdd185a29a339932565facccb",
+      "f6f9b27ecc4e4ce7d763dafea4b0e32d3172e9591a6810020a36ab7c8e788244",
+      "b0849de5f8a3488ba032da802bbffc34380d49c93bc37a8b4a2cbc228ee5ab31",
+      "f15f58254e091d99bd215b8f6ad8bef3868621a1dd54d12b061806561d904d2d",
+      "440d69d1a10ac8d1be3cfdf06a098f901c5d85a8f4fc2c669cfc64b8b934f2e1",
+      "60445c4c219a3ffa9aafe887ca370112e12e1957513256e4a52dd1cf401aaa06",
+      "db3f990ce0ee97b55d28a8922d754b79b968e5c2227319d9f8b9cbaf681c3430",
+      "e1a0a0a9da881d501b7891d080004f9b73556a543f05fd8f0eee2939f2e45662",
+      "061169acf0a1406e8a440e0a93e6e9ef908073cb3f5e70b9ad2c603a22b1d049",
+      "b36052a15cdc6556c9ebbb6a5e4159b6e1396828abf480fcf0370a2e10ac34ec",
+      "61935368bd60e32c2c20eefd645ead45bb9ddad052b6c726cc94789ecc988a9c",
+      "7c2816435fb0207d415b24ece5aec244d1d231441152a9edc1ce968dd099ac27",
+      "4849dbfb3a065178d280967b39f81bd46eb90cf55ca18894c229be8a084d5f68",
+      "d594f9494cefd17d0a5ec9c7ba2a1b02e0d5688f32b2ae198983cafd3b7d25f5",
+      "26aa9b41f2a5eaaebf29e9aaf9d659f03c047c68fac9cb26805090af75c279a6",
+      "ff3eede6ffda5c58f7a57b4fa9e0417317e98952073c6b6f422ccb08e234897d",
+      "2bf060a2d724230d0fdb590c4c5885be62c6ab7ecb08145094e21578050bd4ad",
+      "2764d4ff3b804a8e5af5d5a6abcc70997e560f73e2ed094363f71d785bedad79",
+      "b597c49554b3d3403868e6954b823fe43d4c7d2629658e48099326ba15aa3864",
+      "c6e6a851f1131986bb6d4089ebfc53f28abe7e49613b4ef75385301ffc5a3f1e",
+      "37f4456ddcd885e86e84a8194c8f46d1b743a1106627a469e23c70215772bf17",
+      "c0286fe1a630ee7b6a30a01bf44df7a1070b0f9e9f7183b231e8e7f3807d5581",
+      "49d00aea3208c66f75d0b763a12dcfc604d2352b86eedb92302506ee0130fc78",
+      "3e389d84e503a3ec1d42d7866e8651e7aa1b1b6db67046f238484b663ca08252",
+      "7f629e83e205641c4856048190f377213d2cc294a22c316dd5fa3f55bbd8a332"
+    ],
+    "ngram_range": [
+      1,
+      2
+    ],
+    "max_features": 5000,
+    "norm": "l2",
+    "smooth_idf": true,
+    "sublinear_tf": false,
+    "vocabulary_size": 2222
+  },
+  "result": {
+    "model_used": "TF-IDF",
+    "cosine_similarity": 0.34912691933749546,
+    "overall_score": 34.91269193374954,
+    "contribution_sum": 0.34912691933749473,
+    "features": [
+      {
+        "feature": "core",
+        "cv_tf": 3,
+        "jd_tf": 4,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.1691271871516108,
+        "jd_weight": 0.17383483171559813,
+        "cosine_contribution": 0.029400196117032734
+      },
+      {
+        "feature": ".net",
+        "cv_tf": 3,
+        "jd_tf": 3,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.18079746509404707,
+        "jd_weight": 0.13937246333017075,
+        "cosine_contribution": 0.0251981880740079
+      },
+      {
+        "feature": ".net engineer",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.14233004220414996,
+        "jd_weight": 0.10971884244926117,
+        "cosine_contribution": 0.015616287476393823
+      },
+      {
+        "feature": "senior backend",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.14233004220414996,
+        "jd_weight": 0.10971884244926117,
+        "cosine_contribution": 0.015616287476393823
+      },
+      {
+        "feature": "senior",
+        "cv_tf": 3,
+        "jd_tf": 2,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.1691271871516108,
+        "jd_weight": 0.08691741585779907,
+        "cosine_contribution": 0.014700098058516367
+      },
+      {
+        "feature": "asp.net core",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.1300538206258003,
+        "jd_weight": 0.1002553953767506,
+        "cosine_contribution": 0.01303859720709661
+      },
+      {
+        "feature": "backend .net",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.1300538206258003,
+        "jd_weight": 0.1002553953767506,
+        "cosine_contribution": 0.01303859720709661
+      },
+      {
+        "feature": "asp.net",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.12053164339603137,
+        "jd_weight": 0.09291497555344716,
+        "cosine_contribution": 0.011199194699559066
+      },
+      {
+        "feature": "microservices",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.11275145810107386,
+        "jd_weight": 0.08691741585779907,
+        "cosine_contribution": 0.009800065372344244
+      },
+      {
+        "feature": "kiến",
+        "cv_tf": 1,
+        "jd_tf": 3,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.1503830930651259,
+        "cosine_contribution": 0.009778947905322457
+      },
+      {
+        "feature": "kiến trúc",
+        "cv_tf": 1,
+        "jd_tf": 3,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.1503830930651259,
+        "cosine_contribution": 0.009778947905322457
+      },
+      {
+        "feature": "backend",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 2.488077055429833,
+        "cv_weight": 0.10617340516268699,
+        "jd_weight": 0.08184655138819853,
+        "cosine_contribution": 0.008689927061707884
+      },
+      {
+        "feature": "trúc",
+        "cv_tf": 1,
+        "jd_tf": 3,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.13937246333017075,
+        "cosine_contribution": 0.0083993960246693
+      },
+      {
+        "feature": "và",
+        "cv_tf": 3,
+        "jd_tf": 7,
+        "idf": 1.0,
+        "cv_weight": 0.06400931490303752,
+        "jd_weight": 0.11513426774043636,
+        "cosine_contribution": 0.007369665599928225
+      },
+      {
+        "feature": "server",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.09544909557634744,
+        "jd_weight": 0.07357943633884755,
+        "cosine_contribution": 0.0070230906515604315
+      },
+      {
+        "feature": "sql",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.09544909557634744,
+        "jd_weight": 0.07357943633884755,
+        "cosine_contribution": 0.0070230906515604315
+      },
+      {
+        "feature": "sql server",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.09544909557634744,
+        "jd_weight": 0.07357943633884755,
+        "cosine_contribution": 0.0070230906515604315
+      },
+      {
+        "feature": "entity",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.1002553953767506,
+        "cosine_contribution": 0.006519298603548305
+      },
+      {
+        "feature": "entity framework",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.1002553953767506,
+        "cosine_contribution": 0.006519298603548305
+      },
+      {
+        "feature": "framework core",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.1002553953767506,
+        "cosine_contribution": 0.006519298603548305
+      },
+      {
+        "feature": "engineer",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.08688589975124851,
+        "jd_weight": 0.06697827245913357,
+        "cosine_contribution": 0.0058194674663960885
+      },
+      {
+        "feature": "c#",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.09291497555344716,
+        "cosine_contribution": 0.005599597349779533
+      },
+      {
+        "feature": "kubernetes",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.09291497555344716,
+        "cosine_contribution": 0.005599597349779533
+      },
+      {
+        "feature": "restful",
+        "cv_tf": 2,
+        "jd_tf": 2,
+        "idf": 1.7259370033829362,
+        "cv_weight": 0.07365069676822886,
+        "jd_weight": 0.05677556944303354,
+        "cosine_contribution": 0.004181560248892383
+      },
+      {
+        "feature": "core entity",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.003904071869098456
+      },
+      {
+        "feature": "kubernetes redis",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.003904071869098456
+      },
+      {
+        "feature": "mô lớn",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.003904071869098456
+      },
+      {
+        "feature": "năng cao",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.003904071869098456
+      },
+      {
+        "feature": "quy mô",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.003904071869098456
+      },
+      {
+        "feature": "trúc microservices",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.003904071869098456
+      },
+      {
+        "feature": "framework",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 2.35454566280531,
+        "cv_weight": 0.05023761826136209,
+        "jd_weight": 0.0774539687852885,
+        "cosine_contribution": 0.0038911029166627787
+      },
+      {
+        "feature": "tối",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 2.35454566280531,
+        "cv_weight": 0.05023761826136209,
+        "jd_weight": 0.0774539687852885,
+        "cosine_contribution": 0.0038911029166627787
+      },
+      {
+        "feature": "tối ưu",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 2.35454566280531,
+        "cv_weight": 0.05023761826136209,
+        "jd_weight": 0.0774539687852885,
+        "cosine_contribution": 0.0038911029166627787
+      },
+      {
+        "feature": "ưu",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 2.35454566280531,
+        "cv_weight": 0.05023761826136209,
+        "jd_weight": 0.0774539687852885,
+        "cosine_contribution": 0.0038911029166627787
+      },
+      {
+        "feature": "core sql",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0032596493017741524
+      },
+      {
+        "feature": "hóa",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 2.1314021114911004,
+        "cv_weight": 0.04547652964647764,
+        "jd_weight": 0.07011354896198507,
+        "cosine_contribution": 0.0031885208879894756
+      },
+      {
+        "feature": "c# asp.net",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0027997986748897665
+      },
+      {
+        "feature": "docker kubernetes",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0027997986748897665
+      },
+      {
+        "feature": "redis",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0027997986748897665
+      },
+      {
+        "feature": "và tối",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0027997986748897665
+      },
+      {
+        "feature": "docker",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 1.949080554697146,
+        "cv_weight": 0.04158643699899888,
+        "jd_weight": 0.06411598926633698,
+        "cosine_contribution": 0.002666355548253011
+      },
+      {
+        "feature": "hiệu năng",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.002450016343086061
+      },
+      {
+        "feature": "lớn",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.002450016343086061
+      },
+      {
+        "feature": "ưu hóa",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.002450016343086061
+      },
+      {
+        "feature": "cao",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.488077055429833,
+        "cv_weight": 0.053086702581343494,
+        "jd_weight": 0.040923275694099266,
+        "cosine_contribution": 0.002172481765426971
+      },
+      {
+        "feature": "mô",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.488077055429833,
+        "cv_weight": 0.053086702581343494,
+        "jd_weight": 0.040923275694099266,
+        "cosine_contribution": 0.002172481765426971
+      },
+      {
+        "feature": "restful api",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 1.7259370033829362,
+        "cv_weight": 0.03682534838411443,
+        "jd_weight": 0.05677556944303354,
+        "cosine_contribution": 0.0020907801244461916
+      },
+      {
+        "feature": "hiệu",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.35454566280531,
+        "cv_weight": 0.05023761826136209,
+        "jd_weight": 0.03872698439264425,
+        "cosine_contribution": 0.0019455514583313893
+      },
+      {
+        "feature": "api",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 1.6613984822453651,
+        "cv_weight": 0.03544832620982405,
+        "jd_weight": 0.05465254219382642,
+        "cosine_contribution": 0.0019373411438829318
+      },
+      {
+        "feature": "quy",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.04772454778817372,
+        "jd_weight": 0.03678971816942377,
+        "cosine_contribution": 0.0017557726628901079
+      },
+      {
+        "feature": "unit",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.04772454778817372,
+        "jd_weight": 0.03678971816942377,
+        "cosine_contribution": 0.0017557726628901079
+      },
+      {
+        "feature": "unit testing",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.04772454778817372,
+        "jd_weight": 0.03678971816942377,
+        "cosine_contribution": 0.0017557726628901079
+      },
+      {
+        "feature": "testing",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.043442949875624255,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0014548668665990221
+      },
+      {
+        "feature": "hệ",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.949080554697146,
+        "cv_weight": 0.04158643699899888,
+        "jd_weight": 0.03205799463316849,
+        "cosine_contribution": 0.0013331777741265056
+      },
+      {
+        "feature": "hướng",
+        "cv_tf": 1,
+        "jd_tf": 2,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.044176845867671476,
+        "cosine_contribution": 0.0012658282252396554
+      },
+      {
+        "feature": "bằng",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.8690378470236095,
+        "cv_weight": 0.03987861070527649,
+        "jd_weight": 0.030741471985175,
+        "cosine_contribution": 0.0012259271938039572
+      },
+      {
+        "feature": "dựng",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.7949298748698876,
+        "cv_weight": 0.03829741052980545,
+        "jd_weight": 0.029522562398368226,
+        "cosine_contribution": 0.0011306376920621058
+      },
+      {
+        "feature": "xây",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.7949298748698876,
+        "cv_weight": 0.03829741052980545,
+        "jd_weight": 0.029522562398368226,
+        "cosine_contribution": 0.0011306376920621058
+      },
+      {
+        "feature": "xây dựng",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.7949298748698876,
+        "cv_weight": 0.03829741052980545,
+        "jd_weight": 0.029522562398368226,
+        "cosine_contribution": 0.0011306376920621058
+      },
+      {
+        "feature": "năng",
+        "cv_tf": 2,
+        "jd_tf": 1,
+        "idf": 1.1758906664636641,
+        "cv_weight": 0.05017863730747689,
+        "jd_weight": 0.01934075868944395,
+        "cosine_contribution": 0.0009704929155290399
+      },
+      {
+        "feature": "với",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.4382549309311554,
+        "cv_weight": 0.030687237594939597,
+        "jd_weight": 0.023656061185261493,
+        "cosine_contribution": 0.0007259391701525479
+      },
+      {
+        "feature": "viên",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.022088422933835738,
+        "cosine_contribution": 0.0006329141126198277
+      },
+      {
+        "feature": "ứng",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.2559333741372007,
+        "cv_weight": 0.026797144947460837,
+        "jd_weight": 0.020657281337437442,
+        "cosine_contribution": 0.0005535561622197888
+      },
+      {
+        "feature": "để",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.2151113796169455,
+        "cv_weight": 0.02592614898005514,
+        "jd_weight": 0.019985851273609773,
+        "cosine_contribution": 0.0005181561576128317
+      },
+      {
+        "feature": "dữ",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.1381503384808171,
+        "cv_weight": 0.024284074474272454,
+        "jd_weight": 0.01872001511421695,
+        "cosine_contribution": 0.0004545982411931504
+      },
+      {
+        "feature": "dữ liệu",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.1381503384808171,
+        "cv_weight": 0.024284074474272454,
+        "jd_weight": 0.01872001511421695,
+        "cosine_contribution": 0.0004545982411931504
+      },
+      {
+        "feature": "liệu",
+        "cv_tf": 1,
+        "jd_tf": 1,
+        "idf": 1.1381503384808171,
+        "cv_weight": 0.024284074474272454,
+        "jd_weight": 0.01872001511421695,
+        "cosine_contribution": 0.0004545982411931504
+      },
+      {
+        "feature": ".net 8/9/10",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": ".net developer",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "4.5",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "4.5 years",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "5.5",
+        "cv_tf": 3,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.23944860709331456,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "5.5 năm",
+        "cv_tf": 3,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.23944860709331456,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "8/9/10",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "8/9/10 xây",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "an",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.15963240472887638,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "an mẫu",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "an vị",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "apache",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "apache kafka",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "api bằng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "api nice-to-have",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "api unit",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "apis",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "apis hiệu",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "broker",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "broker như",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "bằng asp.net",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "bằng c#",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "bộ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "bộ senior",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "c# và",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cao bằng",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cao thiết",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "chuyên",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "chuyên sâu",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "chúng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "chúng tôi",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "chỉ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "chỉ dùng",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "ci/cd",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.35454566280531,
+        "cv_weight": 0.05023761826136209,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "ci/cd kinh",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "code",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "code review",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "container",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "container hóa",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "core .net",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "core thiết",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "core và",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "csdl",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "csdl sql",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cv",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cv kiểm",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "các",
+        "cv_tf": 0,
+        "jd_tf": 3,
+        "idf": 1.949080554697146,
+        "cv_weight": 0.0,
+        "jd_weight": 0.09617398389950546,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "các dịch",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "các hệ",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "các thành",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cơ",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cơ sở",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cụm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "cụm kubernetes",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "danh",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "danh chỉ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "developer",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.7259370033829362,
+        "cv_weight": 0.03682534838411443,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "developer với",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "docker và",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dùng",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.2559333741372007,
+        "cv_weight": 0.026797144947460837,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dùng để",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dẫn",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.12305682196821269,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dẫn các",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dẫn dắt",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dắt",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dắt việc",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dịch",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.09291497555344716,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dịch quy",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dịch vụ",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dụng",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 1.8690378470236095,
+        "cv_weight": 0.0,
+        "jd_weight": 0.06148294397035,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dụng message",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dụng với",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dựng kiến",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "dựng restful",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "engineer chúng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "engineer số",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "engineer thông",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "engineer xuất",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "experience",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "experience 4.5",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "giao",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.0,
+        "jd_weight": 0.03678971816942377,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "giao dịch",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "giả",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "giả lập",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hiện",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hiện code",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hoặc",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hoặc apache",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hóa hiệu",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hóa hệ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hóa ứng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hơn",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hơn 5.5",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hướng dẫn",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hướng senior",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.060265821698015684,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hướng sự",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hệ quản",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hệ thống",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "họ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "họ và",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hồ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "hồ sơ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "junior",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "junior trong",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kafka",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kafka triển",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "khai",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "khai container",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kinh",
+        "cv_tf": 4,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.11858491706976895,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kinh nghiệm",
+        "cv_tf": 4,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.11858491706976895,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kiếm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kiếm một",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kiểm",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 1.2984929885559966,
+        "cv_weight": 0.05541043106924472,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kiểm thử",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 1.2984929885559966,
+        "cv_weight": 0.05541043106924472,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kiện",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kiện sử",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kubernetes mentor",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kế",
+        "cv_tf": 0,
+        "jd_tf": 3,
+        "idf": 1.8690378470236095,
+        "cv_weight": 0.0,
+        "jd_weight": 0.092224415955525,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kế kiến",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kế và",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.09291497555344716,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kỹ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "kỹ năng",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "linq",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "linq và",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "liên",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "liên quan",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "liệu giả",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "liệu trên",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "lý",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.1314021114911004,
+        "cv_weight": 0.0,
+        "jd_weight": 0.035056774480992536,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "lý giao",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "lập",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.2151113796169455,
+        "cv_weight": 0.02592614898005514,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "lập đã",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "lớn kiến",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "lớn kỹ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "matching",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "mentor",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "mentor và",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "message",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.10971884244926117,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "message broker",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "message queue",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "microservices restful",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "microservices unit",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "microservices và",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "microservices xây",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "microsoft",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "microsoft sql",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "mẫu",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "mẫu cv",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "một",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "một senior",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nghiệm",
+        "cv_tf": 4,
+        "jd_tf": 0,
+        "idf": 1.2984929885559966,
+        "cv_weight": 0.11082086213848943,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nghiệm 5.5",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nghiệm chuyên",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nghiệm kinh",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nghiệm liên",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nguyễn",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.11275145810107386,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nguyễn văn",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.15963240472887638,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nhóm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nhóm thực",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "như",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "như rabbitmq",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nice-to-have",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nice-to-have skills",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "năm",
+        "cv_tf": 4,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.11858491706976895,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "năm dữ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "năm kinh",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.059292458534884476,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "năm tóm",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "năng c#",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.06502691031290014,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nội",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "nội bộ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "parser",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "parser và",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "phát",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.0,
+        "jd_weight": 0.07357943633884755,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "phát triển",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 2.236762627148927,
+        "cv_weight": 0.0,
+        "jd_weight": 0.07357943633884755,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "phối",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "phối trên",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "quan",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "quan 5.5",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "queue",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "queue microservices",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "quản",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.1314021114911004,
+        "cv_weight": 0.04547652964647764,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "quản trị",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "rabbitmq",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "rabbitmq hoặc",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "redis message",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "redis microservices",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "required",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.06697827245913357,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "required experience",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "required skills",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "restful apis",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "review",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "review required",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "senior .net",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "server docker",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "server quy",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "server restful",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "server tối",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "skills",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.06697827245913357,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "skills c#",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "skills docker",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sâu",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.07116502110207498,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sâu về",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sơ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sơ senior",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sắc",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sắc để",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "số",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "số năm",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sở",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sở dữ",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sử",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sử dụng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04345870792889953,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sự",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "sự kiện",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "testing ci/cd",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "testing required",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thiết",
+        "cv_tf": 0,
+        "jd_tf": 3,
+        "idf": 1.7259370033829362,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0851633541645503,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thiết kế",
+        "cv_tf": 0,
+        "jd_tf": 3,
+        "idf": 1.8690378470236095,
+        "cv_weight": 0.0,
+        "jd_weight": 0.092224415955525,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thuật",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thuật toán",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thành",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thành viên",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thông",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thông tin",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thống",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thống xử",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thử",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 1.2984929885559966,
+        "cv_weight": 0.05541043106924472,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thử nội",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thử parser",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thực",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "thực hiện",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tin",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3429447511268304,
+        "cv_weight": 0.02865365782408621,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tin ứng",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "toán",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.2559333741372007,
+        "cv_weight": 0.026797144947460837,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "toán matching",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "triển",
+        "cv_tf": 0,
+        "jd_tf": 3,
+        "idf": 1.949080554697146,
+        "cv_weight": 0.0,
+        "jd_weight": 0.09617398389950546,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "triển các",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.1002553953767506,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "triển khai",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trong",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trong nhóm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "truy",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "truy vấn",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trên",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 2.1314021114911004,
+        "cv_weight": 0.0,
+        "jd_weight": 0.07011354896198507,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trên cụm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trên microsoft",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trí",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trí định",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trúc cơ",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trúc hướng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trị",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "trị csdl",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tên",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tên nguyễn",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 2.6422277352570913,
+        "cv_weight": 0.05637572905053693,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tìm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tìm kiếm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tóm",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tóm tắt",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tôi",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tôi đang",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tắt",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "tắt hồ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "viên họ",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "viên junior",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "việc",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.488077055429833,
+        "cv_weight": 0.0,
+        "jd_weight": 0.040923275694099266,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "việc thiết",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "và asp.net",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "và entity",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "và hướng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "và phát",
+        "cv_tf": 0,
+        "jd_tf": 2,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.10971884244926117,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "và thuật",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "và tên",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "và điều",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "văn",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.1300538206258003,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "văn an",
+        "cv_tf": 2,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.15963240472887638,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "vấn",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "vấn linq",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "về",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "về kiến",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "vị",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "vị trí",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "với docker",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "với hơn",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.07981620236443819,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "vụ",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.488077055429833,
+        "cv_weight": 0.0,
+        "jd_weight": 0.040923275694099266,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "vụ restful",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "xuất",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "xuất sắc",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.3353749158170367,
+        "cv_weight": 0.0,
+        "jd_weight": 0.05485942122463058,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "xử",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "xử lý",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.8245492920510458,
+        "cv_weight": 0.0,
+        "jd_weight": 0.04645748777672358,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "years",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.0360919316867756,
+        "cv_weight": 0.0,
+        "jd_weight": 0.033489136229566785,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "đang",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "đang tìm",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "điều",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "điều phối",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.0476928433652555,
+        "cv_weight": 0.0,
+        "jd_weight": 0.0501276976883753,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "đã",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "đã ẩn",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "để dẫn",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "để kiểm",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "định",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "định hướng",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "ưu truy",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 3.740840023925201,
+        "cv_weight": 0.0,
+        "jd_weight": 0.061528410984106344,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "ẩn",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "ẩn danh",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "ứng dụng",
+        "cv_tf": 0,
+        "jd_tf": 1,
+        "idf": 2.488077055429833,
+        "cv_weight": 0.0,
+        "jd_weight": 0.040923275694099266,
+        "cosine_contribution": 0.0
+      },
+      {
+        "feature": "ứng viên",
+        "cv_tf": 1,
+        "jd_tf": 0,
+        "idf": 1.3894647667617233,
+        "cv_weight": 0.029646229267442238,
+        "jd_weight": 0.0,
+        "cosine_contribution": 0.0
+      }
+    ],
+    "out_of_vocabulary_features": {
+      "cv": [],
+      "jd": []
+    },
+    "processing_time_ms": 2.780800001346506,
+    "timing_scope": "transform, cosine and explanation; excludes fit and file parsing",
+    "warning": "Lexical similarity, not accuracy, hiring probability or verified skills."
+  }
+}

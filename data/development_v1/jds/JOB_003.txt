@@ -1,0 +1,9 @@
+Frontend React / TypeScript Developer
+Xây dựng giao diện ứng dụng web responsive, hiện đại và tối ưu hiệu suất hiển thị (Core Web Vitals) cho hàng triệu người dùng.
+Phát triển các Single Page Applications (SPA) với ReactJS và TypeScript.
+Quản lý state ứng dụng bằng Redux Toolkit hoặc Zustand.
+Thiết kế giao diện người dùng theo chuẩn pixel-perfect từ bản thiết kế Figma sử dụng Tailwind CSS hoặc Bootstrap 5.
+Tối ưu hóa thời gian tải trang và trải nghiệm người dùng trên thiết bị di động.
+Required skills: JavaScript, TypeScript, React, HTML5, CSS3, Tailwind CSS
+Nice-to-have skills: Next.js, Redux, RESTful API, GraphQL, Unit Testing
+Required experience: 2.5 years

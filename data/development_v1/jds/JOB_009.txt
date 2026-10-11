@@ -1,0 +1,9 @@
+Data Engineer (Big Data & ETL)
+Xây dựng hệ thống Data Warehouse hiện đại, các luồng dữ liệu luân chuyển lớn (Streaming & Batch Processing) phục vụ báo cáo phân tích và đào tạo mô hình AI.
+Thiết kế và triển khai các pipeline ETL/ELT xử lý hàng triệu bản ghi mỗi ngày với Apache Spark và Python.
+Quản trị kho dữ liệu lớn trên PostgreSQL, BigQuery hoặc Amazon Redshift.
+Điều phối luồng dữ liệu tự động với Apache Airflow.
+Tối ưu hóa các truy vấn SQL phức tạp và lập chỉ mục tối ưu thời gian trích xuất.
+Required skills: Python, SQL Server, PostgreSQL, ETL, Apache Spark, Pandas & NumPy
+Nice-to-have skills: Kafka, Airflow, Docker, AWS, BigQuery
+Required experience: 4.0 years

@@ -1,0 +1,13 @@
+Trịnh Quang Minh
+Mẫu CV kiểm thử nội bộ - Android Native Developer
+Thông tin ứng viên
+Họ và tên: Trịnh Quang Minh
+Vị trí định hướng: Android Native Developer
+Số năm kinh nghiệm: 2.5 năm
+Tóm tắt hồ sơ
+2.5 năm phát triển ứng dụng Android thuần túy bằng Kotlin và Java. Nắm vững Android Architecture Components (MVVM, Room, LiveData).
+Kỹ năng
+Java, Kotlin, Android SDK, RESTful API, SQLite, Retrofit, Git
+Kinh nghiệm
+Kinh nghiệm liên quan: 2.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

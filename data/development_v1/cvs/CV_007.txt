@@ -1,0 +1,13 @@
+Nguyễn Thanh Hà
+Mẫu CV kiểm thử nội bộ - Frontend React Developer
+Thông tin ứng viên
+Họ và tên: Nguyễn Thanh Hà
+Vị trí định hướng: Frontend React Developer
+Số năm kinh nghiệm: 3.0 năm
+Tóm tắt hồ sơ
+Frontend Developer 3 năm kinh nghiệm chuyên sâu ReactJS và TypeScript. Thành thạo chuyển đổi thiết kế Figma thành giao diện web chuẩn responsive và tối ưu SEO.
+Kỹ năng
+JavaScript, TypeScript, React, HTML5, CSS3, Tailwind CSS, Redux, RESTful API, Figma
+Kinh nghiệm
+Kinh nghiệm liên quan: 3.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

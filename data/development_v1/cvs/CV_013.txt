@@ -1,0 +1,13 @@
+Mai Văn Hải
+Mẫu CV kiểm thử nội bộ - System Administrator
+Thông tin ứng viên
+Họ và tên: Mai Văn Hải
+Vị trí định hướng: System Administrator
+Số năm kinh nghiệm: 3.0 năm
+Tóm tắt hồ sơ
+Quản trị viên hệ thống 3 năm kinh nghiệm trong việc cài đặt, cấu hình và bảo trì máy chủ Linux (Ubuntu/CentOS), tường lửa mạng và sao lưu định kỳ.
+Kỹ năng
+Linux, Ubuntu, Bash, Networking, MySQL, Apache, Nginx
+Kinh nghiệm
+Kinh nghiệm liên quan: 3.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

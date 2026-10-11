@@ -1,0 +1,13 @@
+Dương Tuấn Kiệt
+Mẫu CV kiểm thử nội bộ - Senior Data Engineer
+Thông tin ứng viên
+Họ và tên: Dương Tuấn Kiệt
+Vị trí định hướng: Senior Data Engineer
+Số năm kinh nghiệm: 4.5 năm
+Tóm tắt hồ sơ
+4.5 năm kinh nghiệm thiết kế kho dữ liệu Data Warehouse và các đường ống truyền dữ liệu lớn với Apache Spark, Kafka và Apache Airflow.
+Kỹ năng
+Python, SQL Server, PostgreSQL, ETL, Apache Spark, Airflow, Kafka, Pandas & NumPy, AWS
+Kinh nghiệm
+Kinh nghiệm liên quan: 4.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

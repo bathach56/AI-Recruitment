@@ -1,0 +1,24 @@
+﻿HỌ VÀ TÊN: Äáº·ng Quá»‘c Tháº¯ng
+VỊ TRÍ ỨNG TUYỂN: Senior Cloud DevOps Engineer
+SỐ NĂM KINH NGHIỆM: 5.0 năm
+
+TÓM TẮT HỒ SƠ:
+5 nÄƒm kinh nghiá»‡m thiáº¿t káº¿ háº¡ táº§ng Ä‘iá»‡n toÃ¡n Ä‘Ã¡m mÃ¢y trÃªn AWS, Ä‘iá»u phá»‘i hÃ ng trÄƒm microservices vá»›i Kubernetes (EKS) vÃ  tá»± Ä‘á»™ng hÃ³a toÃ n diá»‡n quy trÃ¬nh CI/CD.
+
+KỸ NĂNG CHUYÊN MÔN:
+Docker, Kubernetes, AWS, CI/CD, Linux, Terraform, Ansible, Prometheus, Git
+
+KINH NGHIỆM LÀM VIỆC CHI TIẾT:
+- Công ty Cổ phần Công nghệ & Giải pháp Số (2021 - Hiện tại)
+  Vị trí: Senior Cloud DevOps Engineer
+  Trách nhiệm: Tham gia phát triển các tính năng cốt lõi cho hệ thống ứng dụng công nghệ thông tin. 
+  Sử dụng các công nghệ: Docker, Kubernetes, AWS, CI/CD, Linux, Terraform, Ansible, Prometheus, Git.
+  Đảm bảo chất lượng mã nguồn, tối ưu hóa hiệu suất và viết unit test đầy đủ.
+
+HỌC VẤN:
+- Cử nhân Công nghệ Thông tin / Khoa học Máy tính
+  Tốt nghiệp loại Giỏi - Đại học Bách Khoa / ĐH Quốc Gia (GPA: 3.4/4.0)
+
+CHỨNG CHỈ & NGOẠI NGỮ:
+- Tiếng Anh: TOEIC 750 / IELTS 6.5
+- Chứng chỉ chuyên môn theo ngành

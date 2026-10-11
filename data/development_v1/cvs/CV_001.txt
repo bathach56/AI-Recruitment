@@ -1,0 +1,13 @@
+Nguyễn Văn An
+Mẫu CV kiểm thử nội bộ - Senior Backend .NET Engineer
+Thông tin ứng viên
+Họ và tên: Nguyễn Văn An
+Vị trí định hướng: Senior Backend .NET Engineer
+Số năm kinh nghiệm: 5.5 năm
+Tóm tắt hồ sơ
+Senior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn.
+Kỹ năng
+C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD
+Kinh nghiệm
+Kinh nghiệm liên quan: 5.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

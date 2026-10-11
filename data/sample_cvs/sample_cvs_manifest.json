@@ -1,0 +1,182 @@
+[
+  {
+    "id": "CV_001",
+    "file_name": "CV_NguyenVanAn_Senior_DotNet.docx",
+    "candidate_name": "Nguyễn Văn An",
+    "target_role": "Senior Backend .NET Engineer",
+    "experience_years": 5.5,
+    "skills": ["C#", "ASP.NET Core", "Entity Framework Core", "SQL Server", "Docker", "Kubernetes", "Redis", "Microservices", "RESTful API", "Unit Testing", "CI/CD"],
+    "summary": "Senior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn."
+  },
+  {
+    "id": "CV_002",
+    "file_name": "CV_TranThiBich_Mid_DotNet.docx",
+    "candidate_name": "Trần Thị Bích",
+    "target_role": "Backend .NET Developer",
+    "experience_years": 3.0,
+    "skills": ["C#", "ASP.NET Core", "SQL Server", "Entity Framework Core", "LINQ", "RESTful API", "Git"],
+    "summary": "3 năm kinh nghiệm phát triển phần mềm doanh nghiệp trên nền tảng .NET Core và SQL Server. Có tinh thần trách nhiệm cao, nắm vững OOP và quy trình phát triển Agile/Scrum."
+  },
+  {
+    "id": "CV_003",
+    "file_name": "CV_LeHoangLong_Fresher_DotNet.docx",
+    "candidate_name": "Lê Hoàng Long",
+    "target_role": "Junior / Fresher .NET Developer",
+    "experience_years": 0.5,
+    "skills": ["C#", "ASP.NET MVC", "SQL Server", "HTML5", "CSS3", "Git"],
+    "summary": "Sinh viên vừa tốt nghiệp ngành CNTT loại Giỏi, có 6 tháng thực tập lập trình C# ASP.NET. Đam mê học hỏi công nghệ mới và tìm kiếm cơ hội cọ xát thực tế."
+  },
+  {
+    "id": "CV_004",
+    "file_name": "CV_PhamQuocBao_Senior_Java.docx",
+    "candidate_name": "Phạm Quốc Bảo",
+    "target_role": "Senior Java Developer",
+    "experience_years": 5.0,
+    "skills": ["Java", "Spring Boot", "Hibernate", "PostgreSQL", "Kafka", "Microservices", "Docker", "RESTful API", "Unit Testing"],
+    "summary": "Kỹ sư phần mềm Java 5 năm kinh nghiệm chuyên xây dựng hệ thống thanh toán điện tử bằng Spring Boot, Spring Cloud và tích hợp message broker Apache Kafka."
+  },
+  {
+    "id": "CV_005",
+    "file_name": "CV_DoanMinhTri_Mid_Java.docx",
+    "candidate_name": "Đoàn Minh Trí",
+    "target_role": "Java Spring Boot Developer",
+    "experience_years": 3.0,
+    "skills": ["Java", "Spring Boot", "MySQL", "Hibernate", "RESTful API", "Git", "Maven"],
+    "summary": "3 năm kinh nghiệm thiết kế và bảo trì các API backend cho các dự án thương mại điện tử bằng Java Spring Boot và MySQL."
+  },
+  {
+    "id": "CV_006",
+    "file_name": "CV_VoThanhTung_Junior_Java.docx",
+    "candidate_name": "Võ Thanh Tùng",
+    "target_role": "Junior Java Developer",
+    "experience_years": 1.0,
+    "skills": ["Java", "Core Java", "Spring Boot", "MySQL", "HTML5", "CSS3", "Git"],
+    "summary": "1 năm làm việc với Java và Spring Boot. Nắm vững cấu trúc dữ liệu giải thuật, lập trình hướng đối tượng OOP và có khả năng đọc hiểu tài liệu tiếng Anh tốt."
+  },
+  {
+    "id": "CV_007",
+    "file_name": "CV_NguyenThanhHa_Mid_React.docx",
+    "candidate_name": "Nguyễn Thanh Hà",
+    "target_role": "Frontend React Developer",
+    "experience_years": 3.0,
+    "skills": ["JavaScript", "TypeScript", "React", "HTML5", "CSS3", "Tailwind CSS", "Redux", "RESTful API", "Figma"],
+    "summary": "Frontend Developer 3 năm kinh nghiệm chuyên sâu ReactJS và TypeScript. Thành thạo chuyển đổi thiết kế Figma thành giao diện web chuẩn responsive và tối ưu SEO."
+  },
+  {
+    "id": "CV_008",
+    "file_name": "CV_HoangVanThai_Junior_Vue.docx",
+    "candidate_name": "Hoàng Văn Thái",
+    "target_role": "Frontend Developer (Vue.js)",
+    "experience_years": 1.5,
+    "skills": ["JavaScript", "Vue.js", "HTML5", "CSS3", "Bootstrap", "Git"],
+    "summary": "Frontend Developer 1.5 năm kinh nghiệm với Vue.js và Bootstrap. Đam mê thiết kế giao diện sạch đẹp, thân thiện với người dùng."
+  },
+  {
+    "id": "CV_009",
+    "file_name": "CV_BuiDucHanh_Fullstack_NodeVue.docx",
+    "candidate_name": "Bùi Đức Hạnh",
+    "target_role": "Fullstack Developer",
+    "experience_years": 3.5,
+    "skills": ["JavaScript", "TypeScript", "Node.js", "Vue.js", "Express", "MongoDB", "MySQL", "RESTful API", "Docker"],
+    "summary": "Kỹ sư phần mềm Fullstack với 3.5 năm kinh nghiệm làm việc trên stack MEVN (MongoDB, Express, Vue.js, Node.js). Có kinh nghiệm đóng gói ứng dụng với Docker."
+  },
+  {
+    "id": "CV_010",
+    "file_name": "CV_VuQuangHuy_Senior_AI_ML.docx",
+    "candidate_name": "Vũ Quang Huy",
+    "target_role": "AI / Machine Learning Engineer",
+    "experience_years": 4.5,
+    "skills": ["Python", "Machine Learning", "Deep Learning", "Natural Language Processing", "PyTorch", "Scikit-Learn", "Sentence-BERT", "FastAPI", "Docker", "Pandas & NumPy"],
+    "summary": "Thạc sĩ Khoa học Dữ liệu với 4.5 năm kinh nghiệm nghiên cứu và triển khai các mô hình NLP, Semantic Search và Computer Vision bằng PyTorch và Hugging Face Transformers."
+  },
+  {
+    "id": "CV_011",
+    "file_name": "CV_NguyenThuTrang_Junior_DataScience.docx",
+    "candidate_name": "Nguyễn Thu Trang",
+    "target_role": "Junior Data Scientist",
+    "experience_years": 1.5,
+    "skills": ["Python", "Pandas & NumPy", "Scikit-Learn", "Machine Learning", "SQL Server", "Matplotlib", "PowerBI"],
+    "summary": "1.5 năm làm việc trong lĩnh vực phân tích dữ liệu và xây dựng mô hình dự báo kinh doanh bằng Python (Pandas, Scikit-Learn) và trực quan hóa dữ liệu."
+  },
+  {
+    "id": "CV_012",
+    "file_name": "CV_DangQuocThang_Senior_DevOps.docx",
+    "candidate_name": "Đặng Quốc Thắng",
+    "target_role": "Senior Cloud DevOps Engineer",
+    "experience_years": 5.0,
+    "skills": ["Docker", "Kubernetes", "AWS", "CI/CD", "Linux", "Terraform", "Ansible", "Prometheus", "Git"],
+    "summary": "5 năm kinh nghiệm thiết kế hạ tầng điện toán đám mây trên AWS, điều phối hàng trăm microservices với Kubernetes (EKS) và tự động hóa toàn diện quy trình CI/CD."
+  },
+  {
+    "id": "CV_013",
+    "file_name": "CV_MaiVanHai_Linux_SysAdmin.docx",
+    "candidate_name": "Mai Văn Hải",
+    "target_role": "System Administrator",
+    "experience_years": 3.0,
+    "skills": ["Linux", "Ubuntu", "Bash", "Networking", "MySQL", "Apache", "Nginx"],
+    "summary": "Quản trị viên hệ thống 3 năm kinh nghiệm trong việc cài đặt, cấu hình và bảo trì máy chủ Linux (Ubuntu/CentOS), tường lửa mạng và sao lưu định kỳ."
+  },
+  {
+    "id": "CV_014",
+    "file_name": "CV_PhanGiaHuy_Flutter_Mobile.docx",
+    "candidate_name": "Phan Gia Huy",
+    "target_role": "Flutter Mobile Developer",
+    "experience_years": 3.0,
+    "skills": ["Dart", "Flutter", "BLoC", "RESTful API", "Firebase", "Git", "State Management"],
+    "summary": "Lập trình viên di động Flutter với 3 năm kinh nghiệm phát triển ứng dụng đa nền tảng iOS & Android. Đã phát hành 4 ứng dụng thương mại lên App Store và CH Play."
+  },
+  {
+    "id": "CV_015",
+    "file_name": "CV_TrinhQuangMinh_Android_Native.docx",
+    "candidate_name": "Trịnh Quang Minh",
+    "target_role": "Android Native Developer",
+    "experience_years": 2.5,
+    "skills": ["Java", "Kotlin", "Android SDK", "RESTful API", "SQLite", "Retrofit", "Git"],
+    "summary": "2.5 năm phát triển ứng dụng Android thuần túy bằng Kotlin và Java. Nắm vững Android Architecture Components (MVVM, Room, LiveData)."
+  },
+  {
+    "id": "CV_016",
+    "file_name": "CV_CaoThiMai_Automation_QA.docx",
+    "candidate_name": "Cao Thị Mai",
+    "target_role": "QA Automation Engineer",
+    "experience_years": 3.5,
+    "skills": ["Automation Testing", "Selenium", "Java", "TestNG", "Postman", "CI/CD", "JMeter", "Unit Testing"],
+    "summary": "3.5 năm kinh nghiệm xây dựng framework kiểm thử tự động với Selenium WebDriver và TestNG. Có kinh nghiệm kiểm thử tải với JMeter và kiểm thử API với Postman/Newman."
+  },
+  {
+    "id": "CV_017",
+    "file_name": "CV_DinhNgocAnh_Manual_QC.docx",
+    "candidate_name": "Đinh Ngọc Ánh",
+    "target_role": "Manual QC / Tester",
+    "experience_years": 2.0,
+    "skills": ["Manual Testing", "Test Case Design", "Jira", "SQL Server", "Bug Tracking", "Black-box Testing"],
+    "summary": "2 năm kinh nghiệm kiểm thử thủ công chức năng (Functional Testing) cho các hệ thống web và mobile. Kỹ lưỡng, tỉ mỉ và quản lý lỗi hiệu quả trên Jira."
+  },
+  {
+    "id": "CV_018",
+    "file_name": "CV_DuongTuanKiet_Senior_DataEngineer.docx",
+    "candidate_name": "Dương Tuấn Kiệt",
+    "target_role": "Senior Data Engineer",
+    "experience_years": 4.5,
+    "skills": ["Python", "SQL Server", "PostgreSQL", "ETL", "Apache Spark", "Airflow", "Kafka", "Pandas & NumPy", "AWS"],
+    "summary": "4.5 năm kinh nghiệm thiết kế kho dữ liệu Data Warehouse và các đường ống truyền dữ liệu lớn với Apache Spark, Kafka và Apache Airflow."
+  },
+  {
+    "id": "CV_019",
+    "file_name": "CV_NguyenHoangYen_UI_UX_Designer.docx",
+    "candidate_name": "Nguyễn Hoàng Yến",
+    "target_role": "UI/UX Product Designer",
+    "experience_years": 3.5,
+    "skills": ["Figma", "UI/UX Design", "Wireframing", "User Research", "Prototyping", "Design System", "HTML5", "CSS3"],
+    "summary": "3.5 năm thiết kế trải nghiệm người dùng và giao diện sản phẩm số. Thành thạo quy trình Design Thinking, phỏng vấn người dùng và duy trì Design System trên Figma."
+  },
+  {
+    "id": "CV_020",
+    "file_name": "CV_NguyenThanhThao_HR_Manager.docx",
+    "candidate_name": "Nguyễn Thanh Thảo",
+    "target_role": "HR & Talent Acquisition Specialist",
+    "experience_years": 4.0,
+    "skills": ["Recruitment", "HR Management", "Interviewing", "Onboarding", "Communication", "Teamwork", "English"],
+    "summary": "Chuyên viên Tuyển dụng và Quản trị nhân sự với 4 năm kinh nghiệm tìm kiếm nhân tài ngành công nghệ thông tin. Kỹ năng giao tiếp và đàm phán xuất sắc."
+  }
+]

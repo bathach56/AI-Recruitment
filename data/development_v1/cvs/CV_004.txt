@@ -1,0 +1,13 @@
+Phạm Quốc Bảo
+Mẫu CV kiểm thử nội bộ - Senior Java Developer
+Thông tin ứng viên
+Họ và tên: Phạm Quốc Bảo
+Vị trí định hướng: Senior Java Developer
+Số năm kinh nghiệm: 5.0 năm
+Tóm tắt hồ sơ
+Kỹ sư phần mềm Java 5 năm kinh nghiệm chuyên xây dựng hệ thống thanh toán điện tử bằng Spring Boot, Spring Cloud và tích hợp message broker Apache Kafka.
+Kỹ năng
+Java, Spring Boot, Hibernate, PostgreSQL, Kafka, Microservices, Docker, RESTful API, Unit Testing
+Kinh nghiệm
+Kinh nghiệm liên quan: 5.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

@@ -1,0 +1,13 @@
+Cao Thị Mai
+Mẫu CV kiểm thử nội bộ - QA Automation Engineer
+Thông tin ứng viên
+Họ và tên: Cao Thị Mai
+Vị trí định hướng: QA Automation Engineer
+Số năm kinh nghiệm: 3.5 năm
+Tóm tắt hồ sơ
+3.5 năm kinh nghiệm xây dựng framework kiểm thử tự động với Selenium WebDriver và TestNG. Có kinh nghiệm kiểm thử tải với JMeter và kiểm thử API với Postman/Newman.
+Kỹ năng
+Automation Testing, Selenium, Java, TestNG, Postman, CI/CD, JMeter, Unit Testing
+Kinh nghiệm
+Kinh nghiệm liên quan: 3.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

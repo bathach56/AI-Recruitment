@@ -1,0 +1,381 @@
+{
+  "version": "1.0",
+  "total_categories": 7,
+  "last_updated": "2026-09-30",
+  "taxonomy": {
+    "Programming_Languages": [
+      {
+        "id": "SKILL_PL_001",
+        "name": "C#",
+        "normalized": "csharp",
+        "aliases": ["c#", "c-sharp", "c sharp", "csharp"]
+      },
+      {
+        "id": "SKILL_PL_002",
+        "name": "Java",
+        "normalized": "java",
+        "aliases": ["java", "core java", "java 8", "java 11", "java 17", "java 21"]
+      },
+      {
+        "id": "SKILL_PL_003",
+        "name": "Python",
+        "normalized": "python",
+        "aliases": ["python", "python 3", "python3", "py"]
+      },
+      {
+        "id": "SKILL_PL_004",
+        "name": "JavaScript",
+        "normalized": "javascript",
+        "aliases": ["javascript", "js", "ecmascript", "es6", "es6+"]
+      },
+      {
+        "id": "SKILL_PL_005",
+        "name": "TypeScript",
+        "normalized": "typescript",
+        "aliases": ["typescript", "ts"]
+      },
+      {
+        "id": "SKILL_PL_006",
+        "name": "PHP",
+        "normalized": "php",
+        "aliases": ["php", "php 7", "php 8"]
+      },
+      {
+        "id": "SKILL_PL_007",
+        "name": "C++",
+        "normalized": "cpp",
+        "aliases": ["c++", "cpp", "c plus plus"]
+      },
+      {
+        "id": "SKILL_PL_008",
+        "name": "Golang",
+        "normalized": "golang",
+        "aliases": ["go", "golang"]
+      },
+      {
+        "id": "SKILL_PL_009",
+        "name": "Rust",
+        "normalized": "rust",
+        "aliases": ["rust", "rustlang"]
+      },
+      {
+        "id": "SKILL_PL_010",
+        "name": "Dart",
+        "normalized": "dart",
+        "aliases": ["dart", "dartlang"]
+      },
+      {
+        "id": "SKILL_PL_011",
+        "name": "Kotlin",
+        "normalized": "kotlin",
+        "aliases": ["kotlin"]
+      },
+      {
+        "id": "SKILL_PL_012",
+        "name": "Swift",
+        "normalized": "swift",
+        "aliases": ["swift", "swiftui"]
+      }
+    ],
+    "Frameworks_and_Libraries": [
+      {
+        "id": "SKILL_FW_001",
+        "name": "ASP.NET Core",
+        "normalized": "aspnet_core",
+        "aliases": ["asp.net", "asp.net core", ".net core", "dotnet core", ".net 6", ".net 7", ".net 8", ".net 9", ".net 10", "asp.net web api"]
+      },
+      {
+        "id": "SKILL_FW_002",
+        "name": "Entity Framework Core",
+        "normalized": "ef_core",
+        "aliases": ["ef core", "entity framework", "entity framework core", "ef6", "linq"]
+      },
+      {
+        "id": "SKILL_FW_003",
+        "name": "Spring Boot",
+        "normalized": "spring_boot",
+        "aliases": ["spring boot", "spring framework", "spring mvc", "spring cloud", "spring data", "spring security"]
+      },
+      {
+        "id": "SKILL_FW_004",
+        "name": "React",
+        "normalized": "react",
+        "aliases": ["react", "react.js", "reactjs", "react native"]
+      },
+      {
+        "id": "SKILL_FW_005",
+        "name": "Angular",
+        "normalized": "angular",
+        "aliases": ["angular", "angularjs", "angular 2+", "angular 14+"]
+      },
+      {
+        "id": "SKILL_FW_006",
+        "name": "Vue.js",
+        "normalized": "vuejs",
+        "aliases": ["vue", "vue.js", "vuejs", "vue 3", "nuxt", "nuxtjs"]
+      },
+      {
+        "id": "SKILL_FW_007",
+        "name": "Node.js",
+        "normalized": "nodejs",
+        "aliases": ["node", "node.js", "nodejs", "express", "express.js", "nestjs"]
+      },
+      {
+        "id": "SKILL_FW_008",
+        "name": "Django",
+        "normalized": "django",
+        "aliases": ["django", "django rest framework", "drf"]
+      },
+      {
+        "id": "SKILL_FW_009",
+        "name": "Flask",
+        "normalized": "flask",
+        "aliases": ["flask", "python flask"]
+      },
+      {
+        "id": "SKILL_FW_010",
+        "name": "FastAPI",
+        "normalized": "fastapi",
+        "aliases": ["fastapi", "fast api"]
+      },
+      {
+        "id": "SKILL_FW_011",
+        "name": "Flutter",
+        "normalized": "flutter",
+        "aliases": ["flutter", "flutter sdk"]
+      },
+      {
+        "id": "SKILL_FW_012",
+        "name": "Bootstrap",
+        "normalized": "bootstrap",
+        "aliases": ["bootstrap", "bootstrap 5", "bootstrap 4"]
+      },
+      {
+        "id": "SKILL_FW_013",
+        "name": "Tailwind CSS",
+        "normalized": "tailwindcss",
+        "aliases": ["tailwind", "tailwind css", "tailwindcss"]
+      },
+      {
+        "id": "SKILL_FW_014",
+        "name": "Laravel",
+        "normalized": "laravel",
+        "aliases": ["laravel", "laravel framework"]
+      }
+    ],
+    "Databases_and_Storage": [
+      {
+        "id": "SKILL_DB_001",
+        "name": "SQL Server",
+        "normalized": "sql_server",
+        "aliases": ["sql server", "ms sql", "mssql", "microsoft sql server", "t-sql"]
+      },
+      {
+        "id": "SKILL_DB_002",
+        "name": "PostgreSQL",
+        "normalized": "postgresql",
+        "aliases": ["postgresql", "postgres", "psql"]
+      },
+      {
+        "id": "SKILL_DB_003",
+        "name": "MySQL",
+        "normalized": "mysql",
+        "aliases": ["mysql", "mariadb"]
+      },
+      {
+        "id": "SKILL_DB_004",
+        "name": "MongoDB",
+        "normalized": "mongodb",
+        "aliases": ["mongodb", "mongo", "nosql"]
+      },
+      {
+        "id": "SKILL_DB_005",
+        "name": "Redis",
+        "normalized": "redis",
+        "aliases": ["redis", "redis cache"]
+      },
+      {
+        "id": "SKILL_DB_006",
+        "name": "Elasticsearch",
+        "normalized": "elasticsearch",
+        "aliases": ["elasticsearch", "elastic search", "elk", "elk stack"]
+      },
+      {
+        "id": "SKILL_DB_007",
+        "name": "Oracle Database",
+        "normalized": "oracle_db",
+        "aliases": ["oracle", "oracle db", "pl/sql", "plsql"]
+      }
+    ],
+    "DevOps_and_Cloud": [
+      {
+        "id": "SKILL_OPS_001",
+        "name": "Docker",
+        "normalized": "docker",
+        "aliases": ["docker", "container", "containerization", "docker-compose"]
+      },
+      {
+        "id": "SKILL_OPS_002",
+        "name": "Kubernetes",
+        "normalized": "kubernetes",
+        "aliases": ["kubernetes", "k8s"]
+      },
+      {
+        "id": "SKILL_OPS_003",
+        "name": "AWS",
+        "normalized": "aws",
+        "aliases": ["aws", "amazon web services", "ec2", "s3", "lambda", "rds"]
+      },
+      {
+        "id": "SKILL_OPS_004",
+        "name": "Microsoft Azure",
+        "normalized": "azure",
+        "aliases": ["azure", "microsoft azure", "azure devops", "azure cloud"]
+      },
+      {
+        "id": "SKILL_OPS_005",
+        "name": "CI/CD",
+        "normalized": "cicd",
+        "aliases": ["ci/cd", "ci-cd", "continuous integration", "continuous deployment", "jenkins", "github actions", "gitlab ci"]
+      },
+      {
+        "id": "SKILL_OPS_006",
+        "name": "Linux",
+        "normalized": "linux",
+        "aliases": ["linux", "ubuntu", "centos", "redhat", "bash", "shell scripting"]
+      },
+      {
+        "id": "SKILL_OPS_007",
+        "name": "Git",
+        "normalized": "git",
+        "aliases": ["git", "github", "gitlab", "bitbucket", "version control"]
+      }
+    ],
+    "AI_and_Data_Science": [
+      {
+        "id": "SKILL_AI_001",
+        "name": "Machine Learning",
+        "normalized": "machine_learning",
+        "aliases": ["machine learning", "ml", "supervised learning", "unsupervised learning"]
+      },
+      {
+        "id": "SKILL_AI_002",
+        "name": "Deep Learning",
+        "normalized": "deep_learning",
+        "aliases": ["deep learning", "dl", "neural networks", "cnn", "rnn", "lstm", "transformer"]
+      },
+      {
+        "id": "SKILL_AI_003",
+        "name": "Natural Language Processing",
+        "normalized": "nlp",
+        "aliases": ["nlp", "natural language processing", "text processing", "text mining", "ner", "sentiment analysis"]
+      },
+      {
+        "id": "SKILL_AI_004",
+        "name": "PyTorch",
+        "normalized": "pytorch",
+        "aliases": ["pytorch", "torch"]
+      },
+      {
+        "id": "SKILL_AI_005",
+        "name": "TensorFlow",
+        "normalized": "tensorflow",
+        "aliases": ["tensorflow", "tf", "keras"]
+      },
+      {
+        "id": "SKILL_AI_006",
+        "name": "Scikit-Learn",
+        "normalized": "scikit_learn",
+        "aliases": ["scikit-learn", "sklearn"]
+      },
+      {
+        "id": "SKILL_AI_007",
+        "name": "Pandas & NumPy",
+        "normalized": "pandas_numpy",
+        "aliases": ["pandas", "numpy", "scipy"]
+      },
+      {
+        "id": "SKILL_AI_008",
+        "name": "Sentence-BERT",
+        "normalized": "sentence_bert",
+        "aliases": ["sentence-bert", "sbert", "sentence transformers", "huggingface", "bert"]
+      },
+      {
+        "id": "SKILL_AI_009",
+        "name": "TF-IDF",
+        "normalized": "tfidf",
+        "aliases": ["tf-idf", "tfidf", "term frequency", "cosine similarity"]
+      }
+    ],
+    "Architecture_and_Design": [
+      {
+        "id": "SKILL_ARCH_001",
+        "name": "RESTful API",
+        "normalized": "rest_api",
+        "aliases": ["rest", "restful", "rest api", "web api", "http api", "json api"]
+      },
+      {
+        "id": "SKILL_ARCH_002",
+        "name": "Microservices",
+        "normalized": "microservices",
+        "aliases": ["microservices", "microservice architecture", "distributed systems"]
+      },
+      {
+        "id": "SKILL_ARCH_003",
+        "name": "Object-Oriented Programming",
+        "normalized": "oop",
+        "aliases": ["oop", "object-oriented programming", "solid", "design patterns"]
+      },
+      {
+        "id": "SKILL_ARCH_004",
+        "name": "Message Queue",
+        "normalized": "message_queue",
+        "aliases": ["rabbitmq", "kafka", "apache kafka", "message broker", "activemq"]
+      },
+      {
+        "id": "SKILL_ARCH_005",
+        "name": "GraphQL",
+        "normalized": "graphql",
+        "aliases": ["graphql", "apollo graphql"]
+      },
+      {
+        "id": "SKILL_ARCH_006",
+        "name": "Unit Testing",
+        "normalized": "unit_testing",
+        "aliases": ["unit test", "unit testing", "tdd", "xunit", "nunit", "junit", "pytest", "jest"]
+      }
+    ],
+    "Soft_Skills": [
+      {
+        "id": "SKILL_SOFT_001",
+        "name": "Teamwork",
+        "normalized": "teamwork",
+        "aliases": ["teamwork", "team collaboration", "collaboration", "làm việc nhóm"]
+      },
+      {
+        "id": "SKILL_SOFT_002",
+        "name": "Problem Solving",
+        "normalized": "problem_solving",
+        "aliases": ["problem solving", "analytical thinking", "critical thinking", "giải quyết vấn đề"]
+      },
+      {
+        "id": "SKILL_SOFT_003",
+        "name": "Communication",
+        "normalized": "communication",
+        "aliases": ["communication", "giao tiếp", "presentation"]
+      },
+      {
+        "id": "SKILL_SOFT_004",
+        "name": "Agile / Scrum",
+        "normalized": "agile_scrum",
+        "aliases": ["agile", "scrum", "kanban", "jira", "sprint"]
+      },
+      {
+        "id": "SKILL_SOFT_005",
+        "name": "English",
+        "normalized": "english",
+        "aliases": ["english", "tiếng anh", "toeic", "ielts"]
+      }
+    ]
+  }
+}

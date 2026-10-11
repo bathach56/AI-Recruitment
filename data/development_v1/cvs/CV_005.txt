@@ -1,0 +1,13 @@
+Đoàn Minh Trí
+Mẫu CV kiểm thử nội bộ - Java Spring Boot Developer
+Thông tin ứng viên
+Họ và tên: Đoàn Minh Trí
+Vị trí định hướng: Java Spring Boot Developer
+Số năm kinh nghiệm: 3.0 năm
+Tóm tắt hồ sơ
+3 năm kinh nghiệm thiết kế và bảo trì các API backend cho các dự án thương mại điện tử bằng Java Spring Boot và MySQL.
+Kỹ năng
+Java, Spring Boot, MySQL, Hibernate, RESTful API, Git, Maven
+Kinh nghiệm
+Kinh nghiệm liên quan: 3.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

@@ -1,0 +1,9 @@
+Java Spring Boot Specialist
+Tham gia phát triển các giải pháp thanh toán điện tử và ngân hàng số thế hệ mới, đòi hỏi tính bảo mật, tin cậy và xử lý đồng thời cao.
+Phát triển backend services bằng Java 17/21 và framework Spring Boot, Spring Security.
+Tối ưu hóa tầng dữ liệu sử dụng Hibernate / Spring Data JPA với cơ sở dữ liệu PostgreSQL và Oracle.
+Tích hợp các cổng thanh toán quốc tế và hệ thống thẻ ngân hàng.
+Viết unit test với JUnit và Mockito, tham gia vào quy trình CI/CD.
+Required skills: Java, Spring Boot, Hibernate, PostgreSQL, RESTful API
+Nice-to-have skills: Redis, Microservices, Docker, Kafka, Unit Testing
+Required experience: 3.0 years
