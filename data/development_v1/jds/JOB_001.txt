@@ -1,0 +1,10 @@
+Senior Backend .NET Engineer
+Chúng tôi đang tìm kiếm một Senior Backend .NET Engineer xuất sắc để dẫn dắt việc thiết kế và phát triển các hệ thống xử lý giao dịch quy mô lớn, kiến trúc microservices và tối ưu hóa hiệu năng cao.
+Thiết kế và phát triển các dịch vụ RESTful API bằng C# và ASP.NET Core (.NET 8/9/10).
+Xây dựng kiến trúc cơ sở dữ liệu trên Microsoft SQL Server, tối ưu truy vấn LINQ và Entity Framework Core.
+Thiết kế kiến trúc hướng sự kiện sử dụng Message Broker như RabbitMQ hoặc Apache Kafka.
+Triển khai container hóa ứng dụng với Docker và điều phối trên cụm Kubernetes.
+Mentor và hướng dẫn các thành viên Junior trong nhóm, thực hiện Code Review.
+Required skills: C#, ASP.NET Core, Entity Framework Core, SQL Server, RESTful API
+Nice-to-have skills: Docker, Kubernetes, Redis, Message Queue, Microservices, Unit Testing
+Required experience: 4.5 years

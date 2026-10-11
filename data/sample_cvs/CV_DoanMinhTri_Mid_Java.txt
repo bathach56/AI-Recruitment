@@ -1,0 +1,24 @@
+﻿HỌ VÀ TÊN: ÄoÃ n Minh TrÃ­
+VỊ TRÍ ỨNG TUYỂN: Java Spring Boot Developer
+SỐ NĂM KINH NGHIỆM: 3.0 năm
+
+TÓM TẮT HỒ SƠ:
+3 nÄƒm kinh nghiá»‡m thiáº¿t káº¿ vÃ  báº£o trÃ¬ cÃ¡c API backend cho cÃ¡c dá»± Ã¡n thÆ°Æ¡ng máº¡i Ä‘iá»‡n tá»­ báº±ng Java Spring Boot vÃ  MySQL.
+
+KỸ NĂNG CHUYÊN MÔN:
+Java, Spring Boot, MySQL, Hibernate, RESTful API, Git, Maven
+
+KINH NGHIỆM LÀM VIỆC CHI TIẾT:
+- Công ty Cổ phần Công nghệ & Giải pháp Số (2021 - Hiện tại)
+  Vị trí: Java Spring Boot Developer
+  Trách nhiệm: Tham gia phát triển các tính năng cốt lõi cho hệ thống ứng dụng công nghệ thông tin. 
+  Sử dụng các công nghệ: Java, Spring Boot, MySQL, Hibernate, RESTful API, Git, Maven.
+  Đảm bảo chất lượng mã nguồn, tối ưu hóa hiệu suất và viết unit test đầy đủ.
+
+HỌC VẤN:
+- Cử nhân Công nghệ Thông tin / Khoa học Máy tính
+  Tốt nghiệp loại Giỏi - Đại học Bách Khoa / ĐH Quốc Gia (GPA: 3.4/4.0)
+
+CHỨNG CHỈ & NGOẠI NGỮ:
+- Tiếng Anh: TOEIC 750 / IELTS 6.5
+- Chứng chỉ chuyên môn theo ngành

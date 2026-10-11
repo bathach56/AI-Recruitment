@@ -1,0 +1,13 @@
+Lê Hoàng Long
+Mẫu CV kiểm thử nội bộ - Junior / Fresher .NET Developer
+Thông tin ứng viên
+Họ và tên: Lê Hoàng Long
+Vị trí định hướng: Junior / Fresher .NET Developer
+Số năm kinh nghiệm: 0.5 năm
+Tóm tắt hồ sơ
+Sinh viên vừa tốt nghiệp ngành CNTT loại Giỏi, có 6 tháng thực tập lập trình C# ASP.NET. Đam mê học hỏi công nghệ mới và tìm kiếm cơ hội cọ xát thực tế.
+Kỹ năng
+C#, ASP.NET MVC, SQL Server, HTML5, CSS3, Git
+Kinh nghiệm
+Kinh nghiệm liên quan: 0.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

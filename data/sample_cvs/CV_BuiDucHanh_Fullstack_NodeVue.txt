@@ -1,0 +1,24 @@
+﻿HỌ VÀ TÊN: BÃ¹i Äá»©c Háº¡nh
+VỊ TRÍ ỨNG TUYỂN: Fullstack Developer
+SỐ NĂM KINH NGHIỆM: 3.5 năm
+
+TÓM TẮT HỒ SƠ:
+Ká»¹ sÆ° pháº§n má»m Fullstack vá»›i 3.5 nÄƒm kinh nghiá»‡m lÃ m viá»‡c trÃªn stack MEVN (MongoDB, Express, Vue.js, Node.js). CÃ³ kinh nghiá»‡m Ä‘Ã³ng gÃ³i á»©ng dá»¥ng vá»›i Docker.
+
+KỸ NĂNG CHUYÊN MÔN:
+JavaScript, TypeScript, Node.js, Vue.js, Express, MongoDB, MySQL, RESTful API, Docker
+
+KINH NGHIỆM LÀM VIỆC CHI TIẾT:
+- Công ty Cổ phần Công nghệ & Giải pháp Số (2021 - Hiện tại)
+  Vị trí: Fullstack Developer
+  Trách nhiệm: Tham gia phát triển các tính năng cốt lõi cho hệ thống ứng dụng công nghệ thông tin. 
+  Sử dụng các công nghệ: JavaScript, TypeScript, Node.js, Vue.js, Express, MongoDB, MySQL, RESTful API, Docker.
+  Đảm bảo chất lượng mã nguồn, tối ưu hóa hiệu suất và viết unit test đầy đủ.
+
+HỌC VẤN:
+- Cử nhân Công nghệ Thông tin / Khoa học Máy tính
+  Tốt nghiệp loại Giỏi - Đại học Bách Khoa / ĐH Quốc Gia (GPA: 3.4/4.0)
+
+CHỨNG CHỈ & NGOẠI NGỮ:
+- Tiếng Anh: TOEIC 750 / IELTS 6.5
+- Chứng chỉ chuyên môn theo ngành

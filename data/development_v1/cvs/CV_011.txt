@@ -1,0 +1,13 @@
+Nguyễn Thu Trang
+Mẫu CV kiểm thử nội bộ - Junior Data Scientist
+Thông tin ứng viên
+Họ và tên: Nguyễn Thu Trang
+Vị trí định hướng: Junior Data Scientist
+Số năm kinh nghiệm: 1.5 năm
+Tóm tắt hồ sơ
+1.5 năm làm việc trong lĩnh vực phân tích dữ liệu và xây dựng mô hình dự báo kinh doanh bằng Python (Pandas, Scikit-Learn) và trực quan hóa dữ liệu.
+Kỹ năng
+Python, Pandas & NumPy, Scikit-Learn, Machine Learning, SQL Server, Matplotlib, PowerBI
+Kinh nghiệm
+Kinh nghiệm liên quan: 1.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

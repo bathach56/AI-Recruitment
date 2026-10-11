@@ -1,0 +1,111 @@
+﻿source,pair_id,cv_id,cv_exists_in_samples,legacy_cv_category,sample_cv_role,job_id,job_exists_in_samples,legacy_job_title,sample_job_title,job_title_exact_match,decision
+ground_truth_matching.csv,PAIR_001,CV_JAVA_01,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_002,CV_JAVA_02,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_003,CV_JAVA_03,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_004,CV_JAVA_04,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_005,CV_JAVA_05,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_006,CV_DOTNET_01,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_007,CV_DOTNET_02,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_008,CV_DOTNET_03,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_009,CV_DOTNET_04,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_010,CV_PY_01,False,Python Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_011,CV_PY_02,False,Python Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_012,CV_PY_03,False,Python Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_013,CV_DS_01,False,Data Science,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_014,CV_DS_02,False,Data Science,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_015,CV_DS_03,False,Data Science,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_016,CV_DEVOPS_01,False,DevOps Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_017,CV_DEVOPS_02,False,DevOps Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_018,CV_DEVOPS_03,False,DevOps Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_019,CV_DB_01,False,Database,,JOB_011,False,Database Administrator,,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_020,CV_DB_02,False,Database,,JOB_011,False,Database Administrator,,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_021,CV_TEST_01,False,Testing,,JOB_014,False,Software Engineer (QA/Testing),,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_022,CV_TEST_02,False,Testing,,JOB_014,False,Software Engineer (QA/Testing),,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_023,CV_WEB_01,False,Web Designing,,JOB_005,True,Full Stack Developer (Frontend),AI & Machine Learning Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_024,CV_WEB_02,False,Web Designing,,JOB_005,True,Full Stack Developer (Frontend),AI & Machine Learning Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_025,CV_JAVA_06,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_026,CV_DOTNET_05,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_027,CV_PY_04,False,Python Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_028,CV_DS_04,False,Data Science,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_029,CV_DEVOPS_04,False,DevOps Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_030,CV_DB_03,False,Database,,JOB_011,False,Database Administrator,,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_031,CV_TEST_03,False,Testing,,JOB_014,False,Software Engineer (QA/Testing),,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_032,CV_JAVA_07,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_033,CV_DOTNET_06,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_034,CV_PY_05,False,Python Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_035,CV_DS_05,False,Data Science,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_036,CV_DEVOPS_05,False,DevOps Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_037,CV_TEST_04,False,Testing,,JOB_014,False,Software Engineer (QA/Testing),,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_038,CV_JAVA_08,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_039,CV_DOTNET_07,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_040,CV_PY_06,False,Python Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_041,CV_DS_06,False,Data Science,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_042,CV_DEVOPS_06,False,DevOps Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_043,CV_DB_04,False,Database,,JOB_011,False,Database Administrator,,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_044,CV_TEST_05,False,Testing,,JOB_014,False,Software Engineer (QA/Testing),,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_045,CV_WEB_03,False,Web Designing,,JOB_005,True,Full Stack Developer (Frontend),AI & Machine Learning Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_046,CV_JAVA_09,False,Java Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_047,CV_DOTNET_08,False,DotNet Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_048,CV_PY_07,False,Python Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_049,CV_DS_07,False,Data Science,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_050,CV_DEVOPS_07,False,DevOps Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_051,CV_JAVA_01,False,Java Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_052,CV_DOTNET_01,False,DotNet Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_053,CV_PY_01,False,Python Developer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_054,CV_DS_01,False,Data Science,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_055,CV_DEVOPS_01,False,DevOps Engineer,,JOB_005,True,Full Stack Developer (Frontend),AI & Machine Learning Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_056,CV_WEB_01,False,Web Designing,,JOB_011,False,Database Administrator,,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_057,CV_TEST_01,False,Testing,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_058,CV_JAVA_02,False,Java Developer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_059,CV_DOTNET_02,False,DotNet Developer,,JOB_001,True,Flutter Developer,Senior Backend .NET Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_060,CV_PY_02,False,Python Developer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_061,CV_DEVOPS_02,False,DevOps Engineer,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_062,CV_DB_01,False,Database,,JOB_005,True,Full Stack Developer (Frontend),AI & Machine Learning Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_063,CV_TEST_02,False,Testing,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_064,CV_JAVA_03,False,Java Developer,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_065,CV_DOTNET_03,False,DotNet Developer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_066,CV_WEB_02,False,Web Designing,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_067,CV_PY_03,False,Python Developer,,JOB_001,True,Flutter Developer,Senior Backend .NET Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_068,CV_DS_02,False,Data Science,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_069,CV_TEST_03,False,Testing,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_070,CV_DB_02,False,Database,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_071,CV_JAVA_04,False,Java Developer,,JOB_005,True,Full Stack Developer (Frontend),AI & Machine Learning Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_072,CV_DOTNET_04,False,DotNet Developer,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_073,CV_DEVOPS_03,False,DevOps Engineer,,JOB_011,False,Database Administrator,,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_074,CV_WEB_03,False,Web Designing,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_075,CV_DS_03,False,Data Science,,JOB_002,True,Django Developer,Java Spring Boot Specialist,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_076,CV_HR_01,False,HR,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_077,CV_HR_02,False,HR,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_078,CV_HR_03,False,HR,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_079,CV_HR_04,False,HR,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_080,CV_ADV_01,False,Advocate,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_081,CV_ADV_02,False,Advocate,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_082,CV_ADV_03,False,Advocate,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_083,CV_ADV_04,False,Advocate,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_084,CV_ARTS_01,False,Arts,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_085,CV_ARTS_02,False,Arts,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_086,CV_ARTS_03,False,Arts,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_087,CV_SALES_01,False,Sales,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_088,CV_SALES_02,False,Sales,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_089,CV_SALES_03,False,Sales,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_090,CV_CIVIL_01,False,Civil Engineer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_091,CV_CIVIL_02,False,Civil Engineer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_092,CV_CIVIL_03,False,Civil Engineer,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_093,CV_MECH_01,False,Mechanical Engineer,,JOB_006,True,Java Developer,Cloud DevOps & Site Reliability Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_094,CV_MECH_02,False,Mechanical Engineer,,JOB_010,True,Software Engineer (.NET),Product UI/UX Designer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_095,CV_MECH_03,False,Mechanical Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_096,CV_HR_05,False,HR,,JOB_011,False,Database Administrator,,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_097,CV_SALES_04,False,Sales,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_098,CV_ADV_05,False,Advocate,,JOB_005,True,Full Stack Developer (Frontend),AI & Machine Learning Engineer,False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_099,CV_CIVIL_04,False,Civil Engineer,,JOB_009,True,DevOps Engineer,Data Engineer (Big Data & ETL),False,quarantined_pending_source_and_label_review
+ground_truth_matching.csv,PAIR_100,CV_MECH_04,False,Mechanical Engineer,,JOB_003,True,Machine Learning,Frontend React / TypeScript Developer,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_001,CV_001,True,DotNet Developer,Senior Backend .NET Engineer,JOB_101,False,Senior Backend .NET Engineer,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_002,CV_002,True,Java Developer,Backend .NET Developer,JOB_102,False,Java Spring Boot Specialist,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_003,CV_003,True,Data Science,Junior / Fresher .NET Developer,JOB_103,False,Machine Learning Engineer,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_004,CV_004,True,HR,Senior Java Developer,JOB_101,False,Senior Backend .NET Engineer,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_005,CV_005,True,Advocate,Java Spring Boot Developer,JOB_103,False,Machine Learning Engineer,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_006,CV_006,True,Java Developer,Junior Java Developer,JOB_101,False,Senior Backend .NET Engineer,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_007,CV_007,True,DotNet Developer,Frontend React Developer,JOB_101,False,Senior Backend .NET Engineer,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_008,CV_008,True,DevOps Engineer,Frontend Developer (Vue.js),JOB_104,False,Cloud DevOps Specialist,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_009,CV_009,True,Web Designing,Fullstack Developer,JOB_105,False,Senior UI/UX Designer,,False,quarantined_pending_source_and_label_review
+ground_truth_matching_template.csv,PAIR_010,CV_010,True,Python Developer,AI / Machine Learning Engineer,JOB_102,False,Java Spring Boot Specialist,,False,quarantined_pending_source_and_label_review

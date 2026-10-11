@@ -1,0 +1,13 @@
+Hoàng Văn Thái
+Mẫu CV kiểm thử nội bộ - Frontend Developer (Vue.js)
+Thông tin ứng viên
+Họ và tên: Hoàng Văn Thái
+Vị trí định hướng: Frontend Developer (Vue.js)
+Số năm kinh nghiệm: 1.5 năm
+Tóm tắt hồ sơ
+Frontend Developer 1.5 năm kinh nghiệm với Vue.js và Bootstrap. Đam mê thiết kế giao diện sạch đẹp, thân thiện với người dùng.
+Kỹ năng
+JavaScript, Vue.js, HTML5, CSS3, Bootstrap, Git
+Kinh nghiệm
+Kinh nghiệm liên quan: 1.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

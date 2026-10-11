@@ -1,0 +1,24 @@
+﻿HỌ VÀ TÊN: DÆ°Æ¡ng Tuáº¥n Kiá»‡t
+VỊ TRÍ ỨNG TUYỂN: Senior Data Engineer
+SỐ NĂM KINH NGHIỆM: 4.5 năm
+
+TÓM TẮT HỒ SƠ:
+4.5 nÄƒm kinh nghiá»‡m thiáº¿t káº¿ kho dá»¯ liá»‡u Data Warehouse vÃ  cÃ¡c Ä‘Æ°á»ng á»‘ng truyá»n dá»¯ liá»‡u lá»›n vá»›i Apache Spark, Kafka vÃ  Apache Airflow.
+
+KỸ NĂNG CHUYÊN MÔN:
+Python, SQL Server, PostgreSQL, ETL, Apache Spark, Airflow, Kafka, Pandas & NumPy, AWS
+
+KINH NGHIỆM LÀM VIỆC CHI TIẾT:
+- Công ty Cổ phần Công nghệ & Giải pháp Số (2021 - Hiện tại)
+  Vị trí: Senior Data Engineer
+  Trách nhiệm: Tham gia phát triển các tính năng cốt lõi cho hệ thống ứng dụng công nghệ thông tin. 
+  Sử dụng các công nghệ: Python, SQL Server, PostgreSQL, ETL, Apache Spark, Airflow, Kafka, Pandas & NumPy, AWS.
+  Đảm bảo chất lượng mã nguồn, tối ưu hóa hiệu suất và viết unit test đầy đủ.
+
+HỌC VẤN:
+- Cử nhân Công nghệ Thông tin / Khoa học Máy tính
+  Tốt nghiệp loại Giỏi - Đại học Bách Khoa / ĐH Quốc Gia (GPA: 3.4/4.0)
+
+CHỨNG CHỈ & NGOẠI NGỮ:
+- Tiếng Anh: TOEIC 750 / IELTS 6.5
+- Chứng chỉ chuyên môn theo ngành

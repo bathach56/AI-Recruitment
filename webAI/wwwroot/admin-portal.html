@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cổng Quản trị Hệ thống - RecruitAI Admin Portal</title>
+
+    <!-- Google Font: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Chart.js 4.4 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+    <style>
+        :root {
+            --bs-body-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --bs-body-bg: #f8fafc;
+            --bs-primary: #3b82f6;
+            --bs-primary-rgb: 59, 130, 246;
+            --card-border: #e2e8f0;
+        }
+
+        body {
+            font-family: var(--bs-body-font-family);
+            background-color: var(--bs-body-bg);
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* Top Navbar */
+        .top-navbar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+
+        .brand-badge {
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .portal-nav-btn {
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .portal-nav-btn.active {
+            background: #f5f3ff;
+            color: #7c3aed;
+            border: 1px solid #ddd6fe;
+        }
+        .portal-nav-btn:not(.active) {
+            color: #64748b;
+        }
+        .portal-nav-btn:not(.active):hover {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .custom-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }
+
+        .metric-card {
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            background: #ffffff;
+            padding: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .metric-icon-box {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .status-active {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+        .status-locked {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .benchmark-table th {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: #f8fafc;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVBAR WITH ROLE SWITCHER -->
+    <header class="top-navbar py-2 px-3 px-md-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            
+            <!-- Brand & Portals -->
+            <div class="d-flex align-items-center gap-3">
+                <a href="admin-portal.html" class="text-decoration-none d-flex align-items-center gap-2">
+                    <div class="bg-dark text-white rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-shield-lock-fill fs-5 text-warning"></i>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold fs-5 tracking-tight text-dark">RecruitAI</span>
+                            <span class="brand-badge">ADMIN</span>
+                        </div>
+                        <small class="text-muted" style="font-size: 0.75rem;">Hệ thống Quản trị &amp; Giám sát Mô hình AI</small>
+                    </div>
+                </a>
+
+                <div class="vr d-none d-md-block mx-1 text-secondary opacity-25" style="height: 28px;"></div>
+                <span class="badge bg-dark text-warning border border-secondary px-2 py-1 fs-xs fw-semibold">
+                    <i class="bi bi-shield-lock me-1"></i> Cổng Quản Trị Hệ Thống
+                </span>
+            </div>
+
+            <!-- Admin Profile & Controls -->
+            <div class="d-flex align-items-center gap-2 gap-md-3">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-light border text-dark dropdown-toggle d-flex align-items-center gap-2 py-1 px-2 rounded-3 bg-white" type="button" data-bs-toggle="dropdown">
+                        <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center fw-bold" style="width: 28px; height: 28px; font-size: 0.8rem;">
+                            AD
+                        </div>
+                        <span class="d-none d-sm-inline fw-semibold" style="font-size: 0.85rem;">System Admin</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-light-subtle">
+                        <li><h6 class="dropdown-header">Quyền Quản trị viên</h6></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" onclick="alert('Nhật ký kiểm toán hệ thống')"><i class="bi bi-journal-text me-2"></i>Nhật ký Audit Log</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" onclick="alert('Cài đặt bảo mật hệ thống')"><i class="bi bi-shield-check me-2"></i>Bảo mật hệ thống</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container-fluid px-3 px-md-4 py-4" style="max-width: 1440px;">
+
+        <!-- 1. SYSTEM OVERVIEW KPIS -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-lg-3">
+                <div class="metric-card">
+                    <div class="metric-icon-box bg-primary-subtle text-primary">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small fw-medium">Tổng người dùng</div>
+                        <div class="fs-4 fw-bold text-dark">168</div>
+                        <small class="text-success" style="font-size: 0.72rem;"><i class="bi bi-arrow-up"></i> +14 tuần này</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="metric-card">
+                    <div class="metric-icon-box bg-success-subtle text-success">
+                        <i class="bi bi-briefcase-fill"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small fw-medium">Việc làm đang mở (Jobs)</div>
+                        <div class="fs-4 fw-bold text-dark">18</div>
+                        <small class="text-muted" style="font-size: 0.72rem;">Thuộc 12 doanh nghiệp</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="metric-card">
+                    <div class="metric-icon-box bg-purple-subtle text-purple" style="background-color: #f3e8ff; color: #7e22ce;">
+                        <i class="bi bi-cpu-fill"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small fw-medium">Lượt chạy AI Matching</div>
+                        <div class="fs-4 fw-bold text-dark">842</div>
+                        <small class="text-success" style="font-size: 0.72rem;"><i class="bi bi-check2-all"></i> 100% thành công</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="metric-card">
+                    <div class="metric-icon-box bg-warning-subtle text-warning">
+                        <i class="bi bi-stopwatch-fill"></i>
+                    </div>
+                    <div>
+                        <div class="text-muted small fw-medium">Thời gian phản hồi AI (Avg)</div>
+                        <div class="fs-4 fw-bold text-dark">380 ms</div>
+                        <small class="text-muted" style="font-size: 0.72rem;">S-BERT Inference Latency</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. AI RESEARCH & BENCHMARK MONITOR -->
+        <div class="custom-card p-3 p-md-4 mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                <div>
+                    <h5 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-bar-chart-line-fill text-primary"></i> Nghiên cứu Thực nghiệm AI: So sánh 3 Phương pháp Matching
+                    </h5>
+                    <small class="text-muted">Dữ liệu thực nghiệm thực tế phục vụ báo cáo và bảo vệ đồ án tốt nghiệp</small>
+                </div>
+                <span class="badge text-bg-primary-subtle text-primary border border-primary-subtle px-3 py-1">
+                    Dataset: 500 CV / 50 JD Pairs
+                </span>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <!-- Benchmark Table -->
+                <div class="col-12 col-xl-7">
+                    <div class="table-responsive">
+                        <table class="table benchmark-table table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Phương pháp (NLP Method)</th>
+                                    <th class="text-center">Precision</th>
+                                    <th class="text-center">Recall</th>
+                                    <th class="text-center">F1-Score</th>
+                                    <th class="text-center">Cosine Sim</th>
+                                    <th class="text-center">Latency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="fw-bold text-dark">1. TF-IDF + Cosine</div>
+                                        <small class="text-muted">Phương pháp cơ sở (Baseline)</small>
+                                    </td>
+                                    <td class="text-center font-monospace">74.2%</td>
+                                    <td class="text-center font-monospace">71.0%</td>
+                                    <td class="text-center font-monospace fw-bold">72.5%</td>
+                                    <td class="text-center font-monospace">0.68</td>
+                                    <td class="text-center font-monospace text-success fw-bold">45 ms</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="fw-bold text-dark">2. Sentence-BERT</div>
+                                        <small class="text-muted">Độ tương đồng ngữ nghĩa (Semantic)</small>
+                                    </td>
+                                    <td class="text-center font-monospace">83.5%</td>
+                                    <td class="text-center font-monospace">82.0%</td>
+                                    <td class="text-center font-monospace fw-bold">82.7%</td>
+                                    <td class="text-center font-monospace">0.82</td>
+                                    <td class="text-center font-monospace">380 ms</td>
+                                </tr>
+                                <tr class="table-primary-subtle">
+                                    <td>
+                                        <div class="fw-bold text-primary">3. Hybrid Model</div>
+                                        <small class="text-muted">Semantic + Skill + Experience</small>
+                                    </td>
+                                    <td class="text-center font-monospace text-primary fw-bold">88.1%</td>
+                                    <td class="text-center font-monospace text-primary fw-bold">86.4%</td>
+                                    <td class="text-center font-monospace text-primary fw-bold">87.2%</td>
+                                    <td class="text-center font-monospace text-primary fw-bold">0.86</td>
+                                    <td class="text-center font-monospace">420 ms</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Benchmark Chart -->
+                <div class="col-12 col-xl-5">
+                    <div class="p-3 bg-light rounded-3 border h-100 d-flex flex-column justify-content-between">
+                        <h6 class="fw-bold text-dark mb-2 small text-center">BIỂU ĐỒ SO SÁNH F1-SCORE VÀ LATENCY</h6>
+                        <div style="height: 180px;">
+                            <canvas id="benchmarkChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hybrid Model Weights Configuration Form -->
+            <div class="p-3 bg-light rounded-3 border">
+                <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                    <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-sliders2 text-primary"></i> Cấu hình Trọng số Mô hình Hybrid Matching
+                    </h6>
+                    <span class="small text-muted">Tổng 3 trọng số phải bằng 100%</span>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-3">
+                        <label class="form-label small fw-semibold text-muted mb-1">Trọng số Ngữ nghĩa (Semantic W1):</label>
+                        <div class="input-group input-group-sm">
+                            <input type="number" class="form-control" id="weightSemantic" value="50" min="0" max="100">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label small fw-semibold text-muted mb-1">Trọng số Kỹ năng (Skill W2):</label>
+                        <div class="input-group input-group-sm">
+                            <input type="number" class="form-control" id="weightSkill" value="35" min="0" max="100">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label small fw-semibold text-muted mb-1">Trọng số Kinh nghiệm (Exp W3):</label>
+                        <div class="input-group input-group-sm">
+                            <input type="number" class="form-control" id="weightExp" value="15" min="0" max="100">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 pt-md-3">
+                        <button class="btn btn-primary btn-sm w-100 fw-semibold" onclick="saveWeightsConfig()">
+                            <i class="bi bi-floppy-fill me-1"></i> Lưu cấu hình trọng số
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. TABS: USER MANAGEMENT & JOB AUDIT -->
+        <div class="custom-card p-3 p-md-4">
+            
+            <ul class="nav nav-tabs mb-3 gap-2" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active fw-semibold" id="tab-users" data-bs-toggle="tab" data-bs-target="#content-users" type="button" role="tab">
+                        <i class="bi bi-people me-2"></i>Quản lý Tài khoản Người dùng
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-semibold" id="tab-jobs" data-bs-toggle="tab" data-bs-target="#content-admin-jobs" type="button" role="tab">
+                        <i class="bi bi-briefcase me-2"></i>Kiểm duyệt Tin tuyển dụng
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="adminTabContent">
+                
+                <!-- TAB 1: USERS -->
+                <div class="tab-pane fade show active" id="content-users" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Người dùng</th>
+                                    <th scope="col">Vai trò (Role)</th>
+                                    <th scope="col">Đơn vị / Tổ chức</th>
+                                    <th scope="col">Ngày đăng ký</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col" class="text-end">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: JOBS -->
+                <div class="tab-pane fade" id="content-admin-jobs" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Mã &amp; Tiêu đề việc làm</th>
+                                    <th scope="col">Doanh nghiệp</th>
+                                    <th scope="col">Kinh nghiệm</th>
+                                    <th scope="col">Lượt ứng tuyển</th>
+                                    <th scope="col">Trạng thái tin</th>
+                                    <th scope="col" class="text-end">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="jobAdminTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+        <div id="liveToast" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body d-flex align-items-center gap-2">
+                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                    <span id="toastMessage">Thao tác thành công.</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let usersData = [
+            { id: "USR-01", name: "Sarah Jenkins", email: "sarah@technova.com", role: "Recruiter", company: "TechNova Corp", created: "2026-09-10", status: "Active" },
+            { id: "USR-02", name: "Nguyễn Văn An", email: "an.nguyen@email.vn", role: "Candidate", company: "Freelance", created: "2026-09-12", status: "Active" },
+            { id: "USR-03", name: "David Trần", email: "david@cloudscale.io", role: "Recruiter", company: "CloudScale Systems", created: "2026-09-15", status: "Active" },
+            { id: "USR-04", name: "Đoàn Gia Huy", email: "huy.doan@student.edu.vn", role: "Candidate", company: "Đại học CNTT", created: "2026-09-18", status: "Active" },
+            { id: "USR-05", name: "Admin Lead", email: "admin@recruitai.vn", role: "Admin", company: "RecruitAI Core", created: "2026-09-01", status: "Active" }
+        ];
+
+        let adminJobsData = [
+            { id: "JOB-2026-NET01", title: "Senior Backend .NET Engineer", company: "TechNova Corp", exp: "3.0+ năm", applicants: 24, status: "Active" },
+            { id: "JOB-2026-OPS02", title: "DevOps & Cloud Engineer", company: "CloudScale Systems", exp: "2.5+ năm", applicants: 12, status: "Active" },
+            { id: "JOB-2026-FS03", title: "Fullstack Web Developer", company: "Fintech Solutions", exp: "2.0+ năm", applicants: 19, status: "Active" }
+        ];
+
+        function renderUsersTable() {
+            const tbody = document.getElementById('userTableBody');
+            tbody.innerHTML = usersData.map(u => `
+                <tr>
+                    <td>
+                        <div class="fw-bold text-dark">${u.name}</div>
+                        <small class="text-muted">${u.email}</small>
+                    </td>
+                    <td>
+                        <span class="badge ${u.role === 'Admin' ? 'bg-dark' : u.role === 'Recruiter' ? 'bg-primary' : 'bg-success'}">
+                            ${u.role}
+                        </span>
+                    </td>
+                    <td>${u.company}</td>
+                    <td class="small text-muted">${u.created}</td>
+                    <td>
+                        <span class="status-badge ${u.status === 'Active' ? 'status-active' : 'status-locked'}">
+                            <i class="bi ${u.status === 'Active' ? 'bi-check-circle-fill' : 'bi-slash-circle-fill'}"></i>
+                            ${u.status === 'Active' ? 'Hoạt động' : 'Bị khóa'}
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="toggleUserStatus('${u.id}')">
+                            <i class="bi ${u.status === 'Active' ? 'bi-lock' : 'bi-unlock'}"></i>
+                            ${u.status === 'Active' ? 'Khóa' : 'Mở khóa'}
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function toggleUserStatus(userId) {
+            const user = usersData.find(u => u.id === userId);
+            if (!user) return;
+            user.status = user.status === 'Active' ? 'Locked' : 'Active';
+            renderUsersTable();
+            triggerToast(`Tài khoản "${user.name}" đã được ${user.status === 'Active' ? 'mở khóa' : 'khóa tạm thời'}.`);
+        }
+
+        function renderAdminJobsTable() {
+            const tbody = document.getElementById('jobAdminTableBody');
+            tbody.innerHTML = adminJobsData.map(j => `
+                <tr>
+                    <td>
+                        <div class="fw-bold text-dark">${j.title}</div>
+                        <small class="text-muted font-monospace">${j.id}</small>
+                    </td>
+                    <td>${j.company}</td>
+                    <td>${j.exp}</td>
+                    <td><span class="badge bg-light text-dark border px-2 py-1">${j.applicants} hồ sơ</span></td>
+                    <td>
+                        <span class="status-badge ${j.status === 'Active' ? 'status-active' : 'status-locked'}">
+                            ${j.status === 'Active' ? 'Đang tuyển' : 'Đã ẩn'}
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="toggleJobStatus('${j.id}')">
+                            ${j.status === 'Active' ? 'Tạm ẩn' : 'Hiển thị'}
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function toggleJobStatus(jobId) {
+            const job = adminJobsData.find(j => j.id === jobId);
+            if (!job) return;
+            job.status = job.status === 'Active' ? 'Hidden' : 'Active';
+            renderAdminJobsTable();
+            triggerToast(`Trạng thái tin "${job.title}" đã được cập nhật.`);
+        }
+
+        function renderBenchmarkChart() {
+            const ctx = document.getElementById('benchmarkChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['TF-IDF (Baseline)', 'Sentence-BERT', 'Hybrid Model'],
+                    datasets: [
+                        {
+                            label: 'F1-Score (%)',
+                            data: [72.5, 82.7, 87.2],
+                            backgroundColor: '#3b82f6',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Precision (%)',
+                            data: [74.2, 83.5, 88.1],
+                            backgroundColor: '#10b981',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12 } }
+                    },
+                    scales: {
+                        y: { min: 60, max: 100 }
+                    }
+                }
+            });
+        }
+
+        function saveWeightsConfig() {
+            const w1 = parseInt(document.getElementById('weightSemantic').value) || 0;
+            const w2 = parseInt(document.getElementById('weightSkill').value) || 0;
+            const w3 = parseInt(document.getElementById('weightExp').value) || 0;
+
+            if (w1 + w2 + w3 !== 100) {
+                alert(`Tổng 3 trọng số hiện tại là ${w1 + w2 + w3}%. Vui lòng điều chỉnh để tổng bằng đúng 100%.`);
+                return;
+            }
+
+            triggerToast(`Đã lưu cấu hình trọng số Hybrid Model: Semantic ${w1}% - Skill ${w2}% - Exp ${w3}%.`);
+        }
+
+        function triggerToast(message) {
+            const toastEl = document.getElementById('liveToast');
+            document.getElementById('toastMessage').textContent = message;
+            const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+            toast.show();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderUsersTable();
+            renderAdminJobsTable();
+            renderBenchmarkChart();
+        });
+    </script>
+</body>
+</html>

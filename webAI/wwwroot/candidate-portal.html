@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cổng Ứng viên - Tìm việc &amp; So khớp CV bằng AI</title>
+
+    <!-- Google Font: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Chart.js 4.4 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+    <style>
+        :root {
+            --bs-body-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --bs-body-bg: #f8fafc;
+            --bs-primary: #3b82f6;
+            --bs-primary-rgb: 59, 130, 246;
+            --card-border: #e2e8f0;
+            --score-high: #10b981;
+            --score-med: #f59e0b;
+            --score-low: #ef4444;
+        }
+
+        body {
+            font-family: var(--bs-body-font-family);
+            background-color: var(--bs-body-bg);
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* Top Navbar */
+        .top-navbar {
+            background: #ffffff;
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+
+        .brand-badge {
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .portal-nav-btn {
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .portal-nav-btn.active {
+            background: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+        }
+        .portal-nav-btn:not(.active) {
+            color: #64748b;
+        }
+        .portal-nav-btn:not(.active):hover {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .custom-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+            transition: all 0.2s ease;
+        }
+
+        /* Job card in list */
+        .job-item-card {
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .job-item-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+            transform: translateY(-2px);
+        }
+        .job-item-card.selected {
+            border-color: #3b82f6;
+            background-color: #f0f7ff;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Upload area */
+        .upload-dropzone {
+            border: 2px dashed #93c5fd;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .upload-dropzone:hover, .upload-dropzone.dragover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .status-shortlisted {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+        .status-pending {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+        .status-rejected {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .skill-badge {
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 2px;
+        }
+        .skill-matched {
+            background-color: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        .skill-missing {
+            background-color: #fff1f2;
+            color: #9f1239;
+            border: 1px solid #fecdd3;
+        }
+
+        .score-radial-wrapper {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+        }
+        .score-radial-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVBAR WITH ROLE SWITCHER -->
+    <header class="top-navbar py-2 px-3 px-md-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            
+            <!-- Brand & Portals -->
+            <div class="d-flex align-items-center gap-3">
+                <a href="candidate-portal.html" class="text-decoration-none d-flex align-items-center gap-2">
+                    <div class="bg-success text-white rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                        <i class="bi bi-person-workspace fs-5"></i>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-bold fs-5 tracking-tight text-dark">RecruitAI</span>
+                            <span class="brand-badge">CANDIDATE</span>
+                        </div>
+                        <small class="text-muted" style="font-size: 0.75rem;">Cổng thông tin &amp; Đánh giá CV cho Ứng viên</small>
+                    </div>
+                </a>
+
+                <div class="vr d-none d-md-block mx-1 text-secondary opacity-25" style="height: 28px;"></div>
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 fs-xs fw-semibold">
+                    <i class="bi bi-person-workspace me-1"></i> Cổng Ứng Viên
+                </span>
+            </div>
+
+            <!-- Candidate Profile & Controls -->
+            <div class="d-flex align-items-center gap-2 gap-md-3">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-light border text-dark dropdown-toggle d-flex align-items-center gap-2 py-1 px-2 rounded-3 bg-white" type="button" data-bs-toggle="dropdown">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="rounded-circle" width="28" height="28" style="object-fit: cover;">
+                        <span class="d-none d-sm-inline fw-semibold" style="font-size: 0.85rem;">Nguyễn Văn An</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-light-subtle">
+                        <li><h6 class="dropdown-header">Tài khoản Ứng viên</h6></li>
+                        <li><a class="dropdown-item" href="#pills-history-tab" onclick="switchMainTab('history')"><i class="bi bi-clock-history me-2"></i>Lịch sử ứng tuyển</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" onclick="alert('Chức năng cài đặt hồ sơ cá nhân')"><i class="bi bi-person-gear me-2"></i>Cài đặt tài khoản</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container-fluid px-3 px-md-4 py-4" style="max-width: 1440px;">
+
+        <!-- TABS NAV -->
+        <ul class="nav nav-pills mb-4 gap-2" id="candidateTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-semibold px-4 py-2 rounded-3" id="tab-jobs" data-bs-toggle="pill" data-bs-target="#content-jobs" type="button" role="tab">
+                    <i class="bi bi-search me-2"></i>Tìm việc &amp; So khớp CV bằng AI
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-semibold px-4 py-2 rounded-3" id="tab-history" data-bs-toggle="pill" data-bs-target="#content-history" type="button" role="tab">
+                    <i class="bi bi-send-check me-2"></i>Hồ sơ việc làm đã nộp (<span id="historyCountBadge">2</span>)
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="candidateTabContent">
+            
+            <!-- TAB 1: JOB SEARCH & RESUME MATCHING -->
+            <div class="tab-pane fade show active" id="content-jobs" role="tabpanel">
+                <div class="row g-4">
+                    
+                    <!-- Left Column: Job Search & Job List -->
+                    <div class="col-12 col-lg-7">
+                        <div class="custom-card p-3 p-md-4 mb-4">
+                            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+                                <div>
+                                    <h5 class="fw-bold text-dark mb-0">Việc làm Công nghệ nổi bật</h5>
+                                    <small class="text-muted">Chọn một vị trí để tải CV lên và xem AI tính toán độ phù hợp</small>
+                                </div>
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1" id="availableJobsCount">3 vị trí đang tuyển</span>
+                            </div>
+
+                            <!-- Search bar -->
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-search"></i></span>
+                                <input type="text" id="candidateJobSearch" class="form-control bg-light border-start-0 ps-0" placeholder="Tìm kiếm theo vị trí, kỹ năng (.NET, DevOps, React...)" />
+                            </div>
+
+                            <!-- Job Items Container -->
+                            <div class="d-flex flex-column gap-3" id="jobsListContainer">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: AI Pre-screening & CV Upload Panel -->
+                    <div class="col-12 col-lg-5">
+                        <div class="custom-card p-3 p-md-4 position-sticky" style="top: 80px;">
+                            
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h5 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                                    <i class="bi bi-stars text-primary"></i> Đánh giá CV với AI
+                                </h5>
+                                <span class="badge text-bg-light border text-secondary small">Pre-screening</span>
+                            </div>
+
+                            <p class="text-muted small mb-3">
+                                Đang chọn kiểm tra cho vị trí: <br>
+                                <span class="fw-bold text-dark fs-6" id="selectedTargetJobTitle">Senior Backend .NET Engineer</span>
+                            </p>
+
+                            <!-- Upload Dropzone -->
+                            <div class="upload-dropzone mb-3" id="dropzoneBox" onclick="document.getElementById('cvFileInput').click()">
+                                <i class="bi bi-cloud-arrow-up-fill fs-1 text-primary mb-2 d-block"></i>
+                                <div class="fw-bold text-dark">Kéo thả file CV của bạn vào đây</div>
+                                <div class="text-muted small">Hỗ trợ định dạng PDF, DOCX (Tối đa 10MB)</div>
+                                <div class="mt-2">
+                                    <span class="btn btn-outline-primary btn-sm px-3 rounded-pill">
+                                        <i class="bi bi-folder2-open me-1"></i> Chọn tệp CV từ máy
+                                    </span>
+                                </div>
+                                <input type="file" id="cvFileInput" class="d-none" accept=".pdf,.docx">
+                            </div>
+
+                            <!-- Uploaded file info & Analyze action -->
+                            <div id="fileSelectedBox" class="p-3 bg-light rounded-3 border mb-3 d-none">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-2 text-truncate">
+                                        <i class="bi bi-file-earmark-pdf-fill fs-4 text-danger"></i>
+                                        <div class="text-truncate">
+                                            <div class="fw-bold small text-dark text-truncate" id="selectedFileName">NguyenVanAn_CV.pdf</div>
+                                            <small class="text-muted" id="selectedFileSize">2.4 MB &bull; Sẵn sàng phân tích</small>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-danger border-0" onclick="resetUploadedCv()">
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary w-100 py-2 fw-semibold shadow-sm rounded-3 mb-3 d-flex align-items-center justify-content-center gap-2" id="btnRunAiMatch" onclick="runCandidateCvAnalysis()" disabled>
+                                <i class="bi bi-cpu-fill"></i>
+                                <span>Phân tích độ phù hợp với AI</span>
+                            </button>
+
+                            <!-- AI Match Result Box -->
+                            <div id="aiMatchResultBox" class="p-3 bg-light-subtle rounded-3 border d-none">
+                                
+                                <div class="text-center mb-3">
+                                    <div class="score-radial-wrapper mb-2">
+                                        <canvas id="candidateGaugeChart" width="130" height="130"></canvas>
+                                        <div class="score-radial-center">
+                                            <div class="fs-3 fw-bold text-dark" id="candidateMatchScoreVal">84%</div>
+                                            <small class="text-muted fw-semibold" style="font-size: 0.65rem; text-transform: uppercase;">Match Score</small>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold text-dark mb-1" id="candidateAssessmentTitle">Độ phù hợp rất cao</h6>
+                                    <p class="text-muted small mb-0" id="candidateAssessmentDesc">
+                                        Hồ sơ đáp ứng xuất sắc các kỹ năng cốt lõi và số năm kinh nghiệm.
+                                    </p>
+                                </div>
+
+                                <!-- Skill Gap Quick View -->
+                                <div class="mb-3">
+                                    <div class="small fw-bold text-success mb-1">
+                                        <i class="bi bi-check-circle-fill me-1"></i> Kỹ năng đã có trong CV:
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-1" id="candidateMatchedSkills">
+                                        <!-- badges -->
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="small fw-bold text-danger mb-1">
+                                        <i class="bi bi-x-circle-fill me-1"></i> Kỹ năng nên bổ sung:
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-1" id="candidateMissingSkills">
+                                        <!-- badges -->
+                                    </div>
+                                </div>
+
+                                <!-- Submit Application Button -->
+                                <button class="btn btn-success w-100 py-2 fw-semibold shadow-sm rounded-3" onclick="submitCandidateApplication()">
+                                    <i class="bi bi-send-fill me-1"></i> Xác nhận nộp hồ sơ ứng tuyển
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- TAB 2: MY APPLICATIONS HISTORY -->
+            <div class="tab-pane fade" id="content-history" role="tabpanel">
+                <div class="custom-card p-3 p-md-4">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div>
+                            <h5 class="fw-bold text-dark mb-0">Lịch sử hồ sơ đã ứng tuyển</h5>
+                            <small class="text-muted">Theo dõi trạng thái duyệt hồ sơ và kết quả đánh giá từ nhà tuyển dụng</small>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Vị trí ứng tuyển</th>
+                                    <th scope="col">Ngày nộp</th>
+                                    <th scope="col">Tệp CV</th>
+                                    <th scope="col">Điểm AI Matching</th>
+                                    <th scope="col">Trạng thái tuyển dụng</th>
+                                    <th scope="col" class="text-end">Chi tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applicationHistoryTableBody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+        <div id="liveToast" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body d-flex align-items-center gap-2">
+                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                    <span id="toastMessage">Thao tác thành công.</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const jobsList = [
+            {
+                id: "JOB-2026-NET01",
+                title: "Senior Backend .NET Engineer",
+                company: "TechNova Corp",
+                location: "Hybrid (TP. Hồ Chí Minh)",
+                expRequired: 3.0,
+                salary: "35 - 55 Triệu",
+                skills: ["C#", "ASP.NET Core", "SQL Server", "Docker", "Git", "Redis", "Microservices"],
+                description: "Phát triển hệ thống microservices backend với ASP.NET Core và SQL Server. Tối ưu hóa truy vấn dữ liệu lớn và triển khai Docker container."
+            },
+            {
+                id: "JOB-2026-OPS02",
+                title: "DevOps & Cloud Engineer",
+                company: "CloudScale Systems",
+                location: "Onsite (Hà Nội)",
+                expRequired: 2.5,
+                salary: "30 - 48 Triệu",
+                skills: ["Docker", "Kubernetes", "CI/CD", "AWS", "Linux", "Terraform"],
+                description: "Quản trị hạ tầng đám mây AWS, triển khai hệ thống Kubernetes clusters và xây dựng pipelines tự động hóa CI/CD."
+            },
+            {
+                id: "JOB-2026-FS03",
+                title: "Fullstack Web Developer",
+                company: "Fintech Solutions",
+                location: "Remote 100%",
+                expRequired: 2.0,
+                salary: "22 - 38 Triệu",
+                skills: ["React", "TypeScript", "Node.js", "RESTful API", "PostgreSQL", "Git"],
+                description: "Xây dựng các ứng dụng web tài chính với giao diện React/TypeScript và backend API Node.js/PostgreSQL chịu tải cao."
+            }
+        ];
+
+        let selectedJob = jobsList[0];
+        let uploadedFile = null;
+        let candidateGaugeInstance = null;
+
+        let applicationHistory = [
+            {
+                id: "APP-001",
+                jobTitle: "Senior Backend .NET Engineer",
+                company: "TechNova Corp",
+                appliedAt: "2026-09-26",
+                fileName: "NguyenVanAn_CV_2026.pdf",
+                matchScore: 88,
+                status: "Shortlisted"
+            },
+            {
+                id: "APP-002",
+                jobTitle: "Fullstack Web Developer",
+                company: "Fintech Solutions",
+                appliedAt: "2026-09-20",
+                fileName: "NguyenVanAn_Fullstack.pdf",
+                matchScore: 74,
+                status: "Pending"
+            }
+        ];
+
+        function renderJobsList() {
+            const container = document.getElementById('jobsListContainer');
+            const keyword = document.getElementById('candidateJobSearch').value.trim().toLowerCase();
+
+            const filtered = jobsList.filter(j => 
+                j.title.toLowerCase().includes(keyword) ||
+                j.skills.some(s => s.toLowerCase().includes(keyword)) ||
+                j.company.toLowerCase().includes(keyword)
+            );
+
+            document.getElementById('availableJobsCount').textContent = `${filtered.length} vị trí đang tuyển`;
+
+            container.innerHTML = filtered.map(j => `
+                <div class="job-item-card ${j.id === selectedJob.id ? 'selected' : ''}" onclick="selectJob('${j.id}')">
+                    <div class="d-flex align-items-center justify-content-between mb-2 flex-wrap gap-2">
+                        <div>
+                            <h6 class="fw-bold text-dark mb-0">${j.title}</h6>
+                            <small class="text-muted">${j.company} &bull; <i class="bi bi-geo-alt me-1"></i>${j.location}</small>
+                        </div>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 fw-bold">
+                            ${j.salary}
+                        </span>
+                    </div>
+                    <p class="text-secondary small mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        ${j.description}
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-1">
+                        <div class="d-flex flex-wrap gap-1">
+                            ${j.skills.slice(0, 4).map(s => `<span class="badge text-bg-light border text-secondary" style="font-size: 0.72rem;">${s}</span>`).join('')}
+                            ${j.skills.length > 4 ? `<span class="badge text-bg-light border text-secondary" style="font-size: 0.72rem;">+${j.skills.length - 4}</span>` : ''}
+                        </div>
+                        <span class="small text-primary fw-semibold">
+                            <i class="bi bi-clock-history me-1"></i>${j.expRequired}+ năm kinh nghiệm
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectJob(jobId) {
+            const job = jobsList.find(j => j.id === jobId);
+            if (!job) return;
+            selectedJob = job;
+            document.getElementById('selectedTargetJobTitle').textContent = job.title;
+            renderJobsList();
+            document.getElementById('aiMatchResultBox').classList.add('d-none');
+            triggerToast(`Đã chọn vị trí: "${job.title}" để kiểm tra CV.`);
+        }
+
+        const fileInput = document.getElementById('cvFileInput');
+        fileInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                handleFileSelect(this.files[0]);
+            }
+        });
+
+        const dropzone = document.getElementById('dropzoneBox');
+        ['dragenter', 'dragover'].forEach(name => {
+            dropzone.addEventListener(name, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+        });
+        ['dragleave', 'drop'].forEach(name => {
+            dropzone.addEventListener(name, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); });
+        });
+        dropzone.addEventListener('drop', (e) => {
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                handleFileSelect(e.dataTransfer.files[0]);
+            }
+        });
+
+        function handleFileSelect(file) {
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (ext !== 'pdf' && ext !== 'docx') {
+                alert('Vui lòng chọn tệp định dạng .pdf hoặc .docx');
+                return;
+            }
+            if (file.size > 10 * 1024 * 1024) {
+                alert('Dung lượng tệp vượt quá 10MB.');
+                return;
+            }
+
+            uploadedFile = file;
+            document.getElementById('dropzoneBox').classList.add('d-none');
+            document.getElementById('fileSelectedBox').classList.remove('d-none');
+            document.getElementById('selectedFileName').textContent = file.name;
+            document.getElementById('selectedFileSize').textContent = `${(file.size / (1024 * 1024)).toFixed(2)} MB &bull; Sẵn sàng phân tích`;
+            document.getElementById('btnRunAiMatch').disabled = false;
+        }
+
+        function resetUploadedCv() {
+            uploadedFile = null;
+            document.getElementById('dropzoneBox').classList.remove('d-none');
+            document.getElementById('fileSelectedBox').classList.add('d-none');
+            document.getElementById('btnRunAiMatch').disabled = true;
+            document.getElementById('aiMatchResultBox').classList.add('d-none');
+            fileInput.value = '';
+        }
+
+        function runCandidateCvAnalysis() {
+            if (!uploadedFile) return;
+
+            const btn = document.getElementById('btnRunAiMatch');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>Đang trích xuất văn bản &amp; Chạy Hybrid S-BERT...`;
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="bi bi-arrow-repeat me-1"></i> Phân tích lại với tệp khác`;
+
+                let score = 84;
+                let matched = ["C#", "ASP.NET Core", "SQL Server", "Docker", "Git"];
+                let missing = ["Redis", "Microservices"];
+
+                if (selectedJob.id === 'JOB-2026-OPS02') {
+                    score = 68;
+                    matched = ["Docker", "Linux", "Git"];
+                    missing = ["Kubernetes", "AWS", "Terraform", "CI/CD"];
+                } else if (selectedJob.id === 'JOB-2026-FS03') {
+                    score = 75;
+                    matched = ["Git", "RESTful API", "SQL"];
+                    missing = ["React", "TypeScript", "Node.js"];
+                }
+
+                document.getElementById('candidateMatchScoreVal').textContent = `${score}%`;
+                document.getElementById('candidateAssessmentTitle').textContent = score >= 80 ? 'Độ khớp rất cao (>= 80%)' : score >= 60 ? 'Mức độ phù hợp khá (60-79%)' : 'Độ khớp thấp (< 60%)';
+                document.getElementById('candidateAssessmentDesc').textContent = score >= 80 ? 
+                    'Hồ sơ của bạn đáp ứng xuất sắc các kỹ năng cốt lõi và số năm kinh nghiệm yêu cầu.' : 
+                    'Bạn có nền tảng tốt, nhưng nên trau dồi thêm các kỹ năng còn thiếu trước khi phỏng vấn.';
+
+                document.getElementById('candidateMatchedSkills').innerHTML = matched.map(s => `
+                    <span class="skill-badge skill-matched"><i class="bi bi-check-circle-fill"></i> ${s}</span>
+                `).join('');
+
+                document.getElementById('candidateMissingSkills').innerHTML = missing.map(s => `
+                    <span class="skill-badge skill-missing"><i class="bi bi-x-circle-fill"></i> ${s}</span>
+                `).join('');
+
+                renderCandidateGauge(score);
+                document.getElementById('aiMatchResultBox').classList.remove('d-none');
+                triggerToast('Đã hoàn tất phân tích độ phù hợp với AI!');
+            }, 1200);
+        }
+
+        function renderCandidateGauge(score) {
+            const ctx = document.getElementById('candidateGaugeChart').getContext('2d');
+            if (candidateGaugeInstance) candidateGaugeInstance.destroy();
+
+            let color = '#10b981';
+            if (score < 60) color = '#ef4444';
+            else if (score < 80) color = '#f59e0b';
+
+            candidateGaugeInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [score, 100 - score],
+                        backgroundColor: [color, '#e2e8f0'],
+                        borderWidth: 0,
+                        circumference: 360,
+                        rotation: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '80%',
+                    plugins: { tooltip: { enabled: false } },
+                    animation: { animateRotate: true, duration: 800 }
+                }
+            });
+        }
+
+        function submitCandidateApplication() {
+            if (!uploadedFile) return;
+
+            const score = parseInt(document.getElementById('candidateMatchScoreVal').textContent) || 80;
+            const newApp = {
+                id: `APP-00${applicationHistory.length + 1}`,
+                jobTitle: selectedJob.title,
+                company: selectedJob.company,
+                appliedAt: new Date().toISOString().split('T')[0],
+                fileName: uploadedFile.name,
+                matchScore: score,
+                status: "Pending"
+            };
+
+            applicationHistory.unshift(newApp);
+            renderApplicationHistory();
+
+            triggerToast(`Bạn đã nộp hồ sơ ứng tuyển vào vị trí "${selectedJob.title}" thành công!`);
+            
+            setTimeout(() => {
+                switchMainTab('history');
+            }, 800);
+        }
+
+        function renderApplicationHistory() {
+            const tbody = document.getElementById('applicationHistoryTableBody');
+            document.getElementById('historyCountBadge').textContent = applicationHistory.length;
+
+            tbody.innerHTML = applicationHistory.map(app => {
+                const badgeClass = app.status === 'Shortlisted' ? 'status-shortlisted' : app.status === 'Pending' ? 'status-pending' : 'status-rejected';
+                const statusLabel = app.status === 'Shortlisted' ? 'Được chọn phỏng vấn' : app.status === 'Pending' ? 'Đang xét duyệt' : 'Chưa phù hợp';
+
+                return `
+                    <tr>
+                        <td>
+                            <div class="fw-bold text-dark">${app.jobTitle}</div>
+                            <small class="text-muted">${app.company}</small>
+                        </td>
+                        <td>
+                            <span class="small text-muted">${app.appliedAt}</span>
+                        </td>
+                        <td>
+                            <span class="badge text-bg-light border text-dark">
+                                <i class="bi bi-file-earmark-pdf me-1 text-danger"></i>${app.fileName}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge ${app.matchScore >= 80 ? 'bg-success' : app.matchScore >= 60 ? 'bg-warning text-dark' : 'bg-danger'} px-2 py-1">
+                                ${app.matchScore}%
+                            </span>
+                        </td>
+                        <td>
+                            <span class="status-badge ${badgeClass}">
+                                <i class="bi ${app.status === 'Shortlisted' ? 'bi-check-circle-fill' : app.status === 'Pending' ? 'bi-hourglass-split' : 'bi-x-circle-fill'}"></i>
+                                ${statusLabel}
+                            </span>
+                        </td>
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="triggerToast('Hồ sơ của bạn đang được hội đồng tuyển dụng thẩm định.')">
+                                <i class="bi bi-eye"></i> Xem lại
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function switchMainTab(tab) {
+            if (tab === 'history') {
+                const triggerEl = document.querySelector('#tab-history');
+                bootstrap.Tab.getInstance(triggerEl) ? bootstrap.Tab.getInstance(triggerEl).show() : new bootstrap.Tab(triggerEl).show();
+            } else {
+                const triggerEl = document.querySelector('#tab-jobs');
+                bootstrap.Tab.getInstance(triggerEl) ? bootstrap.Tab.getInstance(triggerEl).show() : new bootstrap.Tab(triggerEl).show();
+            }
+        }
+
+        function triggerToast(message) {
+            const toastEl = document.getElementById('liveToast');
+            document.getElementById('toastMessage').textContent = message;
+            const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+            toast.show();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderJobsList();
+            renderApplicationHistory();
+            document.getElementById('candidateJobSearch').addEventListener('input', renderJobsList);
+        });
+    </script>
+</body>
+</html>

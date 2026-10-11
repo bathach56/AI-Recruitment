@@ -1,0 +1,24 @@
+﻿HỌ VÀ TÊN: HoÃ ng VÄƒn ThÃ¡i
+VỊ TRÍ ỨNG TUYỂN: Frontend Developer (Vue.js)
+SỐ NĂM KINH NGHIỆM: 1.5 năm
+
+TÓM TẮT HỒ SƠ:
+Frontend Developer 1.5 nÄƒm kinh nghiá»‡m vá»›i Vue.js vÃ  Bootstrap. Äam mÃª thiáº¿t káº¿ giao diá»‡n sáº¡ch Ä‘áº¹p, thÃ¢n thiá»‡n vá»›i ngÆ°á»i dÃ¹ng.
+
+KỸ NĂNG CHUYÊN MÔN:
+JavaScript, Vue.js, HTML5, CSS3, Bootstrap, Git
+
+KINH NGHIỆM LÀM VIỆC CHI TIẾT:
+- Công ty Cổ phần Công nghệ & Giải pháp Số (2021 - Hiện tại)
+  Vị trí: Frontend Developer (Vue.js)
+  Trách nhiệm: Tham gia phát triển các tính năng cốt lõi cho hệ thống ứng dụng công nghệ thông tin. 
+  Sử dụng các công nghệ: JavaScript, Vue.js, HTML5, CSS3, Bootstrap, Git.
+  Đảm bảo chất lượng mã nguồn, tối ưu hóa hiệu suất và viết unit test đầy đủ.
+
+HỌC VẤN:
+- Cử nhân Công nghệ Thông tin / Khoa học Máy tính
+  Tốt nghiệp loại Giỏi - Đại học Bách Khoa / ĐH Quốc Gia (GPA: 3.4/4.0)
+
+CHỨNG CHỈ & NGOẠI NGỮ:
+- Tiếng Anh: TOEIC 750 / IELTS 6.5
+- Chứng chỉ chuyên môn theo ngành

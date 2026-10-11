@@ -1,0 +1,9 @@
+Product UI/UX Designer
+Nghiên cứu hành vi người dùng, thiết kế trải nghiệm và giao diện trực quan cho hệ thống phân tích tuyển dụng và so khớp AI.
+Thiết kế Wireframe, User Flow, High-fidelity Prototype bằng Figma.
+Xây dựng và quản lý Hệ thống Thiết kế (Design System) chuẩn mực.
+Phối hợp chặt chẽ với Frontend Engineers để đảm bảo bản dựng thực tế trung thực với thiết kế.
+Thực hiện Usability Testing và phỏng vấn người dùng để cải tiến trải nghiệm sản phẩm.
+Required skills: Figma, UI/UX Design, Wireframing, User Research, Prototyping, Design System
+Nice-to-have skills: HTML5, CSS3, Bootstrap, Responsive Design, Data Visualization
+Required experience: 3.0 years

@@ -1,0 +1,13 @@
+Đặng Quốc Thắng
+Mẫu CV kiểm thử nội bộ - Senior Cloud DevOps Engineer
+Thông tin ứng viên
+Họ và tên: Đặng Quốc Thắng
+Vị trí định hướng: Senior Cloud DevOps Engineer
+Số năm kinh nghiệm: 5.0 năm
+Tóm tắt hồ sơ
+5 năm kinh nghiệm thiết kế hạ tầng điện toán đám mây trên AWS, điều phối hàng trăm microservices với Kubernetes (EKS) và tự động hóa toàn diện quy trình CI/CD.
+Kỹ năng
+Docker, Kubernetes, AWS, CI/CD, Linux, Terraform, Ansible, Prometheus, Git
+Kinh nghiệm
+Kinh nghiệm liên quan: 5.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

@@ -1,0 +1,9 @@
+Cloud DevOps & Site Reliability Engineer
+Quản trị và vận hành toàn bộ hạ tầng đám mây trên AWS, thiết lập hệ thống tự động hóa CI/CD và đảm bảo tính sẵn sàng 99.99% cho dịch vụ.
+Quản lý cụm Kubernetes (EKS) và hạ tầng đám mây dạng mã (Infrastructure as Code - Terraform).
+Thiết kế và duy trì các đường ống CI/CD với GitLab CI và GitHub Actions.
+Giám sát hiệu năng hệ thống sử dụng Prometheus, Grafana và ELK Stack.
+Xây dựng phương án sao lưu, khôi phục thảm họa (Disaster Recovery) và bảo mật hạ tầng.
+Required skills: Docker, Kubernetes, AWS, CI/CD, Linux, Terraform
+Nice-to-have skills: Python, Bash, Prometheus, Elasticsearch, Ansible
+Required experience: 4.0 years

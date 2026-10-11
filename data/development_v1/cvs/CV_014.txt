@@ -1,0 +1,13 @@
+Phan Gia Huy
+Mẫu CV kiểm thử nội bộ - Flutter Mobile Developer
+Thông tin ứng viên
+Họ và tên: Phan Gia Huy
+Vị trí định hướng: Flutter Mobile Developer
+Số năm kinh nghiệm: 3.0 năm
+Tóm tắt hồ sơ
+Lập trình viên di động Flutter với 3 năm kinh nghiệm phát triển ứng dụng đa nền tảng iOS & Android. Đã phát hành 4 ứng dụng thương mại lên App Store và CH Play.
+Kỹ năng
+Dart, Flutter, BLoC, RESTful API, Firebase, Git, State Management
+Kinh nghiệm
+Kinh nghiệm liên quan: 3.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

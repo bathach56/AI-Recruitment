@@ -1,0 +1,1825 @@
+{
+  "total_pairs": 200,
+  "status_counts": {
+    "needs_review": 200
+  },
+  "reason_counts": {
+    "pending_labels": 200
+  },
+  "queue": [
+    {
+      "pair_id": "CV_001__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_001__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_002__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_003__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_004__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_005__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_006__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_007__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_008__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_009__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_010__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_011__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_012__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_013__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_014__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_015__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_016__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_017__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_018__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_019__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_001",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_002",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_003",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_004",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_005",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_006",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_007",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_008",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_009",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    },
+    {
+      "pair_id": "CV_020__JOB_010",
+      "label_a": "",
+      "label_b": "",
+      "status": "needs_review",
+      "reasons": [
+        "pending_labels"
+      ]
+    }
+  ],
+  "research_ready": false,
+  "remaining_gates": [
+    "Human adjudication and rubric/version sign-off",
+    "Research dataset provenance and leakage-safe held-out split",
+    "Validation-only selection of thresholds and weights"
+  ],
+  "warning": "Agreement candidates are not final ground truth; this is not a model evaluation.",
+  "input_sha256": {
+    "pairs.csv": "b54e1eb718fe6251c01189342512632abe4a69ae1ec5559972261ff0d7030f67",
+    "reviewer_a.csv": "1311b389350dcc8d2f1e8fa1964bb6998ac26fa3146f4622a0776e57b736e8f1",
+    "reviewer_b.csv": "20f86e83395b61261dae31c6897c6c3144d117e03079f53df5faf3fa6f441f27",
+    "manifest.json": "226ed81e2b8b592e4583219567d75fc73414ca67d6210a73d0b28685f6ade689"
+  },
+  "dataset": "development_v1; synthetic development only"
+}

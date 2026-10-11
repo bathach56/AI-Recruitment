@@ -1,0 +1,588 @@
+{
+  "generated_at_utc": "2026-10-10T09:48:01.103898+00:00",
+  "purpose": "Day 1 inventory, not model evaluation",
+  "environment": {
+    "python": "3.14.7",
+    "executable": "D:\\Rin sp\\Đồ Án và Báo cáo\\Đồ Án chuyên ngành\\Project\\webAI\\backend test\\.venv\\Scripts\\python.exe",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "virtual_environment": true,
+    "packages": {
+      "scikit-learn": null,
+      "sentence-transformers": null,
+      "torch": null,
+      "PyMuPDF": null,
+      "python-docx": null,
+      "pandas": null,
+      "numpy": null,
+      "matplotlib": null,
+      "fastapi": null,
+      "uvicorn": null
+    },
+    "model_inference_tested": false
+  },
+  "samples": {
+    "cv_count": 20,
+    "jd_count": 10,
+    "cv_files": [
+      {
+        "id": "CV_001",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_NguyenVanAn_Senior_DotNet.docx",
+            "exists": true,
+            "sha256": "78ab2daba34b669b0cd4cb1412e62daf5be2ab5300028fb9894e69bdaddca8ea",
+            "characters": 657,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_NguyenVanAn_Senior_DotNet.txt",
+            "exists": true,
+            "sha256": "c778d54910619b2a180ca6045b2aedb2f80e3c8bceb8e1384251b2d5e865ec23",
+            "characters": 1190,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_002",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_TranThiBich_Mid_DotNet.docx",
+            "exists": true,
+            "sha256": "ae2a49c30585e7088bcc971a1f0abfb433a3e28d6b2878e53f415eeb0dca5f49",
+            "characters": 566,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_TranThiBich_Mid_DotNet.txt",
+            "exists": true,
+            "sha256": "ab80fe76d99b5e455712e6fd9b697801a7eaf29ba0efd865293c12d4736311f8",
+            "characters": 1047,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_003",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_LeHoangLong_Fresher_DotNet.docx",
+            "exists": true,
+            "sha256": "be2f458d6e67504a23a58db68ffb4f5e5b478ae82b108531e9e2d2257c5eea81",
+            "characters": 537,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_LeHoangLong_Fresher_DotNet.txt",
+            "exists": true,
+            "sha256": "c83893935df7c51fba1e07a7f171999ce43006ce3862b8ce239cd2ea47defcda",
+            "characters": 998,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_004",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_PhamQuocBao_Senior_Java.docx",
+            "exists": true,
+            "sha256": "dc2934eb3335ab3b4499da42b08deb86552ec9d9ff3bf8b5d5fb76c1503a59d5",
+            "characters": 570,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_PhamQuocBao_Senior_Java.txt",
+            "exists": true,
+            "sha256": "07331fe658585d871ce2b1e5c45a02ecf2a0e051e18531a6625f6dbc62bd4784",
+            "characters": 1071,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_005",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_DoanMinhTri_Mid_Java.docx",
+            "exists": true,
+            "sha256": "1174f26c533fb9362a30d4040724e6c51d18ecba9e45231d8dcc56d19479c449",
+            "characters": 508,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_DoanMinhTri_Mid_Java.txt",
+            "exists": true,
+            "sha256": "f5b64712181d1840634fa7da583c57a6c999bf2adea510c8ee6fc446ca66640c",
+            "characters": 967,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_006",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_VoThanhTung_Junior_Java.docx",
+            "exists": true,
+            "sha256": "bbb5533b3444d28c17fc9baed668ec896cec04117e563513c52452af8b01ded3",
+            "characters": 528,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_VoThanhTung_Junior_Java.txt",
+            "exists": true,
+            "sha256": "605f803e46a6fb492f1e008acb82cc7b8c01bbcfc41cea01955b90e731f8d000",
+            "characters": 1002,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_007",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_NguyenThanhHa_Mid_React.docx",
+            "exists": true,
+            "sha256": "914f10beb055c9bcddd9f73f896ef14f730b953442f40657883bcaa34367bf14",
+            "characters": 572,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_NguyenThanhHa_Mid_React.txt",
+            "exists": true,
+            "sha256": "ed8ca16449c3b5a785bfdf01bd60a4eed8c28f8c9d1731e5314260d01b047002",
+            "characters": 1051,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_008",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_HoangVanThai_Junior_Vue.docx",
+            "exists": true,
+            "sha256": "34a3223aeb9db024924092366a8610af389bdb0af5cc341dce18c1c6febc50df",
+            "characters": 507,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_HoangVanThai_Junior_Vue.txt",
+            "exists": true,
+            "sha256": "358e81a6bab34ca6fbf0829d26e01197a70b256dbd03064cdf98ba59745bcd5a",
+            "characters": 952,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_009",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_BuiDucHanh_Fullstack_NodeVue.docx",
+            "exists": true,
+            "sha256": "2a5ca2ef91f4b6a5782705e3245e2fc9fbb3d4cf32fa9c50eaad2de90b37d264",
+            "characters": 554,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_BuiDucHanh_Fullstack_NodeVue.txt",
+            "exists": true,
+            "sha256": "9b885c938b56c1a8f1fc2a1a59013a913dfd7286b4bc0b5ac094e7b8ae10de25",
+            "characters": 1042,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_010",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_VuQuangHuy_Senior_AI_ML.docx",
+            "exists": true,
+            "sha256": "5bdfc9d75a7c9b5c5af5245e02029655196e33777cdc8253855d118d90ab685e",
+            "characters": 643,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_VuQuangHuy_Senior_AI_ML.txt",
+            "exists": true,
+            "sha256": "3b48efe7584d340c02939820e1e0f1c54b2fe4fc12f8e6a8eb9d8f0931b9158d",
+            "characters": 1179,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_011",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_NguyenThuTrang_Junior_DataScience.docx",
+            "exists": true,
+            "sha256": "cb7889f4771bf12bd9c603e5660f08122e270df7b7c81c9967547c2320378c0f",
+            "characters": 561,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_NguyenThuTrang_Junior_DataScience.txt",
+            "exists": true,
+            "sha256": "d5fc9c64a4bee6c56192ef35db81fe7c0952eb6d04fb9611e0f019cbd3cfb19e",
+            "characters": 1047,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_012",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_DangQuocThang_Senior_DevOps.docx",
+            "exists": true,
+            "sha256": "dc1d202bd0d1ceb794d1839b7d21c84463a1e7f591397e904eace5bffcc445e1",
+            "characters": 571,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_DangQuocThang_Senior_DevOps.txt",
+            "exists": true,
+            "sha256": "86e62703fa6830ab8ea0102d9c6e365bfa421943e08f6dc1ea5fffc5861d53c3",
+            "characters": 1057,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_013",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_MaiVanHai_Linux_SysAdmin.docx",
+            "exists": true,
+            "sha256": "22d6eb3a61183a5f046fb9fe181d744e89940267888c6fabe6df030dd840d113",
+            "characters": 513,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_MaiVanHai_Linux_SysAdmin.txt",
+            "exists": true,
+            "sha256": "729b05dc2098f5b9f8967f91b80acfe8b966e3e82cbf01a5958da8d94046f3a3",
+            "characters": 981,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_014",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_PhanGiaHuy_Flutter_Mobile.docx",
+            "exists": true,
+            "sha256": "5e688191136e1af30c4588f66829cdbc5b393592572c2a63e8607fb55e0421e4",
+            "characters": 549,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_PhanGiaHuy_Flutter_Mobile.txt",
+            "exists": true,
+            "sha256": "7bfa4e171a67f32295d32279eb1c3eba7fe0760d3175e0538f58b7c5c6877c9f",
+            "characters": 1021,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_015",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_TrinhQuangMinh_Android_Native.docx",
+            "exists": true,
+            "sha256": "987453f1dec536e66756728e43297d54f0b55e2c173b65885e5a45d59b92f86c",
+            "characters": 524,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_TrinhQuangMinh_Android_Native.txt",
+            "exists": true,
+            "sha256": "1bbd49c655dffba7e86098e6ed9d9c8454e5731fc9ef92769db4e6f52bbe8d96",
+            "characters": 970,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_016",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_CaoThiMai_Automation_QA.docx",
+            "exists": true,
+            "sha256": "4640e96af08c7950f8ae251df9a2b1799331f9966b8eb2fe751b4fb3c40a112e",
+            "characters": 562,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_CaoThiMai_Automation_QA.txt",
+            "exists": true,
+            "sha256": "93a002a3b57d67fd28d6be68f3aa1131a45151e9a0914b811343e7ab7fe0b606",
+            "characters": 1050,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_017",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_DinhNgocAnh_Manual_QC.docx",
+            "exists": true,
+            "sha256": "5185f926d9d41bb36634ccabfb35f508f9bd42e7431163cf513d809d64ca67f1",
+            "characters": 546,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_DinhNgocAnh_Manual_QC.txt",
+            "exists": true,
+            "sha256": "5a2a4becad989c7ba55b9c5ebae4b159d6ad95691336db16b77e877e498a265c",
+            "characters": 1040,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_018",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_DuongTuanKiet_Senior_DataEngineer.docx",
+            "exists": true,
+            "sha256": "91d2a575f4212ac615cd7e533a3ea76c092c4421666280412cbc957438c39cb7",
+            "characters": 542,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_DuongTuanKiet_Senior_DataEngineer.txt",
+            "exists": true,
+            "sha256": "fdb9e67b99b9c22cae22512a93df4786d98cda82c7675a83acfeae3dcefc08c6",
+            "characters": 1030,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_019",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_NguyenHoangYen_UI_UX_Designer.docx",
+            "exists": true,
+            "sha256": "904a9b9162be115d7e9fdfbb01a69c07f6d10aba4b3df27fb7954f02a660593a",
+            "characters": 577,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_NguyenHoangYen_UI_UX_Designer.txt",
+            "exists": true,
+            "sha256": "60680f42bca62ff776f6cbcbe0b74a79bf373ad20f3da5c498d3cb7bdf573120",
+            "characters": 1072,
+            "possible_encoding_damage": true
+          }
+        ]
+      },
+      {
+        "id": "CV_020",
+        "files": [
+          {
+            "path": "data/sample_cvs/CV_NguyenThanhThao_HR_Manager.docx",
+            "exists": true,
+            "sha256": "e57ef3ee567483d6aae7d4c3b4878582426da9d6c12a3cb5cf700bb15ab01da1",
+            "characters": 589,
+            "possible_encoding_damage": false
+          },
+          {
+            "path": "data/sample_cvs/CV_NguyenThanhThao_HR_Manager.txt",
+            "exists": true,
+            "sha256": "89cafd853f230e3eebbb42e44f3489a879f7d7dce79c2b250e4d93325f63dc6a",
+            "characters": 1085,
+            "possible_encoding_damage": true
+          }
+        ]
+      }
+    ],
+    "duplicate_cv_ids": [],
+    "duplicate_job_ids": []
+  },
+  "taxonomy_categories": {
+    "Programming_Languages": 12,
+    "Frameworks_and_Libraries": 14,
+    "Databases_and_Storage": 7,
+    "DevOps_and_Cloud": 7,
+    "AI_and_Data_Science": 9,
+    "Architecture_and_Design": 6,
+    "Soft_Skills": 5
+  },
+  "csv_inventory": [
+    {
+      "path": "data/ground_truth/ground_truth_matching.csv",
+      "rows": 100,
+      "columns": [
+        "pair_id",
+        "cv_id",
+        "cv_category",
+        "job_id",
+        "job_title",
+        "ground_truth_label",
+        "pair_type",
+        "matched_core_skills",
+        "missing_core_skills",
+        "cv_exp_years",
+        "jd_exp_years",
+        "notes"
+      ],
+      "sha256": "d17040f71c4b6958ed034a7054a953a38cea4a808919ca92518f14b40366ad7e",
+      "label_counts": {
+        "1": 50,
+        "0": 50
+      },
+      "cv_ids_not_in_sample_manifest": [
+        "CV_ADV_01",
+        "CV_ADV_02",
+        "CV_ADV_03",
+        "CV_ADV_04",
+        "CV_ADV_05",
+        "CV_ARTS_01",
+        "CV_ARTS_02",
+        "CV_ARTS_03",
+        "CV_CIVIL_01",
+        "CV_CIVIL_02",
+        "CV_CIVIL_03",
+        "CV_CIVIL_04",
+        "CV_DB_01",
+        "CV_DB_02",
+        "CV_DB_03",
+        "CV_DB_04",
+        "CV_DEVOPS_01",
+        "CV_DEVOPS_02",
+        "CV_DEVOPS_03",
+        "CV_DEVOPS_04",
+        "CV_DEVOPS_05",
+        "CV_DEVOPS_06",
+        "CV_DEVOPS_07",
+        "CV_DOTNET_01",
+        "CV_DOTNET_02",
+        "CV_DOTNET_03",
+        "CV_DOTNET_04",
+        "CV_DOTNET_05",
+        "CV_DOTNET_06",
+        "CV_DOTNET_07",
+        "CV_DOTNET_08",
+        "CV_DS_01",
+        "CV_DS_02",
+        "CV_DS_03",
+        "CV_DS_04",
+        "CV_DS_05",
+        "CV_DS_06",
+        "CV_DS_07",
+        "CV_HR_01",
+        "CV_HR_02",
+        "CV_HR_03",
+        "CV_HR_04",
+        "CV_HR_05",
+        "CV_JAVA_01",
+        "CV_JAVA_02",
+        "CV_JAVA_03",
+        "CV_JAVA_04",
+        "CV_JAVA_05",
+        "CV_JAVA_06",
+        "CV_JAVA_07",
+        "CV_JAVA_08",
+        "CV_JAVA_09",
+        "CV_MECH_01",
+        "CV_MECH_02",
+        "CV_MECH_03",
+        "CV_MECH_04",
+        "CV_PY_01",
+        "CV_PY_02",
+        "CV_PY_03",
+        "CV_PY_04",
+        "CV_PY_05",
+        "CV_PY_06",
+        "CV_PY_07",
+        "CV_SALES_01",
+        "CV_SALES_02",
+        "CV_SALES_03",
+        "CV_SALES_04",
+        "CV_TEST_01",
+        "CV_TEST_02",
+        "CV_TEST_03",
+        "CV_TEST_04",
+        "CV_TEST_05",
+        "CV_WEB_01",
+        "CV_WEB_02",
+        "CV_WEB_03"
+      ],
+      "job_ids_not_in_sample_jds": [
+        "JOB_011",
+        "JOB_014"
+      ]
+    },
+    {
+      "path": "data/ground_truth/ground_truth_matching_template.csv",
+      "rows": 10,
+      "columns": [
+        "pair_id",
+        "cv_id",
+        "cv_category",
+        "job_id",
+        "job_title",
+        "ground_truth_label",
+        "matched_core_skills",
+        "missing_core_skills",
+        "experience_level",
+        "relevance_score_expert",
+        "pair_type",
+        "notes"
+      ],
+      "sha256": "d64bb839b770586f1dd57b1648d0f865f95eafb9ba97d090f04e459143bef6ea",
+      "label_counts": {
+        "1": 5,
+        "0": 5
+      },
+      "cv_ids_not_in_sample_manifest": [],
+      "job_ids_not_in_sample_jds": [
+        "JOB_101",
+        "JOB_102",
+        "JOB_103",
+        "JOB_104",
+        "JOB_105"
+      ]
+    },
+    {
+      "path": "data/processed/job_title_des.csv",
+      "rows": 2277,
+      "columns": [
+        "",
+        "Job Title",
+        "Job Description"
+      ],
+      "sha256": "fb7cf7fbd380542ddb56287aaee64f8c8a7949781eae9361aaa2b740a807f05f"
+    },
+    {
+      "path": "data/processed/UpdatedResumeDataSet.csv",
+      "rows": 962,
+      "columns": [
+        "Category",
+        "Resume"
+      ],
+      "sha256": "c076ae68623eab41403dd6a863aef089b38e4c7e1294d17f9593b67ad2f181fa"
+    },
+    {
+      "path": "data/raw_resumes/Resume.csv",
+      "rows": 2484,
+      "columns": [
+        "ID",
+        "Resume_str",
+        "Resume_html",
+        "Category"
+      ],
+      "sha256": "816a7cd985a9a41e3ce8d1e83cb7e1beb1e854a89c1cf1fd0d75494faaa0559d"
+    }
+  ],
+  "source_policy": "See data/README.md; external licenses and labels remain unverified."
+}

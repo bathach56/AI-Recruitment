@@ -1,0 +1,9 @@
+AI & Machine Learning Engineer
+Nghiên cứu và triển khai các mô hình Xử lý ngôn ngữ tự nhiên (NLP), Large Language Models và các thuật toán học máy giải quyết bài toán tuyển dụng tự động.
+Huấn luyện và tinh chỉnh (Fine-tuning) các mô hình Transformer, Sentence-BERT và LLMs phục vụ Semantic Search.
+Xây dựng pipeline xử lý dữ liệu lớn (ETL) với Pandas, NumPy, Scikit-Learn.
+Đóng gói mô hình thành dịch vụ vi mô (Microservice) phục vụ suy luận thời gian thực với FastAPI và PyTorch.
+Thiết lập hệ thống giám sát chất lượng mô hình (MLOps, Model Drift).
+Required skills: Python, Machine Learning, Deep Learning, Natural Language Processing, PyTorch, Scikit-Learn
+Nice-to-have skills: Sentence-BERT, FastAPI, Docker, Pandas & NumPy, MLOps
+Required experience: 4.0 years

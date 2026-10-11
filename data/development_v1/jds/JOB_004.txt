@@ -1,0 +1,8 @@
+Fullstack Node.js & Vue.js Developer
+Chịu trách nhiệm toàn trình từ giao diện người dùng đến dịch vụ backend cho nền tảng thương mại điện tử đa kênh.
+Xây dựng API dịch vụ bằng Node.js (NestJS / Express.js) và cơ sở dữ liệu MongoDB/MySQL.
+Phát triển giao diện web admin và khách hàng với Vue.js 3, Vite và Pinia.
+Đảm bảo khả năng mở rộng hệ thống và thiết lập quy trình tự động kiểm thử.
+Required skills: JavaScript, TypeScript, Node.js, Vue.js, MySQL, MongoDB
+Nice-to-have skills: NestJS, Docker, Redis, RESTful API, AWS
+Required experience: 3.0 years

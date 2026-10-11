@@ -1,0 +1,13 @@
+Võ Thanh Tùng
+Mẫu CV kiểm thử nội bộ - Junior Java Developer
+Thông tin ứng viên
+Họ và tên: Võ Thanh Tùng
+Vị trí định hướng: Junior Java Developer
+Số năm kinh nghiệm: 1.0 năm
+Tóm tắt hồ sơ
+1 năm làm việc với Java và Spring Boot. Nắm vững cấu trúc dữ liệu giải thuật, lập trình hướng đối tượng OOP và có khả năng đọc hiểu tài liệu tiếng Anh tốt.
+Kỹ năng
+Java, Core Java, Spring Boot, MySQL, HTML5, CSS3, Git
+Kinh nghiệm
+Kinh nghiệm liên quan: 1.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

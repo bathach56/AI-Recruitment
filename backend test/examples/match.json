@@ -1,0 +1,13 @@
+{
+  "cv_text": "Python\nTotal experience: 5 years",
+  "job_description": "Python developer",
+  "required_skills": ["Python"],
+  "nice_to_have_skills": [],
+  "job_experience_years_required": 3,
+  "model_type": "Hybrid",
+  "weights": {
+    "semantic_weight": 0.5,
+    "skill_weight": 0.3,
+    "experience_weight": 0.2
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "python": "3.14.7",
+  "executable": "D:\\Rin sp\\Đồ Án và Báo cáo\\Đồ Án chuyên ngành\\Project\\webAI\\backend test\\.venv\\Scripts\\python.exe",
+  "packages": {
+    "PyMuPDF": "1.28.2",
+    "python-docx": "1.2.0",
+    "scikit-learn": "1.9.1",
+    "sentence-transformers": "6.1.0",
+    "torch": "2.14.1",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2",
+    "ipykernel": "7.4.0",
+    "fastapi": "0.143.0",
+    "uvicorn": "0.54.0",
+    "python-multipart": "0.0.32"
+  },
+  "cuda_available": false,
+  "smoke_checks": [
+    "imports",
+    "pandas calculation",
+    "matplotlib PNG in memory",
+    "FastAPI in-process health"
+  ],
+  "not_checked": [
+    "real network API integration",
+    "notebook UI",
+    "fine-tuning"
+  ]
+}

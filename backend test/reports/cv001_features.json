@@ -1,0 +1,432 @@
+{
+  "document": {
+    "source_name": "CV_NguyenVanAn_Senior_DotNet.docx",
+    "sha256": "78ab2daba34b669b0cd4cb1412e62daf5be2ab5300028fb9894e69bdaddca8ea",
+    "size_bytes": 37251,
+    "parser": {
+      "name": "python-docx",
+      "version": "1.2.0"
+    },
+    "raw_text": "Nguyễn Văn An\nMẫu CV kiểm thử nội bộ - Senior Backend .NET Engineer\nThông tin ứng viên\nHọ và tên: Nguyễn Văn An\nVị trí định hướng: Senior Backend .NET Engineer\nSố năm kinh nghiệm: 5.5 năm\nTóm tắt hồ sơ\nSenior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn.\nKỹ năng\nC#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD\nKinh nghiệm\nKinh nghiệm liên quan: 5.5 năm\nDữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.",
+    "segments": [
+      {
+        "location": "body/block:1",
+        "text": "Nguyễn Văn An"
+      },
+      {
+        "location": "body/block:2",
+        "text": "Mẫu CV kiểm thử nội bộ - Senior Backend .NET Engineer"
+      },
+      {
+        "location": "body/block:3",
+        "text": "Thông tin ứng viên"
+      },
+      {
+        "location": "body/block:4",
+        "text": "Họ và tên: Nguyễn Văn An"
+      },
+      {
+        "location": "body/block:5",
+        "text": "Vị trí định hướng: Senior Backend .NET Engineer"
+      },
+      {
+        "location": "body/block:6",
+        "text": "Số năm kinh nghiệm: 5.5 năm"
+      },
+      {
+        "location": "body/block:7",
+        "text": "Tóm tắt hồ sơ"
+      },
+      {
+        "location": "body/block:8",
+        "text": "Senior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn."
+      },
+      {
+        "location": "body/block:9",
+        "text": "Kỹ năng"
+      },
+      {
+        "location": "body/block:10",
+        "text": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD"
+      },
+      {
+        "location": "body/block:11",
+        "text": "Kinh nghiệm"
+      },
+      {
+        "location": "body/block:12",
+        "text": "Kinh nghiệm liên quan: 5.5 năm"
+      },
+      {
+        "location": "body/block:13",
+        "text": "Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching."
+      }
+    ],
+    "warnings": [
+      "Chỉ đọc thân tài liệu và bảng; chưa đọc header/footer, textbox, ảnh hoặc tracked changes."
+    ],
+    "processing_time_ms": 57.374
+  },
+  "preprocessing": {
+    "version": "text-features-v1",
+    "semantic_text": "Nguyễn Văn An\nMẫu CV kiểm thử nội bộ - Senior Backend .NET Engineer\nThông tin ứng viên\nHọ và tên: Nguyễn Văn An\nVị trí định hướng: Senior Backend .NET Engineer\nSố năm kinh nghiệm: 5.5 năm\nTóm tắt hồ sơ\nSenior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn.\nKỹ năng\nC#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD\nKinh nghiệm\nKinh nghiệm liên quan: 5.5 năm\nDữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.",
+    "tfidf_tokens": [
+      "nguyễn",
+      "văn",
+      "an",
+      "mẫu",
+      "cv",
+      "kiểm",
+      "thử",
+      "nội",
+      "bộ",
+      "senior",
+      "backend",
+      ".net",
+      "engineer",
+      "thông",
+      "tin",
+      "ứng",
+      "viên",
+      "họ",
+      "và",
+      "tên",
+      "nguyễn",
+      "văn",
+      "an",
+      "vị",
+      "trí",
+      "định",
+      "hướng",
+      "senior",
+      "backend",
+      ".net",
+      "engineer",
+      "số",
+      "năm",
+      "kinh",
+      "nghiệm",
+      "5.5",
+      "năm",
+      "tóm",
+      "tắt",
+      "hồ",
+      "sơ",
+      "senior",
+      ".net",
+      "developer",
+      "với",
+      "hơn",
+      "5.5",
+      "năm",
+      "kinh",
+      "nghiệm",
+      "chuyên",
+      "sâu",
+      "về",
+      "kiến",
+      "trúc",
+      "microservices",
+      "xây",
+      "dựng",
+      "restful",
+      "apis",
+      "hiệu",
+      "năng",
+      "cao",
+      "bằng",
+      "asp.net",
+      "core",
+      "và",
+      "tối",
+      "ưu",
+      "hóa",
+      "hệ",
+      "quản",
+      "trị",
+      "csdl",
+      "sql",
+      "server",
+      "quy",
+      "mô",
+      "lớn",
+      "kỹ",
+      "năng",
+      "c#",
+      "asp.net",
+      "core",
+      "entity",
+      "framework",
+      "core",
+      "sql",
+      "server",
+      "docker",
+      "kubernetes",
+      "redis",
+      "microservices",
+      "restful",
+      "api",
+      "unit",
+      "testing",
+      "ci/cd",
+      "kinh",
+      "nghiệm",
+      "kinh",
+      "nghiệm",
+      "liên",
+      "quan",
+      "5.5",
+      "năm",
+      "dữ",
+      "liệu",
+      "giả",
+      "lập",
+      "đã",
+      "ẩn",
+      "danh",
+      "chỉ",
+      "dùng",
+      "để",
+      "kiểm",
+      "thử",
+      "parser",
+      "và",
+      "thuật",
+      "toán",
+      "matching"
+    ],
+    "tfidf_text": "nguyễn văn an mẫu cv kiểm thử nội bộ senior backend .net engineer thông tin ứng viên họ và tên nguyễn văn an vị trí định hướng senior backend .net engineer số năm kinh nghiệm 5.5 năm tóm tắt hồ sơ senior .net developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc microservices xây dựng restful apis hiệu năng cao bằng asp.net core và tối ưu hóa hệ quản trị csdl sql server quy mô lớn kỹ năng c# asp.net core entity framework core sql server docker kubernetes redis microservices restful api unit testing ci/cd kinh nghiệm kinh nghiệm liên quan 5.5 năm dữ liệu giả lập đã ẩn danh chỉ dùng để kiểm thử parser và thuật toán matching",
+    "operations": [
+      "Unicode NFC",
+      "remove URL/email",
+      "normalize whitespace",
+      "TF-IDF only: lowercase and technology-aware tokens"
+    ],
+    "stopwords_removed": false
+  },
+  "skills": {
+    "version": "text-features-v1",
+    "taxonomy_version": "1.0",
+    "taxonomy_sha256": "564b4a09356fef95dacb8acb510e842d7c68cdbc61499cb05c08268d691c3944",
+    "mentioned_skills": [
+      "aspnet_core",
+      "cicd",
+      "csharp",
+      "docker",
+      "ef_core",
+      "kubernetes",
+      "microservices",
+      "redis",
+      "rest_api",
+      "sql_server",
+      "unit_testing"
+    ],
+    "review_skills": [
+      "rest_api"
+    ],
+    "evidence": [
+      {
+        "normalized": "microservices",
+        "name": "Microservices",
+        "category": "Architecture_and_Design",
+        "matched_text": "Microservices",
+        "segment_index": 7,
+        "location": "body/block:8",
+        "start": 74,
+        "end": 87,
+        "context": "Senior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "rest_api",
+        "name": "RESTful API",
+        "category": "Architecture_and_Design",
+        "matched_text": "RESTful",
+        "segment_index": 7,
+        "location": "body/block:8",
+        "start": 98,
+        "end": 105,
+        "context": "Senior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn",
+        "status": "needs_review",
+        "reasons": [
+          "taxonomy_alias_requires_review"
+        ]
+      },
+      {
+        "normalized": "aspnet_core",
+        "name": "ASP.NET Core",
+        "category": "Frameworks_and_Libraries",
+        "matched_text": "ASP.NET Core",
+        "segment_index": 7,
+        "location": "body/block:8",
+        "start": 130,
+        "end": 142,
+        "context": "Senior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "sql_server",
+        "name": "SQL Server",
+        "category": "Databases_and_Storage",
+        "matched_text": "SQL Server",
+        "segment_index": 7,
+        "location": "body/block:8",
+        "start": 174,
+        "end": 184,
+        "context": "Senior .NET Developer với hơn 5.5 năm kinh nghiệm chuyên sâu về kiến trúc Microservices, xây dựng RESTful APIs hiệu năng cao bằng ASP.NET Core và tối ưu hóa hệ quản trị CSDL SQL Server quy mô lớn",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "csharp",
+        "name": "C#",
+        "category": "Programming_Languages",
+        "matched_text": "C#",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 0,
+        "end": 2,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "aspnet_core",
+        "name": "ASP.NET Core",
+        "category": "Frameworks_and_Libraries",
+        "matched_text": "ASP.NET Core",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 4,
+        "end": 16,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "ef_core",
+        "name": "Entity Framework Core",
+        "category": "Frameworks_and_Libraries",
+        "matched_text": "Entity Framework Core",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 18,
+        "end": 39,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "sql_server",
+        "name": "SQL Server",
+        "category": "Databases_and_Storage",
+        "matched_text": "SQL Server",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 41,
+        "end": 51,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "docker",
+        "name": "Docker",
+        "category": "DevOps_and_Cloud",
+        "matched_text": "Docker",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 53,
+        "end": 59,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "kubernetes",
+        "name": "Kubernetes",
+        "category": "DevOps_and_Cloud",
+        "matched_text": "Kubernetes",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 61,
+        "end": 71,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "redis",
+        "name": "Redis",
+        "category": "Databases_and_Storage",
+        "matched_text": "Redis",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 73,
+        "end": 78,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "microservices",
+        "name": "Microservices",
+        "category": "Architecture_and_Design",
+        "matched_text": "Microservices",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 80,
+        "end": 93,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "rest_api",
+        "name": "RESTful API",
+        "category": "Architecture_and_Design",
+        "matched_text": "RESTful API",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 95,
+        "end": 106,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "unit_testing",
+        "name": "Unit Testing",
+        "category": "Architecture_and_Design",
+        "matched_text": "Unit Testing",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 108,
+        "end": 120,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      },
+      {
+        "normalized": "cicd",
+        "name": "CI/CD",
+        "category": "DevOps_and_Cloud",
+        "matched_text": "CI/CD",
+        "segment_index": 9,
+        "location": "body/block:10",
+        "start": 122,
+        "end": 127,
+        "context": "C#, ASP.NET Core, Entity Framework Core, SQL Server, Docker, Kubernetes, Redis, Microservices, RESTful API, Unit Testing, CI/CD",
+        "status": "mentioned",
+        "reasons": []
+      }
+    ],
+    "warnings": [
+      "A mention is not verified proficiency. Rule-based context checks are incomplete.",
+      "Offsets refer to the original segment text, not cleaned text.",
+      "Aliases follow the existing taxonomy; non-canonical aliases require review."
+    ]
+  }
+}

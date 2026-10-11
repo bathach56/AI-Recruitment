@@ -1,0 +1,9 @@
+Flutter Mobile Application Developer
+Phát triển ứng dụng di động đa nền tảng (iOS & Android) phục vụ hàng triệu người tìm việc và doanh nghiệp tuyển dụng.
+Xây dựng ứng dụng di động chất lượng cao bằng Flutter framework và ngôn ngữ Dart.
+Áp dụng kiến trúc BLoC hoặc Riverpod để quản lý luồng dữ liệu (State Management).
+Tích hợp RESTful API, Firebase Push Notifications, Socket và cổng thanh toán di động.
+Tối ưu hiệu năng render 60fps và phát hành ứng dụng lên Google Play Store và Apple App Store.
+Required skills: Dart, Flutter, RESTful API, Git, State Management
+Nice-to-have skills: Firebase, CI/CD, Kotlin, Swift, Unit Testing
+Required experience: 2.5 years

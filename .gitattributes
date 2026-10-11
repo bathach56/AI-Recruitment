@@ -1,0 +1,2 @@
+# Preserve exact source bytes: dataset manifests verify SHA256 across clones.
+* -text

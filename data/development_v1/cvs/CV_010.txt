@@ -1,0 +1,13 @@
+Vũ Quang Huy
+Mẫu CV kiểm thử nội bộ - AI / Machine Learning Engineer
+Thông tin ứng viên
+Họ và tên: Vũ Quang Huy
+Vị trí định hướng: AI / Machine Learning Engineer
+Số năm kinh nghiệm: 4.5 năm
+Tóm tắt hồ sơ
+Thạc sĩ Khoa học Dữ liệu với 4.5 năm kinh nghiệm nghiên cứu và triển khai các mô hình NLP, Semantic Search và Computer Vision bằng PyTorch và Hugging Face Transformers.
+Kỹ năng
+Python, Machine Learning, Deep Learning, Natural Language Processing, PyTorch, Scikit-Learn, Sentence-BERT, FastAPI, Docker, Pandas & NumPy
+Kinh nghiệm
+Kinh nghiệm liên quan: 4.5 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

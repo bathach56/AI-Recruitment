@@ -1,0 +1,13 @@
+Đinh Ngọc Ánh
+Mẫu CV kiểm thử nội bộ - Manual QC / Tester
+Thông tin ứng viên
+Họ và tên: Đinh Ngọc Ánh
+Vị trí định hướng: Manual QC / Tester
+Số năm kinh nghiệm: 2.0 năm
+Tóm tắt hồ sơ
+2 năm kinh nghiệm kiểm thử thủ công chức năng (Functional Testing) cho các hệ thống web và mobile. Kỹ lưỡng, tỉ mỉ và quản lý lỗi hiệu quả trên Jira.
+Kỹ năng
+Manual Testing, Test Case Design, Jira, SQL Server, Bug Tracking, Black-box Testing
+Kinh nghiệm
+Kinh nghiệm liên quan: 2.0 năm
+Dữ liệu giả lập đã ẩn danh, chỉ dùng để kiểm thử parser và thuật toán matching.

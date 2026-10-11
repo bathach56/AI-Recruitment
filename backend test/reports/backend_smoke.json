@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "TF-IDF: Python/ASP.NET score parity",
+    "Sentence-BERT: Python/ASP.NET score parity",
+    "Hybrid: Python/ASP.NET score parity",
+    "Missing experience remains null through ASP.NET",
+    "DOCX -> ASP.NET -> Python parser -> Hybrid -> evidence",
+    "Invalid model returns 422",
+    "Python unavailable returns 503 without fallback"
+  ]
+}
