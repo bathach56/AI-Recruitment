@@ -23,7 +23,8 @@ Dependencies were verified on Windows/Python 3.14.7; validate compatibility on a
 - Verified AI core and ASP.NET API integration; 54 Python tests and 7 HTTP integration checks passed in the development workspace before handoff.
 - Included CV/JD fixtures are synthetic development data, not a held-out evaluation set.
 - No validated Precision/Recall/F1 results yet. Legacy evaluation scripts are not valid evidence of model performance.
-- SQL persistence, authentication/authorization, real UI integration and production deployment remain to be completed by the backend team.
+- Matching frontend now calls the ASP.NET APIs for text and file input; see [frontend runbook](docs/FRONTEND_API.md). UI contract checks use controlled fixtures; rerun with the real Python/model environment to verify inference end to end.
+- SQL persistence, authentication/authorization, job/application APIs and production deployment remain to be completed by the backend team.
 - Fine-tuning is future work.
 
 External resume datasets with unverified provenance, machine-specific caches, logs, build outputs and secrets are not included.

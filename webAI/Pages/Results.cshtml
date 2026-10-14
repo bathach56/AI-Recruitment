@@ -1,95 +1,9 @@
 @page
 @model ResultsModel
 @{
-    ViewData["Title"] = "Kết quả phân tích";
+    ViewData["Title"] = "Đối chiếu CV và JD";
 }
-
-<div class="container">
-    <div id="resultsContainer" class="results-container">
-        <!-- Left Panel: CV Preview -->
-        <div class="cv-preview-panel">
-            <div class="file-info">
-                <div class="file-info-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
-                </div>
-                <div>
-                    <div id="filenameDisplay" class="file-name">my_cv.pdf</div>
-                    <div class="text-secondary" style="font-size: 0.875rem;">Đã phân tích xong</div>
-                </div>
-            </div>
-            <div class="preview-placeholder">
-                <p>Bản xem trước CV (Preview)</p>
-            </div>
-        </div>
-
-        <!-- Right Panel: Analysis -->
-        <div class="analysis-panel">
-            <h2>Phân tích kết quả</h2>
-            
-            <!-- Overall Score -->
-            <div class="score-section">
-                <h3 class="score-label">Điểm tổng quan</h3>
-                <div class="score-circle-container">
-                    <svg class="score-circle-svg" viewBox="0 0 160 160">
-                        <circle class="score-circle-bg" cx="80" cy="80" r="70"></circle>
-                        <circle id="scoreCircle" class="score-circle-progress" cx="80" cy="80" r="70"></circle>
-                    </svg>
-                    <div class="score-text">
-                        <span id="scoreValue">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Score Breakdown -->
-            <div class="score-breakdown">
-                <div class="score-card">
-                    <div class="score-card-header">
-                        <span>Trình bày</span>
-                        <span id="bar-presentation-val">0</span>/100
-                    </div>
-                    <div class="progress-track">
-                        <div id="bar-presentation" class="progress-bar"></div>
-                    </div>
-                </div>
-                <div class="score-card">
-                    <div class="score-card-header">
-                        <span>Nội dung</span>
-                        <span id="bar-content-val">0</span>/100
-                    </div>
-                    <div class="progress-track">
-                        <div id="bar-content" class="progress-bar"></div>
-                    </div>
-                </div>
-                <div class="score-card">
-                    <div class="score-card-header">
-                        <span>Từ khóa</span>
-                        <span id="bar-keywords-val">0</span>/100
-                    </div>
-                    <div class="progress-track">
-                        <div id="bar-keywords" class="progress-bar"></div>
-                    </div>
-                </div>
-                <div class="score-card">
-                    <div class="score-card-header">
-                        <span>Kinh nghiệm</span>
-                        <span id="bar-experience-val">0</span>/100
-                    </div>
-                    <div class="progress-track">
-                        <div id="bar-experience" class="progress-bar"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Suggestions -->
-            <div class="suggestions-section">
-                <h3>Đề xuất cải thiện từ AI</h3>
-                <div id="suggestionsList" class="suggestions-list">
-                    <!-- JS will populate suggestions here -->
-                </div>
-            </div>
-
-            <!-- Download Button -->
-            <button id="btnDownload" class="btn btn-download">Tải báo cáo chi tiết</button>
-        </div>
-    </div>
+<div class="container-fluid px-3 px-md-4 workspace-container" data-matching-workspace="candidate">
+    <p class="text-secondary" role="status">Đang tải giao diện phân tích…</p>
+    <noscript>Bật JavaScript để phân tích CV.</noscript>
 </div>

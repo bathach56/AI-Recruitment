@@ -1,0 +1,77 @@
+<section class="workspace-heading mb-4">
+    <div>
+        <span class="eyebrow">CV &amp; JOB DESCRIPTION</span>
+        <h1 class="mt-2 mb-2" id="workspaceTitle">Hiểu rõ mức độ phù hợp của hồ sơ.</h1>
+        <p class="text-secondary mb-0" id="workspaceIntro">Đưa CV và yêu cầu công việc vào cùng một góc nhìn, với bằng chứng để bạn tự đánh giá.</p>
+    </div>
+    <div class="connection-panel">
+        <span class="connection-badge" id="connectionStatus" role="status">Đang kiểm tra kết nối…</span>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="checkConnection" aria-label="Kiểm tra lại kết nối AI"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i></button>
+    </div>
+</section>
+<div class="row g-4 align-items-start">
+    <div class="col-12 col-xl-5">
+        <form id="matchingForm" class="surface-card" novalidate>
+            <fieldset id="matchingFields">
+<ul class="nav workspace-tabs" role="tablist" aria-label="Thông tin so khớp"><li class="nav-item" role="presentation"><button class="nav-link active" id="jobStepTab" type="button" role="tab" data-bs-toggle="pill" data-bs-target="#jobStepPane" aria-controls="jobStepPane" aria-selected="true">01 · Yêu cầu công việc</button></li><li class="nav-item" role="presentation"><button class="nav-link" id="cvStepTab" type="button" role="tab" data-bs-toggle="pill" data-bs-target="#cvStepPane" aria-controls="cvStepPane" aria-selected="false">02 · Hồ sơ</button></li></ul>
+<div class="tab-content"><div class="tab-pane show active" id="jobStepPane" role="tabpanel" aria-labelledby="jobStepTab">
+                <div class="section-heading"><span class="step-number">01</span><div><h2 class="h5 mb-1">Yêu cầu công việc</h2><p class="small text-secondary mb-0">Dán JD bạn muốn đối chiếu với hồ sơ.</p></div></div>
+                <div class="form-floating mb-3"><input id="jobTitle" class="form-control" maxlength="500" placeholder="Ví dụ: Backend Developer"><label for="jobTitle" class="form-label">Tên vị trí <span class="text-secondary fw-normal">(tùy chọn)</span></label>
+                </div>
+                <div class="form-floating mb-3"><textarea id="jobDescription" class="form-control" rows="6" maxlength="100000" required placeholder="Mô tả công việc, trách nhiệm và yêu cầu của vị trí…"></textarea><label for="jobDescription" class="form-label">Mô tả công việc <span class="text-danger">*</span></label>
+                    <div class="invalid-feedback">Vui lòng nhập mô tả công việc.</div>
+                </div>
+                <div class="row g-3 mb-3">
+                    <div class="col-sm-6"><div class="form-floating"><textarea id="requiredSkills" class="form-control" rows="2" maxlength="20000" placeholder="C#, SQL Server, Git"></textarea><label for="requiredSkills" class="form-label">Kỹ năng bắt buộc</label></div></div>
+                    <div class="col-sm-6"><div class="form-floating"><textarea id="optionalSkills" class="form-control" rows="2" maxlength="20000" placeholder="Docker, Redis"></textarea><label for="optionalSkills" class="form-label">Kỹ năng ưu tiên</label></div></div>
+                </div>
+                <p class="form-text mb-3">Ngăn cách kỹ năng bằng dấu phẩy hoặc xuống dòng. Nhập tên kỹ năng cụ thể để đối chiếu bằng chứng trong CV.</p>
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-5"><div class="form-floating"><input id="requiredYears" type="number" class="form-control" min="0" max="100" step="0.1" placeholder="Chưa xác định"><label for="requiredYears" class="form-label">Số năm yêu cầu</label></div><div class="invalid-feedback">Nhập số năm từ 0 đến 100.</div></div>
+                    <div class="col-sm-7"><div class="form-floating"><select id="modelType" class="form-select"><option value="Hybrid">Hybrid</option><option value="Sentence-BERT">Sentence-BERT</option><option value="TF-IDF">TF-IDF</option></select><label for="modelType" class="form-label">Phương pháp so khớp</label></div></div>
+                </div>
+                <div class="weight-badges" id="modelWeights" aria-label="Trọng số Hybrid mặc định"><span>50% · Ngữ nghĩa</span><span>30% · Kỹ năng</span><span>20% · Kinh nghiệm</span></div>
+<div class="method-note mb-4" id="methodNote">Hybrid: ngữ nghĩa 50%, kỹ năng 30%, kinh nghiệm 20%. Đây là trọng số khởi đầu, chưa được tối ưu bằng thực nghiệm.</div>
+                <button type="button" id="nextCvStep" class="btn btn-outline-primary w-100 mb-3">Tiếp tục · Thêm hồ sơ <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button>
+</div><div class="tab-pane" id="cvStepPane" role="tabpanel" aria-labelledby="cvStepTab">
+<div class="section-heading"><span class="step-number">02</span><div><h2 class="h5 mb-1">Hồ sơ cần phân tích</h2><p class="small text-secondary mb-0" id="cvIntro">Tải CV hoặc dán nội dung văn bản.</p></div></div>
+                <div class="input-mode mb-3" role="group" aria-label="Nguồn nội dung CV">
+                    <input type="radio" class="btn-check" name="cvMode" id="modeFile" value="file" checked><label class="btn btn-outline-primary" for="modeFile"><i class="bi bi-file-earmark-arrow-up me-2" aria-hidden="true"></i>Tải tệp</label>
+                    <input type="radio" class="btn-check" name="cvMode" id="modeText" value="text"><label class="btn btn-outline-primary" for="modeText"><i class="bi bi-text-paragraph me-2" aria-hidden="true"></i>Dán văn bản</label>
+                </div>
+                <div id="filePanel">
+                    <label class="dropzone" id="dropzone" for="cvFiles" tabindex="0" role="button" aria-label="Chọn tệp CV PDF hoặc DOCX">
+                        <span class="upload-symbol"><i class="bi bi-cloud-arrow-up" aria-hidden="true"></i></span>
+                        <strong id="dropzoneTitle">Chọn hoặc kéo thả CV vào đây</strong>
+                        <span class="small text-secondary">PDF, DOCX · tối đa 10 MiB mỗi tệp</span>
+                    </label>
+                    <input id="cvFiles" class="visually-hidden" type="file" accept=".pdf,.docx" aria-label="Tệp CV">
+                    <ul id="selectedFiles" class="file-list list-unstyled mt-3 mb-0" aria-live="polite"></ul>
+                </div>
+                <div id="textPanel" hidden><div class="form-floating"><textarea id="cvText" class="form-control" rows="7" maxlength="100000" placeholder="Dán nội dung CV thực tế tại đây…"></textarea><label for="cvText" class="form-label">Nội dung CV</label></div></div>
+                <p class="small text-secondary mt-3 mb-4">PDF scan cần OCR hiện chưa được hỗ trợ. Kinh nghiệm được trích từ các dòng ghi rõ số năm, chẳng hạn “Tổng kinh nghiệm: 3 năm”; mô tả tự do có thể chưa đủ dữ liệu.</p>
+                </div></div>
+<button type="submit" id="analyzeButton" class="btn btn-primary w-100 py-3"><i class="bi bi-stars me-2" aria-hidden="true"></i>Phân tích hồ sơ</button>
+            </fieldset>
+            <div id="requestActivity" class="request-activity" aria-hidden="true" hidden></div>
+<div id="requestProgress" class="small text-secondary mt-3" role="status" hidden></div>
+            <div id="requestError" class="alert alert-danger mt-3 mb-0" role="alert" hidden></div>
+        </form>
+        <div class="availability-note mt-3"><i class="bi bi-info-circle me-2" aria-hidden="true"></i>Danh sách việc làm, nộp hồ sơ và lịch sử lưu trữ chưa khả dụng. Kết quả hiện chỉ giữ trong trang đang mở.</div>
+    </div>
+    <div class="col-12 col-xl-7">
+        <div id="emptyResults" class="surface-card empty-results">
+            <div class="empty-illustration" aria-hidden="true"><i class="bi bi-file-earmark-text"></i><span><i class="bi bi-intersect"></i></span><i class="bi bi-briefcase"></i></div>
+            <span class="eyebrow">TỪ HỒ SƠ ĐẾN BẰNG CHỨNG</span>
+            <h2 class="h4 mt-3">Kết quả của bạn sẽ xuất hiện ở đây</h2>
+            <p class="text-secondary mx-auto">Nhập yêu cầu công việc, thêm CV và chọn phân tích. Bạn sẽ thấy mức độ tương đồng, kỹ năng được đề cập và thông tin kinh nghiệm.</p>
+            <div class="empty-steps"><span><i class="bi bi-1-circle me-2" aria-hidden="true"></i>Thêm JD</span><span><i class="bi bi-2-circle me-2" aria-hidden="true"></i>Thêm CV</span><span><i class="bi bi-3-circle me-2" aria-hidden="true"></i>Xem bằng chứng</span></div>
+        </div>
+        <section id="resultsSection" hidden aria-label="Kết quả phân tích">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3"><h2 class="h5 mb-0">Kết quả đối chiếu</h2><span class="small text-secondary" id="resultsCount"></span></div>
+            <p id="resultsContext" class="small text-secondary"></p>
+            <div id="resultCards" class="d-grid gap-3" aria-live="polite"></div>
+        </section>
+        <div class="decision-note mt-4"><i class="bi bi-person-check" aria-hidden="true"></i><p class="mb-0">AI hỗ trợ bạn đọc và đối chiếu hồ sơ. Điểm so khớp không phải độ chính xác hay xác suất được tuyển; quyết định cần người đánh giá.</p></div>
+    </div>
+</div>

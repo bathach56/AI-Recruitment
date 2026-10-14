@@ -11,9 +11,6 @@
     <title>Đăng ký tài khoản - RecruitAI Recruitment System</title>
 
     <!-- Google Font: Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -197,6 +194,9 @@
             transition: background-color 0.2s ease;
         }
     </style>
+    <link rel="stylesheet" href="/css/theme.css">
+    <script src="/js/theme.js"></script>
+    <link rel="stylesheet" href="/css/enterprise.css">
 </head>
 <body>
 
@@ -290,21 +290,8 @@
                             <p class="text-muted small">Điền các thông tin cơ bản để bắt đầu trải nghiệm hệ thống.</p>
                         </div>
 
-                        <!-- Role Selector -->
-                        <div class="mb-3">
-                            <label class="form-label small fw-semibold text-muted mb-1">Bạn tham gia với tư cách là?</label>
-                            <div class="role-btn-group">
-                                <button type="button" class="role-btn active" id="btnRoleRecruiter" onclick="selectRole('Recruiter')">
-                                    <i class="bi bi-briefcase-fill"></i> Nhà tuyển dụng
-                                </button>
-                                <button type="button" class="role-btn" id="btnRoleCandidate" onclick="selectRole('Candidate')">
-                                    <i class="bi bi-person-badge-fill"></i> Ứng viên
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Register Form -->
-                        <form id="registerForm" novalidate>
+                        <!-- Account Form -->
+                        <div class="alert alert-info auth-unavailable mb-4" role="status"><strong>Tài khoản chưa khả dụng.</strong><p class="mb-2 mt-1">Chức năng đăng nhập, đăng ký và xác thực Google đang chờ API backend.</p><a href="/Candidate" class="fw-semibold">Phân tích CV ngay</a> · <a href="/Recruiter" class="fw-semibold">Đối chiếu nhiều CV</a></div><form id="registerForm" novalidate><fieldset disabled>
                             
                             <!-- Full Name -->
                             <div class="mb-3">
@@ -341,7 +328,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
                                     <input type="password" class="form-control" id="password" placeholder="Tối thiểu 8 ký tự" required autocomplete="new-password">
-                                    <button class="btn btn-outline-secondary input-group-text bg-white" type="button" onclick="togglePasswordVisibility('password', this)" title="Hiện/Ẩn mật khẩu">
+                                    <button class="btn btn-outline-secondary input-group-text bg-white" type="button"  title="Hiện/Ẩn mật khẩu">
                                         <i class="bi bi-eye"></i>
                                     </button>
                                 </div>
@@ -388,7 +375,7 @@
                                 <span class="btn-text">Đăng ký tài khoản</span>
                                 <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true" id="submitSpinner"></span>
                             </button>
-                        </form>
+                        </fieldset></form>
 
                         <!-- Social Divider -->
                         <div class="position-relative text-center my-3">
@@ -397,7 +384,7 @@
                         </div>
 
                         <!-- Google SSO Button -->
-                        <button type="button" class="btn btn-social w-100 mb-4" onclick="handleSocialRegister('Google')">
+                        <button type="button" class="btn btn-social w-100 mb-4" data-unavailable-action="true">
                             <svg width="18" height="18" viewBox="0 0 24 24">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
                                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -422,158 +409,7 @@
     <!-- Bootstrap 5.3 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-        let selectedRole = 'Recruiter';
 
-        function selectRole(role) {
-            selectedRole = role;
-            const btnRec = document.getElementById('btnRoleRecruiter');
-            const btnCand = document.getElementById('btnRoleCandidate');
-            const companyGroup = document.getElementById('companyFieldGroup');
-
-            if (role === 'Recruiter') {
-                btnRec.classList.add('active');
-                btnCand.classList.remove('active');
-                companyGroup.style.display = 'block';
-            } else {
-                btnCand.classList.add('active');
-                btnRec.classList.remove('active');
-                companyGroup.style.display = 'none';
-            }
-        }
-
-        function togglePasswordVisibility(inputId, btn) {
-            const input = document.getElementById(inputId);
-            const icon = btn.querySelector('i');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.className = 'bi bi-eye-slash';
-            } else {
-                input.type = 'password';
-                icon.className = 'bi bi-eye';
-            }
-        }
-
-        // Real-time password strength check
-        document.getElementById('password').addEventListener('input', function() {
-            const val = this.value;
-            let score = 0;
-            if (val.length >= 8) score++;
-            if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
-            if (/[0-9]/.test(val)) score++;
-            if (/[^A-Za-z0-9]/.test(val)) score++;
-
-            const segs = [
-                document.getElementById('seg1'),
-                document.getElementById('seg2'),
-                document.getElementById('seg3'),
-                document.getElementById('seg4')
-            ];
-            const text = document.getElementById('strengthText');
-
-            const colors = ['#e2e8f0', '#ef4444', '#f59e0b', '#3b82f6', '#10b981'];
-            const labels = ['Chưa nhập', 'Yếu', 'Trung bình', 'Khá mạnh', 'Rất mạnh'];
-
-            segs.forEach((seg, idx) => {
-                seg.style.backgroundColor = (idx < score) ? colors[score] : '#e2e8f0';
-            });
-
-            text.textContent = val.length === 0 ? 'Chưa nhập' : labels[score];
-            text.style.color = val.length === 0 ? '#94a3b8' : colors[score];
-        });
-
-        function clearErrors() {
-            document.getElementById('nameError').style.display = 'none';
-            document.getElementById('emailError').style.display = 'none';
-            document.getElementById('passwordError').style.display = 'none';
-            document.getElementById('confirmError').style.display = 'none';
-            document.getElementById('termsError').style.display = 'none';
-        }
-
-        function handleSocialRegister(provider) {
-            alert(`Đang khởi tạo tài khoản qua ${provider}... Hệ thống sẽ chuyển hướng sang trang quản trị.`);
-            window.location.href = '/';
-        }
-
-        document.getElementById('registerForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            clearErrors();
-
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const agreeTerms = document.getElementById('agreeTerms').checked;
-            let isValid = true;
-
-            if (!fullName) {
-                const el = document.getElementById('nameError');
-                el.textContent = 'Vui lòng nhập họ và tên của bạn.';
-                el.style.display = 'block';
-                isValid = false;
-            }
-
-            if (!email) {
-                const el = document.getElementById('emailError');
-                el.textContent = 'Vui lòng nhập địa chỉ email.';
-                el.style.display = 'block';
-                isValid = false;
-            } else if (!/^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/.test(email)) {
-                const el = document.getElementById('emailError');
-                el.textContent = 'Định dạng email không hợp lệ.';
-                el.style.display = 'block';
-                isValid = false;
-            }
-
-            if (!password) {
-                const el = document.getElementById('passwordError');
-                el.textContent = 'Vui lòng tạo mật khẩu.';
-                el.style.display = 'block';
-                isValid = false;
-            } else if (password.length < 8) {
-                const el = document.getElementById('passwordError');
-                el.textContent = 'Mật khẩu phải chứa ít nhất 8 ký tự.';
-                el.style.display = 'block';
-                isValid = false;
-            }
-
-            if (!confirmPassword) {
-                const el = document.getElementById('confirmError');
-                el.textContent = 'Vui lòng xác nhận mật khẩu.';
-                el.style.display = 'block';
-                isValid = false;
-            } else if (password !== confirmPassword) {
-                const el = document.getElementById('confirmError');
-                el.textContent = 'Mật khẩu xác nhận không trùng khớp.';
-                el.style.display = 'block';
-                isValid = false;
-            }
-
-            if (!agreeTerms) {
-                const el = document.getElementById('termsError');
-                el.textContent = 'Bạn cần đồng ý với Điều khoản dịch vụ và Chính sách bảo mật.';
-                el.style.display = 'block';
-                isValid = false;
-            }
-
-            if (!isValid) return;
-
-            // Show loading state
-            const submitBtn = document.getElementById('submitBtn');
-            const spinner = document.getElementById('submitSpinner');
-            const btnText = submitBtn.querySelector('.btn-text');
-
-            submitBtn.disabled = true;
-            spinner.classList.remove('d-none');
-            btnText.textContent = 'Đang khởi tạo tài khoản...';
-
-            // Simulate server creation delay
-            await new Promise(resolve => setTimeout(resolve, 1200));
-
-            // Redirect to Login with success
-            alert('Đăng ký tài khoản thành công! Bạn sẽ được chuyển hướng tới trang Đăng nhập.');
-            window.location.href = '/Login';
-        });
-    </script>
+<script src="/js/account.js" defer></script>
 </body>
 </html>
