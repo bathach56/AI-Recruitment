@@ -1,204 +1,112 @@
 @page
-@model webAI.Pages.CandidateModel
-@{
-    Layout = null;
-}
+@model CandidateModel
+@{ Layout = null; }
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cổng Ứng viên - Tìm việc &amp; So khớp CV bằng AI</title>
-
-    <!-- Google Font: Plus Jakarta Sans -->
-
-    <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <!-- Chart.js 4.4 -->
-
-    <style>
-        :root {
-            --bs-body-font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            --bs-body-bg: #f8fafc;
-            --bs-primary: #3b82f6;
-            --bs-primary-rgb: 59, 130, 246;
-            --card-border: #e2e8f0;
-            --score-high: #10b981;
-            --score-med: #f59e0b;
-            --score-low: #ef4444;
-        }
-
-        body {
-            font-family: var(--bs-body-font-family);
-            background-color: var(--bs-body-bg);
-            color: #1e293b;
-            min-height: 100vh;
-        }
-
-        /* Top Navbar */
-        .top-navbar {
-            background: #ffffff;
-            border-bottom: 1px solid var(--card-border);
-            position: sticky;
-            top: 0;
-            z-index: 1020;
-        }
-
-        .brand-badge {
-            font-size: 0.65rem;
-            letter-spacing: 0.5px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 999px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .portal-nav-btn {
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .portal-nav-btn.active {
-            background: #ecfdf5;
-            color: #059669;
-            border: 1px solid #a7f3d0;
-        }
-        .portal-nav-btn:not(.active) {
-            color: #64748b;
-        }
-        .portal-nav-btn:not(.active):hover {
-            background: #f1f5f9;
-            color: #0f172a;
-        }
-
-        .custom-card {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
-            transition: all 0.2s ease;
-        }
-
-        /* Job card in list */
-        .job-item-card {
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.25rem;
-            background: #ffffff;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        .job-item-card:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
-            transform: translateY(-2px);
-        }
-        .job-item-card.selected {
-            border-color: #3b82f6;
-            background-color: #f0f7ff;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-        }
-
-        /* Upload area */
-        .upload-dropzone {
-            border: 2px dashed #93c5fd;
-            border-radius: 12px;
-            background-color: #f8fafc;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .upload-dropzone:hover, .upload-dropzone.dragover {
-            border-color: #3b82f6;
-            background-color: #eff6ff;
-        }
-
-        /* Status Badges */
-        .status-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .status-shortlisted {
-            background-color: #dcfce7;
-            color: #15803d;
-        }
-        .status-pending {
-            background-color: #e0f2fe;
-            color: #0369a1;
-        }
-        .status-rejected {
-            background-color: #fee2e2;
-            color: #b91c1c;
-        }
-
-        .skill-badge {
-            font-size: 0.8rem;
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin: 2px;
-        }
-        .skill-matched {
-            background-color: #ecfdf5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
-        }
-        .skill-missing {
-            background-color: #fff1f2;
-            color: #9f1239;
-            border: 1px solid #fecdd3;
-        }
-
-        .score-radial-wrapper {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto;
-        }
-        .score-radial-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-    </style>
-    <link rel="stylesheet" href="/css/theme.css">
-    <script src="/js/theme.js"></script>
-    <link rel="stylesheet" href="/css/enterprise.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#002fa7">
+<title>Hồ sơ ứng viên · RecruitAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/enterprise.css">
+<script src="/js/theme.js">
+</script>
 </head>
-<body>
-
-    <!-- TOP NAVBAR WITH ROLE SWITCHER -->
-    <header class="site-nav"><nav class="navbar navbar-expand-md py-3"><div class="container-fluid px-3 px-md-4" style="max-width:1380px">
- <a class="navbar-brand d-flex align-items-center gap-2" href="/"><span class="brand-symbol"><i class="bi bi-intersect" aria-hidden="true"></i></span>RecruitAI<span class="pro-label ms-2">PRO MATCH</span></a>
- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portalNavigation" aria-controls="portalNavigation" aria-expanded="false" aria-label="Mở điều hướng"><span class="navbar-toggler-icon"></span></button>
- <div class="collapse navbar-collapse" id="portalNavigation"><div class="navbar-nav ms-auto gap-md-2">
- <a class="nav-link active" aria-current="page" href="/Candidate">Ứng viên</a><a class="nav-link "  href="/Recruiter">Nhà tuyển dụng</a><a class="nav-link "  href="/Admin">Trạng thái hệ thống</a>
- </div></div></div></nav></header>
-
-    <!-- MAIN CONTAINER -->
-    <main class="container-fluid px-3 px-md-4 workspace-container" data-matching-workspace="candidate"><p class="text-secondary" role="status">Đang tải giao diện…</p><noscript>Bật JavaScript để phân tích CV.</noscript></main>
- <footer class="site-footer">RecruitAI · AI hỗ trợ đối chiếu hồ sơ · Quyết định thuộc về người đánh giá</footer>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <script src="/js/matching.js" defer></script>
- </body></html>
+<body class="workspace-page">
+<a class="skip-link" href="#main-content">Đến nội dung chính</a>
+<header class="site-nav">
+<nav class="navbar navbar-expand-lg">
+<div class="nav-inner">
+<a class="brand" href="/" aria-label="RecruitAI — Trang chủ">
+<span class="brand-mark" aria-hidden="true">
+<i class="bi bi-intersect">
+</i>
+</span>RecruitAI<span class="brand-caption">Tuyển dụng có căn cứ.</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portalNavigation" aria-controls="portalNavigation" aria-expanded="false" aria-label="Mở điều hướng">
+<span class="navbar-toggler-icon">
+</span>
+</button>
+<div class="collapse navbar-collapse" id="portalNavigation">
+<div class="navbar-nav">
+<a href="/" class="nav-link " >Trang chủ</a>
+<a href="/Candidate" class="nav-link active" aria-current="page">Hồ sơ ứng viên</a>
+</div>
+<div class="nav-tools">
+<a class="account-link" href="/Login">Tài khoản</a>
+<span id="themeControl">
+</span>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main id="main-content" class="container-wide workspace-container">
+<section class="workspace-heading mb-4">
+<div><h1 class="mt-2 mb-2">Hồ sơ ứng viên.</h1><p class="text-secondary mb-0">Chuẩn bị CV của bạn để gửi đến nhà tuyển dụng.</p></div>
+</section>
+<div class="row g-4 align-items-start">
+<div class="col-12 col-lg-7">
+<section class="surface-card mb-4" aria-labelledby="candidateInfoTitle" aria-describedby="candidateInfoNotice">
+<h2 id="candidateInfoTitle" class="h5 mb-2">Thông tin cá nhân</h2>
+<p id="candidateInfoNotice" class="small text-secondary mb-4">Thông tin chỉ được giữ trong trang đang mở, chưa được lưu hoặc gửi. Tải lại hay rời trang sẽ mất nội dung đã nhập.</p>
+<div class="row g-3">
+<div class="col-12 col-md-6">
+<label for="candidateFullName" class="form-label">Họ và tên</label>
+<input id="candidateFullName" name="fullName" type="text" class="form-control" autocomplete="name" maxlength="150" placeholder="Nhập họ và tên">
+</div>
+<div class="col-12 col-md-6">
+<label for="candidateEmail" class="form-label">Email liên hệ</label>
+<input id="candidateEmail" name="email" type="email" class="form-control" autocomplete="email" maxlength="254" placeholder="Nhập email liên hệ">
+</div>
+<div class="col-12 col-md-6">
+<label for="candidatePhone" class="form-label">Số điện thoại</label>
+<input id="candidatePhone" name="phone" type="tel" class="form-control" autocomplete="tel" maxlength="30" placeholder="Nhập số điện thoại">
+</div>
+<div class="col-12 col-md-6">
+<label for="candidateTargetTitle" class="form-label">Vị trí mong muốn</label>
+<input id="candidateTargetTitle" name="targetTitle" type="text" class="form-control" maxlength="200" placeholder="Ví dụ: Lập trình viên Backend">
+</div>
+</div>
+</section>
+<section aria-labelledby="candidateCvTitle">
+<div class="surface-card">
+<h2 id="candidateCvTitle" class="h5 mb-3">CV của bạn</h2>
+<label for="candidateCv" class="form-label">Chọn một tệp CV</label>
+<input id="candidateCv" type="file" class="form-control" accept=".pdf,.docx" aria-describedby="candidateCvHelp candidateCvStatus">
+<p id="candidateCvHelp" class="form-text">PDF hoặc DOCX, tối đa 10 MiB. Tệp chỉ được chọn trên thiết bị, chưa được gửi hoặc lưu.</p>
+<p id="candidateCvStatus" role="status" class="text-secondary">Chưa chọn CV.</p>
+<p id="candidateCvError" role="alert" class="text-danger" hidden></p>
+<button id="removeCandidateCv" type="button" class="btn btn-outline-secondary mb-3" hidden>Bỏ tệp</button>
+<div class="availability-note mb-3" id="candidateSubmitNotice">Chức năng gửi hồ sơ chưa khả dụng. Bạn chưa thể nộp CV cho nhà tuyển dụng tại đây.</div>
+<button type="button" class="btn btn-primary w-100" disabled aria-describedby="candidateSubmitNotice">Gửi CV — chưa khả dụng</button>
+<noscript>Bật JavaScript để kiểm tra định dạng và kích thước tệp đã chọn. Chức năng gửi CV hiện chưa khả dụng.</noscript>
+</div>
+</section>
+</div>
+<section class="col-12 col-lg-5" aria-labelledby="candidateStatusTitle">
+<div class="surface-card">
+<h2 id="candidateStatusTitle" class="h5 mb-3">Trạng thái hồ sơ</h2>
+<p>Chưa có hồ sơ đã gửi.</p>
+<p class="text-secondary mb-0">Khi chức năng ứng tuyển được mở, bạn có thể gửi CV vào vị trí do nhà tuyển dụng đăng. Nhà tuyển dụng thiết lập yêu cầu công việc và thực hiện đối chiếu hồ sơ.</p>
+</div>
+</section>
+</div>
+</main>
+<footer class="site-footer">
+<a href="/">RecruitAI</a>
+<span>AI hỗ trợ đối chiếu. Con người đưa ra quyết định.</span>
+<a href="/">Trang chủ</a>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+<script src="/js/candidate.js" defer>
+</script>
+</body>
+</html>

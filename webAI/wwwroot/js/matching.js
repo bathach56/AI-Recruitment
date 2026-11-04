@@ -85,27 +85,47 @@
     function renderSkills(parent, skills) {
         const rows = skills?.requirements;
         if (!Array.isArray(rows)) return;
-        const section = details('Kỹ năng và bằng chứng trong CV', parent);
-        if (!rows.length) section.append(element('p', 'text-secondary mt-2 mb-0', 'Chưa nhập yêu cầu kỹ năng; chưa có điểm kỹ năng.'));
-        const statuses = {
-            matched: ['Đã đề cập', 'bg-success-subtle text-success'],
-            not_found: ['Chưa tìm thấy', 'bg-secondary-subtle text-secondary'],
-            needs_review: ['Cần rà soát', 'bg-warning-subtle text-warning-emphasis']
-        };
-        for (const row of rows) {
-            const item = element('div', 'evidence-item');
-            const heading = element('div', 'd-flex justify-content-between align-items-center gap-2');
-            heading.append(element('strong', '', row.requirement || row.normalized || 'Kỹ năng'));
-            const [label, style] = statuses[row.status] || ['Chưa xác định', 'bg-secondary-subtle text-secondary'];
-            heading.append(element('span', `badge ${style}`, label));
-            item.append(heading, element('small', 'text-secondary', row.group === 'required' ? 'Yêu cầu bắt buộc' : 'Yêu cầu ưu tiên'));
-            for (const evidence of row.evidence || []) {
-                item.append(element('blockquote', '', evidence.context || evidence.matched_text || evidence.alias || ''));
-                item.append(element('small', 'text-secondary', `Vị trí: ${evidence.location || 'Chưa xác định'}`));
-            }
-            section.append(item);
+        const section = details('Yêu cầu công việc và bằng chứng CV', parent);
+        section.open = true;
+        if (!rows.length) {
+            section.append(element('p', 'text-secondary mt-3 mb-0', 'Chưa nhập yêu cầu kỹ năng; chưa có điểm kỹ năng.'));
+            return;
         }
-        section.append(element('p', 'small text-secondary mt-3 mb-0', '“Chưa tìm thấy” không có nghĩa ứng viên thiếu kỹ năng. “Đã đề cập” chưa chứng minh mức độ thành thạo.'));
+        const table = element('table', 'evidence-table');
+        const caption = element('caption', 'visually-hidden', 'Đối chiếu từng yêu cầu kỹ năng với bằng chứng trong CV');
+        const head = element('thead');
+        const heading = element('tr');
+        ['Yêu cầu', 'Bằng chứng trong CV', 'Trạng thái'].forEach(label => {
+            const th = element('th', '', label);
+            th.scope = 'col';
+            heading.append(th);
+        });
+        head.append(heading);
+        const body = element('tbody');
+        const statuses = { matched: 'Đã đề cập', not_found: 'Chưa tìm thấy', needs_review: 'Cần rà soát' };
+        for (const row of rows) {
+            const tr = element('tr');
+            const requirement = element('td');
+            requirement.dataset.label = 'Yêu cầu';
+            requirement.append(element('strong', '', row.requirement || row.normalized || 'Kỹ năng'),
+                element('small', '', row.group === 'required' ? 'Bắt buộc' : 'Ưu tiên'));
+            const evidenceCell = element('td');
+            evidenceCell.dataset.label = 'Bằng chứng trong CV';
+            for (const evidence of row.evidence || []) {
+                evidenceCell.append(element('blockquote', '', evidence.context || evidence.matched_text || ''),
+                    element('small', '', `Vị trí: ${evidence.location || 'Chưa xác định'}`));
+            }
+            if (!evidenceCell.childElementCount) evidenceCell.append(element('span', 'text-secondary', 'Chưa có đoạn trích tương ứng.'));
+            const status = element('td');
+            status.dataset.label = 'Trạng thái';
+            const statusClass = Object.hasOwn(statuses, row.status) ? `status-${row.status}` : '';
+            status.append(element('span', `evidence-status ${statusClass}`, statuses[row.status] || 'Chưa xác định'));
+            tr.append(requirement, evidenceCell, status);
+            body.append(tr);
+        }
+        table.append(caption, head, body);
+        section.append(table, element('p', 'small text-secondary mt-3 mb-0',
+            '“Đã đề cập” chưa chứng minh mức độ thành thạo. “Chưa tìm thấy” cần được kiểm tra lại với ứng viên.'));
     }
 
     function renderExperience(parent, explanation) {
@@ -173,7 +193,7 @@
         ring.style.setProperty('--score', incomplete ? 0 : data.overall_score);
         ring.setAttribute('aria-label', incomplete ? 'Chưa đủ dữ liệu để chấm tổng' : `Điểm so khớp ${scoreText(data.overall_score)}`);
         const center = element('div');
-        center.append(element('strong', '', incomplete ? '—' : scoreText(data.overall_score)), element('small', '', 'ĐIỂM SO KHỚP'));
+        center.append(element('strong', '', incomplete ? '—' : scoreText(data.overall_score)), element('small', '', 'Điểm đối chiếu'));
         ring.append(center);
         summary.append(info, ring);
         card.append(summary);
@@ -238,21 +258,41 @@
         let files = [];
         let busy = false;
         const showStep = id => window.bootstrap.Tab.getOrCreateInstance($(id)).show();
-        $('nextCvStep').addEventListener('click', () => showStep('cvStepTab'));
+        function validateJob() {
+            const field = !$('jobDescription').value.trim() ? $('jobDescription')
+                : !$('requiredYears').checkValidity() ? $('requiredYears') : null;
+            if (!field) return true;
+            showStep('jobStepTab');
+            field.classList.add('is-invalid');
+            field.setAttribute('aria-invalid', 'true');
+            field.focus();
+            return false;
+        }
+        $('nextCvStep').addEventListener('click', () => { if (validateJob()) showStep('cvStepTab'); });
         if (recruiter) {
-            $('workspaceTitle').textContent = 'Đối chiếu hồ sơ, xem rõ bằng chứng.';
+            $('workspaceTitle').textContent = 'Không gian đối chiếu tuyển dụng.';
             $('workspaceIntro').textContent = 'Phân tích các CV thực tế với cùng một JD. Kết quả giúp bạn rà soát từng hồ sơ trước khi đánh giá.';
             $('cvIntro').textContent = 'Chọn tối đa 10 CV để phân tích lần lượt, hoặc dán nội dung một CV.';
             $('cvFiles').multiple = true;
             $('dropzoneTitle').textContent = 'Chọn hoặc kéo thả các CV vào đây';
         }
-        const showError = message => { $('requestError').textContent = message; $('requestError').hidden = !message; };
+        const showError = message => {
+            $('requestError').textContent = message;
+            $('requestError').hidden = !message;
+            if (message) $('requestError').focus();
+        };
         function clearResults() {
+            $('staleResults').hidden = true;
             $('resultCards').replaceChildren();
             $('resultsSection').hidden = true;
             $('emptyResults').hidden = false;
             $('requestProgress').hidden = true;
             $('requestActivity').hidden = true;
+            showError('');
+        }
+        function invalidateResults() {
+            $('staleResults').hidden = $('resultsSection').hidden;
+            $('requestProgress').hidden = true;
             showError('');
         }
         function renderFiles() {
@@ -273,7 +313,7 @@
                     if (busy) return;
                     files.splice(index, 1);
                     $('cvFiles').value = '';
-                    clearResults();
+                    invalidateResults();
                     renderFiles();
                 });
                 li.append(thumbnail, description, remove);
@@ -283,7 +323,7 @@
         function selectFiles(list) {
             if (busy) return;
             const selected = Array.from(list);
-            clearResults();
+            invalidateResults();
             let error = '';
             if (selected.length > (recruiter ? 10 : 1)) error = recruiter ? 'Mỗi lần phân tích tối đa 10 CV.' : 'Vui lòng chọn một CV.';
             else if (selected.some(file => !/\.(pdf|docx)$/i.test(file.name))) error = 'Chỉ hỗ trợ tệp PDF hoặc DOCX.';
@@ -312,7 +352,7 @@
         root.querySelectorAll('[name="cvMode"]').forEach(radio => radio.addEventListener('change', () => {
             $('filePanel').hidden = radio.value !== 'file';
             $('textPanel').hidden = radio.value !== 'text';
-            clearResults();
+            invalidateResults();
         }));
         const hints = {
             Hybrid: 'Hybrid: ngữ nghĩa 50%, kỹ năng 30%, kinh nghiệm 20%. Đây là trọng số khởi đầu, chưa được tối ưu bằng thực nghiệm. Thiếu thành phần có trọng số sẽ chưa có điểm tổng.',
@@ -326,9 +366,10 @@
         $('matchingForm').addEventListener('input', event => {
             if (busy) return;
             event.target.classList.remove('is-invalid');
-            clearResults();
+            event.target.removeAttribute('aria-invalid');
+            invalidateResults();
         });
-        $('matchingForm').addEventListener('change', event => { if (!busy && event.target.id !== 'cvFiles') clearResults(); });
+        $('matchingForm').addEventListener('change', event => { if (!busy && event.target.id !== 'cvFiles') invalidateResults(); });
 
         function skillNames(input) {
             const values = [...new Set(input.value.split(/[,\n]/).map(value => value.trim()).filter(Boolean))];
@@ -342,18 +383,20 @@
             if (!$('jobDescription').value.trim()) {
                 showStep('jobStepTab');
                 $('jobDescription').classList.add('is-invalid');
+                $('jobDescription').setAttribute('aria-invalid', 'true');
                 $('jobDescription').focus();
                 return;
             }
             if (!$('requiredYears').checkValidity()) {
                 showStep('jobStepTab');
                 $('requiredYears').classList.add('is-invalid');
+                $('requiredYears').setAttribute('aria-invalid', 'true');
                 $('requiredYears').focus();
                 return;
             }
             const mode = root.querySelector('[name="cvMode"]:checked').value;
             if (mode === 'file' && !files.length) { showStep('cvStepTab'); showError('Vui lòng chọn CV để phân tích.'); return; }
-            if (mode === 'text' && !$('cvText').value.trim()) { showStep('cvStepTab'); showError('Vui lòng dán nội dung CV.'); $('cvText').focus(); return; }
+            if (mode === 'text' && !$('cvText').value.trim()) { showStep('cvStepTab'); showError('Vui lòng dán nội dung CV.'); $('cvText').setAttribute('aria-invalid', 'true'); $('cvText').focus(); return; }
             let payload;
             try {
                 payload = {
@@ -417,7 +460,7 @@
         }
     }
     document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('[data-matching-workspace]').forEach(mountWorkspace);
+        document.querySelectorAll('[data-matching-workspace="recruiter"]').forEach(mountWorkspace);
         const status = document.getElementById('serviceStatus');
         const button = document.getElementById('refreshService');
         if (status && button) {

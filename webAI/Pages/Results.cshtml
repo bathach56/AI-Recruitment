@@ -1,9 +1,7 @@
 @page
 @model ResultsModel
-@{
-    ViewData["Title"] = "Đối chiếu CV và JD";
-}
-<div class="container-fluid px-3 px-md-4 workspace-container" data-matching-workspace="candidate">
-    <p class="text-secondary" role="status">Đang tải giao diện phân tích…</p>
-    <noscript>Bật JavaScript để phân tích CV.</noscript>
+@{ ViewData["Title"] = "Kết quả đối chiếu"; }
+<div id="main-content" class="container-wide workspace-container" data-matching-workspace="recruiter">
+<p role="status">Đang tải không gian đối chiếu…</p>
+<noscript>Bật JavaScript để phân tích CV.</noscript>
 </div>
