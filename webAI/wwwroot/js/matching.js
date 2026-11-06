@@ -16,7 +16,11 @@
         const timer = setTimeout(() => controller.abort(), timeout);
         try {
             const response = await fetch(url, { ...options, signal: controller.signal, cache: 'no-store' });
-            if (!response.ok) throw new Error(errorMessages[response.status] || `Yêu cầu thất bại (HTTP ${response.status}).`);
+            if (!response.ok) {
+                const error = new Error(errorMessages[response.status] || `Yêu cầu thất bại (HTTP ${response.status}).`);
+                error.httpStatus = response.status;
+                throw error;
+            }
             try { return await response.json(); }
             catch { throw new Error('Máy chủ trả về dữ liệu không hợp lệ. Vui lòng thử lại.'); }
         } catch (error) {
@@ -61,18 +65,29 @@
     const scoreText = value => typeof value === 'number' && Number.isFinite(value) ? `${value.toFixed(1)}%` : 'Chưa có dữ liệu';
 
     async function checkHealth(status, button) {
+        const started = performance.now();
+        let reachable = false;
+        let connected = false;
         button.disabled = true;
         status.dataset.state = 'checking';
         status.textContent = 'Đang kiểm tra kết nối…';
         try {
             const data = await api.health();
+            reachable = true;
             if (data.ai_service_connected !== true) throw new Error('AI chưa sẵn sàng.');
+            connected = true;
             status.dataset.state = 'ready';
             status.textContent = 'AI sẵn sàng';
-        } catch {
+        } catch (error) {
+            reachable = reachable || Boolean(error.httpStatus);
             status.dataset.state = 'offline';
             status.textContent = 'AI chưa kết nối · thử lại';
-        } finally { button.disabled = false; }
+        } finally {
+            button.disabled = false;
+            document.dispatchEvent(new CustomEvent('recruitai:health', { detail: {
+                source: status.id, reachable, connected, elapsed: performance.now() - started
+            } }));
+        }
     }
 
     function details(title, parent) {
@@ -174,6 +189,9 @@
 
     function resultCard(entry, index) {
         const card = element('article', 'surface-card result-card');
+        const review = entry.data?.overall_score === null || entry.data?.explanation?.skills?.requirements?.some(row => row.status === 'needs_review' || row.status === 'not_found');
+        card.dataset.resultState = entry.error ? 'error' : review ? 'review' : 'computed';
+        card.dataset.computed = String(Boolean(entry.data));
         if (entry.error) {
             card.append(element('h3', 'h6', entry.name), element('div', 'alert alert-danger mb-0', entry.error));
             return card;
@@ -183,6 +201,11 @@
         const incomplete = data.overall_score === null;
         const summary = element('div', 'result-summary');
         const info = element('div');
+        const avatar = element('span', 'result-avatar');
+        const avatarIcon = element('i', 'bi bi-person');
+        avatarIcon.setAttribute('aria-hidden', 'true');
+        avatar.append(avatarIcon);
+        info.append(avatar);
         info.append(element('h3', 'mb-2', entry.name));
         const badges = element('div', 'd-flex flex-wrap gap-2');
         badges.append(element('span', 'badge bg-primary-subtle text-primary', data.model_used),
@@ -229,6 +252,15 @@
             components.append(component);
         }
         card.append(components);
+        const requirements = explanation.skills?.requirements;
+        if (Array.isArray(requirements) && requirements.length) {
+            const chips = element('div', 'skill-chip-row');
+            requirements.slice(0, 12).forEach(row => {
+                const chip = element('span', `skill-chip ${row.status === 'matched' ? 'matched' : row.status === 'not_found' ? 'not_found' : ''}`, `${row.requirement || row.normalized || 'Kỹ năng'} · ${row.status === 'matched' ? 'Đã đề cập' : row.status === 'not_found' ? 'Chưa thấy' : 'Rà soát'}`);
+                chips.append(chip);
+            });
+            card.append(chips);
+        }
         renderSkills(card, explanation.skills);
         renderExperience(card, explanation);
         renderSemantic(card, data);
@@ -257,7 +289,38 @@
         const recruiter = root.dataset.matchingWorkspace === 'recruiter';
         let files = [];
         let busy = false;
-        const showStep = id => window.bootstrap.Tab.getOrCreateInstance($(id)).show();
+        let activeFilter = 'all';
+        let progressObserver = null;
+        const showStep = id => {
+            const pane = $(id === 'jobStepTab' ? 'jobStepPane' : 'cvStepPane');
+            pane.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        };
+        const filterButtons = [...root.querySelectorAll('[data-result-filter]')];
+        function applyFilter() {
+            const cards = [...$('resultCards').children];
+            filterButtons.forEach(button => {
+                const value = button.dataset.resultFilter;
+                const count = cards.filter(card => value === 'all' || (value === 'computed' ? card.dataset.computed === 'true' : card.dataset.resultState === value)).length;
+                const labels = { all: 'Tất cả', computed: 'Đã phân tích', review: 'Cần rà soát', error: 'Lỗi' };
+                button.textContent = `${labels[value]} (${count})`;
+                button.setAttribute('aria-pressed', String(value === activeFilter));
+            });
+            let shown = 0;
+            cards.forEach(card => {
+                card.hidden = !(activeFilter === 'all' || (activeFilter === 'computed' ? card.dataset.computed === 'true' : card.dataset.resultState === activeFilter));
+                if (!card.hidden) shown++;
+            });
+            $('filterEmpty').hidden = shown > 0;
+        }
+        filterButtons.forEach(button => button.addEventListener('click', () => { activeFilter = button.dataset.resultFilter; applyFilter(); }));
+        const weightIds = ['semanticWeight', 'skillWeight', 'experienceWeight'];
+        function updateWeights() {
+            const total = weightIds.reduce((sum, id) => sum + Number($(id).value), 0);
+            weightIds.forEach(id => { $(`${id}Value`).textContent = `${$(id).value}%`; });
+            $('weightTotal').textContent = `Tổng ${total}% · ${total ? 'API chuẩn hóa theo tổng trọng số. Chưa tối ưu thực nghiệm.' : 'Cần ít nhất một trọng số lớn hơn 0.'}`;
+            if ($('modelType').value === 'Hybrid') $('methodNote').textContent = 'Hybrid kết hợp ngữ nghĩa, kỹ năng và kinh nghiệm theo trọng số bạn chọn. Trọng số chưa được xác thực bằng thực nghiệm.';
+        }
+        weightIds.forEach(id => $(id).addEventListener('input', updateWeights));
         function validateJob() {
             const field = !$('jobDescription').value.trim() ? $('jobDescription')
                 : !$('requiredYears').checkValidity() ? $('requiredYears') : null;
@@ -270,18 +333,24 @@
         }
         $('nextCvStep').addEventListener('click', () => { if (validateJob()) showStep('cvStepTab'); });
         if (recruiter) {
-            $('workspaceTitle').textContent = 'Không gian đối chiếu tuyển dụng.';
+            $('workspaceTitle').textContent = 'Không gian tuyển dụng';
             $('workspaceIntro').textContent = 'Phân tích các CV thực tế với cùng một JD. Kết quả giúp bạn rà soát từng hồ sơ trước khi đánh giá.';
             $('cvIntro').textContent = 'Chọn tối đa 10 CV để phân tích lần lượt, hoặc dán nội dung một CV.';
             $('cvFiles').multiple = true;
             $('dropzoneTitle').textContent = 'Chọn hoặc kéo thả các CV vào đây';
         }
+        function updateRecruiterContext() {
+            const title = $('jobTitle').value.trim();
+            $('recruiterContext').textContent = title ? `Đang đối chiếu cho vị trí: ${title}` : 'Kết quả từ CV và yêu cầu bạn cung cấp.';
+        }
+        $('jobTitle').addEventListener('input', updateRecruiterContext);
         const showError = message => {
             $('requestError').textContent = message;
             $('requestError').hidden = !message;
             if (message) $('requestError').focus();
         };
         function clearResults() {
+            activeFilter = 'all';
             $('staleResults').hidden = true;
             $('resultCards').replaceChildren();
             $('resultsSection').hidden = true;
@@ -355,7 +424,7 @@
             invalidateResults();
         }));
         const hints = {
-            Hybrid: 'Hybrid: ngữ nghĩa 50%, kỹ năng 30%, kinh nghiệm 20%. Đây là trọng số khởi đầu, chưa được tối ưu bằng thực nghiệm. Thiếu thành phần có trọng số sẽ chưa có điểm tổng.',
+            Hybrid: 'Hybrid kết hợp ngữ nghĩa, kỹ năng và kinh nghiệm theo trọng số bạn chọn. Đây là giả định, chưa tối ưu bằng thực nghiệm. Thiếu thành phần có trọng số sẽ chưa có điểm tổng.',
             'Sentence-BERT': 'Sentence-BERT đo tương đồng ngữ nghĩa giữa CV và JD. Phương pháp này không chấm riêng kỹ năng và kinh nghiệm.',
             'TF-IDF': 'TF-IDF đo tương đồng từ vựng trên bộ từ vựng phát triển đã cố định. Từ mới ngoài bộ từ vựng có thể chưa được biểu diễn.'
         };
@@ -399,12 +468,18 @@
             if (mode === 'text' && !$('cvText').value.trim()) { showStep('cvStepTab'); showError('Vui lòng dán nội dung CV.'); $('cvText').setAttribute('aria-invalid', 'true'); $('cvText').focus(); return; }
             let payload;
             try {
+                const weights = {
+                    semantic_weight: Number($('semanticWeight').value) / 100,
+                    skill_weight: Number($('skillWeight').value) / 100,
+                    experience_weight: Number($('experienceWeight').value) / 100
+                };
+                if ($('modelType').value === 'Hybrid' && !Object.values(weights).some(value => value > 0)) throw new Error('Chọn ít nhất một trọng số lớn hơn 0.');
                 payload = {
                     job_title: $('jobTitle').value.trim(), job_description: $('jobDescription').value.trim(),
                     required_skills: skillNames($('requiredSkills')), nice_to_have_skills: skillNames($('optionalSkills')),
                     job_experience_years_required: $('requiredYears').value === '' ? null : Number($('requiredYears').value),
                     model_type: $('modelType').value,
-                    weights: { semantic_weight: .5, skill_weight: .3, experience_weight: .2 }
+                    weights
                 };
             } catch (error) { showError(error.message); return; }
             clearResults();
@@ -424,6 +499,23 @@
                 $('resultsCount').textContent = `${successful}/${inputs.length} hồ sơ đã phân tích`;
                 $('resultsContext').textContent = `${payload.job_title || 'JD đã nhập'} · ${payload.model_type} · Thứ tự tệp đã chọn`;
                 $('resultCards').replaceChildren(...entries.map(resultCard));
+                applyFilter();
+                if ('IntersectionObserver' in window) {
+                    progressObserver?.disconnect();
+                    progressObserver = new IntersectionObserver(items => {
+                        items.forEach(item => {
+                            if (item.isIntersecting) {
+                                item.target.style.width = item.target.dataset.targetWidth;
+                                progressObserver.unobserve(item.target);
+                            }
+                        });
+                    });
+                    $('resultCards').querySelectorAll('.progress-bar').forEach(bar => {
+                        bar.dataset.targetWidth = bar.style.width;
+                        bar.style.width = '0%';
+                        progressObserver.observe(bar);
+                    });
+                }
             };
             try {
                 // One request at a time: the Python engine deliberately rejects concurrent inference.
