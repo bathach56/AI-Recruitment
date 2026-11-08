@@ -1,0 +1,39 @@
+/* Semantic design tokens, shared by Razor, static HTML and API-rendered results. */
+:root,[data-bs-theme="light"] {
+  color-scheme:light;
+  --font:'Be Vietnam Pro','Helvetica Neue',Arial,sans-serif;
+  --canvas:#ffffff; --surface:#ffffff; --soft:#f7f7f8;
+  --ink:#202124; --muted:#62646c; --line:#dedfe3;
+  --accent:#002fa7; --accent-hover:#002783; --accent-text:#002fa7;
+  --accent-soft:#eef2fd; --on-accent:#ffffff;
+  --success:#216543; --warning:#805300; --danger:#af2532;
+  --danger-soft:#fff2f3;
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-6:24px; --space-8:32px; --space-12:48px; --space-16:64px;
+  --radius-control:4px; --radius-panel:0px;
+  --bs-body-font-family:var(--font); --bs-body-bg:var(--canvas); --bs-body-color:var(--ink);
+  --bs-primary:#002fa7; --bs-primary-rgb:0,47,167;
+  --bs-secondary-color:var(--muted); --bs-border-color:var(--line);
+}
+[data-bs-theme="dark"] {
+  color-scheme:dark;
+  --canvas:#16171b; --surface:#16171b; --soft:#202126;
+  --ink:#f2f2f4; --muted:#b4b5bd; --line:#3b3d46;
+  --accent:#9fb9ff; --accent-hover:#bed0ff; --accent-text:#abc2ff;
+  --accent-soft:#242e49; --on-accent:#101d3d;
+  --success:#91d4ac; --warning:#edc27e; --danger:#ffacb4; --danger-soft:#372127;
+  --bs-primary-rgb:159,185,255;
+}
+.text-secondary,.text-muted { color:var(--muted) !important; }
+.text-dark { color:var(--ink) !important; }
+.text-primary { color:var(--accent-text) !important; }
+.text-success { color:var(--success) !important; }
+.text-warning-emphasis { color:var(--warning) !important; }
+.text-danger { color:var(--danger) !important; }
+.bg-primary-subtle { background:var(--accent-soft) !important; }
+.bg-success-subtle,.bg-warning-subtle,.bg-secondary-subtle,.bg-light { background:var(--soft) !important; }
+.bg-white { background:var(--surface) !important; }
+.border { border-color:var(--line) !important; }
+.form-control:disabled,.form-select:disabled { background:var(--soft); color:var(--muted); }
+.invalid-feedback { color:var(--danger); font-size:.75rem; }
+.is-invalid~.invalid-feedback,.field-group:has(.is-invalid)+.invalid-feedback { display:block; }

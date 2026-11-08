@@ -14,6 +14,8 @@ public class MatchingController : ControllerBase
     public async Task<IActionResult> GetHealth(CancellationToken ct)
     {
         var ready = await _service.CheckAiServiceHealthAsync(ct);
+        // The client has left; do not report an AI outage for an abandoned probe.
+        if (ct.IsCancellationRequested) return new EmptyResult();
         return StatusCode(ready ? 200 : 503, new { ai_service_connected = ready });
     }
     [HttpPost("analyze")]

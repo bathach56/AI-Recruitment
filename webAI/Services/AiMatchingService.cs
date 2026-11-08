@@ -19,7 +19,9 @@ public class AiMatchingService : IAiMatchingService
             return response.IsSuccessStatusCode;
         }
         catch (HttpRequestException) { return false; }
-        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested) { return false; }
+        // Leaving the page cancels RequestAborted. Health probes must also handle
+        // this expected cancellation rather than letting it escape to the debugger.
+        catch (OperationCanceledException) { return false; }
     }
     public async Task<AiMatchingResponse> MatchAsync(AiMatchingRequest request, CancellationToken cancellationToken = default)
     {
