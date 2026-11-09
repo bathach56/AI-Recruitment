@@ -1,0 +1,20 @@
+@page "/Status/{code:int}"
+@{
+    Layout = "_CareerLayout";
+    var code = int.TryParse(ViewContext.RouteData.Values["code"]?.ToString(), out var value) ? value : 404;
+    code = code is >= 400 and <= 599 ? code : 404;
+    Response.StatusCode = code;
+    ViewData["Title"] = code == 403 ? "Quyền truy cập" : "Không tìm thấy trang";
+}
+<div class="container status-page">
+    <section class="status-page-content">
+        <span class="status-code">@code</span>
+        <h1>@(code == 403 ? "Trang này thuộc vai trò khác." : "Chưa tìm thấy trang bạn cần.")</h1>
+        <p>@(code == 403 ? "Mở khu vực phù hợp với tài khoản hiện tại, hoặc đăng xuất để đổi tài khoản." : "Đường dẫn có thể đã thay đổi. Bạn có thể tiếp tục tìm việc hoặc quay về khu vực quản lý.")</p>
+        <div class="row mt"><a class="button" href="/">Về trang chủ</a>
+            @if (User.IsInRole("Recruiter")) { <a class="button secondary" href="/Recruiter">Quản lý tuyển dụng</a> }
+            @if (User.IsInRole("Candidate")) { <a class="button secondary" href="/Candidate">Hồ sơ của tôi</a> }
+            @if (User.Identity?.IsAuthenticated != true) { <a class="button secondary" href="/Login">Đăng nhập</a> }
+        </div>
+    </section>
+</div>

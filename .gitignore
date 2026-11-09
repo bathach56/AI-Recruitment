@@ -14,3 +14,10 @@ obj/
 *.key
 *.pfx
 .handoff-push/
+.preview-build/
+.preview-build-final/
+.preview-build-check/
+.preview-build-auth/
+.preview-build-auth-final/
+webAI/App_Data/
+reports/career-ui/

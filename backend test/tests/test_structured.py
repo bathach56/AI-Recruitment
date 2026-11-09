@@ -52,6 +52,14 @@ class StructuredTests(unittest.TestCase):
         for text in ('5 years Python, 3 years Docker', 'Total experience: 3-5 years', 'Total experience: -2 years', 'Chưa có 5 năm kinh nghiệm'):
             self.assertIsNone(experience_match(extract_experience(segments(text)), 4)['score'])
 
+    def test_standalone_field_inside_pdf_page_preserves_source_offsets(self):
+        source = segments('WORK EXPERIENCE\nTotal\u00a0experience: 5 years.\nBuilt SQL services from 2021 to 2026.')
+        result = extract_experience(source)
+        self.assertEqual(result['scopes']['total']['years'], 5)
+        evidence = result['evidence'][0]
+        self.assertEqual(source[0]['text'][evidence['start']:evidence['end']], evidence['matched_text'])
+        self.assertIsNone(experience_match(extract_experience(segments('Total experience: 5 years. Built SQL services.')), 3)['score'])
+
     def test_conflicting_experience(self):
         for source in (segments('Total experience: 2 years', 'Total experience: 5 years'),
                        segments('Total experience: 2 years', 'Relevant experience: 5 years')):

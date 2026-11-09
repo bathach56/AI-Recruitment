@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1458e8">
+    <title>@ViewData["Title"] · RecruitAI</title>
+    <meta name="description" content="Tìm công việc phù hợp, chuẩn bị CV và theo dõi hành trình ứng tuyển cùng RecruitAI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;450;500;550;600;650;700;750;800&display=swap" rel="stylesheet">
+    @await RenderSectionAsync("VendorStyles", required: false)
+    <link rel="stylesheet" href="/css/career.css" asp-append-version="true">
+    <link rel="stylesheet" href="/css/workspace-refresh.css" asp-append-version="true">
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem('recruitai-career-theme')||'light'}catch{}</script>
+    <script src="/js/career.js" asp-append-version="true" defer></script>
+</head>
+<body>
+<a class="skip" href="#main-content">Đến nội dung chính</a>
+<header class="header">
+    <div class="container nav">
+        <a class="wordmark" href="/" aria-label="RecruitAI, trang chủ"><span class="brand-icon">r<span></span></span>recruit<span class="brand-ai">ai</span><span class="brand-dot"></span></a>
+        <button class="icon-button mobile-menu" id="menuToggle" aria-label="Mở menu" aria-expanded="false"><span data-icon="menu"></span></button>
+        <nav class="nav-links" id="mainNav" aria-label="Điều hướng chính">
+            <a href="/" data-nav="home">Tìm việc làm</a>
+            @if (User.IsInRole("Candidate")) {
+                <a href="/Candidate" data-nav="candidate">Hồ sơ & CV</a>
+                <a href="/Candidate?tab=applications" data-nav="applications">Việc đã ứng tuyển</a>
+            }
+            @if (User.IsInRole("Recruiter")) {
+                <a href="/Recruiter" data-nav="recruiter">Quản lý tuyển dụng</a>
+                <a href="/Matching" data-nav="matching">Đối chiếu CV & JD</a>
+                <a href="/ReviewResults" data-nav="reviews">Kết quả xét CV</a>
+            }
+            @if (User.IsInRole("Admin")) {
+                <a href="/Admin" data-nav="admin">Trạng thái hệ thống</a>
+            }
+        </nav>
+        <div class="nav-actions">
+            @if (User.IsInRole("Candidate")) {
+                <div class="notification-hub">
+                    <button class="icon-button notification-toggle" id="notificationToggle" aria-label="Thông báo" aria-expanded="false" aria-controls="notificationPopover"><span data-icon="bell"></span><span class="notification-count" id="notificationCount" aria-hidden="true" hidden></span></button>
+                    <span class="sr-only" id="notificationAnnouncement" role="status" aria-atomic="true"></span>
+                    <section id="notificationPopover" class="notification-popover" aria-label="Thông báo gần đây" hidden>
+                        <div class="notification-heading"><h2>Thông báo</h2><button class="plain-button text-link" id="readAllNotifications">Đánh dấu đã đọc</button></div>
+                        <div id="notificationPreview"><p class="notification-placeholder">Đang tải thông báo…</p></div>
+                        <a class="notification-view-all" href="/Candidate?tab=notifications">Xem tất cả thông báo <span data-icon="arrow"></span></a>
+                    </section>
+                </div>
+            }
+            <button class="icon-button" id="themeToggle" aria-label="Chuyển giao diện tối"><span data-icon="moon"></span></button>
+            @if (User.Identity?.IsAuthenticated == true) {
+                <a class="login-link" href="@(User.IsInRole("Admin") ? "/Admin" : User.IsInRole("Recruiter") ? "/Recruiter" : "/Candidate")">@(User.IsInRole("Admin") ? "Quản trị viên" : User.IsInRole("Recruiter") ? "Tài khoản công ty" : "Tài khoản ứng viên")</a>
+                <button class="button small secondary" id="logoutButton">Đăng xuất</button>
+            } else {
+                <a class="login-link" href="/Login">Đăng nhập</a>
+                <a class="button small" href="/Register">Đăng ký</a>
+            }
+        </div>
+    </div>
+</header>
+<main id="main-content">@RenderBody()</main>
+<footer class="footer">
+    <div class="container footer-top"><div><a class="wordmark" href="/">recruit<span class="brand-ai">ai</span><span class="brand-dot"></span></a><p>Một công việc phù hợp.<br>Một khởi đầu nhiều khả năng.</p></div><div><strong>Dành cho ứng viên</strong><a href="/">Tìm việc làm</a><a href="/Candidate">Tạo & quản lý CV</a><a href="/Candidate?tab=applications">Theo dõi ứng tuyển</a></div><div><strong>Dành cho doanh nghiệp</strong><a href="/Recruiter">Không gian tuyển dụng</a><a href="/Register?role=recruiter">Đăng ký doanh nghiệp</a><a href="/Recruiter?tab=verification">Xác minh doanh nghiệp</a></div><div class="footer-note"><strong>Công nghệ kết nối cơ hội</strong><p>AI hỗ trợ đối chiếu CV và JD.<br>Quyết định tuyển dụng luôn thuộc về con người.</p><span class="soft-label">Dự án AI Recruitment</span></div></div>
+    <div class="container footer-bottom"><span>© @DateTime.Now.Year RecruitAI · Đồ án AI Recruitment</span><span>Tìm đúng việc. Đi xa hơn.</span></div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+<dialog id="mainDialog" class="dialog"><button class="icon-button dialog-close" id="closeDialog" aria-label="Đóng"><span data-icon="x"></span></button><div id="dialogContent"></div></dialog>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

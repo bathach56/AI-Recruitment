@@ -1,7 +1,7 @@
 @page
 @model ResultsModel
-@{ ViewData["Title"] = "Kết quả đối chiếu"; }
-<div id="main-content" class="container-wide workspace-container" data-matching-workspace="recruiter">
-<p role="status">Đang tải không gian đối chiếu…</p>
-<noscript>Bật JavaScript để phân tích CV.</noscript>
+@{ Layout = "_CareerLayout"; ViewData["Title"] = "Kết quả và phản hồi"; }
+<div class="container">
+    <div class="page-heading"><div class="breadcrumbs"><a href="/">Trang chủ</a><span>/</span><span>Kết quả và phản hồi</span></div><h1>Theo dõi hồ sơ của bạn.</h1><p>Trạng thái ứng tuyển và phản hồi từ nhà tuyển dụng được tập trung trong tài khoản ứng viên.</p></div>
+    <section class="panel section-card mb"><h2>Tiếp tục hành trình ứng tuyển</h2><p class="mt">Mở danh sách công việc đã ứng tuyển để xem tiến trình hồ sơ, hoặc kiểm tra thông báo mới nhất.</p><div class="row mt"><a class="button" href="/Candidate?tab=applications">Việc đã ứng tuyển</a><a class="button secondary" href="/Candidate?tab=notifications">Xem thông báo</a></div></section>
 </div>

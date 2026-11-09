@@ -1,5 +1,7 @@
 # Frontend matching kết nối API
 
+> Ghi chép lịch sử của giai đoạn preview. Luồng hiện tại đã có xác thực/phân quyền, ứng tuyển và lưu kết quả theo JD; xem [Tài khoản](ACCOUNTS.md), [Xét CV](SAVED_CV_REVIEWS.md) và [Kiểm thử AI thật](LOCAL_SCENARIO.md). Các mô tả chưa có API/phân quyền và giới hạn 10 CV bên dưới không còn áp dụng cho giao diện hiện tại.
+
 Giao diện giữ ASP.NET Razor Pages, HTML, JavaScript và Bootstrap 5.3 hiện có.
 Không cần npm install hay frontend build riêng.
 

@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 ﻿using Microsoft.AspNetCore.Mvc;
 using webAI.Models;
 using webAI.Services;
 namespace webAI.Controllers;
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class MatchingController : ControllerBase
@@ -11,6 +13,7 @@ public class MatchingController : ControllerBase
     public MatchingController(IAiMatchingService service, ILogger<MatchingController> logger)
     { _service = service; _logger = logger; }
     [HttpGet("health")]
+    [Authorize(Roles = "Recruiter,Admin")]
     public async Task<IActionResult> GetHealth(CancellationToken ct)
     {
         var ready = await _service.CheckAiServiceHealthAsync(ct);
@@ -19,10 +22,12 @@ public class MatchingController : ControllerBase
         return StatusCode(ready ? 200 : 503, new { ai_service_connected = ready });
     }
     [HttpPost("analyze")]
+    [Authorize(Roles = "Recruiter")]
     [RequestSizeLimit(1_000_000)]
     public Task<IActionResult> Analyze([FromBody] AiMatchingRequest request, CancellationToken ct)
         => Execute(async () => (object)await _service.MatchAsync(request, ct), ct);
     [HttpPost("analyze-file")]
+    [Authorize(Roles = "Recruiter")]
     [RequestSizeLimit(12 * 1024 * 1024)]
     [RequestFormLimits(MultipartBodyLengthLimit = 12 * 1024 * 1024)]
     public async Task<IActionResult> AnalyzeFile(IFormFile file, [FromForm(Name = "request_json")] string requestJson, CancellationToken ct)

@@ -4,26 +4,33 @@ import re
 
 from core.text_features import SkillEvidence
 
-VERSION = 'structured-matching-v1'
+VERSION = 'structured-matching-v1.1'
 # Only standalone, explicitly labelled fields. Narrative years and date ranges
 # cannot establish total/relevant experience reliably without additional review.
 EXPERIENCE = re.compile(
-    r'\s*(?P<label>Số năm kinh nghiệm|Tổng kinh nghiệm|Kinh nghiệm liên quan|'
-    r'Total experience|Relevant experience)\s*:\s*'
+    r'\s*(?P<label>Số\s+năm\s+kinh\s+nghiệm|Tổng\s+kinh\s+nghiệm|Kinh\s+nghiệm\s+liên\s+quan|'
+    r'Total\s+experience|Relevant\s+experience)\s*:\s*'
     r'(?P<years>\d+(?:[.,]\d+)?)\s*(?:năm|years?)\s*[.]?\s*', re.I)
 
 
 def extract_experience(segments):
     evidence = []
     for index, segment in enumerate(segments):
-        for match in EXPERIENCE.finditer(segment['text']):
-            if match.span() != (0, len(segment['text'])):
+        offset = 0
+        # PDF segments contain whole pages, DOCX segments contain paragraphs.
+        # Accept the same standalone labelled field on either source; never
+        # infer years from narrative sentences or date intervals.
+        for line in segment['text'].splitlines(keepends=True):
+            match = EXPERIENCE.fullmatch(line)
+            start = offset
+            offset += len(line)
+            if match is None:
                 continue
-            label = match['label'].casefold()
+            label = ' '.join(match['label'].casefold().split())
             scope = 'relevant' if label in {'kinh nghiệm liên quan', 'relevant experience'} else 'total'
             evidence.append({'scope': scope, 'years': float(match['years'].replace(',', '.')),
                              'segment_index': index, 'location': segment['location'],
-                             'start': match.start(), 'end': match.end(),
+                             'start': start + match.start(), 'end': start + match.end(),
                              'matched_text': match[0]})
     scopes = {}
     for scope in ('total', 'relevant'):

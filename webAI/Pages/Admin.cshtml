@@ -1,73 +1,20 @@
 @page
 @model AdminModel
-@{ Layout = null; }
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#312e81">
-<title>Trạng thái hệ thống · RecruitAI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+@{ Layout = "_CareerLayout"; ViewData["Title"] = "Trạng thái hệ thống"; }
+@section VendorStyles {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/theme.css">
-<link rel="stylesheet" href="/css/enterprise.css">
-<link rel="stylesheet" href="/css/product.css">
-<script src="/js/personalization.js" defer></script>
-<script src="/js/theme.js">
-</script>
-</head>
-<body class="">
-<a class="skip-link" href="#main-content">Đến nội dung chính</a>
-<header class="site-nav">
-<nav class="navbar navbar-expand-lg">
-<div class="nav-inner">
-<a class="brand" href="/" aria-label="RecruitAI — Trang chủ">
-<span class="brand-mark" aria-hidden="true">
-<i class="bi bi-intersect">
-</i>
-</span>RecruitAI<span class="brand-caption">Tuyển dụng có căn cứ.</span>
-</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portalNavigation" aria-controls="portalNavigation" aria-expanded="false" aria-label="Mở điều hướng">
-<span class="navbar-toggler-icon">
-</span>
-</button>
-<div class="collapse navbar-collapse" id="portalNavigation">
-<div class="navbar-nav">
-<a href="/" class="nav-link " >Trang chủ</a>
-<a href="/Candidate" class="nav-link " >Hồ sơ ứng viên</a>
-<a href="/Recruiter" class="nav-link " >Không gian tuyển dụng</a>
-<a href="/Admin" class="nav-link active" aria-current="page">Trạng thái hệ thống</a>
-</div>
-<div class="nav-tools">
-<a class="account-link" href="/Login">Tài khoản</a>
-<span id="themeControl">
-</span>
-</div>
-</div>
-</div>
-</nav>
-</header>
-<main id="main-content" class="container-wide system-page">
-<div class="workspace-heading"><div><p class="landing-eyebrow">Kết nối &amp; dịch vụ</p><h1>Trạng thái hệ thống</h1><p>Theo dõi kết nối hiện tại trước khi đối chiếu hồ sơ của bạn.</p></div><div class="connection-panel"><span id="serviceStatus" class="connection-badge" role="status">Đang kiểm tra…</span><button class="btn btn-primary" id="refreshService" type="button"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i>Kiểm tra lại</button></div></div>
+<link rel="stylesheet" href="/css/theme.css" asp-append-version="true">
+<link rel="stylesheet" href="/css/enterprise.css" asp-append-version="true">
+<link rel="stylesheet" href="/css/product.css" asp-append-version="true">
+}
+<div class="container system-refresh">
+<div class="workspace-heading"><div><h1>Trạng thái hệ thống</h1><p>Theo dõi kết nối hiện tại trước khi đối chiếu hồ sơ của bạn.</p></div><div class="connection-panel"><span id="serviceStatus" class="connection-badge" role="status">Đang kiểm tra…</span><button class="btn btn-primary" id="refreshService" type="button"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i>Kiểm tra lại</button></div></div>
 <div class="status-grid"><section class="surface-card status-metric"><i class="bi bi-code-slash" aria-hidden="true"></i><h2>Web API</h2><p id="webApiStatus" class="status-pill" role="status">Đang kiểm tra</p></section><section class="surface-card status-metric"><i class="bi bi-layers" aria-hidden="true"></i><h2>AI Service</h2><p id="aiApiStatus" class="status-pill" role="status">Đang kiểm tra</p></section><section class="surface-card status-metric"><i class="bi bi-cpu" aria-hidden="true"></i><h2>Trạng thái mô hình</h2><p>Chưa có API kiểm tra riêng</p></section><section class="surface-card status-metric"><i class="bi bi-stopwatch" aria-hidden="true"></i><h2>Phản hồi kiểm tra kết nối</h2><p><strong id="healthLatency">—</strong></p><small class="text-secondary">Web → AI → Web</small></section></div>
 <div class="status-dashboard"><section class="surface-card"><h2><i class="bi bi-activity" aria-hidden="true"></i> Thời gian kiểm tra kết nối</h2><p>Các lần kiểm tra thành công trong trang đang mở, đơn vị ms.</p><div id="latencyChart" class="chart-empty" role="status">Cần ít nhất 2 lần kiểm tra thành công để vẽ biểu đồ.</div><p id="latencyRange" class="form-text mt-3"></p></section><section class="surface-card"><h2><i class="bi bi-clipboard-data" aria-hidden="true"></i> Đánh giá mô hình</h2><div class="research-notice"><strong>Chưa có kết quả thực nghiệm đã xác thực</strong><p>Precision, Recall và F1-score cần tập đánh giá có nhãn. Điểm đối chiếu CV không phải độ chính xác của mô hình.</p></div><div class="model-status-list"><div><span>TF-IDF</span><span class="text-secondary">Từ vựng</span></div><div><span>Sentence-BERT</span><span class="text-secondary">Ngữ nghĩa</span></div><div><span>Hybrid</span><span class="text-secondary">Nhiều thành phần</span></div></div></section></div>
-<div class="status-dashboard"><section class="surface-card"><h2>Nhật ký kiểm tra của bạn</h2><ul id="healthLog" class="health-log" aria-live="polite"><li>Chưa có lần kiểm tra hoàn tất.</li></ul></section><section class="surface-card"><h2>Phạm vi hiện tại</h2><dl class="capability-list"><div><dt>Phân tích</dt><dd>Văn bản, PDF và DOCX</dd></div><div><dt>Kích thước tệp</dt><dd>Tối đa 10 MiB</dd></div><div><dt>PDF scan / OCR</dt><dd>Chưa hỗ trợ</dd></div><div><dt>Lưu kết quả</dt><dd>Trong trang · tải JSON</dd></div></dl><a class="text-link mt-3" href="/Recruiter">Mở không gian tuyển dụng <i class="bi bi-arrow-right" aria-hidden="true"></i></a></section></div>
-<p class="availability-note">Quản lý tài khoản, việc làm và ứng tuyển đang chờ API nghiệp vụ.</p></main>
-<footer class="site-footer">
-<a href="/">RecruitAI</a>
-<span>AI hỗ trợ đối chiếu. Con người đưa ra quyết định.</span>
-<a href="/Admin">Trạng thái dịch vụ <i class="bi bi-arrow-up-right" aria-hidden="true">
-</i>
-</a>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-<script src="/js/status.js" defer></script>
-<script src="/js/matching.js" defer>
-</script>
-</body>
-</html>
+<div class="status-dashboard"><section class="surface-card"><h2>Nhật ký kiểm tra của bạn</h2><ul id="healthLog" class="health-log" aria-live="polite"><li>Chưa có lần kiểm tra hoàn tất.</li></ul></section><section class="surface-card"><h2>Phạm vi hiện tại</h2><dl class="capability-list"><div><dt>Phân tích</dt><dd>Văn bản, PDF và DOCX</dd></div><div><dt>Kích thước tệp</dt><dd>Tối đa 10 MiB</dd></div><div><dt>PDF scan / OCR</dt><dd>Chưa hỗ trợ</dd></div><div><dt>Lưu kết quả</dt><dd>Trong trang · tải JSON</dd></div></dl><a class="text-link mt-3" href="/">Về trang chủ <i class="bi bi-arrow-right" aria-hidden="true"></i></a></section></div>
+<p class="availability-note">Trạng thái trên đây được lấy từ lần kiểm tra kết nối hiện tại; không phải kết quả đánh giá mô hình.</p></div>
+@section Scripts {
+<script src="/js/status.js" asp-append-version="true" defer></script>
+<script src="/js/matching.js" asp-append-version="true" defer></script>
+}
