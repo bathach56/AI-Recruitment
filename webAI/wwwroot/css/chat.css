@@ -70,3 +70,34 @@
 .recruit-chat-feedback [role="alert"] { color: var(--bs-danger-text-emphasis); }
 .recruit-chat-form { border-top: 1px solid var(--line); margin-top: 8px; }
 .recruit-chat-form textarea { resize: none; min-width: 0; }
+
+.recruit-chat-suggestions {
+  display: flex;
+  gap: 6px;
+  padding: 4px 12px;
+  overflow-x: auto;
+}
+
+.recruit-chat-suggestions button {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: .8rem;
+}
+
+.recruit-chat-suggestions button:hover:not(:disabled) { background: var(--accent-soft); }
+.recruit-chat-suggestions button:disabled { opacity: .6; }
+.recruit-chat-typing:not(:empty) { color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .recruit-chat-message { animation: recruit-chat-appear 140ms ease-out; }
+  @keyframes recruit-chat-appear {
+    from { opacity: 0; transform: translateY(3px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

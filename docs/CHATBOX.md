@@ -1,33 +1,40 @@
-# Trợ lý AI RecruitAI
+# Trợ lý hỗ trợ CV
 
-Chatbox trả lời câu hỏi về cách dùng website, quy trình tuyển dụng và cách đọc kết quả đối chiếu CV–JD. Tin nhắn được giữ trong bộ nhớ của trang và được xóa khi chọn **Chat mới** hoặc rời trang. Hãy tránh nhập CV hoặc thông tin cá nhân.
+Chatbox dùng FAQ và quy tắc JavaScript để hướng dẫn tải CV, phân tích hồ sơ và đọc kết quả. Sau khi trang tải xong, phần chat hoạt động ngay cả khi mất mạng. Demo chatbox chỉ cần chạy website ASP.NET, không cần API key, Ollama hay dịch vụ AI.
 
-Trình duyệt gọi `POST /api/chat` trên ASP.NET Core. API chỉ chấp nhận kết nối loopback, tối đa 12 yêu cầu/phút cho cả tiến trình, với tối đa 9 tin nhắn mỗi yêu cầu. API chuyển nội dung chat tới Ollama trên loopback. Dịch vụ matching Python tiếp tục xử lý CV/JD riêng. RecruitAI chưa có xác thực và phân quyền hồ sơ, nên chat chỉ hướng dẫn chung và API từ chối các trường bổ sung như `cvId` hoặc `cvText`.
+Lịch sử giữ tối đa 16 lượt trong trình duyệt trên cùng địa chỉ website. Nút **Xóa lịch sử** yêu cầu xác nhận. Hãy tránh nhập CV hoặc thông tin cá nhân vào chat. Khi trình duyệt chặn lưu trữ, chat vẫn hoạt động trong trang đang mở.
+
+## Hỏi về CV và tóm tắt tại chỗ
+
+Chatbox có câu hỏi về kỹ năng, kinh nghiệm, CV cho người mới, ATS và cách dùng TopCV, CareerViet. Các câu trả lời có nguồn tham khảo sẽ hiện liên kết đến bài hướng dẫn.
+
+Để tóm tắt, nhập lệnh ở dòng đầu rồi dán CV dạng văn bản. Dùng Shift + Enter để xuống dòng trong ô nhập.
+
+```text
+Tóm tắt CV:
+Kinh nghiệm: Phát triển API quản lý kho bằng C# trong 2 năm
+Kỹ năng: C#, SQL Server
+Học vấn: Cử nhân Công nghệ thông tin
+```
+
+Tính năng trích tối đa hai ý mỗi mục nhận diện và hỗ trợ tối đa 12.000 ký tự nội dung CV. Nên bỏ thông tin cá nhân trước khi dán. Nội dung gửi bằng lệnh và bản tóm tắt không được ghi vào lịch sử trình duyệt. Hãy giữ tiêu đề rõ ràng vì tài liệu không có mục nhận diện sẽ cần định dạng lại.
 
 ## Chạy cục bộ
 
-Khởi động Python matching theo [runbook](../backend%20test/BACKEND_API.md). Cài Ollama từ [tài liệu chính thức](https://docs.ollama.com/), sau đó mở các terminal sau. Có thể chọn mô hình hội thoại cục bộ đã tải trên máy.
+Từ thư mục gốc, chạy:
 
-```sh
-# Terminal 1
-OLLAMA_NO_CLOUD=1 OLLAMA_HOST=127.0.0.1:11434 ollama serve
-
-# Terminal 2
-ollama pull qwen2.5:1.5b
-Chat__Model=qwen2.5:1.5b dotnet run --project webAI --no-launch-profile --urls http://127.0.0.1:5133
+```powershell
+dotnet run --project webAI --no-launch-profile --urls http://127.0.0.1:5133
 ```
 
-Mở `http://127.0.0.1:5133`. `Chat__Port` mặc định là `11434`, có thể đổi nếu Ollama chạy ở cổng khác trên cùng máy. Khi thiếu `Chat__Model`, API trả 503 với thông báo cấu hình. Khi gặp lỗi kết nối hoặc timeout, Chatbox giữ câu hỏi để người dùng thử lại.
+Mở `http://127.0.0.1:5133` và chọn **Hỗ trợ CV** ở góc dưới bên phải. Để demo cả phần phân tích CV, khởi động thêm dịch vụ Python theo [runbook matching](../backend%20test/BACKEND_API.md).
 
 ## Kiểm thử
 
-```sh
+```powershell
 node --test webAI/tests/*.test.cjs
-node --test webAI/tests/chat-api.integration.cjs
-# Dùng môi trường kiểm thử có Google Chrome và playwright-core.
+# Cần website đang chạy, Chrome và playwright-core khả dụng với Node.
 node --test webAI/tests/chat.browser.cjs
 ```
 
-Các bài kiểm thử chat dùng website cục bộ có mô hình đã cấu hình, mặc định ở cổng 5133. Dùng `CHAT_TEST_URL` để đổi URL. Với một phiên bản ASP.NET chạy riêng và để trống `Chat__Model`, đặt `CHAT_DISABLED_TEST_URL` để kiểm tra lỗi thiếu cấu hình.
-
-Để kiểm tra timeout và giới hạn tần suất, chạy `python3 webAI/tests/chat-provider-fixture.py 11435`, sau đó khởi động một tiến trình ASP.NET riêng với `Chat__Port=11435` và `Chat__Model=fixture`. Đặt `CHAT_FAILURE_TEST_URL` trỏ đến tiến trình đó trước khi chạy bộ kiểm thử API. Fixture chỉ mô phỏng lỗi đường truyền trong kiểm thử.
+Dùng `CHAT_TEST_URL` nếu chạy website trên cổng khác.
