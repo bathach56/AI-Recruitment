@@ -1,0 +1,9 @@
+Lập trình viên máy chủ .NET
+
+Xây dựng và bảo trì phần máy chủ của nền tảng tuyển dụng. Phát triển giao diện lập trình REST bằng ASP.NET Core cho tin tuyển dụng, hồ sơ ứng tuyển và quy trình của doanh nghiệp. Thiết kế giao dịch cơ sở dữ liệu, ghi nhật ký và kiểm soát quyền truy cập. Phối hợp nhóm giao diện, rà soát mã nguồn và xử lý lỗi.
+
+Ít nhất 2 năm lập trình phần máy chủ. Bắt buộc: C#, ASP.NET Core, SQL Server, Git và thiết kế REST API. Hiểu Entity Framework Core, kiểm tra dữ liệu đầu vào, xác thực, kiểm thử đơn vị và tối ưu truy vấn. Ưu tiên kinh nghiệm Docker và Redis.
+
+C#,ASP.NET Core,SQL Server,Git,REST API
+
+2–4 năm

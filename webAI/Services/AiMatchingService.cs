@@ -33,7 +33,10 @@ public class AiMatchingService : IAiMatchingService
     public async Task<JsonElement> MatchFileAsync(Stream stream, string filename, string requestJson, CancellationToken cancellationToken)
     {
         using var content = new MultipartFormDataContent();
-        content.Add(new StreamContent(stream), "file", Path.GetFileName(filename));
+        // Only the extension is needed by the parser. ASCII transport names avoid
+        // MIME encoded-word filenames obscuring the suffix in Python multipart.
+        // The original Unicode display name stays in the application's metadata.
+        content.Add(new StreamContent(stream), "file", "cv" + Path.GetExtension(filename).ToLowerInvariant());
         content.Add(new StringContent(requestJson), "request_json");
         using var response = await _httpClient.PostAsync("/api/ai/match-file", content, cancellationToken);
         response.EnsureSuccessStatusCode();

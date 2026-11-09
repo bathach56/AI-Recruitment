@@ -11,7 +11,8 @@ public static class ReviewWorkbook
 {
     private static readonly XNamespace S = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
     private static readonly XNamespace R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
-    public static readonly string[] ImportHeaders = ["candidate_name", "email", "cv_text"];
+    public static readonly string[] ImportHeaders = ["Tên ứng viên", "Email", "Nội dung CV"];
+    private static readonly string[] LegacyImportHeaders = ["candidate_name", "email", "cv_text"];
     public static byte[] Write(string[] headers, IReadOnlyList<object?[]> rows)
     {
         using var data = new MemoryStream();
@@ -53,25 +54,25 @@ public static class ReviewWorkbook
     {
         if(Path.GetExtension(file.FileName).ToLowerInvariant()!=".xlsx"||file.Length is <=0 or >10485760)throw new ArgumentException("Chọn file .xlsx tối đa 10 MiB theo mẫu.");
         using var input=file.OpenReadStream();using var zip=new ZipArchive(input,ZipArchiveMode.Read);
-        if(zip.Entries.Count>500||zip.Entries.Sum(e=>e.Length)>20*1024*1024||zip.Entries.Any(e=>e.FullName.Contains("vbaProject",StringComparison.OrdinalIgnoreCase)||e.FullName.StartsWith("xl/externalLinks/",StringComparison.OrdinalIgnoreCase)))throw new ArgumentException("Workbook quá lớn hoặc có macro/liên kết ngoài không được hỗ trợ.");
-        XDocument Read(string path){var entry=zip.GetEntry(path)??throw new ArgumentException("Workbook thiếu cấu trúc cần thiết.");using var stream=entry.Open();using var reader=XmlReader.Create(stream,new XmlReaderSettings{DtdProcessing=DtdProcessing.Prohibit,XmlResolver=null,MaxCharactersInDocument=20*1024*1024});return XDocument.Load(reader);}
-        var workbook=Read("xl/workbook.xml");var sheet=workbook.Descendants(S+"sheet").FirstOrDefault()??throw new ArgumentException("Workbook không có sheet.");
+        if(zip.Entries.Count>500||zip.Entries.Sum(e=>e.Length)>20*1024*1024||zip.Entries.Any(e=>e.FullName.Contains("vbaProject",StringComparison.OrdinalIgnoreCase)||e.FullName.StartsWith("xl/externalLinks/",StringComparison.OrdinalIgnoreCase)))throw new ArgumentException("Sổ làm việc quá lớn hoặc có macro/liên kết ngoài không được hỗ trợ.");
+        XDocument Read(string path){var entry=zip.GetEntry(path)??throw new ArgumentException("Sổ làm việc thiếu cấu trúc cần thiết.");using var stream=entry.Open();using var reader=XmlReader.Create(stream,new XmlReaderSettings{DtdProcessing=DtdProcessing.Prohibit,XmlResolver=null,MaxCharactersInDocument=20*1024*1024});return XDocument.Load(reader);}
+        var workbook=Read("xl/workbook.xml");var sheet=workbook.Descendants(S+"sheet").FirstOrDefault()??throw new ArgumentException("Sổ làm việc không có trang tính.");
         var relations=Read("xl/_rels/workbook.xml.rels").Root!.Elements().Where(e=>(string?)e.Attribute("Id")== (string?)sheet.Attribute(R+"id")).ToArray();
-        if(relations.Length!=1)throw new ArgumentException("Quan hệ sheet trong workbook không hợp lệ.");var relation=relations[0];
+        if(relations.Length!=1)throw new ArgumentException("Liên kết trang tính trong sổ làm việc không hợp lệ.");var relation=relations[0];
         var target=(string?)relation?.Attribute("Target")??"";
         if((string?)relation?.Attribute("TargetMode")=="External")throw new ArgumentException("Không đọc liên kết ngoài.");
         target=target.StartsWith('/')?target.TrimStart('/') : "xl/"+target;
-        if(!target.StartsWith("xl/worksheets/")||target.Contains(".."))throw new ArgumentException("Đường dẫn sheet không được hỗ trợ.");
+        if(!target.StartsWith("xl/worksheets/")||target.Contains(".."))throw new ArgumentException("Đường dẫn trang tính không được hỗ trợ.");
         var strings=zip.GetEntry("xl/sharedStrings.xml")==null?[]:Read("xl/sharedStrings.xml").Descendants(S+"si").Select(e=>string.Concat(e.Descendants(S+"t").Select(t=>t.Value))).ToArray();
         var rows=Read(target).Descendants(S+"row").ToList();if(rows.Count>1000)throw new ArgumentException("Tối đa 50 hồ sơ, không dùng vùng dữ liệu dư quá lớn.");
         string[] Values(XElement row){var result=new string[3];Array.Fill(result,"");foreach(var c in row.Elements(S+"c")){
             if(c.Element(S+"f")!=null)throw new ArgumentException("Mẫu nhập chỉ nhận văn bản, không nhận công thức.");
             var reference=(string?)c.Attribute("r")??"";var column=new string(reference.TakeWhile(char.IsLetter).ToArray());
             if(column is not ("A" or "B" or "C"))continue;var value=(string?)c.Element(S+"v")??"";var type=(string?)c.Attribute("t");
-            if(type=="s"){if(!int.TryParse(value,out var i)||i<0||i>=strings.Length)throw new ArgumentException("Shared string không hợp lệ.");value=strings[i];}
+            if(type=="s"){if(!int.TryParse(value,out var i)||i<0||i>=strings.Length)throw new ArgumentException("Chuỗi dùng chung không hợp lệ.");value=strings[i];}
             else if(type=="inlineStr")value=string.Concat(c.Descendants(S+"t").Select(t=>t.Value));
             if(value.Length>32767)throw new ArgumentException("Mỗi ô tối đa 32.767 ký tự.");result[column[0]-'A']=value.Trim();}return result;}
-        if(rows.Count==0||!Values(rows[0]).SequenceEqual(ImportHeaders))throw new ArgumentException("Dòng đầu cần đúng ba cột: candidate_name, email, cv_text. Hãy tải mẫu.");
+        if(rows.Count==0||(!Values(rows[0]).SequenceEqual(ImportHeaders)&&!Values(rows[0]).SequenceEqual(LegacyImportHeaders)))throw new ArgumentException("Dòng đầu cần đúng ba cột: Tên ứng viên, Email, Nội dung CV. Hãy tải mẫu.");
         var output=new List<ExternalCvRow>();foreach(var row in rows.Skip(1)){var cells=Values(row);if(cells.All(string.IsNullOrWhiteSpace))continue;var cv=new ExternalCvRow{Name=cells[0],Email=cells[1],CvText=cells[2]};cv.Validate();output.Add(cv);}
         if(output.Count is <1 or >50)throw new ArgumentException("File cần từ 1 đến 50 hồ sơ có nội dung CV.");
         await Task.CompletedTask;return output;

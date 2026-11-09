@@ -1,0 +1,9 @@
+Backend Developer (.NET)
+
+Build and maintain backend services for a recruitment platform. Develop ASP.NET Core REST APIs for job postings, applications and recruiter workflows. Design database transactions, logging and access controls. Collaborate with frontend developers and review code.
+
+At least 2 years of backend development. Required: C#, ASP.NET Core, SQL Server, Git and REST API design. Understand Entity Framework Core, input validation, authentication, unit testing and query optimization. Docker and Redis are useful additional experience.
+
+C#,ASP.NET Core,SQL Server,Git,REST API
+
+2–4 năm

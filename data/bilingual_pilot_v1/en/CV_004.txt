@@ -1,0 +1,11 @@
+Junior Frontend Developer
+
+Hồ sơ giả lập: 1 năm xây dựng giao diện JavaScript và React; TypeScript ở mức dự án cá nhân.
+
+React, JavaScript, HTML, CSS, Git, REST API
+
+Total experience: 1 year. 2025-2026: Junior Frontend Developer at fictional Willow Web. Implemented responsive HTML and CSS pages, maintained React components and integrated REST API responses. Used Git and browser developer tools for debugging.
+
+Appointment portal: React forms, date selection and client validation. Portfolio project: introductory TypeScript components. Wrote manual test cases for mobile layout and keyboard interactions.
+
+Bachelor of Software Engineering, fictional demonstration university, 2021-2025. English: technical reading.

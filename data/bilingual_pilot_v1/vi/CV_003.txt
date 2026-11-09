@@ -1,0 +1,11 @@
+Lập trình viên giao diện React
+
+Hồ sơ giả lập: 3 năm xây dựng giao diện bằng React và TypeScript, chú trọng khả năng truy cập và kiểm thử.
+
+React, TypeScript, JavaScript, HTML, CSS, Git, REST API, Jest, khả năng truy cập
+
+Tổng kinh nghiệm: 3 năm. Từ năm 2023 đến năm 2026: lập trình viên giao diện tại công ty giả lập Giải pháp Phong Việt. Phát triển trang quản lý bằng React và TypeScript, kết nối REST API, xây dựng biểu mẫu dễ truy cập và bố cục thích ứng. Viết kiểm thử Jest, rà soát mã giao diện.
+
+Trang quản lý tuyển dụng: bảng React có tìm kiếm, phân trang và biểu đồ trạng thái. Gian hàng trực tuyến: thành phần HTML, CSS và TypeScript hỗ trợ bàn phím, trạng thái tải và kiểm tra biểu mẫu.
+
+Cử nhân Khoa học máy tính tại trường giả lập phục vụ đồ án, giai đoạn 2019–2023. Có khả năng đọc tài liệu kỹ thuật.

@@ -1,0 +1,36 @@
+{
+  "version": "bilingual_pilot_v1",
+  "intended_use": "pilot_only",
+  "synthetic": true,
+  "pairs": 36,
+  "languages": [
+    "vi",
+    "en"
+  ],
+  "source_sha256": {
+    "vi": "75e122aaa428651b2bc2634c4b72483ea6e6d816163b2cdceb3278b96a97fc02",
+    "en": "ca3c21c69436884e819c23c94710d2ab095de2406bb7318d696da2e48adc052f"
+  },
+  "text_hashes": {
+    "en/CV_001.txt": "c2b75122feb328d076c02d1982af7e04188afc1553566b992add4a22270927a3",
+    "en/CV_002.txt": "30c8484887a18f4d06d05404cf5dbd8d01f159ef43141756a5661acaeb2ee3ef",
+    "en/CV_003.txt": "ee6db2c17985f7213252c403141118a35a9211fda16234f389ef02dc286d2c95",
+    "en/CV_004.txt": "de16f5832ee6744eeb83ae5f30f55641d2af3a0d0d69d9ed305ad4bbd85bc8c7",
+    "en/CV_005.txt": "8c01084f26c8440df8d93f431e358c97405c303faee063b88ed051890865f5f1",
+    "en/CV_006.txt": "1b6d070bc1823ab0af1ba4fd8ffcf350e3b65e5b2078347a1aab76374e77686b",
+    "en/JD_001.txt": "b285f63f4696980883c8e66045f2980fc535024e0619f065e33317e55f8d49e5",
+    "en/JD_002.txt": "57971a63b2a5094f2b127c214416f26eb53d39f6465ed9a78d82118a1651eb91",
+    "en/JD_003.txt": "25aa1e59671eb762c6bda9ab3a21548f2d2af913446d888a9786e41ba57cf490",
+    "vi/CV_001.txt": "14a8a7297ca4f07cd44dd40f94526eade835cf06049900a2744c81f6153cf510",
+    "vi/CV_002.txt": "1018be999973cf474da880c4c74b0528b5e9bb4283abc336de4f4f5005d405cd",
+    "vi/CV_003.txt": "2e9f67bf4e1f3fab9d6b39b45d314c811bd2ed2d4753506d5b7c693711f1b253",
+    "vi/CV_004.txt": "e36ca296bbf1d4bcd147178809fc5de7fd3d0a87c75ec2e3318bc0a7baecea54",
+    "vi/CV_005.txt": "a30a92f3a66a8cc080598a751477d5e6f775e2fb62264ce0508dc51b7e0e1462",
+    "vi/CV_006.txt": "b8f77086c42784025228faf584b6637bf2444af8ec1da841dccd345097956293",
+    "vi/JD_001.txt": "ce1829664d198aa75da7462e01c78c6f49b109e89cbdeaf0a1d3f467b3333674",
+    "vi/JD_002.txt": "68c0f097e9216f13d3243e7a7ba66e0eace82b053f0182e82f95d91bc586c1c1",
+    "vi/JD_003.txt": "7d2799cb927e37c73b8629e9ab1947c8392eefaf39a8978a68a4a2c2050235d1",
+    "pairs.csv": "c284e04b9f95a0c0b6eccb40a51af7dbe4ceae9346251093dd9827751c68085e"
+  },
+  "note": "36 cặp là 18 nội dung ở hai ngôn ngữ; không phải 36 mẫu độc lập hoặc bộ kiểm tra nghiên cứu. Chưa có nhãn."
+}

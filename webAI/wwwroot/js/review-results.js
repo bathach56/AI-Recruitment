@@ -26,7 +26,7 @@
  }
  async function loadDetail(){
   if(!active)return;const id=active,query=filter();const batch=await api('/'+id+'?'+query);if(active!==id||query!==filter())return;
-  $('reviewDetail').hidden=false;$('reviewTitle').textContent=batch.title;$('reviewMeta').textContent=`${batch.model} · ${new Date(batch.createdAt).toLocaleString('vi-VN')} · ${batch.items.length} hồ sơ hiển thị`;
+  $('reviewDetail').hidden=false;$('reviewTitle').textContent=batch.title;$('reviewMeta').textContent=`${window.RecruitVietnamese?.modelName(batch.model)||batch.model} · ${new Date(batch.createdAt).toLocaleString('vi-VN')} · ${batch.items.length} hồ sơ hiển thị`;
   $('exportReviews').href='/api/recruiter/reviews/'+id+'/excel?'+query;
   $('reviewRows').replaceChildren();$('reviewEmpty').hidden=batch.items.length>0;
   for(const item of batch.items){const row=node('tr'),name=node('td');name.append(node('strong',item.name),node('small',item.email));
@@ -37,7 +37,7 @@
   const batches=await api('');history.replaceChildren();
   if(!batches.length){history.append(node('p','Chưa có đợt xét được lưu. Mở Đối chiếu CV & JD và chọn hồ sơ để bắt đầu.'));return}
   const label=node('label','Chọn đợt xét'),select=node('select');select.className='review-batch-select';select.setAttribute('aria-label','Chọn đợt xét đã lưu');
-  batches.forEach(b=>{const option=node('option',`${b.title} · ${b.model} · ${b.completed}/${b.total} đã xét · ${new Date(b.createdAt).toLocaleString('vi-VN')}`);option.value=b.id;select.append(option)});
+  batches.forEach(b=>{const option=node('option',`${b.title} · ${window.RecruitVietnamese?.modelName(b.model)||b.model} · ${b.completed}/${b.total} đã xét · ${new Date(b.createdAt).toLocaleString('vi-VN')}`);option.value=b.id;select.append(option)});
   if(!active)active=batches[0].id;
   if(batches.some(b=>b.id===active))select.value=active;
   select.onchange=async()=>{if(busy){select.value=active;return}active=select.value;historyState();$('reviewActivity').textContent='';try{await loadDetail()}catch(e){$('reviewActivity').textContent=e.message}};

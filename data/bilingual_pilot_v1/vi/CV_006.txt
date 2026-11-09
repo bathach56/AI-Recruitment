@@ -1,0 +1,11 @@
+Lập trình viên cơ sở dữ liệu mới vào nghề
+
+Hồ sơ giả lập: 2 năm lập trình SQL, thiết kế dữ liệu PostgreSQL và báo cáo; có kiến thức SQL Server cơ bản.
+
+SQL, PostgreSQL, SQL Server, thiết kế cơ sở dữ liệu, Git, Python
+
+Tổng kinh nghiệm: 2 năm. Từ năm 2024 đến năm 2026: lập trình viên cơ sở dữ liệu tại công ty giả lập Phân tích Dữ liệu Việt. Thiết kế bảng PostgreSQL, truy vấn báo cáo, chỉ mục và rà soát chuyển đổi cấu trúc dữ liệu. Hỗ trợ nhập dữ liệu SQL Server và kiểm tra chất lượng.
+
+Kho dữ liệu bán hàng: tổng hợp SQL, bảng dữ liệu theo chiều và đối chiếu bằng Python. Dữ liệu khách hàng: ràng buộc, chỉ mục và kiểm tra giao dịch. Mới thực hành sao lưu, phục hồi trong môi trường học tập cục bộ.
+
+Cử nhân Hệ thống thông tin tại trường giả lập phục vụ đồ án, giai đoạn 2020–2024. Có khả năng đọc tài liệu kỹ thuật cơ bản.

@@ -27,6 +27,15 @@ class StructuredTests(unittest.TestCase):
         self.assertEqual(result['score'], 50)
         self.assertEqual(result['requirements'][1]['status'], 'needs_review')
 
+    def test_requirement_aliases_use_existing_taxonomy_without_dropping_unknowns(self):
+        result = match_skills(self.extractor, segments('RESTful API'), ['REST API', 'RESTful API'], [])
+        self.assertEqual(len(result['requirements']), 1)
+        self.assertEqual(result['score'], 100)
+        alias = match_skills(self.extractor, segments('REST API'), ['REST API'], [])
+        self.assertEqual(alias['requirements'][0]['status'], 'needs_review')
+        unknown = match_skills(self.extractor, segments('Thiết kế cơ sở dữ liệu'), ['Thiết kế cơ sở dữ liệu'], [])
+        self.assertEqual(unknown['requirements'][0]['status'], 'needs_review')
+
     def test_negation_and_conflict_not_positive(self):
         for texts in [('Chưa biết Docker',), ('Docker', 'Chưa biết Docker')]:
             result = match_skills(self.extractor, segments(*texts), ['Docker'], [])

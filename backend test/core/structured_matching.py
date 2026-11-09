@@ -4,7 +4,7 @@ import re
 
 from core.text_features import SkillEvidence
 
-VERSION = 'structured-matching-v1.1'
+VERSION = 'structured-matching-v1.2'
 # Only standalone, explicitly labelled fields. Narrative years and date ranges
 # cannot establish total/relevant experience reliably without additional review.
 EXPERIENCE = re.compile(
@@ -71,9 +71,14 @@ def match_skills(extractor: SkillEvidence, segments, required, optional, require
             raise ValueError('Weights must be finite and positive')
     features = extractor.extract(segments)
     canonical = {}
-    for _, skill, _, _ in extractor.rules:
+    aliases = {}
+    for _, skill, _, alias in extractor.rules:
         for name in (skill['name'], skill['normalized']):
             canonical[name.casefold()] = skill['normalized']
+        aliases.setdefault(alias.casefold(), set()).add(skill['normalized'])
+    for alias, keys in aliases.items():
+        if alias not in canonical and len(keys) == 1:
+            canonical[alias] = next(iter(keys))
     rows, seen = [], set()
     for names, group, weight in ((required, 'required', required_weight), (optional, 'optional', optional_weight)):
         if not isinstance(names, list):

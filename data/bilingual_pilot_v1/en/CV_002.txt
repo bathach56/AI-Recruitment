@@ -1,0 +1,11 @@
+Junior Backend Developer
+
+Hồ sơ giả lập: 2 năm phát triển API .NET, SQL Server và kiểm thử phần mềm; chưa có kinh nghiệm Redis trong sản phẩm.
+
+C#, ASP.NET Core, SQL Server, REST API, Git, Unit Testing
+
+Total experience: 2 years. 2024-2026: Junior Backend Developer at fictional Cedar Apps. Maintained C# REST APIs, implemented input validation, wrote SQL Server queries and automated unit tests. Used Git pull requests and code review.
+
+Helpdesk API: developed ticket CRUD, authentication and role permissions in ASP.NET Core. Used SQL Server foreign keys and transactions. Reporting endpoint: implemented pagination and filtered queries.
+
+Bachelor of Information Technology, fictional demonstration university, 2020-2024. English: intermediate.

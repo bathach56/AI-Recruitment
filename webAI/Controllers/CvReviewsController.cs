@@ -26,7 +26,7 @@ public class CvReviewsController(RecruitmentDbContext db,CvReviewService service
         catch(Exception ex) when(ex is ArgumentException or JsonException){return BadRequest(new{message=ex is ArgumentException?ex.Message:"Dữ liệu đợt xét không hợp lệ."});}
     }
     [HttpGet]
-    public async Task<IActionResult> List(){var company=await CompanyId();return Ok(await db.CvReviewBatches.Where(b=>b.CompanyId==company).OrderByDescending(b=>b.CreatedAt).Select(b=>new{b.Id,b.Title,b.Model,b.CreatedAt,total=db.CvReviewItems.Count(i=>i.BatchId==b.Id),completed=db.CvReviewItems.Count(i=>i.BatchId==b.Id&&(i.State=="Complete"||i.State=="Incomplete")),errors=db.CvReviewItems.Count(i=>i.BatchId==b.Id&&i.State=="Error")}).Take(200).ToListAsync());}
+    public async Task<IActionResult> List(bool includeArchived=false){var company=await CompanyId();return Ok(await db.CvReviewBatches.Where(b=>b.CompanyId==company&&(includeArchived||!b.Title.StartsWith("[Lưu trữ]"))).OrderByDescending(b=>b.CreatedAt).Select(b=>new{b.Id,b.Title,b.Model,b.CreatedAt,total=db.CvReviewItems.Count(i=>i.BatchId==b.Id),completed=db.CvReviewItems.Count(i=>i.BatchId==b.Id&&(i.State=="Complete"||i.State=="Incomplete")),errors=db.CvReviewItems.Count(i=>i.BatchId==b.Id&&i.State=="Error")}).Take(200).ToListAsync());}
     private IQueryable<CvReviewItem> Filter(Guid id,string? q,string? state,double? min,string? sort)
     {
         var items=db.CvReviewItems.AsNoTracking().Where(i=>i.BatchId==id);
@@ -55,7 +55,7 @@ public class CvReviewsController(RecruitmentDbContext db,CvReviewService service
         var items=await Filter(id,q,state,min,sort).ToListAsync();
         string State(string state)=>state switch{"Complete"=>"Có điểm tổng","Incomplete"=>"Thiếu dữ liệu tính tổng","Error"=>"Lỗi","Running"=>"Đang xét",_=>"Chưa xét"};
         string Source(string source)=>source switch{"Application"=>"Ứng tuyển","Upload"=>"Tệp tải lên",_=>"Excel / văn bản"};
-        var rows=items.Select(i=>new object?[]{i.Name,i.Email,Source(i.Source),batch.Title,batch.Model,State(i.State),i.Score,i.SemanticScore,i.SkillScore,i.ExperienceScore,i.Error,i.AnalyzedAt?.ToString("O"),"Điểm CV-JD hỗ trợ rà soát; không phải độ chính xác hoặc quyết định tuyển dụng."}).ToList();
+        var rows=items.Select(i=>new object?[]{i.Name,i.Email,Source(i.Source),batch.Title,batch.Model=="Hybrid"?"Kết hợp":batch.Model,State(i.State),i.Score,i.SemanticScore,i.SkillScore,i.ExperienceScore,i.Error,i.AnalyzedAt?.ToString("O"),"Điểm CV-JD hỗ trợ rà soát; không phải độ chính xác hoặc quyết định tuyển dụng."}).ToList();
         return File(ReviewWorkbook.Write(["Ứng viên / CV","Email","Nguồn","Vị trí / JD","Phương pháp","Trạng thái","Điểm phù hợp (0-100)","Ngữ nghĩa / từ vựng (0-100)","Kỹ năng (0-100)","Kinh nghiệm (0-100)","Lỗi / ghi chú","Thời điểm xét (UTC)","Lưu ý"],rows),Xlsx,$"ket-qua-cv-{id:N}.xlsx");
     }
 }

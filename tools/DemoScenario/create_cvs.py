@@ -24,7 +24,7 @@ for c in json.loads((Path(__file__).parent / 'scenario.json').read_text(encoding
     section(c['role'],14,(.08,.27,.65),gap=8)
     section(c['email']+'  |  '+c['city'],10)
     section('HỒ SƠ GIẢ LẬP PHỤC VỤ KIỂM THỬ ĐỒ ÁN',9,(.4,.4,.4))
-    for heading,key in [('PROFILE','summary'),('TECHNICAL SKILLS','skills'),('WORK EXPERIENCE','experience'),('SELECTED PROJECTS','projects'),('EDUCATION','education')]:
+    for heading,key in [('Giới thiệu','summary'),('Kỹ năng chuyên môn','skills'),('Kinh nghiệm làm việc','experience'),('Dự án tiêu biểu','projects'),('Học vấn','education')]:
         section(heading,10,(.08,.27,.65),gap=3)
         value=c[key]
         if key=='experience':
@@ -32,11 +32,11 @@ for c in json.loads((Path(__file__).parent / 'scenario.json').read_text(encoding
             section(field+'.',10,gap=3)
             value=narrative
         section(value,10,gap=12)
-    page.insert_text((48,816),'Fictional test data | AI Recruitment local scenario v1',fontsize=8,color=(.4,.4,.4))
+    page.insert_text((48,816),'Hồ sơ giả lập | Bộ kiểm thử tuyển dụng tiếng Việt v2',fontname='Arial',fontsize=8,color=(.4,.4,.4))
     path=OUT/(c['email'].split('@')[0]+'.pdf')
     doc.save(path)
     extracted=page.get_text().replace('\u00a0',' ')
-    assert c['email'] in extracted and 'Total experience:' in extracted
+    assert c['email'] in extracted and 'Tổng kinh nghiệm:' in extracted
     page.get_pixmap().save(path.with_suffix('.png'))
     doc.close()
 print('Created and rendered 6 CV PDFs: '+str(OUT))

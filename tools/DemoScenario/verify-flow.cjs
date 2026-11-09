@@ -21,7 +21,7 @@ async function main(){
  if(process.argv.includes('--submit')){
   for(const c of scenario.candidates){
    const account=credentials.find(a=>a.Email===c.email),s=new Session();await s.login(c.email,account.password);
-   const job=jobs.find(j=>j.title.toLowerCase().startsWith(c.group));assert.ok(job);
+   const job=jobs.find(j=>j.title===scenario.jobs[{backend:0,frontend:1,database:2}[c.group]].title);assert.ok(job);
    const existing=await s.json('/api/workspace/applications');if(existing.some(a=>a.jobId===job.id))continue;
    const form=new FormData();form.append('file',new Blob([fs.readFileSync(path.join(privateRoot,'scenario-cvs',c.email.split('@')[0]+'.pdf'))],{type:'application/pdf'}),c.email.split('@')[0]+'.pdf');
    const resume=await s.json('/api/workspace/resumes','POST',form);
@@ -40,7 +40,7 @@ async function main(){
  console.log('Verified 2 CVs per JD, 8 public jobs across 6 companies, foreign JD denied and cross-job CV selection rejected.');
  if(!process.argv.includes('--analyze'))return;
  const health=await recruiter.send('/api/matching/health');assert.equal(health.status,200,'AI must be genuinely available');
- const report={createdAt:new Date().toISOString(),scenario:'local-recruitment-v1',note:'Synthetic functional test; matching scores are not accuracy or research evaluation metrics.',weights:{semantic_weight:.5,skill_weight:.3,experience_weight:.2},groups:[]};
+ const report={createdAt:new Date().toISOString(),scenario:'local-recruitment-vi-v2',note:'Kiểm thử chức năng với dữ liệu giả lập; điểm phù hợp không phải độ chính xác mô hình.',weights:{semantic_weight:.5,skill_weight:.3,experience_weight:.2},groups:[]};
  for(const {job,apps} of grouped){
   const form=new FormData();form.append('requestJson',JSON.stringify({jobId:job.id,configuration:{model_type:'Hybrid',weights:report.weights},applicationIds:apps.map(a=>a.id)}));
   const batch=await recruiter.json('/api/recruiter/reviews','POST',form),detail=await recruiter.json('/api/recruiter/reviews/'+batch.id);
@@ -54,7 +54,7 @@ async function main(){
   const filtered=await recruiter.json(`/api/recruiter/reviews/${batch.id}?min=${sorted.items[0].score}`);assert.ok(filtered.items.every(i=>i.score>=sorted.items[0].score));
   const excel=await recruiter.send(`/api/recruiter/reviews/${batch.id}/excel?sort=desc`);assert.equal(excel.status,200);
   const bytes=Buffer.from(await excel.arrayBuffer());assert.equal(bytes.subarray(0,2).toString(),'PK');
-  fs.writeFileSync(path.join(privateRoot,job.title.split(' ')[0]+'-results.xlsx'),bytes);
+  fs.writeFileSync(path.join(privateRoot,'ket-qua-tin-'+job.id+'.xlsx'),bytes);
   const baseline=[];
   for(const method of ['TF-IDF','Sentence-BERT']){
    const f=new FormData(),cv=await recruiter.send('/api/workspace/resumes/'+apps[0].resumeId);assert.equal(cv.status,200);

@@ -23,6 +23,7 @@ test('select-all checkbox survives bubbling input before its change handler',()=
  for(const id of ['selectAllApplications','selectAllExcel','selectAllUploadFiles']){
   const target={id,type:'checkbox',checked:true};onInput({target});assert.equal(target.checked,true);
  }
+ onInput({target:{id:'',type:'select-one',closest:selector=>selector==='.list-pagination'}});
 });
 test('job-specific fetch clears old selections and ignores out-of-order responses',async()=>{
  assert.ok(!source.includes("request('/api/workspace/applications')"),'matching must not fetch the whole company inbox');

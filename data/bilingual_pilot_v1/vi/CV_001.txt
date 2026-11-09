@@ -1,0 +1,11 @@
+Lập trình viên máy chủ .NET
+
+Hồ sơ giả lập: 4 năm xây dựng hệ thống máy chủ bằng .NET và xử lý dữ liệu giao dịch.
+
+C#, ASP.NET Core, Entity Framework Core, SQL Server, REST API, Git, Docker, Redis, kiểm thử đơn vị
+
+Tổng kinh nghiệm: 4 năm. Từ năm 2022 đến năm 2026: lập trình viên tại công ty giả lập Phần mềm Ánh Dương. Xây dựng giao diện lập trình REST bằng ASP.NET Core, thiết kế bảng và chỉ mục SQL Server, phân quyền bằng JWT và xử lý giao dịch. Viết kiểm thử đơn vị, đóng gói ứng dụng bằng Docker.
+
+Hệ thống đơn hàng: xây dựng chức năng đặt hàng, thanh toán bằng C#, Entity Framework Core và SQL Server; bổ sung bộ nhớ đệm Redis và kiểm thử tích hợp. Dịch vụ kho: thiết kế thao tác chống ghi trùng, nhật ký và chuyển đổi cấu trúc dữ liệu.
+
+Cử nhân Kỹ thuật phần mềm tại trường giả lập phục vụ đồ án, giai đoạn 2018–2022. Có khả năng đọc tài liệu kỹ thuật.

@@ -1,0 +1,11 @@
+Lập trình viên máy chủ mới vào nghề
+
+Hồ sơ giả lập: 2 năm phát triển giao diện lập trình .NET, truy vấn SQL Server và kiểm thử; chưa sử dụng Redis trong sản phẩm.
+
+C#, ASP.NET Core, SQL Server, REST API, Git, kiểm thử đơn vị
+
+Tổng kinh nghiệm: 2 năm. Từ năm 2024 đến năm 2026: lập trình viên tại công ty giả lập Ứng dụng Hướng Dương. Bảo trì giao diện lập trình C#, kiểm tra dữ liệu đầu vào, viết truy vấn SQL Server và kiểm thử tự động. Sử dụng Git và tham gia rà soát mã nguồn.
+
+Hệ thống hỗ trợ khách hàng: tạo, cập nhật phiếu hỗ trợ, xác thực và phân quyền bằng ASP.NET Core; sử dụng khóa ngoại và giao dịch SQL Server. Chức năng báo cáo: truy vấn có bộ lọc và phân trang.
+
+Cử nhân Công nghệ thông tin tại trường giả lập phục vụ đồ án, giai đoạn 2020–2024. Có khả năng đọc tài liệu kỹ thuật cơ bản.

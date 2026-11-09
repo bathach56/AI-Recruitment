@@ -1,0 +1,9 @@
+Lập trình viên giao diện React và TypeScript
+
+Phát triển giao diện thích ứng cho trang quản lý tuyển dụng và cổng ứng tuyển. Xây dựng thành phần React, bảng tìm kiếm, biểu mẫu hỗ trợ bàn phím, trạng thái tải và xử lý lỗi kết nối. Tích hợp REST API, phối hợp nhóm thiết kế và nhóm máy chủ.
+
+Ít nhất 2 năm lập trình giao diện. Bắt buộc: React, TypeScript, JavaScript, HTML, CSS và Git. Hiểu bố cục thích ứng, khả năng truy cập bằng bàn phím và quản lý trạng thái thành phần. Ưu tiên kiểm thử giao diện tự động và đo hiệu năng.
+
+React,TypeScript,JavaScript,HTML,CSS,Git
+
+2–3 năm

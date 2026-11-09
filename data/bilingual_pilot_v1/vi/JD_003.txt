@@ -1,0 +1,9 @@
+Kỹ sư cơ sở dữ liệu SQL Server
+
+Thiết kế và vận hành cơ sở dữ liệu của nền tảng tuyển dụng. Xây dựng lược đồ chuẩn hóa, ràng buộc và chỉ mục. Tối ưu truy vấn T-SQL, phân tích kế hoạch thực thi, bảo đảm giao dịch, duy trì lịch sao lưu và kiểm tra phục hồi. Ghi chép các lần thay đổi dữ liệu và quyền truy cập.
+
+Ít nhất 3 năm làm việc với cơ sở dữ liệu quan hệ. Bắt buộc: SQL, SQL Server, thiết kế cơ sở dữ liệu và Git. Có kinh nghiệm tối ưu truy vấn, sao lưu, phục hồi, thủ tục lưu trữ và phân quyền. Ưu tiên PostgreSQL và Python.
+
+SQL,SQL Server,Thiết kế cơ sở dữ liệu,Git
+
+3–5 năm

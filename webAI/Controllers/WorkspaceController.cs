@@ -1,5 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
+using System.IO.Compression;
+using System.Text.Json;
+using System.Xml;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -52,7 +56,7 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
     }
 
     [HttpGet("resumes/{id:int}"), Authorize(Roles = "Candidate,Recruiter")]
-    public async Task<IActionResult> DownloadResume(int id)
+    public async Task<IActionResult> DownloadResume(int id, [FromQuery] bool inline = false)
     {
         var resume = await db.Resumes.FindAsync(id);
         if (resume == null) return NotFound();
@@ -63,7 +67,30 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
             where a.ResumeId == id && c.OwnerSubject == Subject select a.Id).AnyAsync();
         if (!owner && !recruiter) return NotFound();
         if (!System.IO.File.Exists(files.PathFor(resume.StorageKey))) return NotFound();
-        return PhysicalFile(files.PathFor(resume.StorageKey), resume.ContentType, resume.Name);
+        return inline && resume.ContentType == "application/pdf"
+            ? PhysicalFile(files.PathFor(resume.StorageKey), resume.ContentType, enableRangeProcessing: true)
+            : PhysicalFile(files.PathFor(resume.StorageKey), resume.ContentType, resume.Name);
+    }
+
+    [HttpGet("resumes/{id:int}/preview"), Authorize(Roles = "Candidate,Recruiter")]
+    public async Task<IActionResult> PreviewResume(int id)
+    {
+        var allowed = await DownloadResume(id);
+        if (allowed is not PhysicalFileResult document) return allowed;
+        if (document.ContentType == "application/pdf") return Ok(new { kind = "pdf", url = $"/api/workspace/resumes/{id}?inline=true" });
+        try {
+            using var zip = ZipFile.OpenRead(document.FileName);
+            var entry = zip.GetEntry("word/document.xml");
+            if (entry == null || entry.Length > 50 * 1024 * 1024) return BadRequest(new { message = "Không đọc được tài liệu DOCX." });
+            using var stream = entry.Open();
+            using var reader = XmlReader.Create(stream, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null, MaxCharactersInDocument = 50 * 1024 * 1024 });
+            var xml = XDocument.Load(reader); XNamespace w = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+            var text = string.Join("\n", xml.Descendants(w + "body").Descendants(w + "p").Select(p => string.Concat(p.Descendants(w + "t").Select(t => t.Value))));
+            if (string.IsNullOrWhiteSpace(text)) return BadRequest(new { message = "DOCX không có văn bản đọc được. Tải tệp gốc để xem hình ảnh hoặc nội dung đặc biệt." });
+            return Ok(new { kind = "text", text, note = "Nội dung văn bản DOCX; tải tệp gốc để xem đầy đủ định dạng, hình ảnh và bố cục." });
+        } catch (Exception ex) when (ex is InvalidDataException or XmlException or IOException) {
+            return BadRequest(new { message = "Không đọc được CV. Bạn có thể tải tệp gốc để kiểm tra." });
+        }
     }
 
     [HttpGet("saved"), Authorize(Roles = "Candidate")]
@@ -117,8 +144,9 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
         if (User.IsInRole("Candidate")) {
             var candidate = await Candidate();
             return Ok(await (from a in db.Applications join j in db.Jobs on a.JobId equals j.Id
+                join employer in db.Companies on j.CompanyId equals employer.Id
                 where a.CandidateId == candidate.Id && (jobId == null || j.Id == jobId) orderby a.SubmittedAt descending
-                select new { a.Id, jobId = j.Id, j.Title, a.Status, a.SubmittedAt }).ToListAsync());
+                select new { a.Id, jobId = j.Id, j.Title, a.Status, a.SubmittedAt, a.ResumeId, companyName = employer.Name, j.City }).ToListAsync());
         }
         if (!User.IsInRole("Recruiter")) return Forbid();
         var company = await Company();
@@ -127,6 +155,65 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
             join c in db.Candidates on a.CandidateId equals c.Id
             where j.CompanyId == company.Id && (jobId == null || j.Id == jobId) orderby a.SubmittedAt descending
             select new { a.Id, jobId = j.Id, j.Title, c.FullName, c.Email, a.ResumeId, a.Status, a.CoverLetter, a.SubmittedAt }).ToListAsync());
+    }
+
+    [HttpGet("applications/{id:int}"), Authorize(Roles = "Candidate")]
+    public async Task<IActionResult> ApplicationDetail(int id)
+    {
+        var candidate = await Candidate();
+        var application = await (from a in db.Applications join j in db.Jobs on a.JobId equals j.Id
+            join company in db.Companies on j.CompanyId equals company.Id join r in db.Resumes on a.ResumeId equals r.Id
+            where a.Id == id && a.CandidateId == candidate.Id
+            select new { a.Id, a.JobId, j.Title, a.Status, a.SubmittedAt, a.CoverLetter, a.ResumeId,
+                candidate.FullName, candidate.Email, resumeName = r.Name,
+                company = new { company.Id, company.Name, company.Industry, company.Website },
+                job = new { j.City, j.District, j.WorkMode, j.EmploymentType, j.Experience, j.SalaryMin, j.SalaryMax, j.Description, j.Requirements, j.Benefits, j.Deadline, j.Status }
+            }).SingleOrDefaultAsync();
+        if (application == null) return NotFound();
+        var responses = await db.Notifications.Where(n => n.ApplicationId == id && n.RecipientSubject == Subject)
+            .OrderByDescending(n => n.CreatedAt).ThenByDescending(n => n.Id)
+            .Select(n => new { n.Id, n.Title, n.Content, n.CreatedAt, n.ReadAt }).ToListAsync();
+        return Ok(new { application, responses });
+    }
+
+    [HttpGet("applications/assessments"), Authorize(Roles = "Recruiter")]
+    public async Task<IActionResult> Assessments()
+    {
+        var company = await Company();
+        var applications = await (from a in db.Applications join j in db.Jobs on a.JobId equals j.Id
+            join r in db.Resumes on a.ResumeId equals r.Id where j.CompanyId == company.Id
+            select new { a.Id, a.JobId, r.StorageKey }).ToListAsync();
+        var keys = applications.Select(a => a.StorageKey).ToArray();
+        var reviews = await (from i in db.CvReviewItems.AsNoTracking() join b in db.CvReviewBatches on i.BatchId equals b.Id
+            where b.CompanyId == company.Id && i.Source == "Application" && keys.Contains(i.StorageKey) && (i.State == "Complete" || i.State == "Incomplete")
+            orderby i.AnalyzedAt descending, b.CreatedAt descending, i.Id descending
+            select new { item = i, b.Model, b.ConfigurationJson }).ToListAsync();
+        var matched = reviews.Select(r => new { review = r, jobId = JsonSerializer.Deserialize<JsonElement>(r.ConfigurationJson).TryGetProperty("job_id", out var id) ? id.GetInt32() : 0 }).ToList();
+        return Ok(applications.Select(a => {
+            var found = matched.FirstOrDefault(r => r.jobId == a.JobId && r.review.item.StorageKey == a.StorageKey)?.review;
+            return new { applicationId = a.Id, assessment = found == null ? null : new {
+                found.item.BatchId, found.Model, found.item.State, found.item.Score, found.item.SemanticScore, found.item.SkillScore, found.item.ExperienceScore, found.item.AnalyzedAt,
+                result = JsonSerializer.Deserialize<JsonElement>(found.item.ResultJson) } };
+        }));
+    }
+
+    [HttpPost("applications/responses/batch"), Authorize(Roles = "Recruiter")]
+    public async Task<IActionResult> RespondBatch(BatchResponseRequest request)
+    {
+        if (request.Status is not ("Offered" or "Rejected") || request.ApplicationIds.Count is < 1 or > 100 || request.ApplicationIds.Any(id => id < 1))
+            return BadRequest(new { message = "Chọn từ 1 đến 100 hồ sơ và kết quả tuyển dụng hợp lệ." });
+        var ids = request.ApplicationIds.Distinct().ToArray(); var company = await Company();
+        var recipients = await (from a in db.Applications join j in db.Jobs on a.JobId equals j.Id
+            join c in db.Candidates on a.CandidateId equals c.Id
+            where ids.Contains(a.Id) && j.CompanyId == company.Id select new { application = a, c.Subject }).ToListAsync();
+        if (recipients.Count != ids.Length) return NotFound(new { message = "Có hồ sơ không thuộc công ty của bạn; chưa gửi phản hồi nào." });
+        foreach (var recipient in recipients) {
+            recipient.application.Status = request.Status;
+            db.Notifications.Add(new RecruitmentNotification { RecipientSubject = recipient.Subject, ApplicationId = recipient.application.Id,
+                Title = request.Title.Trim(), Content = request.Content.Trim(), DeliveryStatus = "Sent" });
+        }
+        // EF saves all statuses and messages in a single transaction.
+        await db.SaveChangesAsync(); return Ok(new { sent = recipients.Count });
     }
 
     [HttpGet("company"), Authorize(Roles = "Recruiter")]
@@ -199,15 +286,25 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
         if (application == null) return NotFound();
         application.Status = request.Status;
         var candidate = await db.Candidates.FindAsync(application.CandidateId);
+        var statusLabel = request.Status switch { "Reviewing" => "Đang xem xét", "Interview" => "Mời phỏng vấn", "Offered" => "Trúng tuyển", "Rejected" => "Không trúng tuyển", _ => request.Status };
         db.Notifications.Add(new RecruitmentNotification { RecipientSubject = candidate!.Subject, ApplicationId = id,
-            Title = "Cập nhật hồ sơ ứng tuyển", Content = $"Trạng thái hồ sơ: {request.Status}", DeliveryStatus = "Sent" });
+            Title = "Cập nhật hồ sơ ứng tuyển", Content = $"Trạng thái hồ sơ: {statusLabel}", DeliveryStatus = "Sent" });
         await db.SaveChangesAsync(); return Ok();
     }
 
     [HttpGet("notifications")]
-    public async Task<IActionResult> Notifications() => Ok(await db.Notifications.Where(x => x.RecipientSubject == Subject)
-        .OrderByDescending(x => x.CreatedAt).ThenByDescending(x => x.Id)
-        .Select(x => new { x.Id, x.Title, x.Content, x.CreatedAt, x.ReadAt }).ToListAsync());
+    public async Task<IActionResult> Notifications() => Ok(await (
+        from n in db.Notifications
+        join a in db.Applications on n.ApplicationId equals (int?)a.Id into applications
+        from a in applications.DefaultIfEmpty()
+        join j in db.Jobs on a.JobId equals j.Id into jobs
+        from j in jobs.DefaultIfEmpty()
+        join company in db.Companies on j.CompanyId equals company.Id into companies
+        from company in companies.DefaultIfEmpty()
+        where n.RecipientSubject == Subject
+        orderby n.CreatedAt descending, n.Id descending
+        select new { n.Id, n.Title, n.ApplicationId, n.CreatedAt, n.ReadAt,
+            companyName = company.Name, jobTitle = j.Title, applicationStatus = a.Status }).ToListAsync());
 
     [HttpPost("notifications/{id:int}/read")]
     public async Task<IActionResult> ReadNotification(int id)
@@ -225,6 +322,16 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
         await db.Notifications.Where(x => x.RecipientSubject == Subject && x.ReadAt == null)
             .ExecuteUpdateAsync(setters => setters.SetProperty(x => x.ReadAt, DateTimeOffset.UtcNow));
         return Ok();
+    }
+
+    [HttpGet("applications/{id:int}/responses"), Authorize(Roles = "Recruiter")]
+    public async Task<IActionResult> Responses(int id)
+    {
+        var company = await Company();
+        if (!await db.Applications.AnyAsync(a => a.Id == id && db.Jobs.Any(j => j.Id == a.JobId && j.CompanyId == company.Id))) return NotFound();
+        return Ok(await db.Notifications.Where(n => n.ApplicationId == id)
+            .OrderByDescending(n => n.CreatedAt).ThenByDescending(n => n.Id)
+            .Select(n => new { n.Id, n.Title, n.Content, n.CreatedAt, n.ReadAt }).ToListAsync());
     }
 
     [HttpPost("applications/{id:int}/responses"), Authorize(Roles = "Recruiter")]
@@ -266,6 +373,11 @@ public class ResponseRequest
 {
     [Required, StringLength(200)] public string Title { get; set; } = "";
     [Required, StringLength(12000)] public string Content { get; set; } = "";
+}
+public class BatchResponseRequest : ResponseRequest
+{
+    [Required] public List<int> ApplicationIds { get; set; } = [];
+    [Required] public string Status { get; set; } = "";
 }
 public class JobRequest
 {

@@ -1,0 +1,11 @@
+Junior Database Developer
+
+Hồ sơ giả lập: 2 năm phát triển SQL, mô hình dữ liệu PostgreSQL và báo cáo; kinh nghiệm SQL Server cơ bản.
+
+SQL, PostgreSQL, SQL Server, Database Design, Git, Python
+
+Total experience: 2 years. 2024-2026: Database Developer at fictional Elm Analytics. Designed PostgreSQL tables, wrote SQL reporting queries and indexes, and reviewed migration scripts. Supported basic SQL Server imports and data checks.
+
+Sales warehouse: SQL aggregation, dimensional tables and Python reconciliation scripts. Customer database: constraints, indexes and transaction tests. Backup and restore practiced in a local learning environment only.
+
+Bachelor of Information Systems, fictional demonstration university, 2020-2024. English: intermediate.

@@ -1,0 +1,11 @@
+Frontend React Developer
+
+Hồ sơ giả lập: 3 năm phát triển giao diện React và TypeScript, chú trọng khả năng truy cập và kiểm thử.
+
+React, TypeScript, JavaScript, HTML, CSS, Git, REST API, Jest, Accessibility
+
+Total experience: 3 years. 2023-2026: Frontend Developer at fictional Maple Digital. Built React and TypeScript dashboards, integrated REST APIs, implemented accessible forms and responsive layouts. Wrote Jest tests and reviewed frontend code.
+
+Recruiter dashboard: React tables, server-side filtering, pagination and status charts. Commerce storefront: HTML, CSS and TypeScript components with keyboard navigation, loading states and form validation.
+
+Bachelor of Computer Science, fictional demonstration university, 2019-2023. English: working proficiency.

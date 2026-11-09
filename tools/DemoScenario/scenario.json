@@ -1,22 +1,209 @@
 {
   "candidates": [
-    {"email":"backend1@recruitai.test","name":"Nguyễn Minh An","group":"backend","role":"Backend .NET Developer","city":"Hồ Chí Minh","summary":"Hồ sơ giả lập: lập trình viên backend có 4 năm kinh nghiệm xây dựng API .NET và xử lý dữ liệu giao dịch.","skills":"C#, ASP.NET Core, Entity Framework Core, SQL Server, REST API, Git, Docker, Redis, Unit Testing","experience":"Total experience: 4 years. 2022-2026: Backend Developer at fictional Atlas Software. Built ASP.NET Core REST APIs, designed SQL Server schemas and indexes, implemented JWT authentication and transaction handling. Wrote unit tests and maintained Docker deployments.","projects":"Order platform: implemented order and payment APIs using C#, Entity Framework Core and SQL Server. Added Redis caching and integration tests. Inventory service: designed idempotent endpoints, audit logs and database migrations.","education":"Bachelor of Software Engineering, fictional demonstration university, 2018-2022. English: technical reading."},
-    {"email":"backend2@recruitai.test","name":"Trần Quốc Bảo","group":"backend","role":"Junior Backend Developer","city":"Hồ Chí Minh","summary":"Hồ sơ giả lập: 2 năm phát triển API .NET, SQL Server và kiểm thử phần mềm; chưa có kinh nghiệm Redis trong sản phẩm.","skills":"C#, ASP.NET Core, SQL Server, REST API, Git, Unit Testing","experience":"Total experience: 2 years. 2024-2026: Junior Backend Developer at fictional Cedar Apps. Maintained C# REST APIs, implemented input validation, wrote SQL Server queries and automated unit tests. Used Git pull requests and code review.","projects":"Helpdesk API: developed ticket CRUD, authentication and role permissions in ASP.NET Core. Used SQL Server foreign keys and transactions. Reporting endpoint: implemented pagination and filtered queries.","education":"Bachelor of Information Technology, fictional demonstration university, 2020-2024. English: intermediate."},
-    {"email":"frontend1@recruitai.test","name":"Lê Thu Hà","group":"frontend","role":"Frontend React Developer","city":"Hà Nội","summary":"Hồ sơ giả lập: 3 năm phát triển giao diện React và TypeScript, chú trọng khả năng truy cập và kiểm thử.","skills":"React, TypeScript, JavaScript, HTML, CSS, Git, REST API, Jest, Accessibility","experience":"Total experience: 3 years. 2023-2026: Frontend Developer at fictional Maple Digital. Built React and TypeScript dashboards, integrated REST APIs, implemented accessible forms and responsive layouts. Wrote Jest tests and reviewed frontend code.","projects":"Recruiter dashboard: React tables, server-side filtering, pagination and status charts. Commerce storefront: HTML, CSS and TypeScript components with keyboard navigation, loading states and form validation.","education":"Bachelor of Computer Science, fictional demonstration university, 2019-2023. English: working proficiency."},
-    {"email":"frontend2@recruitai.test","name":"Phạm Gia Linh","group":"frontend","role":"Junior Frontend Developer","city":"Đà Nẵng","summary":"Hồ sơ giả lập: 1 năm xây dựng giao diện JavaScript và React; TypeScript ở mức dự án cá nhân.","skills":"React, JavaScript, HTML, CSS, Git, REST API","experience":"Total experience: 1 year. 2025-2026: Junior Frontend Developer at fictional Willow Web. Implemented responsive HTML and CSS pages, maintained React components and integrated REST API responses. Used Git and browser developer tools for debugging.","projects":"Appointment portal: React forms, date selection and client validation. Portfolio project: introductory TypeScript components. Wrote manual test cases for mobile layout and keyboard interactions.","education":"Bachelor of Software Engineering, fictional demonstration university, 2021-2025. English: technical reading."},
-    {"email":"database1@recruitai.test","name":"Đỗ Đức Minh","group":"database","role":"Database Engineer","city":"Hồ Chí Minh","summary":"Hồ sơ giả lập: 5 năm quản trị và tối ưu SQL Server, thiết kế dữ liệu, sao lưu và phục hồi.","skills":"SQL, SQL Server, PostgreSQL, T-SQL, Database Design, Git, Python, Backup, Performance Tuning","experience":"Total experience: 5 years. 2021-2026: Database Engineer at fictional Birch Data. Designed SQL Server schemas and indexes, optimized T-SQL queries using execution plans, configured backup schedules and tested restore procedures. Managed database roles and migration reviews.","projects":"Billing database: normalized customer and invoice tables, foreign keys, transactions and stored procedures. Recovery exercise: full and differential backups with restore validation. ETL checks: Python scripts validated imports and reconciled row counts.","education":"Bachelor of Information Systems, fictional demonstration university, 2017-2021. English: working proficiency."},
-    {"email":"database2@recruitai.test","name":"Vũ Ngọc Mai","group":"database","role":"Junior Database Developer","city":"Hà Nội","summary":"Hồ sơ giả lập: 2 năm phát triển SQL, mô hình dữ liệu PostgreSQL và báo cáo; kinh nghiệm SQL Server cơ bản.","skills":"SQL, PostgreSQL, SQL Server, Database Design, Git, Python","experience":"Total experience: 2 years. 2024-2026: Database Developer at fictional Elm Analytics. Designed PostgreSQL tables, wrote SQL reporting queries and indexes, and reviewed migration scripts. Supported basic SQL Server imports and data checks.","projects":"Sales warehouse: SQL aggregation, dimensional tables and Python reconciliation scripts. Customer database: constraints, indexes and transaction tests. Backup and restore practiced in a local learning environment only.","education":"Bachelor of Information Systems, fictional demonstration university, 2020-2024. English: intermediate."}
+    {
+      "email": "backend1@recruitai.test",
+      "name": "Nguyễn Minh An",
+      "group": "backend",
+      "role": "Lập trình viên máy chủ .NET",
+      "city": "Hồ Chí Minh",
+      "summary": "Hồ sơ giả lập: 4 năm xây dựng hệ thống máy chủ bằng .NET và xử lý dữ liệu giao dịch.",
+      "skills": "C#, ASP.NET Core, Entity Framework Core, SQL Server, REST API, Git, Docker, Redis, kiểm thử đơn vị",
+      "experience": "Tổng kinh nghiệm: 4 năm. Từ năm 2022 đến năm 2026: lập trình viên tại công ty giả lập Phần mềm Ánh Dương. Xây dựng giao diện lập trình REST bằng ASP.NET Core, thiết kế bảng và chỉ mục SQL Server, phân quyền bằng JWT và xử lý giao dịch. Viết kiểm thử đơn vị, đóng gói ứng dụng bằng Docker.",
+      "projects": "Hệ thống đơn hàng: xây dựng chức năng đặt hàng, thanh toán bằng C#, Entity Framework Core và SQL Server; bổ sung bộ nhớ đệm Redis và kiểm thử tích hợp. Dịch vụ kho: thiết kế thao tác chống ghi trùng, nhật ký và chuyển đổi cấu trúc dữ liệu.",
+      "education": "Cử nhân Kỹ thuật phần mềm tại trường giả lập phục vụ đồ án, giai đoạn 2018–2022. Có khả năng đọc tài liệu kỹ thuật."
+    },
+    {
+      "email": "backend2@recruitai.test",
+      "name": "Trần Quốc Bảo",
+      "group": "backend",
+      "role": "Lập trình viên máy chủ mới vào nghề",
+      "city": "Hồ Chí Minh",
+      "summary": "Hồ sơ giả lập: 2 năm phát triển giao diện lập trình .NET, truy vấn SQL Server và kiểm thử; chưa sử dụng Redis trong sản phẩm.",
+      "skills": "C#, ASP.NET Core, SQL Server, REST API, Git, kiểm thử đơn vị",
+      "experience": "Tổng kinh nghiệm: 2 năm. Từ năm 2024 đến năm 2026: lập trình viên tại công ty giả lập Ứng dụng Hướng Dương. Bảo trì giao diện lập trình C#, kiểm tra dữ liệu đầu vào, viết truy vấn SQL Server và kiểm thử tự động. Sử dụng Git và tham gia rà soát mã nguồn.",
+      "projects": "Hệ thống hỗ trợ khách hàng: tạo, cập nhật phiếu hỗ trợ, xác thực và phân quyền bằng ASP.NET Core; sử dụng khóa ngoại và giao dịch SQL Server. Chức năng báo cáo: truy vấn có bộ lọc và phân trang.",
+      "education": "Cử nhân Công nghệ thông tin tại trường giả lập phục vụ đồ án, giai đoạn 2020–2024. Có khả năng đọc tài liệu kỹ thuật cơ bản."
+    },
+    {
+      "email": "frontend1@recruitai.test",
+      "name": "Lê Thu Hà",
+      "group": "frontend",
+      "role": "Lập trình viên giao diện React",
+      "city": "Hà Nội",
+      "summary": "Hồ sơ giả lập: 3 năm xây dựng giao diện bằng React và TypeScript, chú trọng khả năng truy cập và kiểm thử.",
+      "skills": "React, TypeScript, JavaScript, HTML, CSS, Git, REST API, Jest, khả năng truy cập",
+      "experience": "Tổng kinh nghiệm: 3 năm. Từ năm 2023 đến năm 2026: lập trình viên giao diện tại công ty giả lập Giải pháp Phong Việt. Phát triển trang quản lý bằng React và TypeScript, kết nối REST API, xây dựng biểu mẫu dễ truy cập và bố cục thích ứng. Viết kiểm thử Jest, rà soát mã giao diện.",
+      "projects": "Trang quản lý tuyển dụng: bảng React có tìm kiếm, phân trang và biểu đồ trạng thái. Gian hàng trực tuyến: thành phần HTML, CSS và TypeScript hỗ trợ bàn phím, trạng thái tải và kiểm tra biểu mẫu.",
+      "education": "Cử nhân Khoa học máy tính tại trường giả lập phục vụ đồ án, giai đoạn 2019–2023. Có khả năng đọc tài liệu kỹ thuật."
+    },
+    {
+      "email": "frontend2@recruitai.test",
+      "name": "Phạm Gia Linh",
+      "group": "frontend",
+      "role": "Lập trình viên giao diện mới vào nghề",
+      "city": "Đà Nẵng",
+      "summary": "Hồ sơ giả lập: 1 năm xây dựng giao diện bằng JavaScript và React; TypeScript mới được dùng trong dự án cá nhân.",
+      "skills": "React, JavaScript, HTML, CSS, Git, REST API",
+      "experience": "Tổng kinh nghiệm: 1 năm. Từ năm 2025 đến năm 2026: lập trình viên giao diện tại công ty giả lập Trang Việt. Tạo trang HTML và CSS thích ứng trên điện thoại, bảo trì thành phần React và kết nối REST API. Sử dụng Git và công cụ trình duyệt để tìm lỗi.",
+      "projects": "Cổng đặt lịch: biểu mẫu React, chọn ngày và kiểm tra dữ liệu nhập. Trang giới thiệu cá nhân: thử nghiệm thành phần TypeScript cơ bản. Viết ca kiểm tra thủ công cho màn hình điện thoại và thao tác bàn phím.",
+      "education": "Cử nhân Kỹ thuật phần mềm tại trường giả lập phục vụ đồ án, giai đoạn 2021–2025. Có khả năng đọc tài liệu kỹ thuật cơ bản."
+    },
+    {
+      "email": "database1@recruitai.test",
+      "name": "Đỗ Đức Minh",
+      "group": "database",
+      "role": "Kỹ sư cơ sở dữ liệu",
+      "city": "Hồ Chí Minh",
+      "summary": "Hồ sơ giả lập: 5 năm quản trị và tối ưu SQL Server, thiết kế dữ liệu, sao lưu và phục hồi.",
+      "skills": "SQL, SQL Server, PostgreSQL, T-SQL, thiết kế cơ sở dữ liệu, Git, Python, sao lưu, tối ưu hiệu năng",
+      "experience": "Tổng kinh nghiệm: 5 năm. Từ năm 2021 đến năm 2026: kỹ sư dữ liệu tại công ty giả lập Dữ liệu Bạch Dương. Thiết kế bảng và chỉ mục SQL Server, tối ưu truy vấn T-SQL bằng kế hoạch thực thi, lập lịch sao lưu và kiểm tra khôi phục. Quản lý quyền truy cập và rà soát chuyển đổi dữ liệu.",
+      "projects": "Cơ sở dữ liệu hóa đơn: chuẩn hóa bảng khách hàng, hóa đơn, khóa ngoại, giao dịch và thủ tục lưu trữ. Diễn tập phục hồi: sao lưu đầy đủ, sao lưu chênh lệch và kiểm tra khôi phục. Kiểm soát nhập liệu: dùng Python đối chiếu số dòng và kiểm tra dữ liệu.",
+      "education": "Cử nhân Hệ thống thông tin tại trường giả lập phục vụ đồ án, giai đoạn 2017–2021. Có khả năng đọc tài liệu kỹ thuật."
+    },
+    {
+      "email": "database2@recruitai.test",
+      "name": "Vũ Ngọc Mai",
+      "group": "database",
+      "role": "Lập trình viên cơ sở dữ liệu mới vào nghề",
+      "city": "Hà Nội",
+      "summary": "Hồ sơ giả lập: 2 năm lập trình SQL, thiết kế dữ liệu PostgreSQL và báo cáo; có kiến thức SQL Server cơ bản.",
+      "skills": "SQL, PostgreSQL, SQL Server, thiết kế cơ sở dữ liệu, Git, Python",
+      "experience": "Tổng kinh nghiệm: 2 năm. Từ năm 2024 đến năm 2026: lập trình viên cơ sở dữ liệu tại công ty giả lập Phân tích Dữ liệu Việt. Thiết kế bảng PostgreSQL, truy vấn báo cáo, chỉ mục và rà soát chuyển đổi cấu trúc dữ liệu. Hỗ trợ nhập dữ liệu SQL Server và kiểm tra chất lượng.",
+      "projects": "Kho dữ liệu bán hàng: tổng hợp SQL, bảng dữ liệu theo chiều và đối chiếu bằng Python. Dữ liệu khách hàng: ràng buộc, chỉ mục và kiểm tra giao dịch. Mới thực hành sao lưu, phục hồi trong môi trường học tập cục bộ.",
+      "education": "Cử nhân Hệ thống thông tin tại trường giả lập phục vụ đồ án, giai đoạn 2020–2024. Có khả năng đọc tài liệu kỹ thuật cơ bản."
+    }
   ],
   "jobs": [
-    {"title":"Backend Developer (.NET)","city":"Hồ Chí Minh","category":"Công nghệ","workMode":"Hybrid","experience":"2–4 năm","salaryMin":20,"salaryMax":35,"skills":"C#,ASP.NET Core,SQL Server,Git,REST API","description":"Build and maintain backend services for a recruitment platform. Develop ASP.NET Core REST APIs for job postings, applications and recruiter workflows. Design database transactions, logging and access controls. Collaborate with frontend developers and review code.","requirements":"At least 2 years of backend development. Required: C#, ASP.NET Core, SQL Server, Git and REST API design. Understand Entity Framework Core, input validation, authentication, unit testing and query optimization. Docker and Redis are useful additional experience.","benefits":"Khung lương kiểm thử 20–35 triệu/tháng; lịch hybrid, đào tạo kỹ thuật và code review. Không phải lời mời tuyển dụng thực tế."},
-    {"title":"Frontend Developer (React / TypeScript)","city":"Hà Nội","category":"Công nghệ","workMode":"Từ xa","experience":"2–3 năm","salaryMin":18,"salaryMax":32,"skills":"React,TypeScript,JavaScript,HTML,CSS,Git","description":"Develop a responsive recruiter dashboard and candidate application portal. Implement React components, searchable tables, accessible forms, loading states and API error handling. Integrate REST APIs and cooperate with design and backend teams.","requirements":"At least 2 years of frontend development. Required: React, TypeScript, JavaScript, HTML, CSS and Git. Understand responsive layout, keyboard accessibility and component state. Automated frontend tests and performance profiling are desirable.","benefits":"Khung lương kiểm thử 18–32 triệu/tháng; làm từ xa, review thiết kế và đào tạo. Tin dành cho đồ án."},
-    {"title":"Database Engineer (SQL Server)","city":"Hồ Chí Minh","category":"Dữ liệu","workMode":"Tại văn phòng","experience":"3–5 năm","salaryMin":24,"salaryMax":40,"skills":"SQL,SQL Server,Database Design,Git","description":"Design and operate the recruitment platform database. Create normalized schemas, constraints and indexes. Optimize T-SQL queries, investigate execution plans, implement transaction safety, maintain backup schedules and validate database recovery. Document migrations and access permissions.","requirements":"At least 3 years working with relational databases. Required: SQL, SQL Server, database design and Git. Hands-on query optimization, backup and restore, stored procedures and role-based database access. PostgreSQL and Python are useful additional experience.","benefits":"Khung lương kiểm thử 24–40 triệu/tháng; đào tạo quản trị dữ liệu, môi trường phát triển riêng. Tin dành cho đồ án."}
+    {
+      "title": "Lập trình viên máy chủ .NET",
+      "city": "Hồ Chí Minh",
+      "category": "Công nghệ",
+      "workMode": "Kết hợp tại văn phòng và từ xa",
+      "experience": "2–4 năm",
+      "salaryMin": 20,
+      "salaryMax": 35,
+      "skills": "C#,ASP.NET Core,SQL Server,Git,REST API",
+      "description": "Xây dựng và bảo trì phần máy chủ của nền tảng tuyển dụng. Phát triển giao diện lập trình REST bằng ASP.NET Core cho tin tuyển dụng, hồ sơ ứng tuyển và quy trình của doanh nghiệp. Thiết kế giao dịch cơ sở dữ liệu, ghi nhật ký và kiểm soát quyền truy cập. Phối hợp nhóm giao diện, rà soát mã nguồn và xử lý lỗi.",
+      "requirements": "Ít nhất 2 năm lập trình phần máy chủ. Bắt buộc: C#, ASP.NET Core, SQL Server, Git và thiết kế REST API. Hiểu Entity Framework Core, kiểm tra dữ liệu đầu vào, xác thực, kiểm thử đơn vị và tối ưu truy vấn. Ưu tiên kinh nghiệm Docker và Redis.",
+      "benefits": "Khung lương kiểm thử 20–35 triệu đồng/tháng; làm việc kết hợp tại văn phòng và từ xa; đào tạo kỹ thuật và rà soát mã nguồn. Đây là dữ liệu đồ án, không phải lời mời tuyển dụng thực tế."
+    },
+    {
+      "title": "Lập trình viên giao diện React và TypeScript",
+      "city": "Hà Nội",
+      "category": "Công nghệ",
+      "workMode": "Từ xa",
+      "experience": "2–3 năm",
+      "salaryMin": 18,
+      "salaryMax": 32,
+      "skills": "React,TypeScript,JavaScript,HTML,CSS,Git",
+      "description": "Phát triển giao diện thích ứng cho trang quản lý tuyển dụng và cổng ứng tuyển. Xây dựng thành phần React, bảng tìm kiếm, biểu mẫu hỗ trợ bàn phím, trạng thái tải và xử lý lỗi kết nối. Tích hợp REST API, phối hợp nhóm thiết kế và nhóm máy chủ.",
+      "requirements": "Ít nhất 2 năm lập trình giao diện. Bắt buộc: React, TypeScript, JavaScript, HTML, CSS và Git. Hiểu bố cục thích ứng, khả năng truy cập bằng bàn phím và quản lý trạng thái thành phần. Ưu tiên kiểm thử giao diện tự động và đo hiệu năng.",
+      "benefits": "Khung lương kiểm thử 18–32 triệu đồng/tháng; làm từ xa; được góp ý thiết kế và đào tạo kỹ thuật. Tin dành cho đồ án."
+    },
+    {
+      "title": "Kỹ sư cơ sở dữ liệu SQL Server",
+      "city": "Hồ Chí Minh",
+      "category": "Dữ liệu",
+      "workMode": "Tại văn phòng",
+      "experience": "3–5 năm",
+      "salaryMin": 24,
+      "salaryMax": 40,
+      "skills": "SQL,SQL Server,Thiết kế cơ sở dữ liệu,Git",
+      "description": "Thiết kế và vận hành cơ sở dữ liệu của nền tảng tuyển dụng. Xây dựng lược đồ chuẩn hóa, ràng buộc và chỉ mục. Tối ưu truy vấn T-SQL, phân tích kế hoạch thực thi, bảo đảm giao dịch, duy trì lịch sao lưu và kiểm tra phục hồi. Ghi chép các lần thay đổi dữ liệu và quyền truy cập.",
+      "requirements": "Ít nhất 3 năm làm việc với cơ sở dữ liệu quan hệ. Bắt buộc: SQL, SQL Server, thiết kế cơ sở dữ liệu và Git. Có kinh nghiệm tối ưu truy vấn, sao lưu, phục hồi, thủ tục lưu trữ và phân quyền. Ưu tiên PostgreSQL và Python.",
+      "benefits": "Khung lương kiểm thử 24–40 triệu đồng/tháng; được đào tạo quản trị dữ liệu và sử dụng môi trường phát triển riêng. Tin dành cho đồ án."
+    }
   ],
   "companies": [
-    {"name":"Aurora Cloud","industry":"Hạ tầng đám mây","color":"blue","job":{"title":"Cloud DevOps Engineer","city":"Đà Nẵng","category":"Công nghệ","workMode":"Từ xa","experience":"3–5 năm","salaryMin":28,"salaryMax":45,"skills":"Docker,Kubernetes,Linux,Git","description":"Operate containerized cloud services. Build CI/CD pipelines, maintain Kubernetes deployments, investigate service incidents and document operational procedures.","requirements":"3 years of Linux operations, Docker and Kubernetes. Understand network troubleshooting, monitoring, secrets management and deployment rollback.","benefits":"Dữ liệu mẫu lọc việc: làm từ xa, đào tạo vận hành, lương 28–45 triệu tham khảo."}},
-    {"name":"Sen Commerce","industry":"Thương mại điện tử","color":"green","job":{"title":"E-commerce Product Analyst","city":"Hồ Chí Minh","category":"Dữ liệu","workMode":"Hybrid","experience":"1–3 năm","salaryMin":16,"salaryMax":26,"skills":"SQL,Python,Power BI","description":"Analyze customer journeys, product conversion and order data. Build SQL datasets and Power BI dashboards, reconcile metrics and communicate findings to product teams.","requirements":"1 year of product analytics. SQL queries, Python data cleaning, Power BI visualization and clear metric definitions. Understand cohort analysis and data quality checks.","benefits":"Dữ liệu mẫu lọc việc: hybrid, workshop dữ liệu, lương 16–26 triệu tham khảo."}},
-    {"name":"Cobalt Security","industry":"An toàn thông tin","color":"purple","job":{"title":"Security Operations Analyst","city":"Hà Nội","category":"Công nghệ","workMode":"Tại văn phòng","experience":"2–4 năm","salaryMin":22,"salaryMax":36,"skills":"Linux,Python,Security,SQL","description":"Review security alerts, investigate application logs and support incident response. Document detection rules and collaborate with developers to address access-control issues.","requirements":"2 years in security operations. Knowledge of Linux, Python scripting, SQL queries, network protocols and incident triage. Write concise investigation reports.","benefits":"Dữ liệu mẫu lọc việc: tại văn phòng, đào tạo bảo mật, lương 22–36 triệu tham khảo."}},
-    {"name":"Mây Design","industry":"Thiết kế sản phẩm","color":"pink","job":{"title":"UI/UX Product Designer","city":"Đà Nẵng","category":"Thiết kế","workMode":"Hybrid","experience":"1–2 năm","salaryMin":14,"salaryMax":24,"skills":"Figma,UI Design,UX Research","description":"Research candidate and recruiter needs. Design navigation flows, accessible interfaces and interactive Figma prototypes. Validate usability and document component specifications.","requirements":"1 year of product design. Figma, wireframes, usability interviews and responsive UI design. Explain design decisions and cooperate with frontend engineers.","benefits":"Dữ liệu mẫu lọc việc: hybrid, review portfolio, lương 14–24 triệu tham khảo."}},
-    {"name":"Bình Minh Media","industry":"Truyền thông","color":"orange","job":{"title":"Digital Marketing Specialist","city":"Hồ Chí Minh","category":"Marketing","workMode":"Tại văn phòng","experience":"Không yêu cầu","salaryMin":9,"salaryMax":15,"skills":"SEO,Content,Google Ads","description":"Plan content calendars and maintain digital campaigns. Research keywords, draft SEO articles, monitor Google Ads spend and summarize campaign metrics each week.","requirements":"Entry-level role. Knowledge of SEO, content writing and Google Ads. Clear Vietnamese writing, spreadsheet skills and willingness to learn campaign reporting.","benefits":"Dữ liệu mẫu lọc việc: nhận ứng viên mới, hướng dẫn nội dung, lương 9–15 triệu tham khảo."}}
+    {
+      "name": "Điện toán Bình Minh",
+      "industry": "Hạ tầng đám mây",
+      "color": "blue",
+      "job": {
+        "title": "Kỹ sư vận hành hạ tầng đám mây",
+        "city": "Đà Nẵng",
+        "category": "Công nghệ",
+        "workMode": "Từ xa",
+        "experience": "3–5 năm",
+        "salaryMin": 28,
+        "salaryMax": 45,
+        "skills": "Docker,Kubernetes,Linux,Git",
+        "description": "Vận hành các dịch vụ đám mây đóng gói bằng vùng chứa. Xây dựng quy trình tích hợp và triển khai liên tục, duy trì Kubernetes, xử lý sự cố dịch vụ và ghi chép hướng dẫn vận hành.",
+        "requirements": "Có 3 năm vận hành Linux, Docker và Kubernetes. Hiểu xử lý lỗi mạng, giám sát, quản lý thông tin bí mật và khôi phục phiên bản khi triển khai lỗi.",
+        "benefits": "Tin mẫu để kiểm tra bộ lọc; mức lương 28–45 triệu đồng/tháng chỉ mang tính minh họa. Được hướng dẫn nghiệp vụ và đào tạo chuyên môn."
+      }
+    },
+    {
+      "name": "Thương mại Sen",
+      "industry": "Thương mại điện tử",
+      "color": "green",
+      "job": {
+        "title": "Chuyên viên phân tích sản phẩm thương mại điện tử",
+        "city": "Hồ Chí Minh",
+        "category": "Dữ liệu",
+        "workMode": "Kết hợp tại văn phòng và từ xa",
+        "experience": "1–3 năm",
+        "salaryMin": 16,
+        "salaryMax": 26,
+        "skills": "SQL,Python,Power BI",
+        "description": "Phân tích hành trình khách hàng, tỷ lệ chuyển đổi và dữ liệu đơn hàng. Chuẩn bị tập dữ liệu bằng SQL, xây dựng báo cáo Power BI, đối chiếu chỉ số và trình bày phát hiện cho nhóm sản phẩm.",
+        "requirements": "Có ít nhất 1 năm phân tích sản phẩm. Sử dụng SQL, Python để làm sạch dữ liệu và Power BI để trực quan hóa. Hiểu phân tích nhóm khách hàng và kiểm tra chất lượng dữ liệu.",
+        "benefits": "Tin mẫu để kiểm tra bộ lọc; mức lương 16–26 triệu đồng/tháng chỉ mang tính minh họa. Được hướng dẫn nghiệp vụ và đào tạo chuyên môn."
+      }
+    },
+    {
+      "name": "An toàn thông tin Lam",
+      "industry": "An toàn thông tin",
+      "color": "purple",
+      "job": {
+        "title": "Chuyên viên vận hành an toàn thông tin",
+        "city": "Hà Nội",
+        "category": "Công nghệ",
+        "workMode": "Tại văn phòng",
+        "experience": "2–4 năm",
+        "salaryMin": 22,
+        "salaryMax": 36,
+        "skills": "Linux,Python,An toàn thông tin,SQL",
+        "description": "Rà soát cảnh báo an toàn thông tin, điều tra nhật ký ứng dụng và hỗ trợ xử lý sự cố. Ghi chép quy tắc phát hiện, phối hợp lập trình viên khắc phục vấn đề phân quyền.",
+        "requirements": "Có 2 năm vận hành an toàn thông tin. Biết Linux, lập trình Python, truy vấn SQL, giao thức mạng và phân loại sự cố. Viết báo cáo điều tra rõ ràng.",
+        "benefits": "Tin mẫu để kiểm tra bộ lọc; mức lương 22–36 triệu đồng/tháng chỉ mang tính minh họa. Được hướng dẫn nghiệp vụ và đào tạo chuyên môn."
+      }
+    },
+    {
+      "name": "Thiết kế Mây",
+      "industry": "Thiết kế sản phẩm",
+      "color": "pink",
+      "job": {
+        "title": "Chuyên viên thiết kế giao diện và trải nghiệm người dùng",
+        "city": "Đà Nẵng",
+        "category": "Thiết kế",
+        "workMode": "Kết hợp tại văn phòng và từ xa",
+        "experience": "1–2 năm",
+        "salaryMin": 14,
+        "salaryMax": 24,
+        "skills": "Figma,Thiết kế giao diện,Nghiên cứu người dùng",
+        "description": "Nghiên cứu nhu cầu ứng viên và doanh nghiệp. Thiết kế luồng thao tác, giao diện dễ truy cập và bản mẫu tương tác bằng Figma. Kiểm tra khả năng sử dụng và bàn giao mô tả thành phần.",
+        "requirements": "Có 1 năm thiết kế sản phẩm. Sử dụng Figma, phác thảo giao diện, phỏng vấn người dùng và thiết kế thích ứng. Giải thích được quyết định thiết kế và phối hợp lập trình viên giao diện.",
+        "benefits": "Tin mẫu để kiểm tra bộ lọc; mức lương 14–24 triệu đồng/tháng chỉ mang tính minh họa. Được hướng dẫn nghiệp vụ và đào tạo chuyên môn."
+      }
+    },
+    {
+      "name": "Truyền thông Bình Minh",
+      "industry": "Truyền thông",
+      "color": "orange",
+      "job": {
+        "title": "Chuyên viên tiếp thị trực tuyến",
+        "city": "Hồ Chí Minh",
+        "category": "Tiếp thị",
+        "workMode": "Tại văn phòng",
+        "experience": "Không yêu cầu",
+        "salaryMin": 9,
+        "salaryMax": 15,
+        "skills": "SEO,Viết nội dung,Google Ads",
+        "description": "Lập lịch nội dung và duy trì chiến dịch tiếp thị trực tuyến. Nghiên cứu từ khóa, viết bài tối ưu tìm kiếm, theo dõi ngân sách Google Ads và tổng hợp chỉ số chiến dịch mỗi tuần.",
+        "requirements": "Vị trí dành cho người mới. Có kiến thức SEO, viết nội dung và Google Ads. Viết tiếng Việt rõ ràng, sử dụng bảng tính và sẵn sàng học cách lập báo cáo chiến dịch.",
+        "benefits": "Tin mẫu để kiểm tra bộ lọc; mức lương 9–15 triệu đồng/tháng chỉ mang tính minh họa. Được hướng dẫn nghiệp vụ và đào tạo chuyên môn."
+      }
+    }
   ]
 }

@@ -1,0 +1,11 @@
+Kỹ sư cơ sở dữ liệu
+
+Hồ sơ giả lập: 5 năm quản trị và tối ưu SQL Server, thiết kế dữ liệu, sao lưu và phục hồi.
+
+SQL, SQL Server, PostgreSQL, T-SQL, thiết kế cơ sở dữ liệu, Git, Python, sao lưu, tối ưu hiệu năng
+
+Tổng kinh nghiệm: 5 năm. Từ năm 2021 đến năm 2026: kỹ sư dữ liệu tại công ty giả lập Dữ liệu Bạch Dương. Thiết kế bảng và chỉ mục SQL Server, tối ưu truy vấn T-SQL bằng kế hoạch thực thi, lập lịch sao lưu và kiểm tra khôi phục. Quản lý quyền truy cập và rà soát chuyển đổi dữ liệu.
+
+Cơ sở dữ liệu hóa đơn: chuẩn hóa bảng khách hàng, hóa đơn, khóa ngoại, giao dịch và thủ tục lưu trữ. Diễn tập phục hồi: sao lưu đầy đủ, sao lưu chênh lệch và kiểm tra khôi phục. Kiểm soát nhập liệu: dùng Python đối chiếu số dòng và kiểm tra dữ liệu.
+
+Cử nhân Hệ thống thông tin tại trường giả lập phục vụ đồ án, giai đoạn 2017–2021. Có khả năng đọc tài liệu kỹ thuật.

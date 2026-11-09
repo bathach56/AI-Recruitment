@@ -1,0 +1,9 @@
+Database Engineer (SQL Server)
+
+Design and operate the recruitment platform database. Create normalized schemas, constraints and indexes. Optimize T-SQL queries, investigate execution plans, implement transaction safety, maintain backup schedules and validate database recovery. Document migrations and access permissions.
+
+At least 3 years working with relational databases. Required: SQL, SQL Server, database design and Git. Hands-on query optimization, backup and restore, stored procedures and role-based database access. PostgreSQL and Python are useful additional experience.
+
+SQL,SQL Server,Database Design,Git
+
+3–5 năm

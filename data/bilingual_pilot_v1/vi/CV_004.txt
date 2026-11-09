@@ -1,0 +1,11 @@
+Lập trình viên giao diện mới vào nghề
+
+Hồ sơ giả lập: 1 năm xây dựng giao diện bằng JavaScript và React; TypeScript mới được dùng trong dự án cá nhân.
+
+React, JavaScript, HTML, CSS, Git, REST API
+
+Tổng kinh nghiệm: 1 năm. Từ năm 2025 đến năm 2026: lập trình viên giao diện tại công ty giả lập Trang Việt. Tạo trang HTML và CSS thích ứng trên điện thoại, bảo trì thành phần React và kết nối REST API. Sử dụng Git và công cụ trình duyệt để tìm lỗi.
+
+Cổng đặt lịch: biểu mẫu React, chọn ngày và kiểm tra dữ liệu nhập. Trang giới thiệu cá nhân: thử nghiệm thành phần TypeScript cơ bản. Viết ca kiểm tra thủ công cho màn hình điện thoại và thao tác bàn phím.
+
+Cử nhân Kỹ thuật phần mềm tại trường giả lập phục vụ đồ án, giai đoạn 2021–2025. Có khả năng đọc tài liệu kỹ thuật cơ bản.

@@ -14,10 +14,23 @@ function page(url){
  const nav=['home','candidate','applications','recruiter','matching','reviews'].map(key=>new Node({nav:key}));
  const context={URLSearchParams,location,window:{addEventListener(){}},document:{querySelector:s=>nodes.get(s)||null,querySelectorAll:s=>s==='[data-nav]'?nav:[]},console};
  vm.createContext(context);
- const instrumented=source.replace(/ start\(\)\.catch\(error=>\{app\.innerHTML=notice\(esc\(error.message\)\)\}\);/,`globalThis.subject={syncMainNav,renderNotifications,setNotifications:value=>notifications=value};`);
+ vm.runInContext(fs.readFileSync(path.join(__dirname,'../wwwroot/js/recruiter-feedback.js'),'utf8'),context);
+ const instrumented=source.replace(/ start\(\)\.catch\(error=>\{app\.innerHTML=notice\(esc\(error.message\)\)\}\);/,`globalThis.subject={syncMainNav,renderNotifications,recruiterApplicationsMarkup,recruiterFeedbackMarkup,workspaceTabUrl,notificationHref,candidateNotificationsMarkup,setNotifications:value=>notifications=value};`);
  vm.runInContext(instrumented,context);
  return {nodes,nav,subject:context.subject,location};
 }
+test('recruiter application review and feedback are separate, accessible and escape candidate content',()=>{
+ const p=page('http://localhost/Recruiter?tab=applications');
+ const list=[{id:3,jobId:8,resumeId:2,fullName:'<script>bad</script>',title:'Backend',email:'test@example.test',coverLetter:'<img src=x>',status:'Interview'}];
+ const review=p.subject.recruiterApplicationsMarkup(list),feedback=p.subject.recruiterFeedbackMarkup(list);
+ assert.match(review,/data-status-form="3"/);assert.match(review,/for="applicationStatus3"/);assert.match(review,/value="Interview" selected/);assert.match(review,/Lưu trạng thái/);
+ assert.match(review,/data-cv-detail="3"/);assert.ok(!review.includes('Soạn phản hồi'));
+ assert.ok(!review.includes('id="responseForm"'));assert.match(feedback,/id="responseForm"/);assert.match(feedback,/id="feedbackHistory"/);assert.match(feedback,/id="responseContent"/);
+ assert.ok(!feedback.includes('data-status-form'));assert.ok(!feedback.includes('Tải CV'));
+ assert.ok(review.includes('&lt;script&gt;'));for(const html of [review,feedback])assert.ok(!html.includes('<script>bad'));
+ assert.match(p.subject.recruiterFeedbackMarkup([]),/Chưa có ứng viên để phản hồi/);
+});
+
 test('applications has its own selected top navigation and updates when returning to profile',()=>{
  const p=page('http://localhost/Candidate?tab=applications');p.subject.syncMainNav();
  assert.equal(p.nav.find(n=>n.classes.has('active')).dataset.nav,'applications');
@@ -27,6 +40,16 @@ test('applications has its own selected top navigation and updates when returnin
  assert.equal(p.nav.find(n=>n.dataset.nav==='applications').attributes['aria-current'],undefined);
  p.location.search='?tab=notifications';p.subject.syncMainNav();
  assert.equal(p.nav.filter(n=>n.classes.has('active')).length,0);
+});
+
+test('candidate notification links preserve the application deep link and omit feedback body',()=>{
+ const p=page('http://localhost/Candidate?tab=applications&application=23');
+ assert.equal(p.subject.workspaceTabUrl('applications'),'/Candidate?tab=applications&application=23');
+ assert.equal(p.subject.workspaceTabUrl('profile'),'/Candidate?tab=profile');
+ const notification={id:1,applicationId:23,companyName:'<img src=x>',jobTitle:'Backend',applicationStatus:'Offered',content:'PRIVATE FULL FEEDBACK',createdAt:'2026-11-09T00:00:00Z'};
+ assert.equal(p.subject.notificationHref(notification),'/Candidate?tab=applications&application=23');
+ const html=p.subject.candidateNotificationsMarkup([notification]);assert.match(html,/application=23/);assert.match(html,/&lt;img/);assert.ok(!html.includes('PRIVATE FULL FEEDBACK'));
+ p.subject.setNotifications([notification]);p.subject.renderNotifications();assert.match(p.nodes.get('#notificationPreview').innerHTML,/application=23/);assert.ok(!p.nodes.get('#notificationPreview').innerHTML.includes('PRIVATE FULL FEEDBACK'));
 });
 test('matching navigation belongs to the AI workspace, not candidate profile',()=>{
  const p=page('http://localhost/Matching');p.subject.syncMainNav();

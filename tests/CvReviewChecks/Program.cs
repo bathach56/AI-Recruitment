@@ -14,6 +14,11 @@ using webAI.Services;
 using webAI.Controllers;
 
 void Check(bool value,string message){if(!value)throw new Exception(message);}
+using(var client=new HttpClient(new MultipartFilenameHandler())) {
+    var ai=new AiMatchingService(client,NullLogger<AiMatchingService>.Instance,new Microsoft.Extensions.Configuration.ConfigurationBuilder().Build());
+    using var stream=new MemoryStream([1,2,3]);
+    await ai.MatchFileAsync(stream,"Hồ sơ ứng viên.pdf","{}",CancellationToken.None);
+}
 var content=new string('x',6000)+" C# SQL Server";
 var bytes=ReviewWorkbook.Write(ReviewWorkbook.ImportHeaders,[new object?[]{"Ứng viên kiểm thử","sample@example.test",content}]);
 using(var zip=new ZipArchive(new MemoryStream(bytes))) {
@@ -92,6 +97,68 @@ try {
     Check(await inbox.Applications(foreignJob.Id) is NotFoundResult,"Another company's job can be queried");
     var allOwn=(OkObjectResult)await inbox.Applications();Check(!JsonSerializer.SerializeToElement(allOwn.Value,CvReviewService.Json).EnumerateArray().Any(i=>i.GetProperty("jobId").GetInt32()==foreignJob.Id),"Unfiltered inbox leaks another company");
     var backendIds=await db.Applications.Where(a=>a.JobId==scopeJobs[0].Id).Select(a=>a.Id).ToListAsync();
+    Check(await inbox.Respond(foreignApplication.Id,new ResponseRequest{Title="Fixture",Content="Must not send"}) is NotFoundResult,"Cross-company feedback allowed");
+    Check(await inbox.Responses(foreignApplication.Id) is NotFoundResult,"Cross-company feedback history allowed");
+    var responseId=backendIds[0];
+    Check(await inbox.RespondBatch(new BatchResponseRequest{ApplicationIds=[responseId,foreignApplication.Id],Status="Rejected",Title="Fixture",Content="No recipient must receive this"}) is NotFoundObjectResult,"Mixed-company batch accepted");
+    Check(!await db.Notifications.AnyAsync(n=>n.ApplicationId==responseId),"Mixed-company batch partially sent");
+    Check(await inbox.RespondBatch(new BatchResponseRequest{ApplicationIds=[responseId],Status="Admin",Title="Fixture",Content="No"}) is BadRequestObjectResult,"Invalid outcome accepted");
+    Check(await inbox.Respond(responseId,new ResponseRequest{Title="Transaction invitation",Content="Interview details fixture"}) is OkResult,"Feedback creation failed");
+    var historyJson=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.Responses(responseId)).Value,CvReviewService.Json);
+    Check(historyJson.GetArrayLength()==1&&historyJson[0].GetProperty("content").GetString()=="Interview details fixture","Feedback history not persisted");
+    var responseSubject=await db.Applications.Where(a=>a.Id==responseId).Join(db.Candidates,a=>a.CandidateId,c=>c.Id,(a,c)=>c.Subject).SingleAsync();
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,responseSubject),new Claim(ClaimTypes.Role,"Candidate")],"test"));
+    var candidateNotifications=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.Notifications()).Value,CvReviewService.Json);
+    Check(candidateNotifications.GetArrayLength()==1&&candidateNotifications[0].GetProperty("title").GetString()=="Transaction invitation","Candidate cannot receive feedback");
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
+    var batchFeedback=(OkObjectResult)await inbox.RespondBatch(new BatchResponseRequest{ApplicationIds=[responseId,backendIds[1],responseId],Status="Rejected",Title="Transaction batch",Content="Common message fixture"});
+    Check(JsonSerializer.SerializeToElement(batchFeedback.Value,CvReviewService.Json).GetProperty("sent").GetInt32()==2,"Batch duplicated recipients");
+    Check(await db.Notifications.CountAsync(n=>n.Title=="Transaction batch")==2,"Batch notifications were not persisted");
+    Check(await db.Applications.CountAsync(a=>new[]{responseId,backendIds[1]}.Contains(a.Id)&&a.Status=="Rejected")==2,"Batch status update failed");
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,responseSubject),new Claim(ClaimTypes.Role,"Candidate")],"test"));
+    var candidateDetail=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.ApplicationDetail(responseId)).Value,CvReviewService.Json);
+    Check(candidateDetail.GetProperty("application").GetProperty("company").GetProperty("id").GetInt32()==company,"Candidate detail mixed company");
+    Check(candidateDetail.GetProperty("application").GetProperty("status").GetString()=="Rejected","Candidate detail lost result");
+    Check(candidateDetail.GetProperty("responses").EnumerateArray().Any(n=>n.GetProperty("content").GetString()=="Common message fixture"),"Candidate detail lost response body");
+    Check(await inbox.ApplicationDetail(backendIds[1]) is NotFoundResult,"Candidate saw another candidate's application");
+    var notices=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.Notifications()).Value,CvReviewService.Json);
+    Check(notices.EnumerateArray().All(n=>n.GetProperty("applicationId").GetInt32()==responseId&&!n.TryGetProperty("content",out _)),"Notification must link to own application without full body");
+    Check(notices[0].GetProperty("companyName").GetString()==(await db.Companies.FindAsync(company))!.Name,"Notification lost company identity");
+    var otherNotification=await db.Notifications.FirstAsync(n=>n.ApplicationId==backendIds[1]);
+    Check(await inbox.ReadNotification(otherNotification.Id) is NotFoundResult,"Candidate marked another candidate's notification read");
+    var legacySubject="legacy-fixture-"+Guid.NewGuid().ToString("N");db.Notifications.Add(new RecruitmentNotification{RecipientSubject=legacySubject,Title="System fixture",Content="No application"});await db.SaveChangesAsync();
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,legacySubject)],"test"));
+    var legacyNotices=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.Notifications()).Value,CvReviewService.Json);
+    Check(legacyNotices[0].GetProperty("companyName").ValueKind==JsonValueKind.Null,"Legacy notification without application failed");
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
+    Console.WriteLine("PASS: Candidate application details, company/result/reply, notification links and owner isolation (rollback).");
+    var realResume=await db.Resumes.FindAsync((await db.Applications.FindAsync(applicationIds[0]))!.ResumeId);
+    Check(await inbox.PreviewResume(realResume!.Id) is OkObjectResult,"Private PDF preview failed");
+    Check(await inbox.DownloadResume(realResume.Id,true) is PhysicalFileResult{FileDownloadName:""},"Inline PDF is still an attachment");
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,other.OwnerSubject),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
+    Check(await inbox.PreviewResume(realResume.Id) is NotFoundResult,"Foreign company preview allowed");
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
+    var fixtureDocx=await File.ReadAllBytesAsync("data/sample_cvs/CV_LeHoangLong_Fresher_DotNet.docx");
+    using(var docxStream=new MemoryStream(fixtureDocx)){
+        var docxKey=await store.SaveAsync(new FormFile(docxStream,0,fixtureDocx.Length,"file","fixture-preview.docx"));
+        try{
+            var app=await db.Applications.FindAsync(responseId);var oldResumeId=app!.ResumeId;
+            var docxResume=new Resume{CandidateId=app.CandidateId,StorageKey=docxKey,Name="fixture-preview.docx",ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document"};db.Resumes.Add(docxResume);await db.SaveChangesAsync();
+            app.ResumeId=docxResume.Id;await db.SaveChangesAsync();
+            var previewJson=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.PreviewResume(docxResume.Id)).Value,CvReviewService.Json);
+            Check(previewJson.GetProperty("kind").GetString()=="text"&&previewJson.GetProperty("text").GetString()!.Length>100,"DOCX preview extraction failed");
+            app.ResumeId=oldResumeId;await db.SaveChangesAsync();
+        }finally{File.Delete(store.PathFor(docxKey));}
+    }
+    var scopedResume=await db.Resumes.SingleAsync(r=>r.Id==resumes[0].Id);
+    var configJson=JsonSerializer.Serialize(new AiMatchingRequest{JobId=scopeJobs[0].Id,ModelType="Hybrid"},CvReviewService.Json);
+    var assessmentBatch=new CvReviewBatch{CompanyId=company,ConfigurationJson=configJson,Model="Hybrid"};db.CvReviewBatches.Add(assessmentBatch);
+    db.CvReviewItems.Add(new CvReviewItem{BatchId=assessmentBatch.Id,Source="Application",StorageKey=scopedResume.StorageKey,State="Complete",Score=42,ResultJson="{}",AnalyzedAt=DateTimeOffset.UtcNow});
+    await db.SaveChangesAsync();
+    var assessmentRows=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.Assessments()).Value,CvReviewService.Json);
+    Check(assessmentRows.EnumerateArray().Single(a=>a.GetProperty("applicationId").GetInt32()==responseId).GetProperty("assessment").GetProperty("score").GetDouble()==42,"Assessment did not match CV/JD");
+    Check(assessmentRows.EnumerateArray().Where(a=>a.GetProperty("applicationId").GetInt32()!=responseId&&new[]{scopeJobs[1].Id,scopeJobs[2].Id}.Contains((db.Applications.Find(a.GetProperty("applicationId").GetInt32()))!.JobId)).All(a=>a.GetProperty("assessment").ValueKind==JsonValueKind.Null),"Assessment leaked across JDs");
+    Console.WriteLine("PASS: Feedback persistence, candidate notification and company isolation (transaction rollback).");
     var backendBatch=await service.CreateAsync(company,new ReviewCreateRequest{JobId=scopeJobs[0].Id,ApplicationIds=backendIds},new FormFileCollection());Check(await db.CvReviewItems.CountAsync(i=>i.BatchId==backendBatch.Id)==30,"Select-all Backend did not preserve its 30 applications");
     var frontendApplication=await db.Applications.FirstAsync(a=>a.JobId==scopeJobs[1].Id);
     foreach(var wrongId in new[]{frontendApplication.Id,foreignApplication.Id}){
@@ -101,6 +168,13 @@ try {
 } finally {await transaction.RollbackAsync();}
 Console.WriteLine("PASS: XLSX structure, Unicode/long text, formula safety, zero/null distinction; SQL ownership, persisted configuration/results, idempotency, error and retry. Fixture scores rolled back.");
 
+class MultipartFilenameHandler:HttpMessageHandler {
+    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,CancellationToken ct) {
+        var body=await request.Content!.ReadAsStringAsync(ct);
+        if(!body.Contains("filename=cv.pdf")&&!body.Contains("filename=\"cv.pdf\""))throw new Exception("Unicode filename obscured the parser extension");
+        return new HttpResponseMessage(System.Net.HttpStatusCode.OK){Content=new StringContent("{}",System.Text.Encoding.UTF8,"application/json")};
+    }
+}
 class FixtureAi:IAiMatchingService {
     public int Calls;public bool Fail;
     public Task<bool> CheckAiServiceHealthAsync(CancellationToken ct=default)=>Task.FromResult(true);

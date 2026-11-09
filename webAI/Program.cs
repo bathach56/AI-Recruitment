@@ -26,7 +26,12 @@ builder.Services.AddRateLimiter(o => {
             PermitLimit = 15, Window = TimeSpan.FromMinutes(1), QueueLimit = 0
         }));
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers().ConfigureApiBehaviorOptions(options => {
+    options.InvalidModelStateResponseFactory = context => new Microsoft.AspNetCore.Mvc.BadRequestObjectResult(new {
+        message = "Dữ liệu chưa hợp lệ. Vui lòng kiểm tra các thông tin bắt buộc, định dạng và độ dài cho phép.",
+        errors = context.ModelState.Where(x => x.Value?.Errors.Count > 0).ToDictionary(x => x.Key, _ => new[] { "Thông tin bị thiếu hoặc không đúng định dạng cho phép." })
+    });
+});
 builder.Services.AddDbContext<RecruitmentDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("Recruitment")
     ?? "Server=(localdb)\\MSSQLLocalDB;Database=AIRecruitmentDb;Integrated Security=true;TrustServerCertificate=true"));

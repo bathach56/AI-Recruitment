@@ -1,0 +1,9 @@
+Frontend Developer (React / TypeScript)
+
+Develop a responsive recruiter dashboard and candidate application portal. Implement React components, searchable tables, accessible forms, loading states and API error handling. Integrate REST APIs and cooperate with design and backend teams.
+
+At least 2 years of frontend development. Required: React, TypeScript, JavaScript, HTML, CSS and Git. Understand responsive layout, keyboard accessibility and component state. Automated frontend tests and performance profiling are desirable.
+
+React,TypeScript,JavaScript,HTML,CSS,Git
+
+2–3 năm

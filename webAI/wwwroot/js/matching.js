@@ -169,7 +169,7 @@
             evidenceCell.dataset.label = 'Bằng chứng trong CV';
             for (const evidence of row.evidence || []) {
                 evidenceCell.append(element('blockquote', '', evidence.context || evidence.matched_text || ''),
-                    element('small', '', `Vị trí: ${evidence.location || 'Chưa xác định'}`));
+                    element('small', '', `Vị trí: ${window.RecruitVietnamese?.location(evidence.location)||evidence.location||'Chưa xác định'}`));
             }
             if (!evidenceCell.childElementCount) evidenceCell.append(element('span', 'text-secondary', 'Chưa có đoạn trích tương ứng.'));
             const status = element('td');
@@ -193,7 +193,7 @@
         const years = value => typeof value === 'number' ? `${value} năm` : 'Chưa xác định';
         section.append(element('p', 'text-secondary mb-2', `CV: ${years(experience.candidate_years)} · JD: ${years(experience.required_years)}`));
         for (const evidence of explanation.experience_evidence?.evidence || []) {
-            section.append(element('blockquote', 'evidence-item', `${evidence.matched_text} (${evidence.location})`));
+            section.append(element('blockquote', 'evidence-item', `${evidence.matched_text} (${window.RecruitVietnamese?.location(evidence.location)||evidence.location})`));
         }
         section.append(element('p', 'small text-secondary mb-0', 'Số năm do CV tự khai chưa được xác minh, và tổng số năm chưa chứng minh kinh nghiệm phù hợp với vị trí.'));
     }
@@ -223,8 +223,8 @@
             section.append(element('p', 'text-secondary mb-0', 'Hiển thị tối đa 10 từ khóa đóng góp lớn nhất. TF-IDF đo tương đồng từ vựng.'));
         } else {
             section.append(element('p', 'mt-2 mb-1', `CV: ${detail.cv_chunks?.length || 0} đoạn · JD: ${detail.jd_chunks?.length || 0} đoạn`));
-            if (typeof detail.cosine_similarity === 'number') section.append(element('p', 'mb-1', `Cosine similarity: ${detail.cosine_similarity.toFixed(4)}`));
-            section.append(element('p', 'text-secondary mb-0', 'Văn bản dài được chia đoạn và tổng hợp embedding. Tương đồng ngữ nghĩa chưa chứng minh kỹ năng hay mức độ phù hợp thực tế.'));
+            if (typeof detail.cosine_similarity === 'number') section.append(element('p', 'mb-1', `Độ tương đồng cô-sin: ${detail.cosine_similarity.toFixed(4)}`));
+            section.append(element('p', 'text-secondary mb-0', 'Văn bản dài được chia đoạn và tổng hợp véc-tơ ngữ nghĩa. Tương đồng ngữ nghĩa chưa chứng minh kỹ năng hay mức độ phù hợp thực tế.'));
         }
     }
 
@@ -249,7 +249,7 @@
         info.append(avatar);
         info.append(element('h3', 'mb-2', entry.name));
         const badges = element('div', 'd-flex flex-wrap gap-2');
-        badges.append(element('span', 'badge bg-primary-subtle text-primary', data.model_used),
+        badges.append(element('span', 'badge bg-primary-subtle text-primary', window.RecruitVietnamese?.modelName(data.model_used)||data.model_used),
             element('span', incomplete ? 'badge bg-warning-subtle text-warning-emphasis' : 'badge bg-success-subtle text-success', incomplete ? 'Chưa đủ dữ liệu' : 'Đã phân tích'));
         if (typeof data.processing_time_ms === 'number') badges.append(element('span', 'badge bg-light text-secondary', `${Math.round(data.processing_time_ms)} ms`));
         info.append(badges);
@@ -372,7 +372,7 @@
             const selected = batchEntries.find(e=>e.index===selectedEntry && e.data);
             if(selected && displayedData !== selected.data){$('resultCards').replaceChildren(resultCard(selected,selected.index));displayedData=selected.data}
             $('resultsCount').textContent = `${complete}/${batchEntries.length} hồ sơ đã phân tích`;
-            $('resultsContext').textContent = `${batchPayload?.job_title || 'JD đã nhập'} · ${batchPayload?.model_type || ''} · Cùng một JD cho cả đợt`;
+            $('resultsContext').textContent = `${batchPayload?.job_title || 'JD đã nhập'} · ${window.RecruitVietnamese?.modelName(batchPayload?.model_type)||batchPayload?.model_type||''} · Cùng một JD cho cả đợt`;
         }
         async function runBatch() {
             busy = true; stopRequested = false;
@@ -453,7 +453,7 @@
             const total = weightIds.reduce((sum, id) => sum + Number($(id).value), 0);
             weightIds.forEach(id => { $(`${id}Value`).textContent = `${$(id).value}%`; });
             $('weightTotal').textContent = `Tổng ${total}% · ${total ? 'API chuẩn hóa theo tổng trọng số. Chưa tối ưu thực nghiệm.' : 'Cần ít nhất một trọng số lớn hơn 0.'}`;
-            if ($('modelType').value === 'Hybrid') $('methodNote').textContent = 'Hybrid kết hợp ngữ nghĩa, kỹ năng và kinh nghiệm theo trọng số bạn chọn. Trọng số chưa được xác thực bằng thực nghiệm.';
+            if ($('modelType').value === 'Hybrid') $('methodNote').textContent = 'Phương pháp kết hợp ngữ nghĩa, kỹ năng và kinh nghiệm theo trọng số bạn chọn. Trọng số chưa được xác thực bằng thực nghiệm.';
         }
         weightIds.forEach(id => $(id).addEventListener('input', updateWeights));
         function selectedJob(){return postedJobs.find(job=>job.id===Number($('postedJob').value))}
@@ -524,13 +524,15 @@
                 applications=rows;renderApplications();
             }catch(error){if(version===applicationRequestVersion&&selectedJob()?.id===job.id){$('applicationChoices').textContent='Chưa tải được CV của tin này. Chọn lại tin để thử lại.';if($('applicationScopeStatus'))$('applicationScopeStatus').textContent='Chưa tải được danh sách.';}}
         }
+        function sourcePage(id,rows){return window.RecruitPagination?.slice($(id),rows)||rows.slice(0,10)}
         function updateSourceCount(){
             const mode=root.querySelector('[name="cvMode"]:checked')?.value;
             const total=selectedApplications.size+selectedExcel.size+(mode==='text'?($('cvText').value.trim()?1:0):selectedFiles.size);
             if($('sourceSelectionCount'))$('sourceSelectionCount').textContent=`Đã chọn ${total}/50 hồ sơ: ${selectedApplications.size} ứng tuyển, ${selectedExcel.size} Excel, ${mode==='text'?($('cvText').value.trim()?1:0):selectedFiles.size} tải lên / văn bản.`;
             function all(id,count,size){const node=$(id);if(!node)return;node.checked=size>0&&count===size;node.indeterminate=count>0&&count<size;node.disabled=!size}
-            const visible=visibleApplications();all('selectAllApplications',visible.filter(a=>selectedApplications.has(a.id)).length,visible.length);
-            all('selectAllExcel',selectedExcel.size,excelRows.length);all('selectAllUploadFiles',selectedFiles.size,files.length);
+            const visible=sourcePage('applicationChoices',visibleApplications());all('selectAllApplications',visible.filter(a=>selectedApplications.has(a.id)).length,visible.length);
+            const excel=sourcePage('excelChoices',excelRows.map((_,i)=>i)),uploaded=sourcePage('selectedFiles',files);
+            all('selectAllExcel',excel.filter(i=>selectedExcel.has(i)).length,excel.length);all('selectAllUploadFiles',uploaded.filter(f=>selectedFiles.has(f)).length,uploaded.length);
         }
         function renderApplications(){
             const list=$('applicationChoices');if(!list)return;list.replaceChildren();
@@ -550,11 +552,12 @@
                 const info=element('span');info.append(element('strong','',row.name),element('small','',`${row.email||'Không có email'} · ${row.cvText.length.toLocaleString('vi')} ký tự CV`));label.append(checkbox,info);$('excelChoices').append(label)});updateSourceCount();
         }
         if($('applicationChoices')){
+            root.addEventListener('paginationchange',()=>updateSourceCount());
             renderApplications();
             $('applicationSearch').addEventListener('input',renderApplications);
-            $('selectAllApplications').addEventListener('change',event=>{visibleApplications().forEach(a=>event.target.checked?selectedApplications.add(a.id):selectedApplications.delete(a.id));invalidateResults();renderApplications()});
-            $('selectAllExcel').addEventListener('change',event=>{selectedExcel.clear();if(event.target.checked)excelRows.forEach((_,i)=>selectedExcel.add(i));invalidateResults();renderExcel()});
-            $('selectAllUploadFiles').addEventListener('change',event=>{selectedFiles.clear();if(event.target.checked)files.forEach(f=>selectedFiles.add(f));invalidateResults();renderFiles();updateSourceCount()});
+            $('selectAllApplications').addEventListener('change',event=>{const checked=event.target.checked;sourcePage('applicationChoices',visibleApplications()).forEach(a=>checked?selectedApplications.add(a.id):selectedApplications.delete(a.id));invalidateResults();renderApplications()});
+            $('selectAllExcel').addEventListener('change',event=>{const checked=event.target.checked;sourcePage('excelChoices',excelRows.map((_,i)=>i)).forEach(i=>checked?selectedExcel.add(i):selectedExcel.delete(i));invalidateResults();renderExcel()});
+            $('selectAllUploadFiles').addEventListener('change',event=>{const checked=event.target.checked;sourcePage('selectedFiles',files).forEach(f=>checked?selectedFiles.add(f):selectedFiles.delete(f));invalidateResults();renderFiles();updateSourceCount()});
             $('clearExcelCvs').addEventListener('click',()=>{excelRows=[];selectedExcel.clear();$('excelImportStatus').textContent='Đã bỏ danh sách Excel.';invalidateResults();renderExcel()});
             $('excelCvImport').addEventListener('change',async event=>{
                 const file=event.target.files[0];if(!file)return;
@@ -624,7 +627,7 @@
             updateSourceCount();
         }));
         const hints = {
-            Hybrid: 'Hybrid kết hợp ngữ nghĩa, kỹ năng và kinh nghiệm theo trọng số bạn chọn. Đây là giả định, chưa tối ưu bằng thực nghiệm. Thiếu thành phần có trọng số sẽ chưa có điểm tổng.',
+            Hybrid: 'Phương pháp kết hợp ngữ nghĩa, kỹ năng và kinh nghiệm theo trọng số bạn chọn. Đây là giả định, chưa tối ưu bằng thực nghiệm. Thiếu thành phần có trọng số sẽ chưa có điểm tổng.',
             'Sentence-BERT': 'Sentence-BERT đo tương đồng ngữ nghĩa giữa CV và JD. Phương pháp này không chấm riêng kỹ năng và kinh nghiệm.',
             'TF-IDF': 'TF-IDF đo tương đồng từ vựng trên bộ từ vựng phát triển đã cố định. Từ mới ngoài bộ từ vựng có thể chưa được biểu diễn.'
         };
@@ -634,6 +637,7 @@
         });
         $('matchingForm').addEventListener('input', event => {
             if (busy) return;
+            if (event.target.closest?.('.list-pagination')) return;
             // Selection controls own their change handlers. Updating counts here
             // would reset a select-all checkbox before its change event fires.
             if (event.target.type === 'checkbox' || ['applicationSearch','excelCvImport','cvFiles'].includes(event.target.id)) return;
@@ -642,7 +646,7 @@
             invalidateResults();
             updateSourceCount();
         });
-        $('matchingForm').addEventListener('change', event => { if (!busy && !['cvFiles','applicationSearch','excelCvImport'].includes(event.target.id)) invalidateResults(); });
+        $('matchingForm').addEventListener('change', event => { if (!busy && !event.target.closest?.('.list-pagination') && !['cvFiles','applicationSearch','excelCvImport'].includes(event.target.id)) invalidateResults(); });
 
         $('matchingForm').addEventListener('submit', async event => {
             event.preventDefault();

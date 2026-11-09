@@ -1,0 +1,11 @@
+Backend .NET Developer
+
+Hồ sơ giả lập: lập trình viên backend có 4 năm kinh nghiệm xây dựng API .NET và xử lý dữ liệu giao dịch.
+
+C#, ASP.NET Core, Entity Framework Core, SQL Server, REST API, Git, Docker, Redis, Unit Testing
+
+Total experience: 4 years. 2022-2026: Backend Developer at fictional Atlas Software. Built ASP.NET Core REST APIs, designed SQL Server schemas and indexes, implemented JWT authentication and transaction handling. Wrote unit tests and maintained Docker deployments.
+
+Order platform: implemented order and payment APIs using C#, Entity Framework Core and SQL Server. Added Redis caching and integration tests. Inventory service: designed idempotent endpoints, audit logs and database migrations.
+
+Bachelor of Software Engineering, fictional demonstration university, 2018-2022. English: technical reading.

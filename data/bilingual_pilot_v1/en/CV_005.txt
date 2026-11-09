@@ -1,0 +1,11 @@
+Database Engineer
+
+Hồ sơ giả lập: 5 năm quản trị và tối ưu SQL Server, thiết kế dữ liệu, sao lưu và phục hồi.
+
+SQL, SQL Server, PostgreSQL, T-SQL, Database Design, Git, Python, Backup, Performance Tuning
+
+Total experience: 5 years. 2021-2026: Database Engineer at fictional Birch Data. Designed SQL Server schemas and indexes, optimized T-SQL queries using execution plans, configured backup schedules and tested restore procedures. Managed database roles and migration reviews.
+
+Billing database: normalized customer and invoice tables, foreign keys, transactions and stored procedures. Recovery exercise: full and differential backups with restore validation. ETL checks: Python scripts validated imports and reconciled row counts.
+
+Bachelor of Information Systems, fictional demonstration university, 2017-2021. English: working proficiency.

@@ -31,3 +31,11 @@ Tham khảo cấu trúc công việc và hồ sơ từ [Workable — Candidate p
 Công cụ AI vẫn gọi API hiện có, không tạo điểm fallback. Số chưa đọc không lưu trong localStorage; khởi động lại trình duyệt lấy lại trạng thái từ SQL Server. Không thêm thông báo đẩy hệ điều hành, email hay WebSocket.
 
 Kiểm tra logic và API: `workspace-navigation.test.cjs`, `accounts.integration.cjs` cùng các test frontend hiện có. Công cụ browser/native host không khả dụng trong phiên triển khai này; chưa xác minh trực quan bằng screenshot hoặc thao tác chuột trên trình duyệt thật.
+
+## Hoàn thiện giao diện dùng chung
+
+Áp dụng frontend-design và ui-ux-pro-max trên nhận diện sẵn có: giữ Be Vietnam Pro, xanh thương hiệu, nền trắng/xám ở theme sáng và nền navy ở theme tối. `ui-polish.css` nạp sau các stylesheet hiện hữu qua `_CareerLayout`, tập trung vào các điều khiển còn dùng kiểu trình duyệt mặc định: bộ chọn/sắp xếp, input, file picker, thanh trọng số, nút, bảng, hộp thoại và màu trạng thái. Không thay framework hoặc thêm thư viện giao diện.
+
+Trang ứng viên mở thẳng phần chi tiết kết quả, chỉ thêm bộ chọn nhỏ nếu có nhiều hồ sơ. Không tạo lại thẻ tóm tắt bên dưới. Bộ chọn hồ sơ dùng được bằng bàn phím và thông báo vẫn mở đúng ApplicationId. Trang chủ giữ 5 việc làm/trang; các danh sách khác giữ 10 mục/trang.
+
+Đã rà soát template và thành phần động của trang chủ, tin tuyển dụng, đăng nhập/đăng ký, các tab ứng viên và công ty, đối chiếu AI, kết quả xét CV, Results, trạng thái hệ thống và trang lỗi. Kiểm tra HTTP xác nhận 22 trang/tab/trạng thái trả về có nạp stylesheet mới; build không lỗi/cảnh báo, 37 test JavaScript và 2 test API đạt. Admin được kiểm tra mã template và trang từ chối truy cập theo vai trò, không tạo tài khoản Admin để thử. Browser/native host vẫn không kết nối được, nên chưa xác minh ảnh chụp hoặc bố cục thực ở từng kích thước màn hình.
