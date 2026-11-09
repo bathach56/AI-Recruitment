@@ -1,4 +1,4 @@
-# AGENTS.md — AI Recruitment Project
+S# AGENTS.md — AI Recruitment Project
 
 **Mandatory onboarding rule:** Anyone working on this project, including new contributors and anyone using an AI assistant to make changes, must always read this `AGENTS.md` and any applicable nested `AGENTS.md` files before starting work; the AI assistant must read and follow these instructions before inspecting or modifying the project.
 
