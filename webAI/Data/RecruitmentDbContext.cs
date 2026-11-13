@@ -16,12 +16,19 @@ public class RecruitmentDbContext(DbContextOptions<RecruitmentDbContext> options
     public DbSet<ApplicationMatch> Matches => Set<ApplicationMatch>();
     public DbSet<RecruitmentNotification> Notifications => Set<RecruitmentNotification>();
     public DbSet<CompanyVerification> Verifications => Set<CompanyVerification>();
+    public DbSet<StoredDocument> Documents => Set<StoredDocument>();
 
     protected override void OnModelCreating(ModelBuilder model)
     {
+        model.Entity<StoredDocument>().HasKey(x => x.StorageKey);
+        model.Entity<StoredDocument>().Property(x => x.StorageKey).HasMaxLength(80);
+        model.Entity<StoredDocument>().Property(x => x.Data).HasColumnType("varbinary(max)");
+        model.Entity<StoredDocument>().Property(x => x.Sha256).HasMaxLength(64);
         model.Entity<CvReviewBatch>().HasOne<Company>().WithMany().HasForeignKey(x => x.CompanyId).OnDelete(DeleteBehavior.Restrict);
         model.Entity<CvReviewItem>().HasOne<CvReviewBatch>().WithMany().HasForeignKey(x => x.BatchId).OnDelete(DeleteBehavior.Restrict);
         model.Entity<CvReviewBatch>().Property(x => x.Title).HasMaxLength(500);
+        model.Entity<CvReviewBatch>().Property(x => x.QueueState).HasMaxLength(40);
+        model.Entity<CvReviewBatch>().HasIndex(x => new { x.QueueState, x.CreatedAt });
         model.Entity<CvReviewBatch>().Property(x => x.ConfigurationJson).HasColumnType("nvarchar(max)");
         model.Entity<CvReviewItem>().Property(x => x.Name).HasMaxLength(500);
         model.Entity<CvReviewItem>().Property(x => x.Email).HasMaxLength(150);
@@ -64,6 +71,13 @@ public class RecruitmentDbContext(DbContextOptions<RecruitmentDbContext> options
     }
 }
 
+public class StoredDocument
+{
+    public string StorageKey { get; set; } = "";
+    public byte[] Data { get; set; } = [];
+    public string Sha256 { get; set; } = "";
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+}
 public class Company
 {
     public int Id { get; set; }

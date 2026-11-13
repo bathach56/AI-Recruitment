@@ -25,7 +25,7 @@ test('recruiter application review and feedback are separate, accessible and esc
  const review=p.subject.recruiterApplicationsMarkup(list),feedback=p.subject.recruiterFeedbackMarkup(list);
  assert.match(review,/data-status-form="3"/);assert.match(review,/for="applicationStatus3"/);assert.match(review,/value="Interview" selected/);assert.match(review,/Lưu trạng thái/);
  assert.match(review,/data-cv-detail="3"/);assert.ok(!review.includes('Soạn phản hồi'));
- assert.ok(!review.includes('id="responseForm"'));assert.match(feedback,/id="responseForm"/);assert.match(feedback,/id="feedbackHistory"/);assert.match(feedback,/id="responseContent"/);
+ assert.ok(!review.includes('id="responseForm"'));assert.match(feedback,/id="responseForm"/);assert.ok(!feedback.includes('feedbackHistory'));assert.ok(!feedback.includes('Lịch sử phản hồi'));assert.match(feedback,/id="responseContent"/);
  assert.ok(!feedback.includes('data-status-form'));assert.ok(!feedback.includes('Tải CV'));
  assert.ok(review.includes('&lt;script&gt;'));for(const html of [review,feedback])assert.ok(!html.includes('<script>bad'));
  assert.match(p.subject.recruiterFeedbackMarkup([]),/Chưa có ứng viên để phản hồi/);

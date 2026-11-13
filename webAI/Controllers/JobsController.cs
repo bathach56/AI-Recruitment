@@ -8,6 +8,25 @@ namespace webAI.Controllers;
 [Route("api/jobs")]
 public class JobsController(RecruitmentDbContext db, ILogger<JobsController> logger) : ControllerBase
 {
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> Detail(int id, CancellationToken ct)
+    {
+        var job = await db.Jobs.AsNoTracking().SingleOrDefaultAsync(j => j.Id == id, ct);
+        if (job == null) return NotFound(new { message = "Không tìm thấy tin tuyển dụng." });
+        var company = await db.Companies.AsNoTracking().SingleAsync(c => c.Id == job.CompanyId, ct);
+        var subject = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        var permitted = job.Status is "Published" or "Closed" ||
+            (User.IsInRole("Recruiter") && company.OwnerSubject == subject) ||
+            (User.IsInRole("Candidate") && await (from a in db.Applications join c in db.Candidates on a.CandidateId equals c.Id where a.JobId == id && c.Subject == subject select a.Id).AnyAsync(ct));
+        if (!permitted) return NotFound(new { message = "Tin chưa được công khai." });
+        return Ok(new { job.Id, job.Title, job.City, job.District, job.Category, job.WorkMode,
+            job.EmploymentType, job.Experience, job.SalaryMin, job.SalaryMax, job.Skills,
+            job.Urgent, job.IsDemo, job.Vacancies, job.CreatedAt, job.Deadline, job.Description,
+            job.Requirements, job.Benefits, job.Status,
+            canApply = job.Status == "Published" && job.Deadline >= DateTimeOffset.UtcNow && !job.IsDemo,
+            company = new { company.Id, company.Name, company.Initials, company.Color, company.Industry, company.VerificationStatus } });
+    }
+
     [HttpGet]
     public async Task<IActionResult> List(CancellationToken ct)
     {
@@ -22,7 +41,7 @@ public class JobsController(RecruitmentDbContext db, ILogger<JobsController> log
                                   job.Urgent, job.IsDemo, job.Vacancies, job.CreatedAt, job.Deadline,
                                   job.Description, job.Requirements, job.Benefits,
                                   company = new { company.Id, company.Name, company.Initials, company.Color, company.Industry, company.VerificationStatus } })
-                              .Take(200).ToListAsync(ct);
+                              .ToListAsync(ct);
             return Ok(jobs);
         }
         catch (Exception ex) when (ex is not OperationCanceledException)

@@ -1,0 +1,13 @@
+Vị trí: Chuyên viên phân tích dữ liệu
+
+MÔ TẢ CÔNG VIỆC
+Tiếp nhận yêu cầu phân tích, khai thác và chuẩn hóa dữ liệu từ các nguồn nội bộ.
+Viết SQL, dùng Python và Pandas để kiểm tra chất lượng, làm sạch và tổng hợp dữ liệu.
+Xây dựng báo cáo Power BI, giải thích chỉ số cho nhóm nghiệp vụ.
+Đối soát báo cáo bằng Excel và ghi nhận giới hạn của dữ liệu.
+
+YÊU CẦU
+Từ 2 năm kinh nghiệm phân tích dữ liệu.
+Sử dụng SQL, Python, Pandas, Excel và Power BI.
+Hiểu làm sạch dữ liệu, thống kê mô tả và trực quan hóa dữ liệu.
+Có khả năng giải thích kết quả, kiểm tra chất lượng và bảo mật thông tin.

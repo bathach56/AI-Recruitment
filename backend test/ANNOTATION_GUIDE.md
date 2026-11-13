@@ -27,7 +27,7 @@ chạy; hãy chạy lại sau mỗi vòng gán nhãn.
 
 Đánh giá mức phù hợp theo nội dung CV–JD trong phạm vi đồ án, không quyết định tuyển dụng thật. Người đọc phải có thể chỉ ra bằng chứng trong văn bản cho nhận định của mình. Không dùng tên, giới tính, tuổi hoặc thông tin cá nhân để chấm.
 
-Giữ ba trụ cột trong `docs/NGAY_2_NGHIEN_CUU_GROUND_TRUTH_VA_FR.md`: miền chuyên môn, kỹ năng bắt buộc, kinh nghiệm. Không thay rubric cũ bằng công thức Hybrid. Các trọng số trong tài liệu cũ là giả định, không phải kết quả nghiên cứu.
+Giữ ba trụ cột trong `docs/archive/NGAY_2_NGHIEN_CUU_GROUND_TRUTH_VA_FR.md`: miền chuyên môn, kỹ năng bắt buộc, kinh nghiệm. Không thay rubric cũ bằng công thức Hybrid. Các trọng số trong tài liệu cũ là giả định, không phải kết quả nghiên cứu.
 
 ## Cách làm
 

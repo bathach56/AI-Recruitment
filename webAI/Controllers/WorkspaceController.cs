@@ -1,9 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
-using System.IO.Compression;
 using System.Text.Json;
 using System.Xml;
-using System.Xml.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +49,7 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
             ContentType = key.EndsWith(".pdf") ? "application/pdf" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document", Size = file.Length };
         db.Resumes.Add(resume);
         try { await db.SaveChangesAsync(); }
-        catch { System.IO.File.Delete(files.PathFor(key)); throw; }
+        catch { await files.RemoveAsync(key); throw; }
         return Ok(new { resume.Id, resume.Name });
     }
 
@@ -66,26 +64,21 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
             join c in db.Companies on j.CompanyId equals c.Id
             where a.ResumeId == id && c.OwnerSubject == Subject select a.Id).AnyAsync();
         if (!owner && !recruiter) return NotFound();
-        if (!System.IO.File.Exists(files.PathFor(resume.StorageKey))) return NotFound();
+        var bytes = await files.ReadAsync(resume.StorageKey);
+        if (bytes == null) return NotFound();
         return inline && resume.ContentType == "application/pdf"
-            ? PhysicalFile(files.PathFor(resume.StorageKey), resume.ContentType, enableRangeProcessing: true)
-            : PhysicalFile(files.PathFor(resume.StorageKey), resume.ContentType, resume.Name);
+            ? File(bytes, resume.ContentType, enableRangeProcessing: true)
+            : File(bytes, resume.ContentType, resume.Name);
     }
 
     [HttpGet("resumes/{id:int}/preview"), Authorize(Roles = "Candidate,Recruiter")]
     public async Task<IActionResult> PreviewResume(int id)
     {
         var allowed = await DownloadResume(id);
-        if (allowed is not PhysicalFileResult document) return allowed;
+        if (allowed is not FileContentResult document) return allowed;
         if (document.ContentType == "application/pdf") return Ok(new { kind = "pdf", url = $"/api/workspace/resumes/{id}?inline=true" });
         try {
-            using var zip = ZipFile.OpenRead(document.FileName);
-            var entry = zip.GetEntry("word/document.xml");
-            if (entry == null || entry.Length > 50 * 1024 * 1024) return BadRequest(new { message = "Không đọc được tài liệu DOCX." });
-            using var stream = entry.Open();
-            using var reader = XmlReader.Create(stream, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null, MaxCharactersInDocument = 50 * 1024 * 1024 });
-            var xml = XDocument.Load(reader); XNamespace w = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
-            var text = string.Join("\n", xml.Descendants(w + "body").Descendants(w + "p").Select(p => string.Concat(p.Descendants(w + "t").Select(t => t.Value))));
+            var text = DocxPreviewText.Read(document.FileContents);
             if (string.IsNullOrWhiteSpace(text)) return BadRequest(new { message = "DOCX không có văn bản đọc được. Tải tệp gốc để xem hình ảnh hoặc nội dung đặc biệt." });
             return Ok(new { kind = "text", text, note = "Nội dung văn bản DOCX; tải tệp gốc để xem đầy đủ định dạng, hình ảnh và bố cục." });
         } catch (Exception ex) when (ex is InvalidDataException or XmlException or IOException) {
@@ -238,7 +231,7 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
         db.Verifications.Add(new CompanyVerification { CompanyId = company.Id, DocumentStorageKey = key });
         company.VerificationStatus = "Pending";
         try { await db.SaveChangesAsync(); }
-        catch { System.IO.File.Delete(files.PathFor(key)); throw; }
+        catch { await files.RemoveAsync(key); throw; }
         return Ok(new { message = "Đã gửi hồ sơ, chờ duyệt." });
     }
 
@@ -254,6 +247,9 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
     {
         var company = await Company();
         if (request.SalaryMin > request.SalaryMax) return BadRequest(new { message = "Khoảng lương không hợp lệ." });
+        if (!new[] { "Công nghệ", "Tiếp thị", "Kinh doanh", "Thiết kế", "Dữ liệu", "Khác" }.Contains(request.Category))
+            return BadRequest(new { message = "Chọn ngành nghề hợp lệ." });
+        request.Experience = System.Text.RegularExpressions.Regex.Replace((request.Experience ?? "").Trim(), @"(\d)\s*[-–—]\s*(\d)", "$1–$2");
         if (request.Deadline < DateTimeOffset.UtcNow) return BadRequest(new { message = "Hạn nộp phải ở tương lai." });
         if (request.Publish && company.VerificationStatus != "Verified") return StatusCode(403, new { message = "Doanh nghiệp cần được xác minh trước khi đăng công khai. Bạn có thể lưu bản nháp." });
         var job = new JobPosting { CompanyId = company.Id, Title = request.Title, City = request.City, District = request.District,
@@ -262,6 +258,48 @@ public class WorkspaceController(RecruitmentDbContext db, PrivateDocumentStore f
             Requirements = request.Requirements, Benefits = request.Benefits, Urgent = request.Urgent, Category = request.Category,
             Status = request.Publish ? "Published" : "Draft" };
         db.Jobs.Add(job); await db.SaveChangesAsync(); return Ok(new { job.Id, job.Status });
+    }
+
+    private async Task<string?> EditLock(JobPosting job)
+    {
+        if (job.Status != "Draft") return "Chỉ sửa trực tiếp bản nháp. Hãy nhân bản tin đang tuyển/đã đóng để giữ lịch sử.";
+        if (await db.Applications.AnyAsync(a => a.JobId == job.Id)) return "Tin đã nhận hồ sơ; hãy nhân bản để giữ JD ứng viên đã nộp.";
+        var snapshots = await db.CvReviewBatches.AsNoTracking().Where(b => b.CompanyId == job.CompanyId).Select(b => b.ConfigurationJson).ToListAsync();
+        foreach (var snapshot in snapshots) {
+            using var document = JsonDocument.Parse(snapshot);
+            if (document.RootElement.TryGetProperty("job_id", out var value) && value.TryGetInt32(out var id) && id == job.Id)
+                return "Tin đã có đợt xét CV; hãy nhân bản để giữ JD và kết quả đối chiếu cũ.";
+        }
+        return null;
+    }
+
+    [HttpGet("jobs/{id:int}"), Authorize(Roles = "Recruiter")]
+    public async Task<IActionResult> OwnJob(int id)
+    {
+        var company = await Company();
+        var job = await db.Jobs.AsNoTracking().SingleOrDefaultAsync(j => j.Id == id && j.CompanyId == company.Id);
+        if (job == null) return NotFound();
+        var reason = await EditLock(job); return Ok(new { job, canEdit = reason == null, reason });
+    }
+
+    [HttpPut("jobs/{id:int}"), Authorize(Roles = "Recruiter")]
+    public async Task<IActionResult> UpdateJob(int id, JobRequest request)
+    {
+        await using var transaction = db.Database.CurrentTransaction == null
+            ? await db.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable) : null;
+        var company = await Company();
+        var job = await db.Jobs.SingleOrDefaultAsync(j => j.Id == id && j.CompanyId == company.Id);
+        if (job == null) return NotFound();
+        var reason = await EditLock(job); if (reason != null) return Conflict(new { message = reason });
+        if (request.SalaryMin > request.SalaryMax || request.Deadline < DateTimeOffset.UtcNow)
+            return BadRequest(new { message = "Kiểm tra khoảng lương và hạn nộp ở tương lai." });
+        if (!new[] { "Công nghệ", "Tiếp thị", "Kinh doanh", "Thiết kế", "Dữ liệu", "Khác" }.Contains(request.Category)) return BadRequest(new { message = "Chọn ngành nghề hợp lệ." });
+        if (request.Publish && company.VerificationStatus != "Verified") return StatusCode(403, new { message = "Doanh nghiệp cần được xác minh trước khi đăng công khai." });
+        job.Title=request.Title;job.City=request.City;job.District=request.District;job.Category=request.Category;job.WorkMode=request.WorkMode;
+        job.Experience=System.Text.RegularExpressions.Regex.Replace((request.Experience??"").Trim(),@"(\d)\s*[-–—]\s*(\d)","$1–$2");
+        job.SalaryMin=request.SalaryMin;job.SalaryMax=request.SalaryMax;job.Vacancies=request.Vacancies;job.Deadline=request.Deadline;
+        job.Skills=request.Skills;job.Description=request.Description;job.Requirements=request.Requirements;job.Benefits=request.Benefits;job.Urgent=request.Urgent;
+        job.Status=request.Publish?"Published":"Draft";await db.SaveChangesAsync();if(transaction!=null)await transaction.CommitAsync();return Ok(new { job.Id,job.Status });
     }
 
     [HttpPut("jobs/{id:int}/status"), Authorize(Roles = "Recruiter")]

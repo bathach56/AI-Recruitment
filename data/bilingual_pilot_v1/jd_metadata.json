@@ -1,0 +1,41 @@
+{
+  "JD_001": {
+    "required_skills": [
+      "C#",
+      "ASP.NET Core",
+      "SQL Server",
+      "Git",
+      "REST API"
+    ],
+    "nice_to_have_skills": [],
+    "experience_years_required": 2,
+    "reviewed_by": "",
+    "note": "Yêu cầu từ JD giả lập, cần người đánh giá kiểm tra trước thực nghiệm."
+  },
+  "JD_002": {
+    "required_skills": [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Git"
+    ],
+    "nice_to_have_skills": [],
+    "experience_years_required": 2,
+    "reviewed_by": "",
+    "note": "Yêu cầu từ JD giả lập, cần người đánh giá kiểm tra trước thực nghiệm."
+  },
+  "JD_003": {
+    "required_skills": [
+      "SQL",
+      "SQL Server",
+      "Thiết kế cơ sở dữ liệu",
+      "Git"
+    ],
+    "nice_to_have_skills": [],
+    "experience_years_required": 3,
+    "reviewed_by": "",
+    "note": "Yêu cầu từ JD giả lập, cần người đánh giá kiểm tra trước thực nghiệm."
+  }
+}

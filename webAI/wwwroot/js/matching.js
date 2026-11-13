@@ -349,9 +349,9 @@
             $('batchCancel').textContent = stopRequested ? 'Đang chờ CV hiện tại hoàn tất…' : 'Dừng sau CV hiện tại';
             $('batchRetry').disabled = busy || batchStale || !batchEntries.some(e => ['error','stopped'].includes(e.state));
             $('batchDownload').disabled = busy;
-            const query = $('batchSearch').value.trim().toLocaleLowerCase('vi');
+            const query = window.RecruitUX.normalize($('batchSearch').value);
             const filter = $('batchState').value;
-            const entries = batch.sorted(batchEntries, $('batchSort').value).filter(e => (!query || e.name.toLocaleLowerCase('vi').includes(query)) && (filter === 'all' || e.state === filter));
+            const entries = batch.sorted(batchEntries, $('batchSort').value).filter(e => (!query || window.RecruitUX.normalize(e.name).includes(query)) && (filter === 'all' || e.state === filter));
             $('batchRows').replaceChildren();
             for (const entry of entries) {
                 const row = element('tr');
@@ -375,24 +375,10 @@
             $('resultsContext').textContent = `${batchPayload?.job_title || 'JD đã nhập'} · ${window.RecruitVietnamese?.modelName(batchPayload?.model_type)||batchPayload?.model_type||''} · Cùng một JD cho cả đợt`;
         }
         async function runBatch() {
-            busy = true; stopRequested = false;
-            $('matchingFields').disabled = true;$('matchingForm').setAttribute('aria-busy','true');
-            $('dropzone').setAttribute('aria-disabled','true');
-            $('analyzeButton').textContent = 'Đang xử lý nhóm CV…';
-            $('requestProgress').hidden = false;$('requestActivity').hidden = false;
-            $('emptyResults').hidden = true;$('resultsSection').hidden = false;
-            try {
-                await batch.run(batchEntries, async entry => {
-                    $('requestProgress').textContent = `Đang phân tích CV ${entry.index + 1}/${batchEntries.length}: ${entry.name}`;
-                    const row=await reviewRequest(`/api/recruiter/reviews/${reviewId}/items/${entry.remoteId}/analyze`,{method:'POST'});
-                    if(row.state==='Error')throw new Error(row.error);
-                    return validateResult(row.result);
-                }, renderBatch, ()=>stopRequested);
-                $('requestProgress').textContent = stopRequested ? 'Đã dừng đợt. Các kết quả hoàn tất được giữ lại; bạn có thể chạy tiếp phần chưa xử lý.' : 'Đã xử lý xong đợt. Sắp xếp bảng để ưu tiên đọc, sau đó mở bằng chứng của hồ sơ cần xem.';
-            } finally {
-                busy=false;$('matchingFields').disabled=false;$('matchingForm').removeAttribute('aria-busy');$('dropzone').removeAttribute('aria-disabled');
-                $('requestActivity').hidden=true;$('analyzeButton').textContent='Phân tích đợt mới';renderBatch();
-            }
+            if(!reviewId)throw new Error('Chưa lưu đợt xét.');
+            await reviewRequest('/api/recruiter/reviews/'+reviewId+'/queue',{method:'POST'});
+            // SQL owns the work now. Navigation/closing the page cannot cancel it.
+            location.href='/ReviewResults?batch='+encodeURIComponent(reviewId);
         }
         if ($('batchPanel')) {
             ['batchSearch','batchSort','batchState'].forEach(id=>$(id).addEventListener(id==='batchSearch'?'input':'change',renderBatch));
@@ -511,7 +497,7 @@
             $('requestProgress').hidden = true;
             showError('');
         }
-        function visibleApplications(){const query=$('applicationSearch')?.value.trim().toLocaleLowerCase('vi')||'';return applications.filter(a=>a.jobId===selectedJob()?.id&&(!query||`${a.fullName} ${a.title}`.toLocaleLowerCase('vi').includes(query)))}
+        function visibleApplications(){return window.RecruitUX.matchesApplications(applications,{job:selectedJob()?.id||-1,q:$('applicationSearch')?.value||''})}
         async function loadApplicationsForJob(){
             const job=selectedJob(),version=++applicationRequestVersion;
             applications=[];selectedApplications.clear();renderApplications();
@@ -671,14 +657,14 @@
             } catch (error) { showError(error.message); return; }
             busy=true;$('matchingFields').disabled=true;$('analyzeButton').textContent='Đang lưu đợt và hồ sơ đã chọn…';
             try{
-                const form=new FormData();form.append('requestJson',JSON.stringify({jobId:selectedJob().id,configuration:payload,applicationIds:[...selectedApplications],externalRows:externalSelection}));
+                const form=new FormData();form.append('requestJson',JSON.stringify({jobId:selectedJob().id,runInBackground:true,configuration:payload,applicationIds:[...selectedApplications],externalRows:externalSelection}));
                 uploadSelection.forEach(f=>form.append('files',f));
                 const saved=await reviewRequest('/api/recruiter/reviews',{method:'POST',body:form});
                 reviewId=saved.id;const detail=await reviewRequest('/api/recruiter/reviews/'+reviewId);
                 clearResults();batchStale=false;batchPayload=detail.configuration;batchMode=mode;selectedEntry=null;displayedData=null;
                 batchEntries=detail.items.map((item,index)=>({index,name:item.name,remoteId:item.id,state:'queued'}));
                 $('savedReviewLink').href='/ReviewResults?batch='+reviewId;$('savedReviewLink').hidden=false;
-                await runBatch();
+                location.href='/ReviewResults?batch='+encodeURIComponent(reviewId);
             }catch(error){showError(error.message)}finally{busy=false;$('matchingFields').disabled=false;$('analyzeButton').textContent='Phân tích đợt mới'}
         });
     }

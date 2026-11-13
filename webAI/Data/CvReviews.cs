@@ -10,6 +10,7 @@ public class CvReviewBatch
     public string Model { get; set; } = "";
     public string ConfigurationJson { get; set; } = "";
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public string QueueState { get; set; } = "Idle";
 }
 public class CvReviewItem
 {
@@ -54,5 +55,9 @@ public static class CvReviewSetup
                 CONSTRAINT CK_CvReviewItems_Score CHECK (Score IS NULL OR (Score>=0 AND Score<=100)));
             CREATE INDEX IX_CvReviewItems_BatchId ON dbo.CvReviewItems(BatchId);
         END;
+        IF COL_LENGTH('dbo.CvReviewBatches','QueueState') IS NULL
+            ALTER TABLE dbo.CvReviewBatches ADD QueueState nvarchar(40) NOT NULL CONSTRAINT DF_CvReviewBatches_QueueState DEFAULT 'Idle';
+        IF NOT EXISTS(SELECT 1 FROM sys.indexes WHERE name='IX_CvReviewBatches_QueueState_CreatedAt' AND object_id=OBJECT_ID('dbo.CvReviewBatches'))
+            CREATE INDEX IX_CvReviewBatches_QueueState_CreatedAt ON dbo.CvReviewBatches(QueueState,CreatedAt);
         """);
 }

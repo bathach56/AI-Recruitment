@@ -6,6 +6,7 @@ using webAI.Data;
 using webAI.Services;
 
 // Explicit local fixture reset, never called by web startup. No passwords in source.
+if (args.Length == 3 && args[0] == "--reset-five-sectors" && args[2] == "--confirm-reset") { await FiveSectorScenario.ResetAsync(Path.GetFullPath(args[1])); return; }
 if (args.Length == 2 && args[0] == "--localize-vietnamese") { await VietnameseScenario.ApplyAsync(Path.GetFullPath(args[1])); return; }
 if (args.Length != 2 || args[0] != "--replace-demo-data") throw new ArgumentException("Dùng --replace-demo-data hoặc --localize-vietnamese <repository-root>.");
 var root = Path.GetFullPath(args[1]);

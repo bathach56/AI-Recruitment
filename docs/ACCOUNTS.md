@@ -12,15 +12,21 @@ Tin minh họa không nhận hồ sơ. Công ty chưa được xác minh chỉ l
 
 ## Bộ dữ liệu kiểm thử hiện tại
 
-Giữ tài khoản `congty@recruitai.test`, công ty **RecruitAI Engineering Lab (kiểm thử)**, với 3 tin Backend, Frontend và Database. Sáu tài khoản `backend1`, `backend2`, `frontend1`, `frontend2`, `database1`, `database2` tại miền `recruitai.test` có CV PDF riêng và mỗi tài khoản nộp đúng một tin tương ứng. Tài khoản `ungvien@recruitai.test` và bộ mẫu cũ đã được thay thế.
+Ngày 11/11/2026 đã thay toàn bộ dữ liệu hoạt động theo yêu cầu: đúng **5 tài khoản ứng viên, 5 CV PDF khác nhau, 5 tài khoản công ty và 5 JD**. Các tài khoản cũ, gồm `congty@recruitai.test`, `backend1`, `frontend1`, `database1` và các tài khoản cùng bộ trước đó, không còn đăng nhập được. Cookie của tài khoản đã xóa bị thu hồi khi truy cập lại.
 
-Mật khẩu được sinh ngẫu nhiên, băm bằng PasswordHasher trong SQL; tệp thông tin đăng nhập cục bộ ở `webAI/App_Data/scenario-accounts.json`, được Git bỏ qua. Mật khẩu tài khoản công ty được giữ nguyên. Không đưa các mật khẩu hoặc database lên GitHub.
+| Ngành | Ứng viên | Email ứng viên | Công ty | Email công ty |
+|---|---|---|---|---|
+| Kinh doanh | Nguyễn Hoàng Nam | kinhdoanh@recruitai.test | Thương mại An Phát | congty.kinhdoanh@recruitai.test |
+| Thiết kế | Trần Ngọc Linh | thietke@recruitai.test | Sáng tạo Mộc | congty.thietke@recruitai.test |
+| Công nghệ | Lê Minh Khang | congnghe@recruitai.test | Phần mềm Sao Việt | congty.congnghe@recruitai.test |
+| Tiếp thị | Phạm Thu Hà | tiepthi@recruitai.test | Truyền thông Hướng Dương | congty.tiepthi@recruitai.test |
+| Dữ liệu | Võ Gia Bảo | dulieu@recruitai.test | Phân tích Minh Tri | congty.dulieu@recruitai.test |
 
-Năm công ty bổ sung: Aurora Cloud, Sen Commerce, Cobalt Security, Mây Design và Bình Minh Media. Mỗi công ty có một JD khác nhau để thử bộ lọc; các tin này được đánh dấu minh họa và không nhận ứng tuyển.
+Mỗi tài khoản có mật khẩu ngẫu nhiên riêng, được băm bằng PasswordHasher trong SQL. **Mở [bảng mật khẩu cục bộ](../webAI/App_Data/TEST_ACCOUNTS_LOCAL.md)** để đăng nhập. Dữ liệu máy đọc ở `webAI/App_Data/scenario-accounts.json` dùng các trường `email`, `password`, `name`, `group`, `role`. Toàn bộ App_Data được Git bỏ qua; không đưa mật khẩu hoặc database lên GitHub.
 
-Tài khoản công ty chính được gán Verified **chỉ trong bộ fixture LocalDB này** để thử luồng đăng tin và ứng tuyển; đây không phải xác minh doanh nghiệp ngoài đời. Ba tin chính ghi rõ dữ liệu kiểm thử nhưng dùng luồng ứng tuyển thực của ứng dụng. Cơ chế xác minh tài khoản mới không thay đổi.
+Cả 5 công ty có tên kèm “(kiểm thử)”, được gán Verified **chỉ trong LocalDB này** và có tin nhận được ứng tuyển để thử luồng thật. JD và CV đều ghi rõ giả lập. Không có xác minh doanh nghiệp ngoài đời; cơ chế xác minh tài khoản tự đăng ký không thay đổi. Chưa tạo sẵn đơn ứng tuyển, thông báo hoặc kết quả AI.
 
-Công cụ `tools/DemoScenario` chỉ chạy thủ công bằng `--replace-demo-data <repository-root>`, sao lưu SQL với COPY_ONLY/CHECKSUM và RESTORE VERIFYONLY trước khi thay dữ liệu cũ; không chạy khi khởi động web và từ chối tạo trùng tài khoản mới. CV và kết quả AI nằm trong App_Data. Xem `docs/LOCAL_SCENARIO.md` để tái hiện kiểm tra.
+Công cụ mới chỉ chạy thủ công bằng `--reset-five-sectors <repository-root> --confirm-reset`; có sao lưu SQL COPY_ONLY/CHECKSUM và RESTORE VERIFYONLY trước khi thay trong giao dịch. Không DROP hoặc đặt lại identity. CV được lưu trong SQL; bản PDF/PNG kiểm tra ở `webAI/App_Data/five-sector-cvs`. Chi tiết bản sao lưu và ID ở `webAI/App_Data/five-sector-reset.json`. Hướng dẫn bộ mới: [BO_TEST_5_LINH_VUC.md](BO_TEST_5_LINH_VUC.md).
 
 ## Nâng cấp database hiện hữu
 
@@ -34,10 +40,10 @@ dotnet ../.preview-build-auth/webAI.dll --initialize-accounts --environment Deve
 
 Muốn tạo tài khoản thử, cấp cấu hình `TestAccounts__Candidate__Email`, `TestAccounts__Candidate__Password` và cặp tương ứng cho Recruiter qua biến môi trường trước lệnh trên. Tài khoản đã tồn tại giữ nguyên mật khẩu. Không đưa mật khẩu vào source hoặc appsettings.
 
-Tệp riêng lưu dưới `webAI/App_Data/documents`, ngoài wwwroot và được Git bỏ qua. API tải CV kiểm tra chính chủ hoặc công ty đã nhận đúng CV qua ứng tuyển. Kiểm tra loại, kích thước, signature; DOCX được kiểm tra ZIP/XML. Upload chỉ lưu tài liệu, chưa phân tích nội dung hay tạo điểm AI.
+Tài liệu riêng lưu trong SQL `Documents`, có nội dung nhị phân và SHA-256. API tải CV kiểm tra chính chủ hoặc công ty đã nhận đúng CV qua ứng tuyển. Kiểm tra loại, kích thước, signature; DOCX được kiểm tra ZIP/XML. Upload chỉ lưu tài liệu, chưa tạo điểm AI. Thư mục `webAI/App_Data/documents` giữ tệp cũ dự phòng, không còn là nguồn đọc của web. Xem `docs/CHAY_LOCAL.md` để chuyển database cũ hoặc sao lưu.
 
 ## Kiểm tra
 
-`node --test webAI/tests/accounts.integration.cjs` chạy khi có `TEST_CANDIDATE_PASSWORD` và `TEST_RECRUITER_PASSWORD`. Mặc định dùng localhost:5132 và email `backend1@recruitai.test`, `congty@recruitai.test`; đổi ứng viên bằng `TEST_CANDIDATE_EMAIL`, đổi URL bằng `TEST_BASE_URL`. Bài kiểm tra tạo một tin nháp mang tên “Bản nháp kiểm tra tài khoản” và CV kiểm thử; cần dọn các fixture này sau khi chạy. Không dùng bài kiểm tra này trên production.
+Bộ mới: `node tools/DemoScenario/verify-five-sectors.cjs` kiểm tra 10 lượt đăng nhập, CV/JD và phân quyền, chỉ đọc dữ liệu. Các integration test cũ mặc định dùng `backend1@recruitai.test`/`congty@recruitai.test` thuộc bộ đã lưu trữ; không dùng trực tiếp để kiểm tra bộ 5 lĩnh vực mới.
 
 Kiểm tra frontend sẵn có: `node --test webAI/tests/frontend-api.test.cjs webAI/tests/personalization.test.cjs webAI/tests/status.test.cjs`.

@@ -40,9 +40,13 @@ internal static class VietnameseScenario
                 if(!File.Exists(file))throw new InvalidOperationException("Chưa tạo CV tiếng Việt: "+prefix);
                 var resume=await db.Resumes.SingleAsync(r=>r.CandidateId==profile.Id&&(r.Name==prefix+".pdf"||r.Name=="Hồ sơ "+spec.Name+".pdf"));
                 if(Path.GetFileName(resume.StorageKey)!=resume.StorageKey)throw new InvalidDataException("Khóa CV không hợp lệ.");
-                Directory.CreateDirectory(Path.Combine(backup,"documents"));File.Copy(Path.Combine(data,"documents",resume.StorageKey),Path.Combine(backup,"documents",resume.StorageKey),true);
+                var original=await db.Documents.AsNoTracking().SingleOrDefaultAsync(d=>d.StorageKey==resume.StorageKey);
+                Directory.CreateDirectory(Path.Combine(backup,"documents"));
+                var previous=original?.Data??await File.ReadAllBytesAsync(Path.Combine(data,"documents",resume.StorageKey));
+                await File.WriteAllBytesAsync(Path.Combine(backup,"documents",resume.StorageKey),previous);
                 // Version the file: archived AI evidence keeps the original bytes and key.
-                var key=Guid.NewGuid().ToString("N")+".pdf";File.Copy(file,Path.Combine(data,"documents",key));newKeys.Add(key);
+                var key=Guid.NewGuid().ToString("N")+".pdf";var bytes=await File.ReadAllBytesAsync(file);
+                db.Documents.Add(new StoredDocument{StorageKey=key,Data=bytes,Sha256=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes))});
                 resume.StorageKey=key;resume.Name="Hồ sơ "+spec.Name+".pdf";resume.Size=new FileInfo(file).Length;resume.UpdatedAt=DateTimeOffset.UtcNow;
                 var apps=await db.Applications.Where(a=>a.CandidateId==profile.Id).ToListAsync();
                 foreach(var app in apps.Where(a=>a.CoverLetter.StartsWith("Hồ sơ giả lập để kiểm thử đối chiếu đúng nhóm ")))
@@ -52,7 +56,7 @@ internal static class VietnameseScenario
             foreach(var batch in batches){var config=JsonSerializer.Deserialize<JsonElement>(batch.ConfigurationJson);if(config.TryGetProperty("job_id",out var id)&&ids.Contains(id.GetInt32()))batch.Title="[Lưu trữ] Kết quả trước khi Việt hóa — hồ sơ công việc số "+id.GetInt32();}
             await db.SaveChangesAsync();await tx.CommitAsync();
             Console.WriteLine($"Đã Việt hóa {jobs.Count} tin, 6 hồ sơ và 6 tên công ty. Giữ nguyên tài khoản, mật khẩu, ID, lượt ứng tuyển và phản hồi. Sao lưu đã xác minh: {backup}");
-        }catch{await tx.RollbackAsync();foreach(var key in newKeys)File.Delete(Path.Combine(data,"documents",key));throw;}
+        }catch{await tx.RollbackAsync();throw;}
     }
     private static void Update(JobPosting job,JobSpec spec){job.Title=spec.Title;job.Description="DỮ LIỆU KIỂM THỬ ĐỒ ÁN — không phải tin tuyển dụng thực tế.\n"+spec.Description;job.Requirements=spec.Requirements;job.Benefits=spec.Benefits;job.Skills=spec.Skills;job.WorkMode=spec.WorkMode;job.Category=spec.Category;}
 }

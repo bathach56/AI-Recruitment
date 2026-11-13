@@ -14,7 +14,7 @@
   host.insertAdjacentElement('afterend',nav);
   state.refresh=()=>{
    if(!container.isConnected){nav.remove();return}
-   const nodes=[...container.children].filter(n=>n.matches(state.selector));const view=page(nodes,state.current,size);state.current=view.current;
+   const nodes=[...container.children].filter(n=>n.matches(state.selector)&&!n.hasAttribute?.('data-filter-hidden'));const view=page(nodes,state.current,size);state.current=view.current;
    nodes.forEach((n,i)=>n.toggleAttribute('data-page-hidden',i<view.start||i>=view.start+size));
    nav.hidden=nodes.length<=size;
    const signature=view.current+':'+view.total;if(signature===state.signature)return;state.signature=signature;
@@ -42,7 +42,8 @@
   document.querySelectorAll('tbody').forEach(n=>bind(n,'tr'));
   for(const [container,state]of controllers){if(!container.isConnected){state.nav.remove();controllers.delete(container)}else state.refresh()}
  }
- window.RecruitPagination={page,bind,slice:(container,items)=>page(items,controllers.get(container)?.current||1,container?.id==='jobList'?5:10).items,refresh:scan};
+ window.RecruitPagination={page,bind,slice:(container,items)=>page(items,controllers.get(container)?.current||1,container?.id==='jobList'?5:10).items,refresh:scan,
+  reset:container=>{const state=controllers.get(container);if(state){state.current=1;state.signature='';state.refresh()}}};
  document.addEventListener('DOMContentLoaded',()=>{
   scan();let queued=false;
   new MutationObserver(records=>{if(records.every(r=>r.target.closest?.('.list-pagination')))return;if(!queued){queued=true;queueMicrotask(()=>{queued=false;scan()})}}).observe(document.body,{childList:true,subtree:true});

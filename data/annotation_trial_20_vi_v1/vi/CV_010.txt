@@ -1,0 +1,18 @@
+HỒ SƠ GIẢ LẬP ĐÃ BỎ THÔNG TIN LIÊN HỆ
+
+Vị trí mong muốn: Lập trình viên máy chủ .NET
+
+GIỚI THIỆU
+Hồ sơ giả lập: lập trình viên có 3 năm phát triển dịch vụ máy chủ .NET, thiết kế cơ sở dữ liệu và kiểm thử các chức năng quản lý nghiệp vụ.
+
+KỸ NĂNG
+C#, ASP.NET Core, SQL Server, REST API, Entity Framework Core, Git, kiểm thử đơn vị
+
+KINH NGHIỆM
+Tổng kinh nghiệm: 3 năm. Giai đoạn 2023–2026 tại công ty giả lập Phần mềm Ánh Sao: xây dựng REST API bằng C# và ASP.NET Core, truy cập dữ liệu bằng Entity Framework Core. Thiết kế bảng, khóa ngoại và truy vấn SQL Server; triển khai phân quyền theo vai trò và viết kiểm thử đơn vị. Sử dụng Git trong quy trình làm việc nhóm.
+
+DỰ ÁN
+Hệ thống quản lý đơn hàng: xây dựng chức năng đặt hàng, kiểm tra tồn kho, xử lý giao dịch và phân trang kết quả. Dịch vụ báo cáo: thiết kế bộ lọc, truy vấn SQL và kiểm thử các trường hợp dữ liệu không hợp lệ. Chưa có kinh nghiệm vận hành Kubernetes.
+
+HỌC VẤN
+Cử nhân Kỹ thuật phần mềm, trường giả lập phục vụ đồ án, 2019–2023. Nắm lập trình hướng đối tượng, cơ sở dữ liệu và kiểm thử phần mềm.

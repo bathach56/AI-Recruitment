@@ -6,16 +6,16 @@
     <meta name="theme-color" content="#1458e8">
     <title>@ViewData["Title"] · RecruitAI</title>
     <meta name="description" content="Tìm công việc phù hợp, chuẩn bị CV và theo dõi hành trình ứng tuyển cùng RecruitAI.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;450;500;550;600;650;700;750;800&display=swap" rel="stylesheet">
+    <link href="/vendor/be-vietnam-pro/fonts.css" rel="stylesheet" asp-append-version="true">
     @await RenderSectionAsync("VendorStyles", required: false)
     <link rel="stylesheet" href="/css/career.css" asp-append-version="true">
     <link rel="stylesheet" href="/css/workspace-refresh.css" asp-append-version="true">
     <link rel="stylesheet" href="/css/ui-polish.css" asp-append-version="true">
+    <link rel="stylesheet" href="/css/usability.css" asp-append-version="true">
     <script>try{document.documentElement.dataset.theme=localStorage.getItem('recruitai-career-theme')||'light'}catch{}</script>
     <script src="/js/pagination.js" asp-append-version="true" defer></script>
     <script src="/js/vietnamese.js" asp-append-version="true" defer></script>
+    <script src="/js/workspace-ui.js" asp-append-version="true" defer></script>
     <script src="/js/recruiter-feedback.js" asp-append-version="true" defer></script>
     <script src="/js/candidate-applications.js" asp-append-version="true" defer></script>
     <script src="/js/career.js" asp-append-version="true" defer></script>

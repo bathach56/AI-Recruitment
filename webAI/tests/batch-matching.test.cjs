@@ -46,8 +46,9 @@ test('matching uses a posted job without editable JD fields and only shows its a
  for(const id of ['modelType','semanticWeight','skillWeight','experienceWeight'])assert.ok(template.includes(`id="${id}"`));
  const body=source.match(/function visibleApplications\(\)\{([^\n]+)\}/)[1];
  let selected=null,query='';const context={applications:[{id:1,jobId:10,fullName:'Alice',title:'Developer'},{id:2,jobId:20,fullName:'Bob',title:'Developer'}],$:()=>({value:query}),selectedJob:()=>selected};
- vm.createContext(context);vm.runInContext('globalThis.filter=()=>{'+body+'}',context);
+ context.window={};context.document={addEventListener(){}};vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../wwwroot/js/workspace-ui.js'),'utf8'),context);vm.runInContext('globalThis.filter=()=>{'+body+'}',context);
  assert.equal(context.filter().length,0);selected={id:10};assert.equal(context.filter().map(a=>a.id).join(','),'1');selected={id:20};assert.equal(context.filter().map(a=>a.id).join(','),'2');query='Alice';assert.equal(context.filter().length,0);
+ context.applications[1].fullName='Đỗ Ánh';query='do anh';assert.equal(context.filter()[0].id,2);query='ĐỖ ÁNH';assert.equal(context.filter()[0].id,2);
 });
 test('file selection accumulates, deduplicates, rejects unsupported or oversized batches without modifying the old list',()=>{
  const b=subject(),old=[file('first.pdf')];

@@ -1,0 +1,13 @@
+Vị trí: Chuyên viên thiết kế giao diện và trải nghiệm
+
+MÔ TẢ CÔNG VIỆC
+Nghiên cứu nhu cầu người dùng và thiết kế giao diện cho sản phẩm web.
+Xây dựng wireframe, luồng thao tác, prototype và giao diện chi tiết trên Figma.
+Phát triển design system và bàn giao thiết kế cho nhóm kỹ thuật.
+Thực hiện kiểm thử khả dụng, cải tiến bố cục và hỗ trợ giao diện trên điện thoại.
+
+YÊU CẦU
+Từ 2 năm kinh nghiệm thiết kế UI/UX.
+Sử dụng Figma; có kinh nghiệm UX Research, wireframe và prototype.
+Biết xây dựng design system, kiểm thử khả dụng và trình bày lý do thiết kế.
+Có hồ sơ dự án thể hiện vai trò cá nhân.

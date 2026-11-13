@@ -2,7 +2,7 @@
 
 **CV của tôi:** xem PDF trực tiếp hoặc văn bản DOCX bằng nút Chi tiết CV; vẫn có tải bản gốc. API xem/tải chỉ cho chủ CV hoặc công ty đã nhận đúng CV qua ứng tuyển.
 
-**Việc đã ứng tuyển:** mở thẳng chi tiết hồ sơ mới nhất, không còn thẻ tóm tắt kèm nút Xem kết quả & phản hồi. Nếu có nhiều hồ sơ, dùng bộ chọn gọn phía trên để chuyển giữa các vị trí/công ty. Chi tiết gồm công ty, lĩnh vực, website hợp lệ, vị trí/địa điểm, trạng thái, CV đã gửi và toàn bộ phản hồi của công ty. Trúng tuyển và Không trúng tuyển chỉ hiển thị khi trạng thái tương ứng; hồ sơ đang xử lý không bị suy diễn thành kết quả cuối cùng. Chi tiết vẫn đọc được khi tin đã đóng hoặc không còn xuất hiện trong danh sách việc làm công khai.
+**Việc đã ứng tuyển:** hiện các dòng tóm tắt vị trí, công ty, ngày nộp và trạng thái, tối đa 10 hồ sơ mỗi trang. Bấm một dòng để mở popup chi tiết; đóng bằng nút Đóng, phím Esc hoặc bấm ngoài popup. Chi tiết gồm công ty, lĩnh vực, website hợp lệ, vị trí/địa điểm, trạng thái, CV đã gửi và nội dung phản hồi. Chỉ hiển thị kết quả cuối khi nhà tuyển dụng đã chọn trạng thái tương ứng. Hồ sơ đang xử lý không bị suy diễn thành kết quả cuối; chi tiết vẫn đọc được khi tin đã đóng hoặc không còn xuất hiện trong danh sách công khai.
 
 **Thông báo:** chuông và trang Thông báo chỉ hiển thị công ty, vị trí và cập nhật ngắn; không hiển thị toàn bộ nội dung phản hồi. Mỗi thông báo gắn với ApplicationId và dẫn tới `/Candidate?tab=applications&application=<id>`. Khi vào liên kết, giao diện tự mở đúng hồ sơ, giữ mã hồ sơ khi khởi tạo tab. Phản hồi đang hiển thị được đánh dấu đã đọc, cập nhật số thông báo trên chuông. Phân trang 10 mục vẫn áp dụng cho hồ sơ, thông báo và các phản hồi.
 

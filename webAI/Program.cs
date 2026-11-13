@@ -2,8 +2,11 @@ using webAI.Services;
 using webAI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.ConfigureKestrel(options => options.AddServerHeader = false);
 
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
@@ -19,6 +22,8 @@ builder.Services.AddAntiforgery(o => o.HeaderName = "X-CSRF-TOKEN");
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<PrivateDocumentStore>();
 builder.Services.AddScoped<CvReviewService>();
+builder.Services.AddScoped<CvReviewQueue>();
+builder.Services.AddHostedService<CvReviewWorker>();
 builder.Services.AddRateLimiter(o => {
     o.RejectionStatusCode = 429;
     o.AddPolicy("account", context => System.Threading.RateLimiting.RateLimitPartition.GetFixedWindowLimiter(
@@ -39,8 +44,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 {
     options.LoginPath = "/Login";
     options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = builder.Environment.IsDevelopment() ? CookieSecurePolicy.SameAsRequest : CookieSecurePolicy.Always;
     options.Cookie.SameSite = SameSiteMode.Lax;
     options.ExpireTimeSpan = TimeSpan.FromHours(8);
+    options.Events.OnValidatePrincipal = async context => {
+        var subject=context.Principal?.FindFirstValue(ClaimTypes.NameIdentifier);
+        var role=context.Principal?.FindFirstValue(ClaimTypes.Role);var email=context.Principal?.Identity?.Name;
+        var db=context.HttpContext.RequestServices.GetRequiredService<RecruitmentDbContext>();
+        if(!int.TryParse(subject,out var id)||!await db.Users.AsNoTracking().AnyAsync(u=>u.UserId==id&&u.IsActive&&u.RoleName==role&&u.Email==email)){
+            context.RejectPrincipal();await context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        }
+    };
     options.Events.OnRedirectToLogin = context => {
         if (context.Request.Path.StartsWithSegments("/api")) context.Response.StatusCode = 401;
         else context.Response.Redirect(context.RedirectUri);
@@ -55,6 +69,16 @@ builder.Services.AddAuthorization(options => {
 builder.Services.AddHttpClient<IAiMatchingService, AiMatchingService>();
 
 var app = builder.Build();
+
+if (args.Contains("--migrate-documents") || args.Contains("--backup-database") || args.Contains("--verify-restore"))
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<RecruitmentDbContext>();
+    if (args.Contains("--verify-restore")) await RecoveryVerification.RunAsync(db, app.Environment.ContentRootPath);
+    else if (args.Contains("--migrate-documents")) await DocumentStorageSetup.ImportLegacyAsync(db, app.Environment.ContentRootPath);
+    else await DocumentStorageSetup.BackupAsync(db, app.Environment.ContentRootPath);
+    return;
+}
 
 if (args.Contains("--initialize-reviews"))
 {
@@ -78,6 +102,14 @@ if (args.Contains("--initialize-accounts"))
     return;
 }
 
+// New installations create the table through EnsureCreated; existing ones get
+// this idempotent additive upgrade. Legacy file import is an explicit command.
+using (var scope = app.Services.CreateScope()) {
+    var db = scope.ServiceProvider.GetRequiredService<RecruitmentDbContext>();
+    await DocumentStorageSetup.InitializeAsync(db);
+    await CvReviewSetup.InitializeAsync(db);
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -88,6 +120,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.Use(async (context, next) =>
 {
+    context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+    context.Response.Headers["X-Frame-Options"] = "SAMEORIGIN";
+    context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
+    context.Response.Headers["Content-Security-Policy"] = "frame-ancestors 'self'; object-src 'none'; base-uri 'self'";
     if (context.Request.Path.StartsWithSegments("/api")) context.Response.Headers.CacheControl = "no-store";
     try { await next(); }
     catch (Exception ex) when (context.Request.Path.StartsWithSegments("/api") && !context.Response.HasStarted && ex is not OperationCanceledException)

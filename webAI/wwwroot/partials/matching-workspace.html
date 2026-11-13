@@ -2,8 +2,8 @@
 <section class="workspace-heading mb-4">
     <div>
 
-        <h1 class="mt-2 mb-2" id="workspaceTitle">Đối chiếu CV với công việc.</h1>
-        <p class="text-secondary mb-0" id="workspaceIntro">Đưa CV và yêu cầu công việc vào cùng một góc nhìn, với bằng chứng để bạn tự đánh giá.</p>
+        <h1 class="mt-2 mb-2" id="workspaceTitle">AI đối chiếu CV với JD</h1>
+        <p class="text-secondary mb-0" id="workspaceIntro">Chọn JD của công ty, thêm nhóm CV và phân tích bằng phương pháp NLP. Rà soát điểm cùng bằng chứng trước khi gửi kết quả.</p>
     </div>
     <div class="connection-panel">
         <span class="connection-badge" id="connectionStatus" role="status">Đang kiểm tra kết nối…</span>
@@ -13,7 +13,7 @@
 <ol class="studio-process" aria-label="Quy trình đối chiếu">
     <li><span class="process-number">1</span><div><strong>Chọn tin tuyển dụng</strong><p>Dùng JD công ty đã lưu</p></div></li>
     <li><span class="process-number">2</span><div><strong>Thêm nhóm hồ sơ</strong><p>Tối đa 50 CV PDF hoặc DOCX</p></div></li>
-    <li><span class="process-number">3</span><div><strong>Kiểm tra bằng chứng</strong><p>Điểm thành phần và đoạn trích CV</p></div></li>
+    <li><span class="process-number">3</span><div><strong>Theo dõi kết quả</strong><p>Tiến độ, bằng chứng và tải Excel</p></div></li>
 </ol>
 <details class="method-explainer">
     <summary>Ba phương pháp đối chiếu khác nhau như thế nào?<span>Hiểu cách hệ thống phân tích</span></summary>
@@ -24,6 +24,7 @@
     </div>
     <p class="method-research-note">Điểm phù hợp của một CV–JD khác với Precision, Recall và F1 của một thí nghiệm có nhãn. Chưa kết luận phương pháp nào tốt nhất.</p>
 </details>
+<section class="queue-destination"><div><h2>Chuẩn bị tại đây, theo dõi ở Kết quả xét CV</h2><p>Đợt xét được lưu và chạy trên máy chủ. Mở kết quả để xem tiến độ, tạm dừng, lọc điểm và tải Excel.</p></div><a class="button secondary" href="/ReviewResults">Xem các đợt đã lưu</a><a id="savedReviewLink" class="button" href="/ReviewResults" hidden>Mở đợt vừa tạo</a></section>
 <div class="row g-4 align-items-start analysis-layout">
     <div class="col-12 col-xl-5 analysis-input">
         <form id="matchingForm" class="surface-card" novalidate>
@@ -39,9 +40,10 @@
                 <button type="button" id="nextCvStep" class="btn btn-primary w-100 mb-3">Đến phần thêm CV <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button>
 </div><div class="tab-pane" id="cvStepPane" role="tabpanel" aria-labelledby="cvStepTab">
 <div class="section-heading"><span class="step-number">02</span><div><h2 class="h5 mb-1">Hồ sơ cần phân tích</h2><p class="small text-secondary mb-0" id="cvIntro">Tải CV hoặc dán nội dung văn bản.</p></div></div>
-                <section class="cv-source-panel" aria-label="Hồ sơ công ty đã nhận"><h3>CV nộp vào tin đang chọn</h3><p id="applicationScopeStatus" class="form-text" role="status">Chọn tin tuyển dụng để xem hồ sơ.</p><div class="source-tools"><label><input type="checkbox" id="selectAllApplications"> Chọn tất cả hồ sơ hiển thị (10 / trang)</label><input id="applicationSearch" class="form-control" type="search" aria-label="Tìm hồ sơ đã nhận" placeholder="Tìm tên / vị trí…"></div><div id="applicationChoices" class="cv-source-list"><p>Đang tải hồ sơ…</p></div></section>
-                <section class="cv-source-panel" aria-label="Hồ sơ nhận qua email"><h3>Nhập CV nhận riêng qua Excel</h3><p>Tệp .xlsx gồm ba cột: <strong>Tên ứng viên</strong>, <strong>Email</strong>, <strong>Nội dung CV</strong>. Dán nội dung CV vào Nội dung CV; không nhập đường dẫn Gmail/Drive. Mỗi ô tối đa 32.767 ký tự.</p><div class="source-tools"><a href="/api/recruiter/reviews/excel-template" class="btn btn-outline-secondary">Tải mẫu Excel</a><label for="excelCvImport" class="btn btn-outline-secondary">Chọn tệp Excel</label><input id="excelCvImport" class="visually-hidden" type="file" accept=".xlsx"><button id="clearExcelCvs" type="button" class="btn btn-outline-secondary">Bỏ danh sách Excel</button></div><p id="excelImportStatus" role="status"></p><label><input type="checkbox" id="selectAllExcel"> Chọn tất cả hồ sơ Excel (10 / trang)</label><div id="excelChoices" class="cv-source-list"></div></section>
-                <p id="sourceSelectionCount" class="source-count" role="status">Chưa chọn hồ sơ.</p>
+                <div class="cv-source-columns">
+                <section class="cv-source-panel cv-source-web" aria-label="Hồ sơ công ty đã nhận"><h3>CV ứng tuyển trên web</h3><p>Hồ sơ ứng viên đã nộp trực tiếp vào tin tuyển dụng đang chọn của công ty.</p><p id="applicationScopeStatus" class="form-text" role="status">Chọn tin tuyển dụng để xem hồ sơ.</p><div class="source-tools"><label><input type="checkbox" id="selectAllApplications"> Chọn tất cả hồ sơ hiển thị (10 / trang)</label><input id="applicationSearch" class="form-control" type="search" aria-label="Tìm hồ sơ đã nhận" placeholder="Tìm tên / vị trí…"></div><div id="applicationChoices" class="cv-source-list"><p>Đang tải hồ sơ…</p></div></section>
+                <section class="cv-source-panel cv-source-external" aria-labelledby="externalCvTitle"><h3 id="externalCvTitle">CV nhận từ bên ngoài</h3><p>CV gửi riêng qua Gmail hoặc kênh khác: tải tệp về máy rồi thêm tại đây. Hệ thống không tự đọc hộp thư Gmail.</p>
+                <details class="external-excel-import"><summary>Nhập danh sách CV qua Excel</summary><div class="external-excel-body"><p>Tệp .xlsx gồm ba cột: <strong>Tên ứng viên</strong>, <strong>Email</strong>, <strong>Nội dung CV</strong>. Dán nội dung CV vào Nội dung CV; không nhập đường dẫn Gmail/Drive. Mỗi ô tối đa 32.767 ký tự.</p><div class="source-tools"><a href="/api/recruiter/reviews/excel-template" class="btn btn-outline-secondary">Tải mẫu Excel</a><label for="excelCvImport" class="btn btn-outline-secondary">Chọn tệp Excel</label><input id="excelCvImport" class="visually-hidden" type="file" accept=".xlsx"><button id="clearExcelCvs" type="button" class="btn btn-outline-secondary">Bỏ danh sách Excel</button></div><p id="excelImportStatus" role="status"></p><label><input type="checkbox" id="selectAllExcel"> Chọn tất cả hồ sơ Excel (10 / trang)</label><div id="excelChoices" class="cv-source-list"></div></div></details>
                 <div class="input-mode mb-3" role="group" aria-label="Nguồn nội dung CV">
                     <input type="radio" class="btn-check" name="cvMode" id="modeFile" value="file" checked><label class="btn btn-outline-primary" for="modeFile"><i class="bi bi-file-earmark-arrow-up me-2" aria-hidden="true"></i>Tải tệp</label>
                     <input type="radio" class="btn-check" name="cvMode" id="modeText" value="text"><label class="btn btn-outline-primary" for="modeText"><i class="bi bi-text-paragraph me-2" aria-hidden="true"></i>Dán văn bản</label>
@@ -59,8 +61,11 @@
                 <div id="textPanel" hidden><div class="field-group"><textarea id="cvText" class="form-control" rows="7" maxlength="100000" placeholder="Dán nội dung CV thực tế tại đây…"></textarea><label for="cvText" class="form-label">Nội dung CV</label></div></div>
                 <p class="external-cv-note"><i class="bi bi-inbox" aria-hidden="true"></i>CV nhận qua email cũng dùng được: tải tệp về máy, rồi chọn nhiều tệp tại đây. Có thể chọn bổ sung nhiều lần; tệp trùng tên, kích thước và thời điểm sửa chỉ được thêm một lần.</p>
                 <p class="small text-secondary mt-3 mb-4">PDF scan cần OCR hiện chưa được hỗ trợ. Kinh nghiệm được trích từ các dòng ghi rõ số năm, chẳng hạn “Tổng kinh nghiệm: 3 năm”; mô tả tự do có thể chưa đủ dữ liệu.</p>
+                </section></div>
+                <p id="sourceSelectionCount" class="source-count cv-source-total" role="status">Chưa chọn hồ sơ.</p>
+                <p class="cv-source-combined-note">CV từ hai nguồn được xét chung theo JD đang chọn, tối đa 50 hồ sơ cho một đợt.</p>
                 <button type="button" class="studio-back" id="backToJobStep">Quay lại tin tuyển dụng</button>
-                <button type="submit" id="analyzeButton" class="btn btn-primary w-100 py-3"><i class="bi bi-arrow-right me-2" aria-hidden="true"></i>Phân tích hồ sơ</button>
+                <button type="submit" id="analyzeButton" class="btn btn-primary w-100 py-3"><i class="bi bi-arrow-right me-2" aria-hidden="true"></i>Tạo đợt và xét trên máy chủ</button>
 </div></div>
             </fieldset>
             <div id="requestActivity" class="request-activity" aria-hidden="true" hidden></div>
@@ -69,7 +74,7 @@
         </form>
         <div class="availability-note mt-3"><i class="bi bi-info-circle me-2" aria-hidden="true"></i>Các đợt xét được lưu theo tài khoản công ty trong <a href="/ReviewResults">Kết quả xét CV</a>. Có thể quay lại xem, chạy tiếp và tải Excel.</div>
     </div>
-    <div class="col-12 col-xl-7 analysis-output">
+    <div class="col-12 col-xl-7 analysis-output" data-retired-output hidden aria-hidden="true">
 <div class="surface-card result-toolbar"><div class="result-toolbar-title"><span class="result-indicator" aria-hidden="true"></span><h2>Kết quả & bằng chứng</h2></div><p id="recruiterContext">Kết quả từ CV và JD công ty đã lưu.</p></div>
         <div id="emptyResults" class="surface-card empty-results">
 
@@ -80,7 +85,6 @@
         </div>
         <section id="resultsSection" hidden aria-label="Kết quả phân tích">
             <section id="batchPanel" class="batch-panel" aria-label="Tổng hợp nhóm CV" hidden>
-                <a id="savedReviewLink" class="btn btn-primary mb-3" href="/ReviewResults" hidden>Mở kết quả đã lưu / xuất Excel</a>
                 <div class="batch-heading"><div><h2>Tổng hợp nhóm CV</h2><p id="batchSummary" role="status" aria-atomic="true"></p></div><div class="batch-actions"><button type="button" class="btn btn-outline-secondary" id="batchRetry">Chạy lại lỗi / chưa xử lý</button><button type="button" class="btn btn-outline-secondary" id="batchDownload">Tải cả đợt (JSON)</button></div></div>
                 <progress id="batchProgress" value="0" max="1" aria-label="Tiến độ xử lý nhóm CV"></progress>
                 <div class="batch-control-row"><label for="batchSearch">Tìm theo tên tệp<input id="batchSearch" class="form-control" type="search" placeholder="Tên CV…"></label><label for="batchSort">Sắp xếp<select id="batchSort" class="form-select"><option value="score">Điểm phù hợp: cao đến thấp</option><option value="name">Tên tệp</option><option value="original">Thứ tự tải lên</option></select></label><label for="batchState">Trạng thái<select id="batchState" class="form-select"><option value="all">Tất cả</option><option value="complete">Đã phân tích</option><option value="error">Lỗi</option><option value="stopped">Chưa xử lý</option><option value="running">Đang phân tích</option><option value="queued">Đang chờ</option></select></label></div>

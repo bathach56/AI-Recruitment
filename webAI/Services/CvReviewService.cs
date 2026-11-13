@@ -10,6 +10,7 @@ namespace webAI.Services;
 public class ReviewCreateRequest
 {
     public int JobId { get; set; }
+    public bool RunInBackground { get; set; }
     public AiMatchingRequest Configuration { get; set; } = new();
     public List<int> ApplicationIds { get; set; } = [];
     public List<ExternalCvRow> ExternalRows { get; set; } = [];
@@ -49,7 +50,7 @@ public class CvReviewService(RecruitmentDbContext db, PrivateDocumentStore files
         try {
             foreach(var upload in uploads){var name=Path.GetFileName(upload.FileName);if(name.Length>500)throw new ArgumentException("Tên tệp quá dài.");var key=await files.SaveAsync(upload);createdKeys.Add(key);items.Add(new CvReviewItem{BatchId=batch.Id,Name=name,Source="Upload",FileName=name,StorageKey=key});}
             db.CvReviewBatches.Add(batch);db.CvReviewItems.AddRange(items);await db.SaveChangesAsync();return batch;
-        } catch {foreach(var key in createdKeys)System.IO.File.Delete(files.PathFor(key));throw;}
+        } catch {foreach(var key in createdKeys)await files.RemoveAsync(key);throw;}
     }
 
     public static double? MinimumYears(string experience)
@@ -66,7 +67,7 @@ public class CvReviewService(RecruitmentDbContext db, PrivateDocumentStore files
         var item=await db.CvReviewItems.SingleOrDefaultAsync(i=>i.Id==itemId&&i.BatchId==batchId,ct);if(item==null)return null;
         if(item.State is "Complete" or "Incomplete")return item;
         var expiry=DateTimeOffset.UtcNow.AddMinutes(-5);
-        var changed=await db.CvReviewItems.Where(i=>i.Id==itemId&&i.State!="Complete"&&i.State!="Incomplete"&&(i.State!="Running"||i.AnalyzedAt<expiry))
+        var changed=await db.CvReviewItems.Where(i=>i.Id==itemId&&i.State!="Complete"&&i.State!="Incomplete"&&(i.State!="Running"||i.AnalyzedAt==null||i.AnalyzedAt<expiry))
             .ExecuteUpdateAsync(s=>s.SetProperty(i=>i.State,"Running").SetProperty(i=>i.AnalyzedAt,DateTimeOffset.UtcNow),ct);
         if(changed==0)throw new InvalidOperationException("Hồ sơ đang được xử lý; thử lại sau.");
         item.State="Running";item.Error="";
@@ -74,7 +75,8 @@ public class CvReviewService(RecruitmentDbContext db, PrivateDocumentStore files
             var config=JsonSerializer.Deserialize<AiMatchingRequest>(batch.ConfigurationJson,Json)!;
             JsonElement result;
             if(!string.IsNullOrEmpty(item.StorageKey)){
-                await using var stream=System.IO.File.OpenRead(files.PathFor(item.StorageKey));
+                var bytes=await files.ReadAsync(item.StorageKey,ct)??throw new FileNotFoundException("Không tìm thấy nội dung CV trong database.");
+                await using var stream=new MemoryStream(bytes);
                 result=await ai.MatchFileAsync(stream,item.FileName,batch.ConfigurationJson,ct);
             }else{config.CvText=item.CvText;result=JsonSerializer.SerializeToElement(await ai.MatchAsync(config,ct),Json);}
             double? Score(JsonElement node,string name){if(!node.TryGetProperty(name,out var v)||v.ValueKind==JsonValueKind.Null)return null;if(!v.TryGetDouble(out var n)||!double.IsFinite(n)||n<0||n>100)throw new InvalidDataException("Invalid AI score");return n;}

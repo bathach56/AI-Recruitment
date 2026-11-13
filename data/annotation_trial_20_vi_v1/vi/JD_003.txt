@@ -1,0 +1,13 @@
+Vị trí: Lập trình viên máy chủ .NET
+
+MÔ TẢ CÔNG VIỆC
+Phát triển và bảo trì dịch vụ máy chủ cho hệ thống quản lý nghiệp vụ.
+Xây dựng REST API bằng ASP.NET Core, xử lý dữ liệu bằng Entity Framework Core.
+Thiết kế truy vấn SQL Server, kiểm soát giao dịch, phân quyền và ghi nhật ký.
+Viết kiểm thử đơn vị, rà soát mã nguồn và phối hợp nhóm giao diện.
+
+YÊU CẦU
+Từ 2 năm kinh nghiệm phát triển C# và ASP.NET Core.
+Sử dụng SQL Server, Entity Framework Core và Git.
+Hiểu REST API, phân quyền theo vai trò, kiểm tra dữ liệu và kiểm thử đơn vị.
+Ưu tiên biết Docker; không bắt buộc kinh nghiệm Kubernetes.

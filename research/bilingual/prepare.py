@@ -2,6 +2,7 @@
 import csv
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -39,12 +40,19 @@ def main():
                 pairs.append(dict(pair_id=f'CV_{i:03}__JD_{j:03}__{language}',cv_group=f'CV_{i:03}',jd_group=f'JD_{j:03}',language=language,cv_text_path=f'{language}/CV_{i:03}.txt',jd_text_path=f'{language}/JD_{j:03}.txt'))
     def write(name, fields, rows):
         with (OUT / name).open('w',encoding='utf-8-sig',newline='') as stream:
-            writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader();writer.writerows(rows)
+            writer=csv.DictWriter(stream,fieldnames=fields,lineterminator='\n');writer.writeheader();writer.writerows(rows)
     write('pairs.csv',list(pairs[0]),pairs)
     fields=['pair_id','reviewer_id','label','domain_evidence','skill_evidence','experience_evidence','notes']
     for name in ['reviewer_a.csv','reviewer_b.csv']:
         write(name,fields,[{'pair_id':p['pair_id']} for p in pairs])
     write('adjudication.csv',['pair_id','final_label','adjudicator_id','rationale','split'],[{'pair_id':p['pair_id']} for p in pairs])
+    metadata={}
+    for index,job in enumerate(vi['jobs'],1):
+        match=re.match(r'\s*(\d+)',job['experience'])
+        metadata[f'JD_{index:03}']={'required_skills':[s.strip() for s in job['skills'].split(',') if s.strip()],
+            'nice_to_have_skills':[],'experience_years_required':int(match.group(1)) if match else None,
+            'reviewed_by':'','note':'Yêu cầu từ JD giả lập, cần người đánh giá kiểm tra trước thực nghiệm.'}
+    (OUT/'jd_metadata.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     hashes={p.relative_to(OUT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in OUT.rglob('*.txt')}
     hashes['pairs.csv']=hashlib.sha256((OUT/'pairs.csv').read_bytes()).hexdigest()
     manifest={'version':'bilingual_pilot_v1','intended_use':'pilot_only','synthetic':True,'pairs':len(pairs),'languages':['vi','en'],'source_sha256':{'vi':hashlib.sha256(vi_path.read_bytes()).hexdigest(),'en':hashlib.sha256(source[0].read_bytes()).hexdigest()},'text_hashes':hashes,'note':'36 cặp là 18 nội dung ở hai ngôn ngữ; không phải 36 mẫu độc lập hoặc bộ kiểm tra nghiên cứu. Chưa có nhãn.'}

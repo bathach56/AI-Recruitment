@@ -1,0 +1,27 @@
+{
+  "JD_001": {
+    "sector": "Kinh doanh",
+    "title": "Chuyên viên kinh doanh doanh nghiệp",
+    "requirements_source": "YÊU CẦU trong JD; không tự biến kỹ năng ưu tiên thành bắt buộc."
+  },
+  "JD_002": {
+    "sector": "Thiết kế",
+    "title": "Chuyên viên thiết kế giao diện và trải nghiệm",
+    "requirements_source": "YÊU CẦU trong JD; không tự biến kỹ năng ưu tiên thành bắt buộc."
+  },
+  "JD_003": {
+    "sector": "Công nghệ",
+    "title": "Lập trình viên máy chủ .NET",
+    "requirements_source": "YÊU CẦU trong JD; không tự biến kỹ năng ưu tiên thành bắt buộc."
+  },
+  "JD_004": {
+    "sector": "Tiếp thị",
+    "title": "Chuyên viên tiếp thị số",
+    "requirements_source": "YÊU CẦU trong JD; không tự biến kỹ năng ưu tiên thành bắt buộc."
+  },
+  "JD_005": {
+    "sector": "Dữ liệu",
+    "title": "Chuyên viên phân tích dữ liệu",
+    "requirements_source": "YÊU CẦU trong JD; không tự biến kỹ năng ưu tiên thành bắt buộc."
+  }
+}

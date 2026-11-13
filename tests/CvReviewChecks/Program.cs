@@ -43,11 +43,15 @@ using(var zip=new ZipArchive(new MemoryStream(export))) {using var stream=zip.Ge
 var options=new DbContextOptionsBuilder<RecruitmentDbContext>().UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AIRecruitmentDb;Integrated Security=true;TrustServerCertificate=true").Options;
 await using var db=new RecruitmentDbContext(options);await using var transaction=await db.Database.BeginTransactionAsync();
 try {
-    var company=await (from c in db.Companies join u in db.Users on c.OwnerSubject equals u.UserId.ToString() where u.Email=="congty@recruitai.test" select c.Id).SingleAsync();
-    var postedJob=await (from a in db.Applications join j in db.Jobs on a.JobId equals j.Id where j.CompanyId==company select j).FirstAsync();
+    var company=await (from c in db.Companies join u in db.Users on c.OwnerSubject equals u.UserId.ToString() where u.RoleName=="Recruiter"&&u.IsActive orderby c.Id select c.Id).FirstAsync();
+    var postedJob=await db.Jobs.Where(j=>j.CompanyId==company).OrderBy(j=>j.Id).FirstAsync();
     var applicationIds=await db.Applications.Where(a=>a.JobId==postedJob.Id).Select(a=>a.Id).Take(2).ToListAsync();
-    Check(applicationIds.Count==2,"Seed demo applications first");
-    var fake=new FixtureAi();var store=new PrivateDocumentStore(new TestEnvironment());var service=new CvReviewService(db,store,fake,NullLogger<CvReviewService>.Instance);
+    while(applicationIds.Count<2){
+        var fixtureToken=Guid.NewGuid().ToString("N");var candidate=new CandidateProfile{Subject="rollback-fixture-"+fixtureToken,Email=fixtureToken+"@example.test",FullName="Rollback fixture"};db.Candidates.Add(candidate);await db.SaveChangesAsync();
+        var source=await db.Resumes.AsNoTracking().Where(r=>r.ContentType=="application/pdf").FirstAsync();var resume=new Resume{CandidateId=candidate.Id,Name="Rollback fixture.pdf",StorageKey=source.StorageKey,ContentType=source.ContentType,Size=source.Size};db.Resumes.Add(resume);await db.SaveChangesAsync();
+        var application=new JobApplication{CandidateId=candidate.Id,ResumeId=resume.Id,JobId=postedJob.Id};db.Applications.Add(application);await db.SaveChangesAsync();applicationIds.Add(application.Id);
+    }
+    var fake=new FixtureAi();var store=new PrivateDocumentStore(db);var service=new CvReviewService(db,store,fake,NullLogger<CvReviewService>.Instance);
     var request=new ReviewCreateRequest{JobId=postedJob.Id,Configuration=new AiMatchingRequest{JobTitle="FORGED CLIENT TITLE",JobDescription="FORGED CLIENT JD",RequiredSkills=["FORGED"],JobExperienceYearsRequired=99,ModelType="TF-IDF"},ApplicationIds=applicationIds,ExternalRows=[new ExternalCvRow{Name="Fixture only",CvText=content}]};
     var batch=await service.CreateAsync(company,request,new FormFileCollection());
     var frozen=JsonSerializer.Deserialize<AiMatchingRequest>((await db.CvReviewBatches.AsNoTracking().SingleAsync(b=>b.Id==batch.Id)).ConfigurationJson,CvReviewService.Json)!;
@@ -69,15 +73,45 @@ try {
     Check((await db.CvReviewBatches.AsNoTracking().SingleAsync(b=>b.Id==textOnly.Id)).ConfigurationJson.Length>2000,"Long stored JD truncated");
     anotherJob.Description="Job changed after the review started";await db.SaveChangesAsync();Check((await db.CvReviewBatches.AsNoTracking().SingleAsync(b=>b.Id==textOnly.Id)).ConfigurationJson.Contains(new string('j',2000)),"Saved JD changed retroactively");
     var owner=await db.Companies.Where(c=>c.Id==company).Select(c=>c.OwnerSubject).SingleAsync();
-    var controller=new CvReviewsController(db,service){ControllerContext=new ControllerContext{HttpContext=new DefaultHttpContext{User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner)],"test"))}}};
+    var controller=new CvReviewsController(db,service,new CvReviewQueue(db)){ControllerContext=new ControllerContext{HttpContext=new DefaultHttpContext{User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner)],"test"))}}};
     using(var excel=new MemoryStream(bytes)){var preview=(OkObjectResult)await controller.Import(new FormFile(excel,0,bytes.Length,"file","sample.xlsx"));Check(((List<ExternalCvRow>)preview.Value!).Count==1,"Positive Excel import preview failed");}
     var detail=(OkObjectResult)await controller.Detail(batch.Id,sort:"desc");var json=JsonSerializer.SerializeToElement(detail.Value,CvReviewService.Json);
+    var previewPdf=(OkObjectResult)await controller.Preview(batch.Id,items[0].Id);Check(JsonSerializer.SerializeToElement(previewPdf.Value,CvReviewService.Json).GetProperty("kind").GetString()=="pdf","Stored review PDF preview unavailable");
+    var originalDocument=(FileContentResult)await controller.Document(batch.Id,items[0].Id,true);Check(originalDocument.ContentType=="application/pdf"&&originalDocument.FileContents.AsSpan().StartsWith("%PDF-"u8),"Review download not original PDF");
+    var textItem=items.Single(i=>i.Source=="ExcelOrText");var textPreview=(OkObjectResult)await controller.Preview(batch.Id,textItem.Id);Check(JsonSerializer.SerializeToElement(textPreview.Value,CvReviewService.Json).GetProperty("text").GetString()==content,"External text preview did not use saved CV");
+    Check(await controller.Document(batch.Id,textItem.Id) is NotFoundResult,"Text CV invented original file");
+    Check(await controller.Preview(textOnly.Id,items[0].Id) is NotFoundResult,"Item from another batch leaked");
+    var searchResult=(OkObjectResult)await controller.List(q:"TRANSACTION TEST JD");var searchJson=JsonSerializer.SerializeToElement(searchResult.Value,CvReviewService.Json);Check(searchJson.EnumerateArray().All(b=>b.GetProperty("title").GetString()!.Contains("TRANSACTION TEST JD")),"Batch title filter ignored");
+    Check(await controller.List(from:DateTimeOffset.UtcNow.AddDays(1),to:DateTimeOffset.UtcNow) is BadRequestObjectResult,"Invalid batch date range accepted");
     Check(json.GetProperty("items")[0].GetProperty("score").GetDouble()==82,"Descending score order incorrect");
     var filtered=(OkObjectResult)await controller.Detail(batch.Id,min:1);Check(JsonSerializer.SerializeToElement(filtered.Value,CvReviewService.Json).GetProperty("items").GetArrayLength()==2,"Score filter incorrect");
     var workbook=(FileContentResult)await controller.Export(batch.Id,min:1);using(var package=new ZipArchive(new MemoryStream(workbook.FileContents))){using var stream=package.GetEntry("xl/worksheets/sheet1.xml")!.Open();XNamespace ns="http://schemas.openxmlformats.org/spreadsheetml/2006/main";Check(XDocument.Load(stream).Descendants(ns+"row").Count()==3,"Excel export did not use the displayed filter");}
     var other=new Company{OwnerSubject="transaction-test-only",Name="Transaction company"};db.Companies.Add(other);await db.SaveChangesAsync();
+    var searchBatch=new CvReviewBatch{CompanyId=company,Title="Đợt đối chiếu Thiết kế Dữ liệu",Model="TF-IDF",ConfigurationJson=batch.ConfigurationJson};db.CvReviewBatches.Add(searchBatch);var searchItem=new CvReviewItem{BatchId=searchBatch.Id,Name="ĐỖ Nguyễn Ánh",Email="anh@example.test",Source="ExcelOrText",CvText=content,State="Complete",Score=42};db.CvReviewItems.Add(searchItem);await db.SaveChangesAsync();
+    foreach(var query in new[]{"dot doi chieu thiet ke du lieu","ĐỢT ĐỐI CHIẾU THIẾT KẾ DỮ LIỆU","Đợt đối chiếu Thiết kế Dữ liệu".Normalize(System.Text.NormalizationForm.FormD)}){
+        var found=(OkObjectResult)await controller.List(q:query);Check(JsonSerializer.SerializeToElement(found.Value,CvReviewService.Json).EnumerateArray().Any(b=>b.GetProperty("id").GetGuid()==searchBatch.Id),"Unaccented batch search failed: "+query);
+    }
+    foreach(var query in new[]{"do nguyen anh","ĐỖ NGUYỄN ÁNH","Đỗ Nguyễn Ánh".Normalize(System.Text.NormalizationForm.FormD),"ANH@EXAMPLE.TEST"}){
+        var found=(OkObjectResult)await controller.Detail(searchBatch.Id,q:query);Check(JsonSerializer.SerializeToElement(found.Value,CvReviewService.Json).GetProperty("items").GetArrayLength()==1,"Unaccented CV search failed: "+query);
+    }
+    using(var package=new ZipArchive(new MemoryStream(((FileContentResult)await controller.Export(searchBatch.Id,q:"do nguyen anh")).FileContents))){using var stream=package.GetEntry("xl/worksheets/sheet1.xml")!.Open();XNamespace ns="http://schemas.openxmlformats.org/spreadsheetml/2006/main";Check(XDocument.Load(stream).Descendants(ns+"row").Count()==2,"Unaccented export did not match displayed filter");}
+    Console.WriteLine("PASS: SQL accent-insensitive title/name/email search, capital Đ, combining Unicode and Excel filter consistency (rollback).");
+    using(var docx=new MemoryStream()){
+        using(var package=new ZipArchive(docx,ZipArchiveMode.Create,true)){
+            using(var writer=new StreamWriter(package.CreateEntry("[Content_Types].xml").Open()))writer.Write("<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"/>");
+            using(var writer=new StreamWriter(package.CreateEntry("word/document.xml").Open()))writer.Write("<w:document xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><w:body><w:p><w:r><w:t>CV tiếng Việt kiểm thử DOCX</w:t></w:r></w:p></w:body></w:document>");
+        }
+        docx.Position=0;var key=await store.SaveAsync(new FormFile(docx,0,docx.Length,"file","fixture.docx"));var fixture=new CvReviewItem{BatchId=batch.Id,Name="DOCX fixture",Source="Upload",FileName="fixture.docx",StorageKey=key};db.CvReviewItems.Add(fixture);await db.SaveChangesAsync();
+        var preview=(OkObjectResult)await controller.Preview(batch.Id,fixture.Id);Check(JsonSerializer.SerializeToElement(preview.Value,CvReviewService.Json).GetProperty("text").GetString()=="CV tiếng Việt kiểm thử DOCX","DOCX preview corrupted Vietnamese text");
+        Check(((FileContentResult)await controller.Document(batch.Id,fixture.Id)).ContentType.Contains("wordprocessingml"),"DOCX original not downloadable");
+        var application=await db.Applications.SingleAsync(a=>a.Id==applicationIds[0]);var resume=await db.Resumes.SingleAsync(r=>r.Id==application.ResumeId);var originalKey=resume.StorageKey;resume.StorageKey=key;await db.SaveChangesAsync();
+        var frozenDocument=(FileContentResult)await controller.Document(batch.Id,items[0].Id,true);Check(frozenDocument.FileContents.SequenceEqual(originalDocument.FileContents),"Review preview followed candidate CV replacement instead of frozen file");resume.StorageKey=originalKey;await db.SaveChangesAsync();
+    }
+    Check(await controller.List(to:DateTimeOffset.UtcNow.AddDays(-2)) is OkObjectResult oldList&&JsonSerializer.SerializeToElement(oldList.Value,CvReviewService.Json).EnumerateArray().All(b=>b.GetProperty("createdAt").GetDateTimeOffset()<DateTimeOffset.UtcNow.AddDays(-2)),"Batch date filter ignored");
     controller.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,other.OwnerSubject)],"test"));
     Check(await controller.Detail(batch.Id) is NotFoundResult,"Cross-company detail allowed");Check(await controller.Export(batch.Id) is NotFoundResult,"Cross-company export allowed");
+    Check(await controller.Preview(batch.Id,items[0].Id) is NotFoundResult,"Cross-company preview allowed");Check(await controller.Document(batch.Id,items[0].Id) is NotFoundResult,"Cross-company document allowed");
+    Console.WriteLine("PASS: Review PDF/DOCX/text preview, frozen document after CV replacement, batch/date filters and foreign-company document denial (rollback).");
     try{await service.CreateAsync(other.Id,new ReviewCreateRequest{JobId=postedJob.Id,ApplicationIds=applicationIds},new FormFileCollection());throw new Exception("Cross-company selection accepted");}catch(ArgumentException){}
     // Verify the user's 30 / 50 / 20 scenario without leaving demo data behind.
     var scopeJobs=new[]{"Backend","Frontend","Database"}.Select(title=>new JobPosting{CompanyId=company,Title="TRANSACTION "+title,Description=title+" developer JD",Status="Draft",Deadline=DateTimeOffset.UtcNow.AddDays(1)}).ToArray();
@@ -134,7 +168,7 @@ try {
     Console.WriteLine("PASS: Candidate application details, company/result/reply, notification links and owner isolation (rollback).");
     var realResume=await db.Resumes.FindAsync((await db.Applications.FindAsync(applicationIds[0]))!.ResumeId);
     Check(await inbox.PreviewResume(realResume!.Id) is OkObjectResult,"Private PDF preview failed");
-    Check(await inbox.DownloadResume(realResume.Id,true) is PhysicalFileResult{FileDownloadName:""},"Inline PDF is still an attachment");
+    Check(await inbox.DownloadResume(realResume.Id,true) is FileContentResult{FileDownloadName:""},"Inline PDF is still an attachment");
     inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,other.OwnerSubject),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
     Check(await inbox.PreviewResume(realResume.Id) is NotFoundResult,"Foreign company preview allowed");
     inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
@@ -148,7 +182,7 @@ try {
             var previewJson=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.PreviewResume(docxResume.Id)).Value,CvReviewService.Json);
             Check(previewJson.GetProperty("kind").GetString()=="text"&&previewJson.GetProperty("text").GetString()!.Length>100,"DOCX preview extraction failed");
             app.ResumeId=oldResumeId;await db.SaveChangesAsync();
-        }finally{File.Delete(store.PathFor(docxKey));}
+        }finally{await store.RemoveAsync(docxKey);}
     }
     var scopedResume=await db.Resumes.SingleAsync(r=>r.Id==resumes[0].Id);
     var configJson=JsonSerializer.Serialize(new AiMatchingRequest{JobId=scopeJobs[0].Id,ModelType="Hybrid"},CvReviewService.Json);
@@ -165,6 +199,60 @@ try {
         try{await service.CreateAsync(company,new ReviewCreateRequest{JobId=scopeJobs[0].Id,ApplicationIds=[wrongId]},new FormFileCollection());throw new Exception("Cross-job or cross-company CV accepted");}catch(ArgumentException){}
     }
     Console.WriteLine("PASS: Backend 30, Frontend 50, Database 20; foreign job blocked; select-all and analysis ownership checked (transaction rollback).");
+    // New job categories survive persistence; invalid values are rejected.
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
+    var categoryRequest=new JobRequest{Title="Kiểm tra ngành thiết kế",City="Hà Nội",Category="Thiết kế",Description="Mô tả kiểm thử",Requirements="Yêu cầu kiểm thử",Experience="2 - 4 năm",Deadline=DateTimeOffset.UtcNow.AddDays(1)};
+    var categoryResult=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.CreateJob(categoryRequest)).Value,CvReviewService.Json);
+    var categoryJob=await db.Jobs.FindAsync(categoryResult.GetProperty("id").GetInt32());
+    Check(categoryJob!.Category=="Thiết kế"&&categoryJob.Experience=="2–4 năm","Category or normalized experience was lost");
+    var editRequest=new JobRequest{Title="Bản nháp đã cập nhật",City="Đà Nẵng",Category="Thiết kế",Description="JD sửa trong giao dịch kiểm thử",Requirements="Yêu cầu kiểm thử",Deadline=DateTimeOffset.UtcNow.AddDays(2),SalaryMin=10,SalaryMax=20};
+    Check(await inbox.UpdateJob(categoryJob.Id,editRequest) is OkObjectResult,"Own unused draft edit failed");
+    Check(categoryJob.Title==editRequest.Title&&categoryJob.City=="Đà Nẵng","Draft edit fields did not persist");
+    var lockedSnapshot=new CvReviewBatch{CompanyId=company,Title="Immutable JD snapshot",Model="TF-IDF",ConfigurationJson=JsonSerializer.Serialize(new AiMatchingRequest{JobId=categoryJob.Id,JobDescription=categoryJob.Description},CvReviewService.Json)};
+    db.CvReviewBatches.Add(lockedSnapshot);await db.SaveChangesAsync();var frozenJson=lockedSnapshot.ConfigurationJson;
+    Check(await inbox.UpdateJob(categoryJob.Id,editRequest) is ConflictObjectResult,"Editing a previously analyzed JD was allowed");
+    Check(lockedSnapshot.ConfigurationJson==frozenJson,"Historical review configuration changed");
+    var copyRequest=new JobRequest{Title=categoryJob.Title,City=categoryJob.City,Category=categoryJob.Category,Description=categoryJob.Description,Requirements=categoryJob.Requirements,Deadline=DateTimeOffset.UtcNow.AddDays(3)};
+    var copyResult=JsonSerializer.SerializeToElement(((OkObjectResult)await inbox.CreateJob(copyRequest)).Value,CvReviewService.Json);
+    var copied=await db.Jobs.SingleAsync(j=>j.Id==copyResult.GetProperty("id").GetInt32());
+    Check(copied.Id!=categoryJob.Id&&copied.Status=="Draft"&&copied.Description==categoryJob.Description&&copied.CompanyId==categoryJob.CompanyId,"Copy did not create an independent owned draft");
+    Check(!await db.Applications.AnyAsync(a=>a.JobId==copied.Id)&&lockedSnapshot.ConfigurationJson==frozenJson,"Copy changed old applications or AI snapshot");
+    Check(await inbox.UpdateJob(postedJob.Id,editRequest) is ConflictObjectResult,"Editing a published JD with applications was allowed");
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,other.OwnerSubject),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
+    Check(await inbox.OwnJob(categoryJob.Id) is NotFoundResult&&await inbox.UpdateJob(categoryJob.Id,editRequest) is NotFoundResult,"Cross-company draft access allowed");
+    inbox.ControllerContext.HttpContext.User=new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier,owner),new Claim(ClaimTypes.Role,"Recruiter")],"test"));
+    Console.WriteLine("PASS: Draft editing, immutable analyzed/published JD and cross-company edit isolation (rollback).");
+    categoryRequest.Category="INVALID";Check(await inbox.CreateJob(categoryRequest) is BadRequestObjectResult,"Invalid category accepted");
+    var publicController=new JobsController(db,NullLogger<JobsController>.Instance){ControllerContext=new ControllerContext{HttpContext=new DefaultHttpContext()}};
+    Check(await publicController.Detail(categoryJob.Id,CancellationToken.None) is NotFoundObjectResult,"Guest read draft job");
+    categoryJob.Status="Closed";await db.SaveChangesAsync();
+    var closed=JsonSerializer.SerializeToElement(((OkObjectResult)await publicController.Detail(categoryJob.Id,CancellationToken.None)).Value,CvReviewService.Json);
+    Check(closed.GetProperty("id").GetInt32()==categoryJob.Id&&!closed.GetProperty("canApply").GetBoolean(),"Closed job detail disappeared or still allowed applications");
+    categoryJob.Status="Published";categoryJob.Deadline=DateTimeOffset.UtcNow.AddDays(-1);await db.SaveChangesAsync();
+    var expired=JsonSerializer.SerializeToElement(((OkObjectResult)await publicController.Detail(categoryJob.Id,CancellationToken.None)).Value,CvReviewService.Json);
+    Check(!expired.GetProperty("canApply").GetBoolean(),"Expired job allowed applications");
+    for(var index=0;index<201;index++)db.Jobs.Add(new JobPosting{CompanyId=company,Title="Kiểm tra phân trang "+index,Status="Published",Deadline=DateTimeOffset.UtcNow.AddDays(1)});
+    await db.SaveChangesAsync();
+    var allJobs=JsonSerializer.SerializeToElement(((OkObjectResult)await publicController.List(CancellationToken.None)).Value,CvReviewService.Json);
+    Check(allJobs.GetArrayLength()>200,"Public jobs silently truncated at 200");
+    Check(await publicController.Detail(postedJob.Id,CancellationToken.None) is OkObjectResult,"Older job detail unavailable beyond latest 200");
+    Check(await db.Documents.AnyAsync(d=>d.StorageKey==realResume.StorageKey),"Existing resume bytes were not migrated to SQL");
+    Check((await store.ReadAsync(realResume.StorageKey))!.Length>0,"SQL document read is empty");
+    Console.WriteLine("PASS: SQL documents, category/experience persistence, closed/expired/draft details, and more than 200 jobs (rollback).");
+    var queuedBatch=await service.CreateAsync(company,new ReviewCreateRequest{JobId=postedJob.Id,Configuration=new AiMatchingRequest{ModelType="TF-IDF"},ExternalRows=[new ExternalCvRow{Name="Queue fixture",CvText=content}]},new FormFileCollection());
+    var queue=new CvReviewQueue(db);
+    Check(!await queue.EnqueueAsync(queuedBatch.Id,company+100000)&&!await queue.PauseAsync(queuedBatch.Id,company+100000),"Foreign queue control allowed");
+    Check(await queue.EnqueueAsync(queuedBatch.Id,company),"Own queue rejected");
+    Check(await queue.PauseAsync(queuedBatch.Id,company),"Own pause rejected");
+    db.ChangeTracker.Clear();Check((await db.CvReviewBatches.AsNoTracking().SingleAsync(b=>b.Id==queuedBatch.Id)).QueueState=="Paused","Pause was not persisted");
+    var queuedItem=await db.CvReviewItems.SingleAsync(i=>i.BatchId==queuedBatch.Id);queuedItem.State="Running";queuedItem.AnalyzedAt=DateTimeOffset.UtcNow;await db.SaveChangesAsync();
+    try{await service.AnalyzeAsync(queuedBatch.Id,queuedItem.Id,company,CancellationToken.None);throw new Exception("Active lease was stolen");}catch(InvalidOperationException){}
+    queuedItem.AnalyzedAt=DateTimeOffset.UtcNow.AddMinutes(-6);await db.SaveChangesAsync();
+    var recoveredLease=await service.AnalyzeAsync(queuedBatch.Id,queuedItem.Id,company,CancellationToken.None);Check(recoveredLease!.State=="Complete","Expired worker lease did not recover");
+    var beforeCalls=fake.Calls;await service.AnalyzeAsync(queuedBatch.Id,queuedItem.Id,company,CancellationToken.None);Check(fake.Calls==beforeCalls,"Completed item was recomputed");
+    queuedItem.State="Error";queuedItem.Score=null;await db.SaveChangesAsync();db.ChangeTracker.Clear();await queue.EnqueueAsync(queuedBatch.Id,company);
+    Check((await db.CvReviewItems.AsNoTracking().SingleAsync(i=>i.Id==queuedItem.Id)).State=="Queued","Error was not queued for explicit retry");
+    Console.WriteLine("PASS: Queue ownership, pause persistence, live/stale leases, retry and completed-item idempotency (rollback).");
 } finally {await transaction.RollbackAsync();}
 Console.WriteLine("PASS: XLSX structure, Unicode/long text, formula safety, zero/null distinction; SQL ownership, persisted configuration/results, idempotency, error and retry. Fixture scores rolled back.");
 

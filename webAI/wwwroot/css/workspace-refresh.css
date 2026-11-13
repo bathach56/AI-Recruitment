@@ -73,7 +73,7 @@
 .application-status-form select:focus-visible,.feedback-composer select:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .application-status-form .button{min-height:46px}
 .application-status-form small{color:var(--muted);font-size:11px;align-self:center}
-.feedback-workspace{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;margin-top:24px}
+.feedback-workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;margin-top:24px}
 .feedback-composer{display:flex;flex-direction:column;gap:18px;min-width:0}
 .feedback-recipient-info{padding:12px;border-radius:8px;background:var(--blue-soft);color:var(--blue);font-size:12px;line-height:1.7;overflow-wrap:anywhere}
 .feedback-composer textarea{min-height:220px;resize:vertical}

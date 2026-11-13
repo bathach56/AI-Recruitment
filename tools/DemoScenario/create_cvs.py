@@ -1,14 +1,20 @@
 """Generate fictional, extractable CV PDFs for the local test scenario."""
 import json
 import sys
+import argparse
 from pathlib import Path
 import pymupdf
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.stdout.reconfigure(encoding='utf-8')
-OUT = ROOT / 'webAI/App_Data/scenario-cvs'
+parser = argparse.ArgumentParser()
+parser.add_argument('--five-sectors', action='store_true')
+args = parser.parse_args()
+source = 'five-sectors.json' if args.five_sectors else 'scenario.json'
+OUT = ROOT / 'webAI/App_Data' / ('five-sector-cvs' if args.five_sectors else 'scenario-cvs')
 OUT.mkdir(parents=True, exist_ok=True)
-for c in json.loads((Path(__file__).parent / 'scenario.json').read_text(encoding='utf-8'))['candidates']:
+candidates = json.loads((Path(__file__).parent / source).read_text(encoding='utf-8'))['candidates']
+for c in candidates:
     doc = pymupdf.open()
     page = doc.new_page(width=595, height=842)
     page.insert_font(fontname='Arial', fontfile='C:/Windows/Fonts/arial.ttf')
@@ -39,4 +45,4 @@ for c in json.loads((Path(__file__).parent / 'scenario.json').read_text(encoding
     assert c['email'] in extracted and 'Tổng kinh nghiệm:' in extracted
     page.get_pixmap().save(path.with_suffix('.png'))
     doc.close()
-print('Created and rendered 6 CV PDFs: '+str(OUT))
+print(f'Created and rendered {len(candidates)} CV PDFs: {OUT}')
